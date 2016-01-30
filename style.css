@@ -20,8 +20,3 @@
   border-left: 7px solid #ffcc00;
   box-shadow: 0 2px 5px #999;
 }
-/*以下、モバイル向け*/
-@media screen and (max-width: 59.6875em) {
-		.widget-area {background: #ffcc00;}
-    .widget-title,.widget a{color: #fff;}
-		}
