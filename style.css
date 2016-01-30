@@ -10,12 +10,12 @@
 /*記事エリア*/
 .post{box-shadow: 0 2px 5px #999;}
 /*見出し*/
-h2{
+.entry-content h2{
   background: #ffcc00;
   color: #fff;
   box-shadow: 0 2px 5px #999;
 }
-h3{
+.entry-content h3{
   border-bottom: none;
   border-left: 7px solid #ffcc00;
   box-shadow: 0 2px 5px #999;
