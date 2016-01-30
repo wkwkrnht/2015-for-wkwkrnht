@@ -2,8 +2,21 @@
  Theme Name:   2015 for wkwkrnht
  Theme URI:    http://wkwkrnht.wp.xdomain.jp/
  Template:     twentyfifteen
+ Author:      wkwkrnht
  Version:      1.0.0
  License:      GNU General Public License v2 or later
  License URI:  http://www.gnu.org/licenses/gpl-2.0.html
- Text Domain:  twenty-fifteen-child
 */
+/*記事エリア*/
+.site-content{box-shadow: 0 2px 5px #999;}
+/*    */
+.h2 {
+  background: #ffcc00;
+  color: #fff;
+  box-shadow: 0 2px 5px #999;
+}
+.h3 {
+  border-bottom: none;
+  border-left: 7px solid #ffcc00;
+  box-shadow: 0 2px 5px #999;
+}
