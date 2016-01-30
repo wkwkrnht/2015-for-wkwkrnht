@@ -22,6 +22,5 @@
 }
 /*以下、モバイル向け*/
 @media screen and (max-width: 59.6875em) {
-		.secondary-toggleon {background: #ffcc00;}
-    .widget-title{color: #fff}
+		.widget {background: #ffcc00;color: #fff}
 		}
