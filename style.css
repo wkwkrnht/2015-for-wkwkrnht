@@ -20,3 +20,31 @@
   border-left: 7px solid #ffcc00;
   box-shadow: 0 2px 5px #999;
 }
+@media screen and (min-width: 59.6875em) {
+		  .dropdown-toggle:after,.widget{color: #ffcc00;}
+      .dropdown-toggle:hover,.dropdown-toggle:focus,
+      .secondary a,.textwidget a,.widget button,.widget hr,
+			.widget input[type="button"],
+			.widget input[type="reset"],
+			.widget input[type="submit"],
+      .widget button:hover,.widget button:focus,.widget_calendar tbody a:focus,
+      .widget input[type="button"]:hover,
+      .widget input[type="button"]:focus,
+      .widget input[type="reset"]:hover,
+      .widget input[type="reset"]:focus,
+      .widget input[type="submit"]:hover,
+      .widget input[type="submit"]:focus,
+      .widget_calendar tbody a:hover,.widget_calendar tbody a {background-color: #fff;	}
+
+			.secondary a:hover,.secondary a:focus,
+			.main-navigation .menu-item-description,.widget-title,.widget blockquote,
+			.widget .wp-caption-text,.widget .gallery-caption {color: #fff;}
+
+			.widget blockquote,.main-navigation ul,.main-navigation li,.secondary-toggle,
+			.widget input,.widget textarea,.widget table,.widget th,
+			.widget td,.widget pre,.widget li,
+			.widget_categories .children,.widget_nav_menu .sub-menu,
+			.widget_pages .children,.widget abbr[title] {border-color:#fff;}
+
+			.sidebar a:focus,.dropdown-toggle:focus {outline-color: #fff;}
+		}
