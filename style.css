@@ -8,14 +8,14 @@
 /*hide*/
 .entry-read, .related-entry-read {display: none;}
 /*記事エリア*/
-.site-content{box-shadow: 0 2px 5px #999;}
+.post{box-shadow: 0 2px 5px #999;}
 /*見出し*/
-.h2 {
+h2{
   background: #ffcc00;
   color: #fff;
   box-shadow: 0 2px 5px #999;
 }
-.h3 {
+h3{
   border-bottom: none;
   border-left: 7px solid #ffcc00;
   box-shadow: 0 2px 5px #999;
