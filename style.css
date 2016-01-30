@@ -3,13 +3,13 @@
  Theme URI:    http://wkwkrnht.wp.xdomain.jp/
  Template:     twentyfifteen
  Author:      wkwkrnht
- Version:      1.0.0
- License:      GNU General Public License v2 or later
- License URI:  http://www.gnu.org/licenses/gpl-2.0.html
+ Version:      0.0.1
 */
+/*hide*/
+.entry-read, .related-entry-read {display: none;}
 /*記事エリア*/
 .site-content{box-shadow: 0 2px 5px #999;}
-/*    */
+/*見出し*/
 .h2 {
   background: #ffcc00;
   color: #fff;
