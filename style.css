@@ -6,32 +6,32 @@
  Version:      0.0.1
 */
 /*hide*/
-.more-link, .related-entry-read{display: none;}
+.more-link{display: none;}
 /*font指定*/
 .post-title{font-family: sans-serif;}
 /*影付け*/
-.post{box-shadow: 0 5px 5px 0 #999;}
+.post{box-shadow: 0 2px 2px 0 #999;}
 .sidebar{box-shadow: 0 5px 10px 0 #999;}
 /*ページネーション*/
-.nav-links{display: block;box-shadow: 0 5px 5px 0 #999;}
-.next.page-numbers{background: #ffcc00;color: #fff;}
+.nav-links{box-shadow: 0 2px 2px 0 #999;}
+.prev.page-numbers,.next.page-numbers{background: #ffcc00;color: #fff;}
 /*footer*/
 .site-info{text-align: center;font-family: sans-serif;font-weight: lighter;color: #000}
-.site-footer{background: #fff;box-shadow: 0 5px 5px 0 #999;}
+.site-footer{background: #fff;box-shadow: 0 2px 2px 0 #999;}
 /*指定 for PC*/
 @media screen and (min-width: 59.6875em) {
       .secondary{width: 235px;}
-      .site-main {padding: 5% 0;}
+      .site-main {padding: 6% 0;}
       .site-header {margin: 12% 0;}
       .widget {margin: 0 0 12%;}
-      .hentry,.page-header,.page-content {margin: 0 5%;}
-	    .hentry + .hentry,.page-header + .hentry,.page-header + .page-content {margin-top: 5%;}
-      .comments-area,.post-navigation {margin: 5% 5% 0;}
+      .hentry,.page-header,.page-content {margin: 0 6%;}
+	    .hentry + .hentry,.page-header + .hentry,.page-header + .page-content {margin-top: 6%;}
+      .comments-area,.post-navigation {margin: 6% 6% 0;}
       .site-footer {margin: 0 0 0 32.9651%;width: 63.5067%;}
 }
 /*見出し*/
-.h1,.entry-content h2{color: #fff;background: #ffcc00;box-shadow: 0 2px 5px 0 #999;}
+.entry-content h1,.entry-content h2{color: #fff;background: #ffcc00;box-shadow: 0 2px 5px 0 #999;}
 .entry-content h3{border-bottom: none;border-left: 10px solid #ffcc00;box-shadow: 0 2px 5px 0 #999;}
 /*ソーシャルナビゲーション*/
-.social-navigation a[href$="/feed/"]:before {color: #2aff00;}
-.social-navigation a[href*="twitter.com"]:before {color: #00b8ff;}
+.social-navigation a[href$="/feed/"]:before{color: #2aff00;}
+.social-navigation a[href*="twitter.com"]:before{color: #00b8ff;}
