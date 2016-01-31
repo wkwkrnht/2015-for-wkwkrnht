@@ -10,10 +10,10 @@
 /*font指定*/
 
 /*影付け*/
-.post{box-shadow: 0 2px 5px 0 #999;}
-.sidebar{box-shadow: 0 2px 5px 0 #999;}
+.post{box-shadow: 0 5px 5px 0 #999;}
+.sidebar{box-shadow: 0 5px 10px 0 #999;}
 /*footer*/
-.site-info{font-family: sans-serif;font-weight: lighter;color: #000}
+.site-info{text-align: center;font-family: sans-serif;font-weight: lighter;color: #000}
 .site-footer{background: #fff;box-shadow: 0 5px 5px 0 #999;}
 /*見出し*/
 .entry-content h1,.entry-content h2{color: #fff;background: #ffcc00;box-shadow: 0 2px 5px 0 #999;}
