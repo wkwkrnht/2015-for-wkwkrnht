@@ -15,6 +15,16 @@
 /*footer*/
 .site-info{text-align: center;font-family: sans-serif;font-weight: lighter;color: #000}
 .site-footer{background: #fff;box-shadow: 0 5px 5px 0 #999;}
+/*幅指定*/
+@media screen and (min-width: 59.6875em) {
+      .site-main {padding: 5% 0;}
+      .site-header {margin: 12% 0;}
+      .widget {margin: 0 0 12%;}
+      .hentry,.page-header,.page-content {margin: 0 5%;}
+	    .hentry + .hentry,.page-header + .hentry,.page-header + .page-content {margin-top: 5%;}
+      .comments-area,.post-navigation {margin: 5% 5% 0;}
+      .site-footer {margin: 0 0 0 32.9651%;width: 63.5067%;}
+}
 /*見出し*/
 .entry-content h1,.entry-content h2{color: #fff;background: #ffcc00;box-shadow: 0 2px 5px 0 #999;}
 .entry-content h3{border-bottom: none;border-left: 10px solid #ffcc00;box-shadow: 0 2px 5px 0 #999;}
