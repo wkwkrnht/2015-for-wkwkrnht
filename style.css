@@ -6,9 +6,9 @@
  Version:      0.0.1
 */
 /*hide*/
-.entry-read, .related-entry-read {display: none;}
+.more-link, .related-entry-read{display: none;}
 /*font指定*/
-
+.post-title{font-family: sans-serif;}
 /*影付け*/
 .post{box-shadow: 0 5px 5px 0 #999;}
 .sidebar{box-shadow: 0 5px 10px 0 #999;}
@@ -20,7 +20,7 @@
 .site-footer{background: #fff;box-shadow: 0 5px 5px 0 #999;}
 /*指定 for PC*/
 @media screen and (min-width: 59.6875em) {
-      .secondary{width: 240px;}
+      .secondary{width: 235px;}
       .site-main {padding: 5% 0;}
       .site-header {margin: 12% 0;}
       .widget {margin: 0 0 12%;}
