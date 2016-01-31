@@ -8,22 +8,12 @@
 /*hide*/
 .entry-read, .related-entry-read {display: none;}
 /*font指定*/
-html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
-	font-family: sans-serif;font-weight: normal;font-size: 100%;font-style: inherit;}
+
 /*記事エリア*/
 .post{box-shadow: 0 2px 5px 0 #999;}
 /*footer*/
-.site-info{color: #000}
-.site-info a{
-  background: #fff;
-  border-left: 7px solid #ffcc00;
-  box-shadow: 0 2px 5px 0 #999;}
+.site-info{font-family: sans-serif;font-weight: lighter;color: #000}
+.site-footer{background: #fff;border-left: 7px solid #ffcc00;box-shadow: 0 2px 5px 0 #999;}
 /*見出し*/
-.entry-content h2{
-  background: #ffcc00;
-  color: #fff;
-  box-shadow: 0 2px 5px 0 #999;}
-.entry-content h3{
-  border-bottom: none;
-  border-left: 7px solid #ffcc00;
-  box-shadow: 0 2px 5px 0 #999;}
+.entry-content h1,.entry-content h2{color: #fff;background: #ffcc00;box-shadow: 0 2px 5px 0 #999;}
+.entry-content h3{border-bottom: none;border-left: 7px solid #ffcc00;box-shadow: 0 2px 5px 0 #999;}
