@@ -32,6 +32,8 @@
 /*見出し*/
 .entry-content h1,.entry-content h2{color: #fff;background: #ffcc00;box-shadow: 0 2px 5px 0 #999;}
 .entry-content h3{border-bottom: none;border-left: 10px solid #ffcc00;box-shadow: 0 2px 5px 0 #999;}
+/*サイトマップ*/
+.pagemap,.catmap{color: #fff;background: #ffcc00;box-shadow: 0 2px 5px 0 #999;}
 /*ソーシャルナビゲーション*/
 .social-navigation a[href$="/feed/"]:before{color: #2aff00;}
 .social-navigation a[href*="twitter.com"]:before{color: #00b8ff;}
