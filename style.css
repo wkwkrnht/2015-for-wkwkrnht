@@ -6,7 +6,7 @@
  Version:      0.0.1
 */
 /*hide*/
-.entry-summary,.site-footer,.more-link{display: none;}
+.entry-content,.site-footer,.more-link{display: none;}
 /*font指定*/
 .post-title{font-family: sans-serif;}
 /*footer*/
