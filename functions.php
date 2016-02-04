@@ -1,7 +1,6 @@
-<?php //style.css読み込み
+<?php
 add_action( 'wp_enqueue_scripts', 'theme_enqueue_styles' );
 function theme_enqueue_styles() {wp_enqueue_style( 'parent-style', get_template_directory_uri() . '/style.css' ); }
-//外部JS読み込み
 //masonry
 function masonry_scripts() {wp_enqueue_script( 'masonry', 'https://npmcdn.com/masonry-layout@4.0/dist/masonry.pkgd.min.js', array(), false, false );}
 add_action( 'wp_enqueue_scripts', 'masonry_scripts');
@@ -64,3 +63,26 @@ function simple_sitemap(){
   echo '</div>';
 }
 add_shortcode('sitemap', 'simple_sitemap');
+// ウィジェットアーカイブを短く表示させます
+function my_archives_link($link_html){
+    $currentMonth = date('n');
+    $currentYear = date('Y');
+    $ym = explode('年', $link_html);
+    $monthArray = explode('月', $ym[1]);
+    $month = $monthArray[0];
+    $year = intval(strip_tags($ym[0]));
+    $linkMonth = substr('0'.$month, -2);
+    $url = site_url('/').$year.'/'.$linkMonth.'/';
+    $linkString = '%s<a href="'.$url.'" style="white-space: nowrap;">%s</a>'.
+    $linkYear = '';
+    $yearHtml = '<span style="font-weight:bold;">%s</span><br />';
+    if (($currentMonth == $month) AND ($currentYear == $year)){
+        $linkYear = sprintf($yearHtml, $year);
+    } else {
+        if ((intval($month) == 12) AND ($currentYear != $year)){
+            $linkYear = '<br />'.sprintf($yearHtml, $year);
+        }
+    }
+    return sprintf($linkString, $linkYear, $ym[1]);
+}
+add_filter('get_archives_link', 'my_archives_link');
