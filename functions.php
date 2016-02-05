@@ -14,6 +14,24 @@ add_filter( 'script_loader_src', 'vc_remove_wp_ver_css_js', 9999 );
 remove_action('wp_head', 'wp_generator');
 remove_action( ‘wp_head’, ‘print_emoji_detection_script’, 7 );
 remove_action( ‘wp_print_styles’, ‘print_emoji_styles’ );
+//remove標準埋め込み
+add_filter( 'embed_oembed_discover', '__return_false' );
+remove_action( 'parse_query', 'wp_oembed_parse_query' );
+remove_action( 'wp_head', 'wp_oembed_remove_discovery_links' );
+remove_action( 'wp_head', 'wp_oembed_remove_host_js' );
+//本文中のURLをはてなブログカードタグへ置換
+function url_to_hatena_blog_card($the_content) {
+  if ( is_singular() ) {
+    $res = preg_match_all('/^(<p>)?(<a.+?>)?https?:\/\/[-_.!~*\'()a-zA-Z0-9;\/?:\@&=+\$,%#]+(<\/a>)?(<\/p>)?(<br ? \/>)?$/im', $the_content,$m);
+    foreach ($m[0] as $match) {
+      $url = strip_tags($match);
+      $tag = '<iframe class="hatenablogcard" src="http://hatenablog.com/embed?url='.$url.'" frameborder="0" scrolling="no"></iframe>';
+      $the_content = preg_replace('{'.preg_quote($match).'}', $tag , $the_content, 1);
+    }
+  }
+  return $the_content;
+}
+add_filter('the_content','url_to_hatena_blog_card');
 //sitemap
 function simple_sitemap(){
   global $wpdb;
@@ -63,7 +81,7 @@ function simple_sitemap(){
   echo '</div>';
 }
 add_shortcode('sitemap', 'simple_sitemap');
-// ウィジェットアーカイブを短く表示させます
+// カレンダー短縮
 function my_archives_link($link_html){
     $currentMonth = date('n');
     $currentYear = date('Y');
