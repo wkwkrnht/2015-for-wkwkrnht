@@ -33,12 +33,13 @@
   .secondary{width: 235px;}
   .site-main {padding: 6% 0;}
   .site-header {margin: 12% 0;}
-  .widget {margin: 0 0 12%;}
+  /*.widget {margin: 0 0 12%;}*/
   .hentry,.page-header,.page-content {margin: 0 6%;}
 	.hentry + .hentry,.page-header + .hentry,.page-header + .page-content {margin-top: 6%;}
   .comments-area,.post-navigation {margin: 6% 6% 0;}
   /*.site-footer {margin: 0 0 0 32.9651%;width: 63.5067%;}*/
   /*top cardstyle*/
-  .post-thumbnail .home{float:left;}
-  .entry-header .home,.entry-footer .home{float:right;}
+  .post{max-width:660px}
+  .post-thumbnail .home{float:left;max-width:220px}
+  .entry-header .home,.entry-footer .home{float:right;max-width:440px}
 }
