@@ -1,4 +1,3 @@
-<?php?>
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<?php twentyfifteen_post_thumbnail();?>
 	<header class="entry-header">
@@ -9,10 +8,7 @@
 			endif;?>
 	</header><!-- .entry-header -->
 	<div class="entry-content">
-		<?php//%s=Name of current post
-			the_content( sprintf(
-				__( 'Continue reading %s', 'twentyfifteen' ),
-				the_title( '<span class="screen-reader-text">', '</span>', false )) );
+		<?php the_content( sprintf( __( 'Continue reading %s', 'twentyfifteen' ),the_title( '<span class="screen-reader-text">', '</span>', false )) );//%s=Name of current post
 			wp_link_pages( array(
 				'before'      => '<div class="page-links"><span class="page-links-title">' . __( 'Pages:', 'twentyfifteen' ) . '</span>',
 				'after'       => '</div>',
