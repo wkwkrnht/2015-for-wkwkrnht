@@ -1,3 +1,4 @@
+<div class="home">
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<?php twentyfifteen_post_thumbnail();?>
 	<header class="entry-header">
@@ -25,3 +26,4 @@
 		<?php edit_post_link( __( 'Edit', 'twentyfifteen' ), '<span class="edit-link">', '</span>' ); ?>
 	</footer><!-- .entry-footer -->
 </article><!-- #post-## -->
+</div>
