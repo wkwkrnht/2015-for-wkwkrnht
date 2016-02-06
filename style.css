@@ -37,8 +37,8 @@
   .hentry,.page-header,.page-content {margin: 0 6%;}
 	.hentry + .hentry,.page-header + .hentry,.page-header + .page-content {margin-top: 6%;}
   .comments-area,.post-navigation {margin: 6% 6% 0;}
-  .site-footer {margin: 0 0 0 32.9651%;width: 63.5067%;}
+  /*.site-footer {margin: 0 0 0 32.9651%;width: 63.5067%;}*/
   /*top cardstyle*/
-  .home>.post-thumbnail{float:left;}
-  .home>.post-header,.home>.post-footer{float:right;}
+  .post-thumbnail .home{float:left;}
+  .post-header .home,.post-footer .home{float:right;}
 }
