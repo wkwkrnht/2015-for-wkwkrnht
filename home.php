@@ -8,7 +8,11 @@
        </header>
      <?php endif; ?>
      <?php while ( have_posts() ) : the_post();
-       get_template_part( 'content', get_post_format() );
+       if ( is_home() || is_front_page() ) :
+         get_template_part( 'content-home', get_post_format() );
+        else:
+         get_template_part( 'content', get_post_format() );
+       endif;
      endwhile;
      the_posts_pagination( array(
        'prev_text'          => __( 'Previous page', 'twentyfifteen' ),
