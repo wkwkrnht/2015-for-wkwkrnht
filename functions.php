@@ -7,7 +7,9 @@ add_action( 'wp_enqueue_scripts', 'masonry_scripts');
 //テンプレ
 //function _scripts() {wp_enqueue_script( '', '', array(), false, false );}
 //add_action( 'wp_enqueue_scripts', '_scripts');
-// hide /?ver= & emoji
+// hide /?ver= & emoji&error add_action
+function wps_login_error() {remove_action('login_head', 'wp_shake_js', 12);}
+add_action('login_head', 'wps_login_error');
 function vc_remove_wp_ver_css_js( $src ) {if ( strpos( $src, 'ver=' ) )  $src = remove_query_arg( 'ver', $src );  return $src;}
 add_filter( 'style_loader_src', 'vc_remove_wp_ver_css_js', 9999 );
 add_filter( 'script_loader_src', 'vc_remove_wp_ver_css_js', 9999 );
@@ -32,6 +34,13 @@ function url_to_hatena_blog_card($the_content) {
   return $the_content;
 }
 add_filter('the_content','url_to_hatena_blog_card');
+//add twitter name
+function twtreplace($content) {
+$twtreplace = preg_replace('/([^a-zA-Z0-9-_&])@([0-9a-zA-Z_]+)/',"$1<a href=\"http://twitter.com/$2\" target=\"_blank\" rel=\"nofollow\">@$2</a>",$content);
+return $twtreplace;
+}
+add_filter('the_content', 'twtreplace');
+add_filter('comment_text', 'twtreplace');
 //sitemap
 function simple_sitemap(){
   global $wpdb;
@@ -104,3 +113,22 @@ function my_archives_link($link_html){
     return sprintf($linkString, $linkYear, $ym[1]);
 }
 add_filter('get_archives_link', 'my_archives_link');
+//add keyword highlight
+function wps_highlight_results($text) {
+	if(is_search()){
+	$sr = get_query_var('s');
+	$keys = explode(" ",$sr);
+	$text = preg_replace('/('.implode('|', $keys) .')/iu', '<span class="search-highlight">'.$sr.'</span>', $text);
+	}
+	return $text;
+}
+add_filter('the_title', 'wps_highlight_results');
+add_filter('the_content', 'wps_highlight_results');
+//add thumbnail to RSS
+function add_thumb_to_RSS($content) {
+   global $post;
+   if ( has_post_thumbnail( $post->ID ) ){$content = '' . get_the_post_thumbnail( $post->ID, 'thumbnail' ) . '' . $content;}
+   return $content;
+}
+add_filter('the_excerpt_rss', 'add_thumb_to_RSS');
+add_filter('the_content_feed', 'add_thumb_to_RSS');

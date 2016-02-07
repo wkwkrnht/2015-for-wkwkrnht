@@ -23,6 +23,8 @@
 .pagemap,.catmap{color:#fff;background:#ffcc00;box-shadow: 0 2px 5px 0 #999;}
 /*ブログカード*/
 .hatenablogcard{clear:both;width:100%;height:155px;margin:10px 0;max-width:680px;}
+/*マーカー*/
+.search-highlight span{background:yellow;}
 /*指定　witout phone*/
 @media screen and (min-width:46.25em){
   .post,.nav-links{box-shadow:0 3px 3px 0 #999;}
@@ -30,15 +32,15 @@
 /*指定 for PC*/
 @media screen and (min-width:59.6875em) {
   .header{width:238px;box-shadow:0 5px 10px 0 #999;}
-  .comments-area,.post-navigation{margin:6% 6% 0;}
+  /*.comments-area,*/.post-navigation{margin:6% 6% 0;}
   /*.site-main {padding:6% 0;}
   .site-header {margin:12% 0;}
   .widget {margin:0 0 12%;}
   .hentry,.page-header,.page-content {margin:0 6%;}
 	.hentry + .hentry,.page-header + .hentry,.page-header + .page-content {margin-top:6%;}
   .site-footer {margin:0 0 0 32.9651%;width: 63.5067%;}*/
-  /*top cardstyle*/
+  /*top cardstyle
   .post{box-shadow:none;max-width:660px}
-  .post-thumbnail{float:left;max-height:200px;max-width:200px;}
-  .home-header,.home-footer{float:right;max-height:100px;max-width:440px;}
+  .post-thumbnail{float:left;left:0;max-height:200px;max-width:200px;}
+  .home-header,.home-footer{float:right;right:0;max-height:100px;max-width:440px;}*/
 }
