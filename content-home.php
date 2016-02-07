@@ -1,4 +1,4 @@
-<div class="home">
+<div class="homecard">
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<?php twentyfifteen_post_thumbnail();?>
 	<header class="entry-header">
