@@ -6,7 +6,7 @@
  Version:      0.0.2
 */
 /*hide*/
-.site-footer,.more-link{display:none;}
+.site-footer,.home-content,.more-link{display:none;}
 /*font指定*/
 .post-title,.pagemap,.catmap{font-family:sans-serif;}
 /*footer
@@ -29,18 +29,16 @@
 }
 /*指定 for PC*/
 @media screen and (min-width:59.6875em) {
-  .sidebar{box-shadow:0 5px 10px 0 #999;}
-  .secondary{width:235px;}
+  .secondary{width:235px;box-shadow:0 5px 10px 0 #999;}
+  .comments-area,.post-navigation {margin:6% 6% 0;}
   /*.site-main {padding:6% 0;}
   .site-header {margin:12% 0;}
   .widget {margin:0 0 12%;}
   .hentry,.page-header,.page-content {margin:0 6%;}
 	.hentry + .hentry,.page-header + .hentry,.page-header + .page-content {margin-top:6%;}
-  .comments-area,.post-navigation {margin:6% 6% 0;}
   .site-footer {margin:0 0 0 32.9651%;width: 63.5067%;}*/
   /*top cardstyle*/
-  .home-content{display:none;}
   /*.post{max-width:660px}*/
-  .post-thumbnail{float:left;left:0;max-width:220px;}
-  .home-header,.home-footer{float:right;right:0;max-width:440px;}
+  .post-thumbnail{float:left;max-width:220px;}
+  .home-header,.home-footer{float:right;max-width:440px;}
 }
