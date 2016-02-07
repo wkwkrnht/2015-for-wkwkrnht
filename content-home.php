@@ -19,6 +19,7 @@
 	</div><!-- .entry-content -->
 	<footer class="home-footer">
 		<?php twentyfifteen_entry_meta(); ?>
+		<span><?php echo human_time_diff( get_the_time('U'), current_time('timestamp') ) . '前に投稿しました'; ?></span>
 		<?php edit_post_link( __( 'Edit', 'twentyfifteen' ), '<span class="edit-link">', '</span>' ); ?>
 	</footer><!-- .entry-footer -->
 </article><!-- #post-## -->

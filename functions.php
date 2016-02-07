@@ -1,9 +1,13 @@
-<?php
-add_action( 'wp_enqueue_scripts', 'theme_enqueue_styles' );
+<?php add_action( 'wp_enqueue_scripts', 'theme_enqueue_styles' );
 function theme_enqueue_styles() {wp_enqueue_style( 'parent-style', get_template_directory_uri() . '/style.css' ); }
 //masonry
-function masonry_scripts() {wp_enqueue_script( 'masonry', 'https://npmcdn.com/masonry-layout@4.0/dist/masonry.pkgd.min.js', array(), false, false );}
+function masonry_scripts() {wp_enqueue_script( 'masonry', '//npmcdn.com/masonry-layout@4.0/dist/masonry.pkgd.min.js', array(), false, false );}
 add_action( 'wp_enqueue_scripts', 'masonry_scripts');
+//code highlight
+function code_scripts() {wp_enqueue_script( 'code', '//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.1.0/highlight.min.js', array(), false, false );}
+add_action( 'wp_enqueue_scripts', 'code_scripts');
+function code_styles() {wp_enqueue_style( 'code', '//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.1.0/styles/default.min.css', array(), false, false );}
+add_action( 'wp_enqueue_styles', 'code_styles');
 //テンプレ
 //function _scripts() {wp_enqueue_script( '', '', array(), false, false );}
 //add_action( 'wp_enqueue_scripts', '_scripts');

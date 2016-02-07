@@ -3,7 +3,7 @@
  Theme URI:    http://wkwkrnht.wp.xdomain.jp/
  Template:     twentyfifteen
  Author:      wkwkrnht
- Version:      0.0.2
+ Version:      0.0.3
 */
 /*hide*/
 .site-footer,.home-content,.more-link{display:none;}
@@ -17,6 +17,7 @@
 .entry-content h2{color:#fff;background:#ffcc00;box-shadow:0 2px 5px 0 #999;}
 .entry-content h3{border-bottom:none;border-left:10px solid #ffcc00;box-shadow:0 2px 5px 0 #999;}
 /*ソーシャルナビゲーション*/
+.social-navigation a[href$="/feed"]:before{content: "\f413";color: #2aff00;}
 .social-navigation a[href$="/feed/"]:before{color: #2aff00;}
 .social-navigation a[href*="twitter.com"]:before{color: #00b8ff;}
 /*サイトマップ*/
@@ -25,22 +26,33 @@
 .hatenablogcard{clear:both;width:100%;height:155px;margin:10px 0;max-width:680px;}
 /*マーカー*/
 .search-highlight span{background:yellow;}
+/*指定 for mobile*/
+
 /*指定　witout phone*/
 @media screen and (min-width:46.25em){
   .post,.nav-links{box-shadow:0 3px 3px 0 #999;}
 }
 /*指定 for PC*/
 @media screen and (min-width:59.6875em) {
-  .header{width:238px;box-shadow:0 5px 10px 0 #999;}
+  .header{width:230px;box-shadow:0 5px 10px 0 #999;}
   /*.comments-area,*/.post-navigation{margin:6% 6% 0;}
-  /*.site-main {padding:6% 0;}
-  .site-header {margin:12% 0;}
-  .widget {margin:0 0 12%;}
-  .hentry,.page-header,.page-content {margin:0 6%;}
-	.hentry + .hentry,.page-header + .hentry,.page-header + .page-content {margin-top:6%;}
-  .site-footer {margin:0 0 0 32.9651%;width: 63.5067%;}*/
+  /*.site-main{padding:6% 0;}
+  .hentry,.page-header,.page-content{margin:0 6%;}
+	.hentry+.hentry,.page-header+.hentry,.page-header+.page-content{margin-top:6%;}
+  .site-footer{margin:0 0 0 32.9651%;width: 63.5067%;}*/
   /*top cardstyle
   .post{box-shadow:none;max-width:660px}
   .post-thumbnail{float:left;left:0;max-height:200px;max-width:200px;}
   .home-header,.home-footer{float:right;right:0;max-height:100px;max-width:440px;}*/
+}
+.home-header,.home-footer{font-family:sans-serif;}
+.home-footer {
+	background-color: #f7f7f7;
+	color: #707070;
+	color: rgba(51, 51, 51, 0.7);
+	font-family: "Noto Sans", sans-serif;
+	font-size: 12px;
+	font-size: 1.2rem;
+	line-height: 1.5;
+	padding: 3.8461% 7.6923%;
 }
