@@ -29,8 +29,8 @@
 }
 /*指定 for PC*/
 @media screen and (min-width:59.6875em) {
-  .secondary{width:235px;box-shadow:0 5px 10px 0 #999;}
-  .comments-area,.post-navigation {margin:6% 6% 0;}
+  .header{width:238px;box-shadow:0 5px 10px 0 #999;}
+  .comments-area,.post-navigation{margin:6% 6% 0;}
   /*.site-main {padding:6% 0;}
   .site-header {margin:12% 0;}
   .widget {margin:0 0 12%;}
@@ -39,6 +39,6 @@
   .site-footer {margin:0 0 0 32.9651%;width: 63.5067%;}*/
   /*top cardstyle*/
   .post{box-shadow:none;max-width:660px}
-  .post-thumbnail{float:left;max-width:220px;}
-  .home-header,.home-footer{float:right;max-width:440px;}
+  .post-thumbnail{float:left;max-height:200px;max-width:200px;}
+  .home-header,.home-footer{float:right;max-height:100px;max-width:440px;}
 }
