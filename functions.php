@@ -44,55 +44,6 @@ return $twtreplace;
 }
 add_filter('the_content', 'twtreplace');
 add_filter('comment_text', 'twtreplace');
-//add:sitemap
-function simple_sitemap(){
-  global $wpdb;
-  $args = array('depth'        => 0,
-    'show_date'    => NULL,
-    'date_format'  => get_option('date_format'),
-    'child_of'     => 0,
-    'exclude'      => NULL,
-    'include'      => NULL,
-    'title_li'     => '<span class="pagemap">固定ページの一覧</span>',
-    'echo'         => 1,
-    'authors'      => NULL,
-    'sort_column'  => 'menu_order, post_title',
-    'link_before'  => NULL,
-    'link_after'   => NULL,
-    'exclude_tree' => NULL );
-  echo '<div id="sitemap"><ul>';
-    wp_list_pages($args);
-  echo '</ul>';
-  $args = array('show_option_all'    => NULL,
-    'orderby'            => 'name',
-    'order'              => 'ASC',
-    'show_last_update'   => 0,
-    'style'              => 'list',
-    'show_count'         => 0,
-    'hide_empty'         => 1,
-    'use_desc_for_title' => 1,
-    'child_of'           => 0,
-    'feed'               => NULL,
-    'feed_type'          => NULL,
-    'feed_image'         => NULL,
-    'exclude'            => NULL,
-    'exclude_tree'       => NULL,
-    'include'            => NULL,
-    'hierarchical'       => true,
-    'title_li'           => '<span class="catmap">記事カテゴリ</span>',
-    'number'             => NULL,
-    'echo'               => 1,
-    'depth'              => 0,
-    'current_category'   => 0,
-    'pad_counts'         => 0,
-    'taxonomy'           => 'category',
-    'walker'             => 'Walker_Category' );
-        echo '<ul>';
-     echo wp_list_categories( $args );
-     echo '</ul>';
-  echo '</div>';
-}
-add_shortcode('sitemap', 'simple_sitemap');
 //カレンダー短縮
 function my_archives_link($link_html){
     $currentMonth = date('n');
