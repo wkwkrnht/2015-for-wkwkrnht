@@ -6,6 +6,7 @@
 			else :
 				the_title( sprintf( '<h2 class="entry-title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h2>' );
 			endif;?>
+			<?php if (!is_home() || !is_front_page() ) :<div class="bread"><a href="/">TOP</a> »  $cat = get_the_category();echo get_category_parents($cat[0],true,' '); wp_title(); </div> endif;?>
 	</header><!-- .entry-header -->
 	<div class="entry-content">
 		<?php the_content( sprintf( __( 'Continue reading %s', 'twentyfifteen' ),the_title( '<span class="screen-reader-text">', '</span>', false )) );//%s=Name of current post
