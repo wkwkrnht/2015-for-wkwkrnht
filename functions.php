@@ -89,7 +89,7 @@ function the_bread( $query = true ){
         if( is_archive()){
             echo '<li>'.$current["name"].'</li>';
         }else if( is_single() ){
-            echo '<li><a href="'. get_category_link( $current[" term_id"]="" )="" .'"="" itemprop="url"><span itemprop="title">'. $current["name"] .'</span></a> > </li>';
+            echo '<li><a href="'. get_category_link( $current[" term_id"]="" )="" .'"="" itemprop="url"><span itemprop="title">'. $current["name"] .'</span></a></li>';
         }//現在表示されているカテゴリの表示
     }
     echo '<li>'.$queried_object->post_title.'</li>';
