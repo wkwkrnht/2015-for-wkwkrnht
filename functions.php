@@ -55,48 +55,39 @@ function the_bread( $query = true ){
     $queried_object = get_queried_object();
     $current = array( "name"=>$cate->name , "term_id"=>$cate->term_id );
     $parents = array();
-
     echo '<ol class="bread clearfix" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">';
-
     if( is_home() ){
         //トップページの場合にはリンクを表示させない
-        echo '<li>ホーム</li>';
+        echo '<li>TOP</li>';
     }elseif( is_search() ){
         $search_query =  get_search_query();
-        echo '<li><a href="' . home_url() . '/" itemprop="url"><span itemprop="title">ホーム</span></a> > </li><li>「'. $search_query .'」の検索結果</li>';
+        echo '<li><a href="' . home_url() . '/" itemprop="url"><span itemprop="title">TOP</span></a></li><li>'. $search_query .'の検索結果</li>';
     }elseif( is_page() ){
         //固定ページの処理
-        echo '<li><a href="' . home_url() . '/" itemprop="url"><span itemprop="title">ホーム</span></a> > </li>';
-
+        echo '<li><a href="' . home_url() . '/" itemprop="url"><span itemprop="title">TOP</span></a> > </li>';
         if( $parent_ID = $queried_object->post_parent ){
-
             while( $parent_ID ){
                 $parent = get_post( $parent_ID );
                 array_unshift($parents , $parent);
                 $parent_ID = $parent->post_parent;
             }
-
             foreach( $parents as $parent ){
-                echo '<li><a href="'. get_permalink( $parent->ID ) .'" itemprop="url"><span itemprop="title">'. $parent->post_title .'</span></a> > </li>';
+                echo '<li><a href="'. get_permalink( $parent->ID ) .'" itemprop="url"><span itemprop="title">'. $parent->post_title .'</span></a> ></li>';
             }
         }
-
     }else{
         //それ以外のページの処理
-        echo '<li><a href="' . home_url() . '/" itemprop="url"><span itemprop="title">ホーム</span></a> > </li>';
-
+        echo '<li><a href="' . home_url() . '/" itemprop="url"><span itemprop="title">TOP</span></a> > </li>';
         while( $cate->parent ){
             //ひとつ上の階層のカテゴリデータを配列$parentsの先頭に格納
             //下からカテゴリ階層を遡るのでデータは常に先頭に格納する必要がある
             $cate = get_category( $cate->parent );
             array_unshift($parents , $cate);
         }
-
         //$parentsの内容を表示
         foreach( $parents as $parent ){
             echo '<li><a href="'. get_category_link( $parent->term_id ) .'" itemprop="url"><span itemprop="title">' . $parent->name . '</span></a> > </li>';
         }
-
         //現在表示されているカテゴリの表示
         if( is_archive()){
             echo '<li>'.$current["name"].'</li>';
