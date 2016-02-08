@@ -6,11 +6,7 @@
 			else :
 				the_title(sprintf('<h2 class="entry-title"><a href="%s" rel="bookmark">',esc_url(get_permalink())), '</a></h2>');
 			endif;?>
-			<div class="bread">
-				<?php if(!is_home()&&!is_front_page()) :
-				  <a href="http://wkwkrnht.wp.xdomain.jp"> TOP </a> »  $cat=get_the_category();echo get_category_parents($cat[0],true,''); » wp_title();
-			  endif;?>
-			</div>
+		<?php the_bread(); ?>
 	</header><!-- .entry-header -->
 	<div class="entry-content">
 		<?php the_content( sprintf( __( 'Continue reading %s', 'twentyfifteen' ),the_title( '<span class="screen-reader-text">', '</span>', false )) );//%s=Name of current post
