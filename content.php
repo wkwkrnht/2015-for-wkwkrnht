@@ -6,7 +6,7 @@
 			else :
 				the_title( sprintf( '<h2 class="entry-title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h2>' );
 			endif;?>
-			<?php if (!is_home() || !is_front_page() ) : <div class="bread"> <a href="http://wkwkrnht.wp.xdomain.jp"> TOP </a> »  $cat = get_the_category();echo get_category_parents($cat[0],true,' '); wp_title(); </div> ?>
+			<div class="bread"><?php if (!is_home() || !is_front_page() ) :<a href="http://wkwkrnht.wp.xdomain.jp"> TOP </a> »  $cat = get_the_category();echo get_category_parents($cat[0],true,' '); wp_title();?></div>
 	</header><!-- .entry-header -->
 	<div class="entry-content">
 		<?php the_content( sprintf( __( 'Continue reading %s', 'twentyfifteen' ),the_title( '<span class="screen-reader-text">', '</span>', false )) );//%s=Name of current post
@@ -24,3 +24,4 @@
 		<?php edit_post_link( __( 'Edit', 'twentyfifteen' ), '<span class="edit-link">', '</span>' ); ?>
 	</footer><!-- .entry-footer -->
 </article><!-- #post-## -->
+//syntax error, unexpected '<', expecting elseif (T_ELSEIF) or else (T_ELSE) or endif (T_ENDIF) in /home/wkwkrnht/wkwkrnht.wp.xdomain.jp/public_html/wp-content/themes/2015-for-wkwkrnht/content.php on line 9
