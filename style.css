@@ -27,9 +27,13 @@
 /*マーカー*/
 .search-highlight span{background:yellow;}
 /*パンくず*/
-.bread{overflow: hidden;position: relative;margin: 0px -30px;background: #333;box-shadow: inset 0px 2px 6px rgba(0,0,0,0.15);line-height: 42px;height: 42px;min-height: 42px;}
-.bread li{text-align: center;text-decoration: none;color: #FFF;background: #555;display: block;position: relative;padding: 0 10px 0 5px;margin-right: 23px;-webkit-transition: all 0.2s ease-in-out;-moz-transition: all 0.2s ease-in-out;-o-transition: all 0.2s ease-in-out;transition: all 0.2s ease-in-out;}
-.bread li:hover{background-color: #888;padding-right: 14px;padding-left: 9px;}
+/*.bread{overflow: hidden;position: relative;margin: 0px -30px;background: #333;box-shadow: inset 0px 2px 6px rgba(0,0,0,0.15);line-height: 42px;height: 42px;min-height: 42px;}
+.bread a{text-align: center;text-decoration: none;color: #FFF;background: #555;display: block;position: relative;padding: 0 10px 0 5px;margin-right: 23px;-webkit-transition: all 0.2s ease-in-out;-moz-transition: all 0.2s ease-in-out;-o-transition: all 0.2s ease-in-out;transition: all 0.2s ease-in-out;}
+.bread a:hover{background-color: #888;padding-right: 14px;padding-left: 9px;}*/
+#breadcrumb{margin-bottom: 20px;color:#777;font-size:13px;}
+div#breadcrumb div {display: inline;}
+#breadcrumb span.sp{margin:0 10px;}
+#breadcrumb a{text-decoration:none;color:#777;}
 /*指定 for mobile*/
 
 /*指定　witout phone*/
