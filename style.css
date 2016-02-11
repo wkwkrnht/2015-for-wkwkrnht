@@ -29,7 +29,7 @@ h3 .entry-content{border-left:10px solid #ffcc00;box-shadow:0 2px 5px 0 #999;bor
 .bread a{padding: .7em 1em .7em 2em;float:left;text-decoration:none;position:relative;color:#fff;background-color:#ffcc00;background-image:linear-gradient(to right,#ffcc00,#fff);}
 .bread a:hover,.bread a::before:hover,.bread a::after:hover{background:#00b8ff;}
 .bread a::after,.bread a::before{content:"";position:absolute;top:50%;margin-top:-1.5em;border-top:1.5em solid transparent;border-bottom:1.5em solid transparent;border-left:1em solid;right:-1em;}
-.bread a::after{border-left-color:linear-gradient(to right,#ffcc00,#fff);border-left-color: #ccc;z-index:2;}
+.bread a::after{border-left-color:linear-gradient(to right,#ffcc00,#fff);z-index:2;}
 .bread a::before{border-left-color:linear-gradient(to right,#ffcc00,#fff);right:-1.1em;z-index:1;}
 /*指定 for mobile*/
 /*指定　witout phone*/
