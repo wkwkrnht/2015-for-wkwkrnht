@@ -6,7 +6,7 @@
  Version:      0.0.3
 */
 /*hide*/
-.site-footer,.home-content,.more-link,.bread div:first-child a::before,.bread div:first-child a::after{display:none;}
+.site-footer,.home-content,.more-link,.bread div:first-child a::before,.bread div:last-child a::after{display:none;}
 /*font指定*/
 .entry-header,.home-header,.home-footer{font-family:sans-serif;}
 /*footer
