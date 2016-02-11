@@ -6,7 +6,7 @@
  Version:      0.0.3
 */
 /*hide*/
-.site-footer,.home-content,.more-link{display:none;}
+.site-footer,.home-content,.more-link,.bread div:first-child a::before{display:none;}
 /*font指定*/
 .entry-header,.home-header,.home-footer{font-family:sans-serif;}
 /*footer
@@ -17,12 +17,10 @@
 h2 .entry-content{color:#fff;background:#ffcc00;box-shadow:0 2px 5px 0 #999;text-align:center;}
 h3 .entry-content{border-left:10px solid #ffcc00;box-shadow:0 2px 5px 0 #999;border-bottom:none;text-align:center;}
 /*social-nav*/
-.social-navigation a[href*="wordpress.com"]:before{color:#00b8ff;}
-.social-navigation a[href*="/feed"]:before{content: "\f413";color:#2aff00;}
-.social-navigation a[href*="/feed/"]:before{color:#2aff00;}
 .social-navigation a[href*="twitter.com"]:before{color:#00b8ff;}
-.social-navigation a[href*="youtube.com"]:before{color:#00b8ff;}
-.social-navigation a[href*="plus.google.com"]:before{color:#00b8ff;}
+.social-navigation a[href*="wordpress.com"]:before{color:#00b8ff;}
+.social-navigation a[href*="/feed"]:before,.social-navigation a[href*="/feed/"]:before{content:"\f413";color:#2aff00;}
+.social-navigation a[href*="youtube.com"]:before,.social-navigation a[href*="plus.google.com"]:before{color:#00b8ff;}
 /*blogcard,markar*/
 .hatenablogcard{clear:both;width:100%;height:155px;margin:10px 0;max-width:680px;box-shadow: 0 2px 3px 0 #999;}
 .search-highlight span{background:yellow;}
@@ -32,8 +30,8 @@ h3 .entry-content{border-left:10px solid #ffcc00;box-shadow:0 2px 5px 0 #999;bor
 .bread a{color:#fff;background:#ffcc00;padding:0.7em 1em;float:left;text-decoration:none;position:relative;}
 .bread a:hover,.bread a::before:hover,.bread a::after:hover{background:#00b8ff;}
 .bread a::before,.bread a::after{content:"";position:absolute;top:50%;margin-top:-1.5em;}
-.bread a::before{border-top:1.5em solid #ffcc00;border-bottom:1.5em solid #ffcc00;border-left:1em solid transparent;left:-1em;}
-.bread a::after{border-top:1.5em solid transparent;border-bottom:1.5em solid transparent;border-left:1em solid #ffcc00;right:-1em;}
+.bread a::before{border-top:1.51em solid #ffcc00;border-bottom:1.51em solid #ffcc00;border-left:1em solid transparent;left:-1em;}
+.bread a::after{border-top:1.49em solid transparent;border-bottom:1.49em solid transparent;border-left:1em solid #ffcc00;right:-1em;}
 /*.bread div:first-child a::before{}*/
 /*メディアクエリ*/
   /*for mobile*/
