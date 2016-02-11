@@ -26,29 +26,30 @@ h3 .entry-content{border-left:10px solid #ffcc00;box-shadow:0 2px 5px 0 #999;bor
 /*パンくず*/
 .bread{background:#fff;box-shadow:0 1px 2px 0 #999;overflow:hidden;width:100%;}
 .bread div{float:left;}
-.bread a{padding: .7em 1em .7em 2em;float:left;text-decoration:none;position:relative;color:#fff;background:#ffcc00;}
+.bread a{color:#fff;background:#ffcc00;padding: .7em 1em;float:left;text-decoration:none;position:relative;}
 .bread a:hover,.bread a::before:hover,.bread a::after:hover{background:#00b8ff;}
-.bread a::after{content:"";position:absolute;top:50%;margin-top:-1.5em;border-top:1.5em solid #ffcc00;border-bottom:1.5em solid #ffcc00;border-left:1em solid#ffcc00;right:-1em;z-index:2;}
-.bread a::before{margin-top:-1.5em;border:1.5em 0 1.5em 1em solid #ffcc00 #ffcc00 #ffcc00 transparent;right:-1.1em;z-index:1;}
-/*指定 for mobile*/
-/*指定　witout phone*/
-@media screen and (min-width:46.25em){
-  .post,.nav-links{box-shadow:0 3px 3px 0 #999;}
-}
-/*指定 for PC*/
-@media screen and (min-width:59.6875em) {
-  .entry-title{color:#fff;background-color:#ffcc00;text-align:center;}
-  .header{width:230px;box-shadow:0 5px 10px 0 #999;}
-  .comments-area,.post-navigation{margin:6% 6% 0;}
-  /*.site-main{padding:6% 0;}
-  .hentry,.page-header,.page-content{margin:0 6%;}
-	.hentry+.hentry,.page-header+.hentry,.page-header+.page-content{margin-top:6%;}
-  .site-footer{margin:0 0 0 32.9651%;width: 63.5067%;}*/
-  /*top cardstyle
-  .post{box-shadow:none;max-width:660px}
-  .post-thumbnail{float:left;left:0;max-height:200px;max-width:200px;}
-  .home-header,.home-footer{float:right;right:0;max-height:100px;max-width:440px;}*/
-}
+.bread a::before{content:"";position:absolute;left:-1em;top:50%;margin-top:-1.5em;border:1.5em 0 1.5em 1em solid #ffcc00 #ffcc00 #ffcc00 transparent;}
+.bread a::after{content:"";position:absolute;right:-1em;top:50%;margin-top:-1.5em;border-top:1.5em solid transparent;border-bottom:1.5em solid transparent;border-left:1em solid#ffcc00;}
+/*メディアクエリ*/
+  /*for mobile*/
+  /*for PC*/
+  @media screen and (min-width:59.6875em) {
+    .entry-title{color:#fff;background-color:#ffcc00;text-align:center;}
+    .header{width:230px;box-shadow:0 5px 10px 0 #999;}
+    .comments-area,.post-navigation{margin:6% 6% 0;}
+    /*.site-main{padding:6% 0;}
+    .hentry,.page-header,.page-content{margin:0 6%;}
+  	.hentry+.hentry,.page-header+.hentry,.page-header+.page-content{margin-top:6%;}
+    .site-footer{margin:0 0 0 32.9651%;width: 63.5067%;}*/
+    /*top cardstyle
+    .post{box-shadow:none;max-width:660px}
+    .post-thumbnail{float:left;left:0;max-height:200px;max-width:200px;}
+    .home-header,.home-footer{float:right;right:0;max-height:100px;max-width:440px;}*/
+  }
+  /*without phone*/
+  @media screen and (min-width:46.25em){
+    .post,.nav-links{box-shadow:0 3px 3px 0 #999;}
+  }
 .home-footer{
 	background-color:#f7f7f7;
 	color:#707070;
