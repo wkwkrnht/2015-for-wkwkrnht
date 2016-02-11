@@ -25,14 +25,17 @@ h3 .entry-content{text-align:center;border-bottom:none;border-left:10px solid #f
 /*マーカー*/
 .search-highlight span{background:yellow;}
 /*パンくず*/
-/*.bread{margin-bottom:20px;color:#777;font-size:13px;}
-.bread div{display:block;}*/
-.sp .bread span{margin:0 10px;}
+.bread a:hover{color:#00b8ff;}
 .bread a{width:1em;height:1em;margin-left:-0.7em;position:relative;text-align:center;
 font-size:12px;color:#fff;background:#ffcc00;}
-.bread a:before{content:"";bottom:-0.666em;left:0.8em;position:absolute;
-border-left:1.2em solid #ffcc00;border-top:1.2em solid #ffcc00;border-bottom:1.2em solid #ffcc00;}
-.bread a:hover{color:#00b8ff;}
+.bread a::before {content: "";
+bottom: -0.666em;
+left: 0.8em;
+position: absolute;
+border-left: 1.2em solid #2C2C2C;
+border-top: 1.2em solid rgba(44, 44, 44, 0);
+border-bottom: 1.2em solid rgba(44, 44, 44, 0);
+}
 /*指定 for mobile*/
 /*指定　witout phone*/
 @media screen and (min-width:46.25em){
