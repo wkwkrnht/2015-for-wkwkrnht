@@ -25,7 +25,7 @@ h3 .entry-content{border-left:10px solid #ffcc00;box-shadow:0 2px 5px 0 #999;bor
 .search-highlight span{background:yellow;}
 /*パンくず*/
 .bread{background:#fff;box-shadow:0 1px 2px 0 #999;overflow:hidden;width:100%;}
-.bread div{float:left;}
+.bread div{float:left;margin:0 0.5em 0 1em;}
 .bread a{color:#fff;background:#ffcc00;padding: .7em 1em;float:left;text-decoration:none;position:relative;}
 .bread a:hover,.bread a::before:hover,.bread a::after:hover{background:#00b8ff;}
 .bread a::before{content:"";position:absolute;left:-1em;top:50%;margin-top:-1.5em;border:1.5em 0 1.5em 1em solid #ffcc00 #ffcc00 #ffcc00 transparent;}
