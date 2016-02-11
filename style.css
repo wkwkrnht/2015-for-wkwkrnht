@@ -14,21 +14,20 @@
 .site-footer{background:#fff;box-shadow:0 2px 2px 0 #999;}*/
 /*見出し*/
 .prev.page-numbers,.next.page-numbers{background:#ffcc00;color:#fff;}
-h2 .entry-content{text-align:center;color:#fff;background:#ffcc00;box-shadow:0 2px 5px 0 #999;}
-h3 .entry-content{text-align:center;border-bottom:none;border-left:10px solid #ffcc00;box-shadow:0 2px 5px 0 #999;}
-/*ソーシャルナビゲーション*/
+h2 .entry-content{color:#fff;background:#ffcc00;box-shadow:0 2px 5px 0 #999;text-align:center;}
+h3 .entry-content{border-left:10px solid #ffcc00;box-shadow:0 2px 5px 0 #999;border-bottom:none;text-align:center;}
+/*social-nav*/
 .social-navigation a[href$="/feed"]:before{content: "\f413";color: #2aff00;}
 .social-navigation a[href$="/feed/"]:before{color: #2aff00;}
 .social-navigation a[href*="twitter.com"]:before{color: #00b8ff;}
-/*blogcard*/
+/*blogcard,markar*/
 .hatenablogcard{clear:both;width:100%;height:155px;margin:10px 0;max-width:680px;box-shadow: 0 2px 5px 0 #999;}
-/*マーカー*/
 .search-highlight span{background:yellow;}
 /*パンくず*/
 .bread{background:#eee;border-width:1px;border-style:solid;border-color:#f5f5f5 #e5e5e5 #ccc;border-radius:5px;box-shadow: 0 0 2px #999;overflow:hidden;width: 100%;}
 .bread div{float:left;}
-.bread div:first-child a{padding-left: 1em;border-radius: 5px 0 0 5px;}
-.bread a{padding: .7em 1em .7em 2em;float:left;text-decoration:none;color:#fff;position:relative;background-color:#ffcc00;background-image: linear-gradient(to right, #f5f5f5, #ddd);}
+.bread div:first-child a{padding-left:1em;border-radius: 5px 0 0 5px;}
+.bread a{padding: .7em 1em .7em 2em;float:left;text-decoration:none;position:relative;color:#fff;background-color:#ffcc00;background-image:linear-gradient(to right, #ffcc00, #ddd);}
 .bread a:hover{color:#00b8ff;}
 .bread a::after,.bread a::before{content: "";position:absolute;top:50%;margin-top: -1.5em;border-top: 1.5em solid transparent;border-bottom: 1.5em solid transparent;border-left: 1em solid;right: -1em;}
 .bread a::after{z-index: 2;border-left-color:#ddd;}
@@ -41,7 +40,7 @@ h3 .entry-content{text-align:center;border-bottom:none;border-left:10px solid #f
 }
 /*指定 for PC*/
 @media screen and (min-width:59.6875em) {
-  .entry-header{color:#fff;background-color:#ffcc00;}
+  .entry-title{color:#fff;background-color:#ffcc00;text-align:center;}
   .header{width:230px;box-shadow:0 5px 10px 0 #999;}
   .comments-area,.post-navigation{margin:6% 6% 0;}
   /*.site-main{padding:6% 0;}
