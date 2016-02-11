@@ -6,7 +6,7 @@
  Version:      0.0.3
 */
 /*hide*/
-.site-footer,.home-content,.more-link,.bread div:first-child a::before{display:none;}
+.site-footer,.home-content,.more-link{display:none;}
 /*font指定*/
 .entry-header,.home-header,.home-footer{font-family:sans-serif;}
 /*footer
@@ -33,7 +33,8 @@ h3 .entry-content{border-left:10px solid #ffcc00;box-shadow:0 2px 5px 0 #999;bor
 .bread a:hover,.bread a::before:hover,.bread a::after:hover{background:#00b8ff;}
 .bread a::before,.bread a::after{content:"";position:absolute;left:-1em;top:50%;margin-top:-1.5em;}
 .bread a::before{border-top:1.6em solid #ffcc00;border-bottom:1.6em solid #ffcc00;border-left:1em solid transparent;}
-.bread a::after{border-top:1.3em solid transparent;border-bottom:1.3em solid transparent;border-left:1em solid #ffcc00;}
+.bread a::after{border-top:1.6em solid transparent;border-bottom:1.6em solid transparent;border-left:1em solid #ffcc00;}
+/*.bread div:first-child a::before{}*/
 /*メディアクエリ*/
   /*for mobile*/
   /*for PC*/

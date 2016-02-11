@@ -3,8 +3,8 @@
 		<main id="main" class="site-main" role="main">
 		<?php if ( have_posts() ) : ?>
 			<header class="page-header">
-				<h1 class="page-title"><?php printf( __( 'Search Results for: %s', 'twentyfifteen' ), get_search_query() ); ?>
-                <?php if ($wp_query->found_posts > 0){echo echo '('.$wp_query->found_posts.' 件)';}?>
+				<h1 class="page-title">
+					<?php printf( __( 'Search Results for: %s', 'twentyfifteen' ), get_search_query() ); ?><?php if ($wp_query->found_posts > 0){echo echo '('.$wp_query->found_posts.' 件)';}?>
 				</h1>
 			</header><!-- .page-header -->
 			<?php while ( have_posts() ) : the_post(); ?>
