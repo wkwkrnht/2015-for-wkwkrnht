@@ -17,7 +17,7 @@
 	         	$echo = '<div itemtype="http://data-vocabulary.org/Breadcrumb" itemscope=""><a href="'.get_category_link($par->term_id).'" itemprop="url"><span itemprop="title">'.$par->name.'</span></a><span class="sp">&gt;</span></div>'.$echo;
 	         	$par = get_category($par->parent);}
 	    	echo $echo.'<div itemtype="http://data-vocabulary.org/Breadcrumb" itemscope=""><a href="'.get_category_link($cat[0]->term_id).'" itemprop="url"><span itemprop="title">'.$cat[0]->name.'</span></a></div>';
-	    	echo '</div>';}endif;//<!-- /#breadcrumb --> ?>
+	    	echo '</div>';}endif; ?><!-- /#breadcrumb -->
 	<div class="entry-content">
 		<?php the_content( sprintf( __( 'Continue reading %s', 'twentyfifteen' ),the_title( '<span class="screen-reader-text">', '</span>', false )) );//%s=Name of current post
 			wp_link_pages( array(

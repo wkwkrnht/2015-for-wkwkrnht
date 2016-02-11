@@ -32,7 +32,10 @@ h3 .entry-content{text-align:center;border-bottom:none;border-left:10px solid #f
 .bread{margin-bottom:20px;color:#777;font-size:13px;}
 .bread div{display:block;}
 .sp .bread span{margin:0 10px;}
-.bread a{text-align:center;text-decoration:none;color:#fff;background:#ffcc00;}
+.bread a{width:1em;height:1em;margin-left:-0.7em;position:relative;text-align:center;
+font-size:12px;text-decoration:none;color:#fff;background:#ffcc00;}
+.bread a:before{content:"";bottom:-0.666em;left:0.8em;position:absolute;
+border-left:1.2em solid #ffcc00;border-top:1.2em solid #ffcc00;border-bottom:1.2em solid #ffcc00;}
 .bread a:hover{color:#00b8ff;padding-right:14px;padding-left:9px;}
 /*指定 for mobile*/
 /*指定　witout phone*/
@@ -41,7 +44,7 @@ h3 .entry-content{text-align:center;border-bottom:none;border-left:10px solid #f
 }
 /*指定 for PC*/
 @media screen and (min-width:59.6875em) {
-  .entry-header{color:#fff;background-color:#ffcc00;}
+  .entry-titlle{color:#fff;background-color:#ffcc00;}
   .header{width:230px;box-shadow:0 5px 10px 0 #999;}
   /*.comments-area,*/.post-navigation{margin:6% 6% 0;}
   /*.site-main{padding:6% 0;}
@@ -53,7 +56,7 @@ h3 .entry-content{text-align:center;border-bottom:none;border-left:10px solid #f
   .post-thumbnail{float:left;left:0;max-height:200px;max-width:200px;}
   .home-header,.home-footer{float:right;right:0;max-height:100px;max-width:440px;}*/
 }
-.home-footer {
+.home-footer{
 	background-color:#f7f7f7;
 	color:#707070;
 	color:rgba(51, 51, 51, 0.7);
