@@ -17,16 +17,19 @@
 h2 .entry-content{color:#fff;background:#ffcc00;box-shadow:0 2px 5px 0 #999;text-align:center;}
 h3 .entry-content{border-left:10px solid #ffcc00;box-shadow:0 2px 5px 0 #999;border-bottom:none;text-align:center;}
 /*social-nav*/
-.social-navigation a[href$="/feed"]:before{content: "\f413";color:#2aff00;}
-.social-navigation a[href$="/feed/"]:before{color:#2aff00;}
+.social-navigation a[href*="/feed"]:before{content: "\f413";color:#2aff00;}
+.social-navigation a[href*="/feed/"]:before{color:#2aff00;}
 .social-navigation a[href*="twitter.com"]:before{color:#00b8ff;}
+.social-navigation a[href*="youtube.com"]:before{color:#00b8ff;}
+.social-navigation a[href*="plus.google.com"]:before{color:#00b8ff;}
 /*blogcard,markar*/
 .hatenablogcard{clear:both;width:100%;height:155px;margin:10px 0;max-width:680px;box-shadow: 0 2px 3px 0 #999;}
 .search-highlight span{background:yellow;}
 /*パンくず*/
-.bread{background:#fff;box-shadow:0 1px 2px 0 #999;overflow:hidden;width:100%;}
+.bread{overflow:hidden;width:100%;height:80%;}
 .bread div{float:left;margin:0 0.5em 0 1em;}
-.bread a{color:#fff;background:#ffcc00;padding: .7em 1em;float:left;text-decoration:none;position:relative;}
+.bread div:first-child a::before{content:"";position:absolute;left:-1em;top:50%;margin-top:-1.5em;border-top:1.5em solid #ffcc00;border-bottom:1.5em solid #ffcc00;border-left:1em solid #ffcc00;}
+.bread a{color:#fff;background:#ffcc00;padding:0.7em 1em;float:left;text-decoration:none;position:relative;}
 .bread a:hover,.bread a::before:hover,.bread a::after:hover{background:#00b8ff;}
 .bread a::before{content:"";position:absolute;left:-1em;top:50%;margin-top:-1.5em;border-top:1.5em solid #ffcc00;border-bottom:1.5em solid #ffcc00;border-left:1em solid transparent;}
 .bread a::after{content:"";position:absolute;right:-1em;top:50%;margin-top:-1.5em;border-top:1.5em solid transparent;border-bottom:1.5em solid transparent;border-left:1em solid #ffcc00;}
