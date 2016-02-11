@@ -8,7 +8,7 @@
 /*hide*/
 .site-footer,.home-content,.more-link{display:none;}
 /*font指定*/
-.post-title,.pagemap,.catmap{font-family:sans-serif;}
+.entry-header h2,.home-header,.home-footer{font-family:sans-serif;}
 /*footer
 .site-info{text-align:center;font-family:sans-serif;font-weight:lighter;color:#000}
 .site-footer{background:#fff;box-shadow:0 2px 2px 0 #999;}*/
@@ -25,14 +25,15 @@
 /*マーカー*/
 .search-highlight span{background:yellow;}
 /*パンくず*/
-/*.bread{overflow: hidden;position:relative;margin: 0px -30px;background: #333;box-shadow: inset 0px 2px 6px rgba(0,0,0,0.15);line-height: 42px;height: 42px;min-height: 42px;}
-.bread a{color:#fff;background:#555;position:relative;padding: 0 10px 0 5px;margin-right: 23px;-webkit-transition: all 0.2s ease-in-out;-moz-transition: all 0.2s ease-in-out;-o-transition: all 0.2s ease-in-out;transition: all 0.2s ease-in-out;}
+/*
+.bread{overflow:hidden;position:relative;margin:0px -30px;background:#333;box-shadow:inset 0px 2px 6px rgba(0,0,0,0.15);line-height:42px;height:42px;min-height:42px;}
+.bread a{position:relative;padding:0 10px 0 5px;margin-right:23px;-webkit-transition:all 0.2s ease-in-out;-moz-transition: all 0.2s ease-in-out;-o-transition:all 0.2s ease-in-out;transition:all 0.2s ease-in-out;}
 */
 .bread{margin-bottom:20px;color:#777;font-size:13px;}
 .bread div{display:block;}
 .sp .bread span{margin:0 10px;}
-.bread a{text-align:center;text-decoration:none;color:#777;}
-.bread a:hover{background-color:#888;padding-right:14px;padding-left:9px;}
+.bread a{text-align:center;text-decoration:none;color:#fff;background:#ffcc00;}
+.bread a:hover{color:#00b8ff;padding-right:14px;padding-left:9px;}
 /*指定 for mobile*/
 /*指定　witout phone*/
 @media screen and (min-width:46.25em){
@@ -40,6 +41,7 @@
 }
 /*指定 for PC*/
 @media screen and (min-width:59.6875em) {
+  .entry-header h2{color:#fff;background-color:#ffcc00;}
   .header{width:230px;box-shadow:0 5px 10px 0 #999;}
   /*.comments-area,*/.post-navigation{margin:6% 6% 0;}
   /*.site-main{padding:6% 0;}
@@ -51,7 +53,6 @@
   .post-thumbnail{float:left;left:0;max-height:200px;max-width:200px;}
   .home-header,.home-footer{float:right;right:0;max-height:100px;max-width:440px;}*/
 }
-.home-header,.home-footer{font-family:sans-serif;}
 .home-footer {
 	background-color:#f7f7f7;
 	color:#707070;
