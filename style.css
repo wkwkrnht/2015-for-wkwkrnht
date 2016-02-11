@@ -17,22 +17,20 @@
 h2 .entry-content{color:#fff;background:#ffcc00;box-shadow:0 2px 5px 0 #999;text-align:center;}
 h3 .entry-content{border-left:10px solid #ffcc00;box-shadow:0 2px 5px 0 #999;border-bottom:none;text-align:center;}
 /*social-nav*/
-.social-navigation a[href$="/feed"]:before{content: "\f413";color: #2aff00;}
-.social-navigation a[href$="/feed/"]:before{color: #2aff00;}
-.social-navigation a[href*="twitter.com"]:before{color: #00b8ff;}
+.social-navigation a[href$="/feed"]:before{content: "\f413";color:#2aff00;}
+.social-navigation a[href$="/feed/"]:before{color:#2aff00;}
+.social-navigation a[href*="twitter.com"]:before{color:#00b8ff;}
 /*blogcard,markar*/
 .hatenablogcard{clear:both;width:100%;height:155px;margin:10px 0;max-width:680px;box-shadow: 0 2px 5px 0 #999;}
 .search-highlight span{background:yellow;}
 /*パンくず*/
-.bread{background:#fff;border-width:1px;border-style:solid;border-color:#fff;box-shadow:0 1px 2px 0 #999;overflow:hidden;width:100%;}
+.bread{background:#fff;box-shadow:0 1px 2px 0 #999;overflow:hidden;width:100%;}
 .bread div{float:left;}
-.bread div:first-child a{padding-left:1em;border-radius: 5px 0 0 5px;}
 .bread a{padding: .7em 1em .7em 2em;float:left;text-decoration:none;position:relative;color:#fff;background-color:#ffcc00;}
-.bread a:hover{color:#00b8ff;}
-.bread a::after,.bread a::before{content: "";position:absolute;top:50%;margin-top:-1.5em;border-top: 1.5em solid transparent;border-bottom:1.5em solid transparent;border-left:1em solid;right:-1em;}
-.bread a::after{z-index:2;border-left-color:#ffcc00;border-right-color:#fff;}
-.bread a:hover::after{border-left-color:#fff;}
-.bread a::before{border-left-color:#ffcc00;border-right-color:#fff;right:-1.1em;z-index:1;}
+.bread a:hover,.bread a::after:hover{background:#00b8ff;}
+.bread a::after,.bread a::before{content:"";position:absolute;top:50%;margin-top:-1.5em;border-top:1.5em solid transparent;border-bottom:1.5em solid transparent;border-left:1em solid;right:-1em;}
+.bread a::after{border-left-color:#ffcc00;border-right:1px solid #fff;z-index:2;}
+.bread a::before{border-left-color:#ffcc00;border-right:1px solid #fff;right:-1.1em;z-index:1;}
 /*指定 for mobile*/
 /*指定　witout phone*/
 @media screen and (min-width:46.25em){
