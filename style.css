@@ -8,14 +8,14 @@
 /*hide*/
 .site-footer,.home-content,.more-link{display:none;}
 /*font指定*/
-.entry-header h2,.home-header,.home-footer{font-family:sans-serif;}
+.entry-header,.home-header,.home-footer{font-family:sans-serif;}
 /*footer
 .site-info{text-align:center;font-family:sans-serif;font-weight:lighter;color:#000}
 .site-footer{background:#fff;box-shadow:0 2px 2px 0 #999;}*/
 /*見出し*/
 .prev.page-numbers,.next.page-numbers{background:#ffcc00;color:#fff;}
-.entry-content h2{text-align:center;color:#fff;background:#ffcc00;box-shadow:0 2px 5px 0 #999;}
-.entry-content h3{text-align:center;border-bottom:none;border-left:10px solid #ffcc00;box-shadow:0 2px 5px 0 #999;}
+h2 .entry-content{text-align:center;color:#fff;background:#ffcc00;box-shadow:0 2px 5px 0 #999;}
+h3 .entry-content{text-align:center;border-bottom:none;border-left:10px solid #ffcc00;box-shadow:0 2px 5px 0 #999;}
 /*ソーシャルナビゲーション*/
 .social-navigation a[href$="/feed"]:before{content: "\f413";color: #2aff00;}
 .social-navigation a[href$="/feed/"]:before{color: #2aff00;}
@@ -41,7 +41,7 @@
 }
 /*指定 for PC*/
 @media screen and (min-width:59.6875em) {
-  .entry-header h2{color:#fff;background-color:#ffcc00;}
+  .entry-header{color:#fff;background-color:#ffcc00;}
   .header{width:230px;box-shadow:0 5px 10px 0 #999;}
   /*.comments-area,*/.post-navigation{margin:6% 6% 0;}
   /*.site-main{padding:6% 0;}
