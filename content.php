@@ -51,13 +51,10 @@
          		echo ('<img src="/no-image.png" alt="NO IMAGE" title="NO IMAGE" width="100px" />');
         	endif;?>
         </a>
-				<span class="title"><a href="<?php the_permalink(); ?>"><?php the_title();?></a></span>
-      </div><!--related-entry-->
-    </div>
-  <?php endwhile;
-	else:
-  	get_template_part('author-bio');
-	endif;wp_reset_postdata();?>
+				<div class="title"><a href="<?php the_permalink(); ?>"><?php the_title();?></a></div>
+      </div>
+    </div><!--related-entry-->
+  <?php endwhile; else: get_template_part('author-bio');endif;wp_reset_postdata();?>
 	</div><!-- #related-entries -->
 	<footer class="entry-footer">
 		<?php twentyfifteen_entry_meta(); ?>
