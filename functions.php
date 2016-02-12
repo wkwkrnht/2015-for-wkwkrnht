@@ -23,6 +23,78 @@ add_filter('embed_oembed_discover','__return_false');
 remove_action('parse_query','wp_oembed_parse_query');
 remove_action('wp_head','wp_oembed_remove_discovery_links');
 remove_action('wp_head','wp_oembed_remove_host_js');
+//アイキャッチ自動設定（YouTube対応版）
+require_once(ABSPATH . '/wp-admin/includes/image.php');
+function fetch_thumbnail_image($matches, $key, $post_content, $post_id){
+  $imageTitle = '';
+  preg_match_all('/<\s*img [^\>]*title\s*=\s*[\""\']?([^\""\'>]*)/i', $post_content, $matchesTitle);
+  if (count($matchesTitle) && isset($matchesTitle[1])) {$imageTitle = $matchesTitle[1][$key];}
+  $imageUrl = $matches[1][$key];
+  $filename = substr($imageUrl, (strrpos($imageUrl, '/'))+1);
+  if (!(($uploads = wp_upload_dir(current_time('mysql')) ) && false === $uploads['error'])){return null;}
+  $filename = wp_unique_filename( $uploads['path'], $filename );
+  $new_file = $uploads['path'] . "/$filename";
+  if (!ini_get('allow_url_fopen')) {
+    $file_data = curl_get_file_contents($imageUrl);
+  } else {
+    if ( WP_Filesystem() ) {global $wp_filesystem; $file_data = @$wp_filesystem->get_contents($imageUrl);}
+  }
+  if (!$file_data) {return null;}
+  if ( WP_Filesystem() ) {global $wp_filesystem;$wp_filesystem->put_contents($new_file, $file_data);}
+  $stat = stat( dirname( $new_file ));
+  $perms = $stat['mode'] & 0000666;
+  @ chmod( $new_file, $perms );
+  $wp_filetype = wp_check_filetype( $filename, $mimes );
+  extract( $wp_filetype );
+  if ( ( !$type || !$ext ) && !current_user_can( 'unfiltered_upload' ) ) {return null;}
+  $url = $uploads['url'] . "/$filename";
+  $attachment = array(
+    'post_mime_type' => $type,
+    'guid' => $url,
+    'post_parent' => null,
+    'post_title' => $imageTitle,
+    'post_content' => '',
+  );
+  $thumb_id = wp_insert_attachment($attachment, $file, $post_id);
+  if ( !is_wp_error($thumb_id) ) {
+    wp_update_attachment_metadata( $thumb_id, wp_generate_attachment_metadata( $thumb_id, $new_file ) );
+    update_attached_file( $thumb_id, $new_file );
+    return $thumb_id;
+  }
+  return null;
+}
+//投稿内の最初の画像をアイキャッチに
+function auto_post_thumbnail_image() {
+  global $wpdb;
+  global $post;
+  $post_id = $post->ID;
+  if (get_post_meta($post_id, '_thumbnail_id', true) || get_post_meta($post_id, 'skip_post_thumb', true)) {return;}
+  $post = $wpdb->get_results("SELECT * FROM {$wpdb->posts} WHERE id = $post_id");
+  $matches = array();
+  preg_match_all('/<\s*img [^\>]*src\s*=\s*[\""\']?([^\""\'>]*)/i', $post[0]->post_content, $matches);
+  if (empty($matches[0])) {
+    preg_match('%(?:youtube\.com/(?:user/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $post[0]->post_content, $match);
+    if (!empty($match[1])) {$matches=array(); $matches[0]=$matches[1]=array('http://img.youtube.com/vi/'.$match[1].'/mqdefault.jpg');}
+  }
+  if (count($matches)) {
+    foreach ($matches[0] as $key => $image) {
+      preg_match('/wp-image-([\d]*)/i', $image, $thumb_id);
+      $thumb_id = $thumb_id[1];
+      if (!$thumb_id) {
+        $image = substr($image, strpos($image, '"')+1);
+        $result = $wpdb->get_results("SELECT ID FROM {$wpdb->posts} WHERE guid = '".$image."'");
+        $thumb_id = $result[0]->ID;
+      }
+      if (!$thumb_id) {$thumb_id = fetch_thumbnail_image($matches, $key, $post[0]->post_content, $post_id);}
+      if ($thumb_id) {update_post_meta( $post_id, '_thumbnail_id', $thumb_id );break;}
+    }
+  }
+}
+add_action('save_post', 'auto_post_thumbnail_image');
+add_action('draft_to_publish', 'auto_post_thumbnail_image');
+add_action('new_to_publish', 'auto_post_thumbnail_image');
+add_action('pending_to_publish', 'auto_post_thumbnail_image');
+add_action('future_to_publish', 'auto_post_thumbnail_image');
 //from:URL to:はてなブログカード
 function url_to_hatena_blog_card($the_content) {
   if ( is_singular() ) {
@@ -43,6 +115,9 @@ return $twtreplace;
 }
 add_filter('the_content', 'twtreplace');
 add_filter('comment_text', 'twtreplace');
+//rubisuporrt
+add_action( 'after_setup_theme', 'ruby_setup' );
+function ruby_setup() {global $allowedposttags;foreach ( array( 'ruby', 'rp', 'rt' ) as $tag )	if ( !isset( $allowedposttags[$tag] ) ) $allowedposttags[$tag] = array();}
 //カレンダー短縮
 function my_archives_link($link_html){
     $currentMonth = date('n');
