@@ -14,8 +14,14 @@
 .site-footer{background:#fff;box-shadow:0 2px 2px 0 #999;}*/
 /*見出し*/
 .prev.page-numbers,.next.page-numbers{background:#ffcc00;color:#fff;}
-h2 .entry-content{color:#fff;background:#ffcc00;box-shadow:0 2px 5px 0 #999;text-align:center;}
+h2 .entry-content,h3 .related-entries{color:#fff;background:#ffcc00;box-shadow:0 2px 5px 0 #999;text-align:center;}
 h3 .entry-content{border-left:10px solid #ffcc00;box-shadow:0 2px 5px 0 #999;border-bottom:none;text-align:center;}
+/*関連記事（Relation）*/
+.related-entry .related-entries{line-height:150%;margin-bottom:20px;clear: both;}
+.related-entry-thumb .related-entries{float: left;margin-bottom: 5px;padding-bottom: 5px;}
+.related-entry-content .related-entries{margin-left: 120px;}
+.related-entry-title{margin-bottom:5px;}
+.related-entry-snippet{margin:0 0 5px 0;}
 /*social-nav*/
 .social-navigation a[href*="twitter.com"]:before{color:#00b8ff;}
 .social-navigation a[href*="wordpress.com"]:before{color:#00b8ff;}
@@ -28,10 +34,7 @@ h3 .entry-content{border-left:10px solid #ffcc00;box-shadow:0 2px 5px 0 #999;bor
 .information::before{content:'\f05a';}
 .question::before{content:'\f059';}
 .information::before,.question::before{color:#EAE3B4;font-family:"FontAwesome";font-size:50px;position:absolute;top:20px;left:13px;}
-@media screen and (max-width:440px){
-  .information,.question{padding: 10px;}
-  .information::before,.question::before{display: none;}
-}
+@media screen and (max-width:440px){.information,.question{padding: 10px;}.information::before,.question::before{display: none;}}
 /*パンくず*/
 .bread{overflow:hidden;width:100%;}
 .bread div{float:left;margin:0 0.5em 0 1em;}
@@ -46,7 +49,7 @@ h3 .entry-content{border-left:10px solid #ffcc00;box-shadow:0 2px 5px 0 #999;bor
   /*for PC*/
   @media screen and (min-width:59.6875em) {
     /*.entry-header{padding:0;}*/
-    .entry-title{color:#fff;background-color:#ffcc00;text-align:center;}
+    .entry-header{color:#fff;background-color:#ffcc00;text-align:center;}
     .header{width:230px;box-shadow:0 5px 10px 0 #999;}
     .comments-area,.post-navigation{margin:6% 6% 0;}
     /*.site-main{padding:6% 0;}
