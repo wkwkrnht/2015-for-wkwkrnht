@@ -45,11 +45,11 @@
     <div class="related-entry">
       <div class="related-entry-thumb">
   			<a href="<?php the_permalink() ?>" title="<?php the_title_attribute(); ?>">
-        <?php if ( has_post_thumbnail() ):
-        	echo get_the_post_thumbnail($post->ID, 'thumb100');
+        	<?php if(has_post_thumbnail()):
+        		echo get_the_post_thumbnail($post->ID, 'thumb100');
         	else:
-         	echo <img src="/wp-content/themes/2015-for-wkwkrnht/no-image.png" alt="NO IMAGE" title="NO IMAGE" width="100px" />
-        endif;?>
+         		echo <img src="/wp-content/themes/2015-for-wkwkrnht/no-image.png" alt="NO IMAGE" title="NO IMAGE" width="100px" />
+        	endif;?>
         </a>
       </div><!-- /.related-entry-thumb -->
       <div class="related-entry-content">
