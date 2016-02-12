@@ -19,8 +19,8 @@
 			    	echo '</div>';}endif; ?><!-- /#breadcrumb -->
 	</header><!-- .entry-header -->
 	<div class="entry-content">
-		<?php the_content( sprintf( __( 'Continue reading %s', 'twentyfifteen' ),the_title( '<span class="screen-reader-text">', '</span>', false )) );//%s=Name of current post
-			wp_link_pages( array(
+		<?php the_content(sprintf( __( 'Continue reading %s', 'twentyfifteen' ),the_title( '<span class="screen-reader-text">', '</span>', false )) );//%s=Name of current post
+			wp_link_pages(array(
 				'before'      =>'<div class="page-links"><span class="page-links-title">' . __( 'Pages:', 'twentyfifteen' ) . '</span>',
 				'after'       =>'</div>',
 				'link_before' =>'<span>',
@@ -33,7 +33,7 @@
 		<?php $categories = get_the_category($post->ID);
 		$category_ID = array();
 		foreach($categories as $category):
-  		array_push( $category_ID, $category -> cat_ID);
+  		array_push($category_ID, $category -> cat_ID);
 		endforeach ;
 		$args = array(
   		'post__not_in' => array($post -> ID),
@@ -60,11 +60,11 @@
     </div><!-- /.new-entry -->
   <?php endwhile;
 	else:
-  echo <p>記事はありませんでした</p>
+  	echo ('<p>記事はありませんでした</p>');
 	endif;wp_reset_postdata();?>
 	<br style="clear:both;">
 	</div><!-- #related-entries -->
-	<!--<?php get_template_part( 'author-bio' );?>-->
+	<!--<?php get_template_part('author-bio');?>-->
 	<footer class="entry-footer">
 		<?php twentyfifteen_entry_meta(); ?>
 		<?php edit_post_link( __( 'Edit', 'twentyfifteen' ), '<span class="edit-link">', '</span>' ); ?>
