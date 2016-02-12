@@ -28,7 +28,7 @@
 				'pagelink'    =>'<span class="screen-reader-text">' . __( 'Page', 'twentyfifteen' ) . ' </span>%',
 				'separator'   =>'<span class="screen-reader-text">, </span>',) );?>
 	</div><!-- .entry-content -->
-	<div class="related-entries">
+	<div id="related-entry">
   	<h3>関連記事</h3>
 		<?php $categories = get_the_category($post->ID);
 		$category_ID = array();
@@ -42,7 +42,7 @@
   		'orderby' => 'rand',);
 		$query = new WP_Query($args);
   	if( $query -> have_posts() ): while ($query -> have_posts()) : $query -> the_post();?>
-    <div class="related-entry">
+    <div class="content">
       <div class="thumb">
   			<a href="<?php the_permalink() ?>" title="<?php the_title_attribute(); ?>">
         	<?php if(has_post_thumbnail()):
