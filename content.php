@@ -48,7 +48,7 @@
         <?php if ( has_post_thumbnail() ):
         	echo get_the_post_thumbnail($post->ID, 'thumb100');
         	else:
-         	<img src="/wp-content/themes/2015-for-wkwkrnht/no-image.png" alt="NO IMAGE" title="NO IMAGE" width="100px" />
+         	echo <img src="/wp-content/themes/2015-for-wkwkrnht/no-image.png" alt="NO IMAGE" title="NO IMAGE" width="100px" />
         endif;?>
         </a>
       </div><!-- /.related-entry-thumb -->
