@@ -46,25 +46,20 @@
       <div class="related-entry-thumb">
   			<a href="<?php the_permalink() ?>" title="<?php the_title_attribute(); ?>">
         	<?php if(has_post_thumbnail()):
-        		echo get_the_post_thumbnail($post->ID, 'thumb100');
+        		echo get_the_post_thumbnail($post->ID);
         	else:
          		echo ('<img src="/wp-content/themes/2015-for-wkwkrnht/no-image.png" alt="NO IMAGE" title="NO IMAGE" width="100px" />');
         	endif;?>
         </a>
       </div><!-- /.related-entry-thumb -->
-      <div class="related-entry-content">
-        <h4 class="related-entry-title"> <a href="<?php the_permalink(); ?>"><?php the_title();?></a></h4>
-        <p class="related-entry-snippet">
-       <?php echo mb_substr( strip_tags( $post->post_content  ),0,30 ) . '';?></p>
-      </div><!-- /.related-entry-content -->
+      <span class="title"><h4><a href="<?php the_permalink(); ?>"><?php the_title();?></a></h4></span><!-- /.related-entry-content -->
     </div><!-- /.new-entry -->
   <?php endwhile;
 	else:
-  	echo ('<p>記事はありませんでした</p>');
+  	get_template_part('author-bio');
 	endif;wp_reset_postdata();?>
 	<br style="clear:both;">
 	</div><!-- #related-entries -->
-	<!--<?php get_template_part('author-bio');?>-->
 	<footer class="entry-footer">
 		<?php twentyfifteen_entry_meta(); ?>
 		<?php edit_post_link( __( 'Edit', 'twentyfifteen' ), '<span class="edit-link">', '</span>' ); ?>
