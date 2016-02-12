@@ -17,9 +17,9 @@
 h2 .entry-content,h3 #related-entry{color:#fff;background:#ffcc00;box-shadow:0 2px 5px 0 #999;text-align:center;}
 h3 .entry-content{border-left:10px solid #ffcc00;box-shadow:0 2px 5px 0 #999;border-bottom:none;text-align:center;}
 /*関連記事*/
-.content #related-entry{line-height:150%;margin-bottom:20px;clear: both;}
-.thumb #related-entry{float: left;margin-bottom: 5px;padding-bottom: 5px;}
-.title #related-entry{margin-bottom:5px;}
+.content #related-entry{line-height:150%;margin-bottom:20px;clear:both;position:relative;float:left;}
+.thumb #related-entry{width:100%;height:100%;}
+.title #related-entry{color:#fff;background-color:rgba(0, 0, 0, 0.5);position:absolute;bottom:0;padding: 10px;}
 /*social-nav*/
 .social-navigation a[href*="twitter.com"]:before{color:#00b8ff;}
 .social-navigation a[href*="wordpress.com"]:before{color:#00b8ff;}
@@ -34,7 +34,7 @@ h3 .entry-content{border-left:10px solid #ffcc00;box-shadow:0 2px 5px 0 #999;bor
 .information::before,.question::before{color:#EAE3B4;font-family:"FontAwesome";font-size:50px;position:absolute;top:20px;left:13px;}
 @media screen and (max-width:440px){.information,.question{padding: 10px;}.information::before,.question::before{display: none;}}
 /*パンくず*/
-.bread{overflow:hidden;width:100%;height:90%;background:#fff;}
+.bread{overflow:hidden;width:100%;height:80%;background:#fff;}
 .bread div{float:left;margin:0 0.5em 0 1em;}
 .bread a{color:#fff;background:#ffcc00;padding:0.7em 1em;float:left;text-decoration:none;position:relative;}
 .bread a:hover,.bread a::before:hover,.bread a::after:hover{background:#00b8ff;}
