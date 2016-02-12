@@ -43,22 +43,21 @@
 		$query = new WP_Query($args);
   	if( $query -> have_posts() ): while ($query -> have_posts()) : $query -> the_post();?>
     <div class="related-entry">
-      <div class="related-entry-thumb">
+      <div class="thumb">
   			<a href="<?php the_permalink() ?>" title="<?php the_title_attribute(); ?>">
         	<?php if(has_post_thumbnail()):
         		echo get_the_post_thumbnail($post->ID);
         	else:
-         		echo ('<img src="/wp-content/themes/2015-for-wkwkrnht/no-image.png" alt="NO IMAGE" title="NO IMAGE" width="100px" />');
+         		echo ('<img src="/no-image.png" alt="NO IMAGE" title="NO IMAGE" width="100px" />');
         	endif;?>
         </a>
-      </div><!-- /.related-entry-thumb -->
-      <span class="title"><h4><a href="<?php the_permalink(); ?>"><?php the_title();?></a></h4></span><!-- /.related-entry-content -->
-    </div><!-- /.new-entry -->
+				<span class="title"><a href="<?php the_permalink(); ?>"><?php the_title();?></a></span>
+      </div><!--related-entry-->
+    </div>
   <?php endwhile;
 	else:
   	get_template_part('author-bio');
 	endif;wp_reset_postdata();?>
-	<br style="clear:both;">
 	</div><!-- #related-entries -->
 	<footer class="entry-footer">
 		<?php twentyfifteen_entry_meta(); ?>
