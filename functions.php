@@ -23,6 +23,49 @@ add_filter('embed_oembed_discover','__return_false');
 remove_action('parse_query','wp_oembed_parse_query');
 remove_action('wp_head','wp_oembed_remove_discovery_links');
 remove_action('wp_head','wp_oembed_remove_host_js');
+//ゆめぴょん流相対時間
+function yumepyon_diff(){
+$now_yumepyon_time = current_time('timestamp');
+
+//投稿時とhuman_time_diffの取得
+//海外サーバー仕様
+//$post_yumepyon_time = get_post_time('U',true);
+//$human_yumepyon_diff = human_time_diff($post_yumepyon_time);
+//日本サーバー仕様
+$post_yumepyon_time = get_post_time();
+$human_yumepyon_diff = human_time_diff($post_yumepyon_time,$now_yumepyon_time);
+
+//何時間後から「昨日表示」にするか
+$yesterday_flag = 12;
+//何日以上前からを「〜ヶ月前表示」にするか
+$month_flag = 100;
+
+$difference_sec = $now_yumepyon_time - $post_yumepyon_time;
+$difference_day = floor($difference_sec / 86400);
+$difference_month = date('n',$now_yumepyon_time) - date('n',$post_yumepyon_time);
+$difference_year = date('Y',$now_yumepyon_time) - date('Y',$post_yumepyon_time);
+$day_to_year = ceil($difference_day/30.4);
+$post_weekly = date('w',$post_yumepyon_time);
+$today_weekly = date('w',$now_yumepyon_time);
+$difference_week = $today_weekly - $post_weekly;
+$difference_weekly = array('7','8','9','10','11','12','13');
+$weekly_label = array('日','月','火','水','木','金','土');
+    if( date('n',$now_yumepyon_time) >= 7 && $difference_year > 0 ){
+        echo "昨年".date('n',$post_yumepyon_time)."月に作成";
+    }elseif( $difference_day >= $month_flag && abs($difference_month) != 6 && 12 > $day_to_year ){
+        echo $day_to_year."ヶ月前に作成";
+    }elseif( ( $difference_month == 6  && $difference_year == 0 ) || ( $difference_month == -6 && $difference_year == 1 ) ){
+        echo "半年前に作成";
+    }elseif( $difference_year > 0 ){
+        echo get_the_date();
+    }elseif( 3 > $difference_day && ( $difference_week == 2 || $difference_week == -5 ) ){
+        echo "一昨日作成";
+    }elseif( 2 > $difference_day && ( $difference_week == 1 || $difference_week == -6 ) && $difference_sec > 3600 * $yesterday_flag ){
+        echo "昨日作成";
+    }else{
+        echo $human_yumepyon_diff."前に作成";
+    }
+}
 //アイキャッチ自動設定（YouTube対応版）
 require_once(ABSPATH . '/wp-admin/includes/image.php');
 function fetch_thumbnail_image($matches, $key, $post_content, $post_id){
