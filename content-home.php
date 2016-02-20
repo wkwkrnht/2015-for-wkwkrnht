@@ -6,8 +6,7 @@
 			else :
 				the_title(sprintf('<h1 class="title"><a href="%s" rel="bookmark">',esc_url(get_permalink())),'</a></h1>');
 			endif;?>
-			<?php twentyfifteen_entry_meta(); ?>
-			<span><?php echo human_time_diff( get_the_time('U'),current_time('timestamp') ) . '前に投稿しました';?></span>
-			<?php edit_post_link( __('Edit','twentyfifteen'),'<span class="edit-link"></span>');?>
+		<span><?php echo get_the_date(); echo '('human_time_diff( get_the_time('U'),current_time('timestamp') ).'前の投稿)';?></span>
+		<?php edit_post_link( __('Edit','twentyfifteen'),'<span class="edit-link"></span>');?>
 	</div><!-- .card-content -->
 </article><!-- #post-## -->
