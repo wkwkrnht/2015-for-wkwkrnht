@@ -19,16 +19,16 @@
 			    	echo '</div>';}endif; ?><!-- /#breadcrumb -->
 	</header><!-- .entry-header -->
 	<div class="entry-content">
-		<?php the_content(sprintf( __( 'Continue reading %s', 'twentyfifteen' ),the_title( '<span class="screen-reader-text">', '</span>', false )) );//%s=Name of current post
+		<?php the_content(sprintf(__('Continue reading %s','twentyfifteen'),the_title('<span class="screen-reader-text">','</span>',false)));//%s=Name of current post
 			wp_link_pages(array(
-				'before'      =>'<div class="page-links"><span class="page-links-title">' . __( 'Pages:', 'twentyfifteen' ) . '</span>',
+				'before'      =>'<div class="page-links"><span class="page-links-title">' . __('Pages:', 'twentyfifteen') . '</span>',
 				'after'       =>'</div>',
 				'link_before' =>'<span>',
 				'link_after'  =>'</span>',
-				'pagelink'    =>'<span class="screen-reader-text">' . __( 'Page', 'twentyfifteen' ) . ' </span>%',
-				'separator'   =>'<span class="screen-reader-text">, </span>',) );?>
+				'pagelink'    =>'<span class="screen-reader-text">' . __('Page', 'twentyfifteen') . ' </span>%',
+				'separator'   =>'<span class="screen-reader-text">, </span>',));?>
 	</div><!-- .entry-content -->
-	<div id="related-entry">
+	<div class="related-entry">
   	<h3>関連記事</h3>
 		<?php $categories = get_the_category($post->ID);
 		$category_ID = array();

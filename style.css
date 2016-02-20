@@ -6,7 +6,7 @@
  Version:      0.0.3
 */
 /*hide*/
-.site-footer,.home-content,.more-link,.bread div:first-child a::before{display:none;}
+.site-footer,.more-link,.bread div:first-child a::before{display:none;}
 /*font指定*/
 .entry-header,.home-header,.home-footer{font-family:sans-serif;}
 /*footer
@@ -17,9 +17,9 @@
 h2 .entry-content,h3 #related-entry{color:#fff;background:#ffcc00;box-shadow:0 2px 5px 0 #999;text-align:center;}
 h3 .entry-content{border-left:10px solid #ffcc00;box-shadow:0 2px 5px 0 #999;border-bottom:none;text-align:center;}
 /*関連記事*/
-.content #related-entry{line-height:150%;margin-bottom:20px;clear:both;position:relative;float:left;}
-.thumb #related-entry{width:100%;height:100%;}
-.title #related-entry{color:#fff;background-color:rgba(0, 0, 0, 0.5);position:absolute;bottom:0;padding: 10px;}
+.content .related-entry{line-height:150%;margin-bottom:20px;clear:both;position:relative;float:left;}
+.thumb .related-entry{width:100%;height:100%;}
+.title .related-entry{color:#fff;background-color:rgba(0, 0, 0, 0.5);position:absolute;bottom:0;padding: 10px;}
 /*social-nav*/
 .social-navigation a[href*="twitter.com"]:before{color:#00b8ff;}
 .social-navigation a[href*="wordpress.com"]:before{color:#00b8ff;}
@@ -62,12 +62,6 @@ h3 .entry-content{border-left:10px solid #ffcc00;box-shadow:0 2px 5px 0 #999;bor
   @media screen and (min-width:46.25em){
     .post,.nav-links{box-shadow:0 3px 3px 0 #999;}
   }
-.home-footer{
-	background-color:#f7f7f7;
-	color:#707070;
-	color:rgba(51, 51, 51, 0.7);
-	font-size:12px;
-	font-size:1.2rem;
-	line-height:1.5;
-	padding: 3.8461% 7.6923%;
-}
+.card-content{background-color:#f7f7f7;color:#707070;
+  font-size:12px;font-size:1.2rem;
+  line-height:1.5;padding: 3.8461% 7.6923%;}
