@@ -43,8 +43,14 @@ h3 .entry-content{border-left:10px solid #ffcc00;box-shadow:0 2px 5px 0 #999;bor
 .bread a::after{border-top:1.55em solid transparent;border-bottom:1.55em solid transparent;border-left:1em solid #ffcc00;right:-1em;}
 /*メディアクエリ*/
   /*for mobile*/
+  @media screen and (max-width: 55em){
+    /*top cardstyle*/
+    .post{box-shadow:none;max-width:80%}
+    .post-thumbnail{float:left;left:0;max-height:200px;max-width:30%;}
+    .card-content{float:right;right:0;max-height:200px;max-width:70%;}
+  }
   /*for PC*/
-  @media screen and (min-width:59.6875em) {
+  @media screen and (min-width:59.6875em){
     /*.entry-header{padding:0;}*/
     .entry-header{color:#fff;background-color:#ffcc00;text-align:center;}
     .header{width:230px;box-shadow:0 5px 10px 0 #999;}
@@ -56,7 +62,7 @@ h3 .entry-content{border-left:10px solid #ffcc00;box-shadow:0 2px 5px 0 #999;bor
     /*top cardstyle
     .post{box-shadow:none;max-width:660px}
     .post-thumbnail{float:left;left:0;max-height:200px;max-width:200px;}
-    .home-header,.home-footer{float:right;right:0;max-height:100px;max-width:440px;}*/
+    .card-content{float:right;right:0;max-height:100px;max-width:440px;}*/
   }
   /*without phone*/
   @media screen and (min-width:46.25em){
@@ -64,4 +70,4 @@ h3 .entry-content{border-left:10px solid #ffcc00;box-shadow:0 2px 5px 0 #999;bor
   }
 .card-content{background-color:#f7f7f7;color:#707070;
   font-size:12px;font-size:1.2rem;
-  line-height:1.5;padding: 3.8461% 7.6923%;}
+  line-height:1.5;padding:3.8461% 7.6923%;}
