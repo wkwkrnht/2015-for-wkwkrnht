@@ -63,7 +63,7 @@ h3 .entry-content{border-left:10px solid #ffcc00;box-shadow:0 2px 5px 0 #999;bor
     .post{box-shadow:none;max-width:660px}
     .post-thumbnail{float:left;left:0;max-height:200px;max-width:200px;}
     .card-content{float:right;right:0;max-height:100px;max-width:440px;}*/
-    .title .card-content,a .title .card-content{content:none;}
+    .title .card-content{display:none;}
   }
   /*without phone*/
   @media screen and (min-width:46.25em){
