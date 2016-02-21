@@ -69,6 +69,6 @@ h3 .entry-content{border-left:10px solid #ffcc00;box-shadow:0 2px 5px 0 #999;bor
   @media screen and (min-width:46.25em){
     .post,.nav-links{box-shadow:0 3px 3px 0 #999;}
   }
-.card-content{background-color:#f7f7f7;color:#707070;
+.card-content{background-color:#fff;color:#707070;
   font-size:12px;font-size:1.2rem;
   line-height:1.5;padding:3.8461% 7.6923%;}
