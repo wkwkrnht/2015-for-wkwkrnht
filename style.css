@@ -46,8 +46,8 @@ h3 .entry-content{border-left:10px solid #ffcc00;box-shadow:0 2px 5px 0 #999;bor
   @media screen and (max-width:55em){
     /*top cardstyle*/
     .post{box-shadow:0 3px 3px 0 #999;max-width:80%}
-    .post-thumbnail{float:left;max-height:200px;max-width:30%;}
-    .card-content{float:right;max-height:200px;max-width:70%;}
+    .post-thumbnail{float:left;max-height:400px;max-width:30%;}
+    .card-content{float:right;max-height:400px;max-width:70%;}
   }
   /*for PC*/
   @media screen and (min-width:55em){
