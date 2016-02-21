@@ -6,10 +6,10 @@
        <header>
          <h1 class="page-title screen-reader-text"><?php single_post_title(); ?></h1>
        </header>
-     <?php endif; ?>
+     <?php endif;?>
      <?php while (have_posts()) : the_post();
        if (is_home() || is_front_page() ) :
-         get_template_part('content-home', get_post_format());
+         get_template_part('content-card', get_post_format());
         else:
          get_template_part('content', get_post_format());
        endif;
@@ -23,4 +23,4 @@
    endif;?>
    </main><!-- .site-main -->
  </div><!-- .content-area -->
-<?php get_footer(); ?>
+<?php get_footer();?>

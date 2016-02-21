@@ -26,7 +26,6 @@ remove_action('wp_head','wp_oembed_remove_host_js');
 //ゆめぴょん流相対時間
 function yumepyon_diff(){
 $now_yumepyon_time = current_time('timestamp');
-
 //投稿時とhuman_time_diffの取得
 //海外サーバー仕様
 //$post_yumepyon_time = get_post_time('U',true);
@@ -34,12 +33,8 @@ $now_yumepyon_time = current_time('timestamp');
 //日本サーバー仕様
 $post_yumepyon_time = get_post_time();
 $human_yumepyon_diff = human_time_diff($post_yumepyon_time,$now_yumepyon_time);
-
-//何時間後から「昨日表示」にするか
-$yesterday_flag = 12;
-//何日以上前からを「〜ヶ月前表示」にするか
-$month_flag = 100;
-
+$yesterday_flag = 12;//何時間後から「昨日表示」にするか
+$month_flag = 100;//何日以上前からを「〜ヶ月前表示」にするか
 $difference_sec = $now_yumepyon_time - $post_yumepyon_time;
 $difference_day = floor($difference_sec / 86400);
 $difference_month = date('n',$now_yumepyon_time) - date('n',$post_yumepyon_time);
