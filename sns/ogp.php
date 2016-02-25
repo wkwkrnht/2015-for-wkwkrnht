@@ -20,7 +20,7 @@ if (is_single()){
   } else if ( preg_match( $searchPattern, $str, $imgurl ) && !is_archive()) {
     echo '<meta property="og:image" content="'.$imgurl[2].'">';echo "\n";
   } else {
-    $ogp_image = get_template_directory_uri().'/image/no-img.png';
+    $ogp_image = get_template_directory_uri().'/img/no-img.png';
     echo '<meta property="og:image" content="'.$ogp_image.'">';echo "\n";}
 } else {
   if (get_header_image()){echo '<meta property="og:image" content="'.get_header_image().'">';echo "\n";
@@ -35,8 +35,8 @@ if (is_single()){
 if(have_posts()): while(have_posts()): the_post();
   echo '<meta name="twitter:description" content="'.mb_substr(get_the_excerpt(), 0, 100).'">';echo "\n";
 endwhile; endif;
-  echo '<meta name="twitter:title" content="'; the_title(); echo '">';echo "\n";//単一記事タイトルを表示
-  echo '<meta name="twitter:url" content="'; the_permalink(); echo '">';echo "\n";//単一記事URLを表示
+  echo '<meta name="twitter:title" content="'; the_title(); echo '">';echo "\n";
+  echo '<meta name="twitter:url" content="'; the_permalink(); echo '">';echo "\n";
   } else {
   echo '<meta name="twitter:description" content="'; bloginfo('description'); echo '">';echo "\n";
   echo '<meta name="twitter:title" content="'; bloginfo('name'); echo '">';echo "\n";
@@ -53,7 +53,7 @@ if (is_single()){
     $img_url = $imgurl[2];
     echo '<meta name="twitter:image" content="'.$imgurl[2].'">';echo "\n";
   } else {
-    $ogp_image = get_template_directory_uri().'/image/no-img.png';
+    $ogp_image = get_template_directory_uri().'/img/no-img.png';
     $img_url = $ogp_image;
     echo '<meta name="twitter:image" content="'.$ogp_image.'">';echo "\n";}
 } else {
