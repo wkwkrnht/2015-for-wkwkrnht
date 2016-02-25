@@ -61,9 +61,8 @@ if (is_single()){
     $img_url = get_header_image();
     echo '<meta name="twitter:image" content="'.$img_url.'">';echo "\n";
   } else {
-    $img_url = get_template_directory_uri().'/screenshot.png';
-    echo '<meta name="twitter:image" content="'.$img_url.'">';echo "\n";
-  }
+    $img_url = get_template_directory_uri().'<?php echo get_template_directory();?>/screenshot.png';
+    echo '<meta name="twitter:image" content="'.$img_url.'">';echo "\n";}
 }
 preg_match( '/https?:\/\/(.+?)\//i', admin_url(), $results );
 list($width,$height) = getimagesize($img_url);?>
