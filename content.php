@@ -1,12 +1,12 @@
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+<article id="post-<?php the_ID();?>" <?php post_class();?>>
 	<?php twentyfifteen_post_thumbnail();?>
 	<header class="entry-header">
 		<?php if(is_single() ) :
 				the_title('<h1 class="entry-title">', '</h1>');
 			else :
-				the_title(sprintf('<h2 class="entry-title"><a href="%s" rel="bookmark">',esc_url(get_permalink())), '</a></h2>');
-			endif;?>
-			<?php if ( !is_home() && !is_front_page() ) :
+				the_title(sprintf('<h1 class="entry-title"><a href="%s" rel="bookmark">',esc_url(get_permalink())), '</a></h1>');
+			endif;
+			if ( !is_home() && !is_front_page() ) :
 				$cat = is_single() ? get_the_category() : array(get_category($cat));
 				if($cat && !is_wp_error($cat)){
 			    	$par = get_category($cat[0]->parent);

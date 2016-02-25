@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html <?php language_attributes();?> class="no-js">
 <head>
-	<meta charset="<?php bloginfo( 'charset' );?>">
+	<meta charset="<?php bloginfo('charset');?>">
 	<meta name="viewport" content="width=device-width">
-	<meta name="theme-color" content="#dd8500">
+	<meta name="theme-color" content="#ffcc00">
+	<?php get_template_part('sns/ogp');
+	get_template_part('inc/meta_keyword');?>
 	<link rel="profile" href="http://gmpg.org/xfn/11">
 	<link rel="pingback" href="<?php bloginfo( 'pingback_url' );?>">
 	<!--[if lt IE 9]>
-	<script src="<?php echo esc_url( get_template_directory_uri() ); ?>/js/html5.js"></script>
+	<script src="<?php echo esc_url( get_template_directory_uri() );?>/js/html5.js"></script>
 	<![endif]-->
 	<?php wp_head(); ?>
 </head>
