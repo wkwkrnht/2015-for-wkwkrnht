@@ -7,7 +7,7 @@
 	<?php get_template_part('sns/ogp');
 	get_template_part('inc/meta_keyword');?>
 	<meta name="description" content="<?php bloginfo('description');?>">
-	<meta name="keywords" content="<?php if(is_single()){$posttags = get_the_tags();if ($posttags){foreach($posttags as $tag){echo $tag->name . ',';}}the_title();}else {echo 'wkwkrnht'; echo 'RT狂';};?>">
+	<?php if(is_single()) echo '<meta name="keywords" content="get_the_tags();">';?>
 	<link rel="profile" href="http://gmpg.org/xfn/11">
 	<link rel="pingback" href="<?php bloginfo('pingback_url');?>">
 	<!--[if lt IE 9]>

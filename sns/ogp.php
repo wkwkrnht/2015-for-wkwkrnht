@@ -46,22 +46,22 @@ $searchPattern = '/<img.*?src=(["\'])(.+?)\1.*?>/i';
 if (is_single()){
   if (has_post_thumbnail()){
     $image_id = get_post_thumbnail_id();
-    $image = wp_get_attachment_image_src( $image_id, 'full');
+    $image = wp_get_attachment_image_src($image_id,'full');
     $img_url = $image[0];
     echo '<meta name="twitter:image" content="'.$image[0].'">';echo "\n";
-  } else if ( preg_match( $searchPattern, $str, $imgurl ) && !is_archive()){
+  }else if(preg_match($searchPattern,$str,$imgurl) && !is_archive()){
     $img_url = $imgurl[2];
     echo '<meta name="twitter:image" content="'.$imgurl[2].'">';echo "\n";
-  } else {
+  }else{
     $ogp_image = get_template_directory_uri().'/img/no-img.png';
     $img_url = $ogp_image;
     echo '<meta name="twitter:image" content="'.$ogp_image.'">';echo "\n";}
-} else {
+}else{
   if (get_header_image()){
     $img_url = get_header_image();
     echo '<meta name="twitter:image" content="'.$img_url.'">';echo "\n";
   } else {
-    $img_url = get_template_directory_uri().'<?php echo get_template_directory();?>/screenshot.png';
+    $img_url = get_template_directory_uri().' /screenshot.png';
     echo '<meta name="twitter:image" content="'.$img_url.'">';echo "\n";}
 }
 preg_match( '/https?:\/\/(.+?)\//i', admin_url(), $results );
