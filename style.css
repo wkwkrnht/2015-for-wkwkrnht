@@ -3,7 +3,7 @@
  Theme URI:    http://wkwkrnht.wp.xdomain.jp/
  Template:     twentyfifteen
  Author:      wkwkrnht
- Version:      0.0.3
+ Version:      0.0.4
 */
 /*hide*/
 .site-footer,.more-link,.bread div:first-child a::before{display:none;}
@@ -52,7 +52,7 @@ h3 .entry-content{border-left:10px solid #ffcc00;box-shadow:0 2px 5px 0 #999;bor
   /*for PC*/
   @media screen and (min-width:55em){
     h1 .entry-header{color:#fff;background-color:#ffcc00;text-align:center;box-shadow:0 3px 3px 0 #999;}
-    .sidebar{width:230px;box-shadow:0 5px 10px 0 #999;}
+    .secoundary{width:230px;box-shadow:0 5px 10px 0 #999;}
     .comments-area,.post-navigation{margin:6% 6% 0;}
     /*top cardstyle
     .post{}
