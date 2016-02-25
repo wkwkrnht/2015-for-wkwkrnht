@@ -4,10 +4,9 @@
 	<meta charset="<?php bloginfo('charset');?>">
 	<meta name="viewport" content="width=device-width">
 	<meta name="theme-color" content="#ffcc00">
-	<?php get_template_part('sns/ogp');
-	get_template_part('inc/meta_keyword');?>
 	<meta name="description" content="<?php bloginfo('description');?>">
 	<?php if(is_single()) echo '<meta name="keywords" content="get_the_tags();">';?>
+	<?php get_template_part('sns/ogp');?>
 	<link rel="profile" href="http://gmpg.org/xfn/11">
 	<link rel="pingback" href="<?php bloginfo('pingback_url');?>">
 	<!--[if lt IE 9]>

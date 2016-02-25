@@ -20,11 +20,11 @@ if (is_single()){
   } else if ( preg_match( $searchPattern, $str, $imgurl ) && !is_archive()) {
     echo '<meta property="og:image" content="'.$imgurl[2].'">';echo "\n";
   } else {
-    $ogp_image = get_template_directory_uri().'/img/no-img.png';
+    $ogp_image = get_stylesheet_directory_uri().'/img/no-img.png';
     echo '<meta property="og:image" content="'.$ogp_image.'">';echo "\n";}
 } else {
   if (get_header_image()){echo '<meta property="og:image" content="'.get_header_image().'">';echo "\n";
-  } else {echo '<meta property="og:image" content="'.get_template_directory_uri().'/screenshot.png">';echo "\n";}
+  } else {echo '<meta property="og:image" content="'.get_stylesheet_directory_uri().'/screenshot.png">';echo "\n";}
 }?>
 <meta property="og:site_name" content="<?php bloginfo('name');?>">
 <meta property="og:locale" content="ja_JP" />
@@ -53,7 +53,7 @@ if (is_single()){
     $img_url = $imgurl[2];
     echo '<meta name="twitter:image" content="'.$imgurl[2].'">';echo "\n";
   }else{
-    $ogp_image = get_template_directory_uri().'/img/no-img.png';
+    $ogp_image = get_stylesheet_directory_uri().'/img/no-img.png';
     $img_url = $ogp_image;
     echo '<meta name="twitter:image" content="'.$ogp_image.'">';echo "\n";}
 }else{
@@ -61,7 +61,7 @@ if (is_single()){
     $img_url = get_header_image();
     echo '<meta name="twitter:image" content="'.$img_url.'">';echo "\n";
   } else {
-    $img_url = get_template_directory_uri().' /screenshot.png';
+    $img_url = get_stylesheet_directory_uri().' /screenshot.png';
     echo '<meta name="twitter:image" content="'.$img_url.'">';echo "\n";}
 }
 preg_match( '/https?:\/\/(.+?)\//i', admin_url(), $results );
