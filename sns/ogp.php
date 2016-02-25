@@ -23,7 +23,7 @@ if (is_single()){
     echo '<meta property="og:image" content="'.$ogp_image.'">';echo "\n";}
 }else{
   if (get_header_image()){echo '<meta property="og:image" content="'.get_header_image().'">';echo "\n";
-  } else {echo '<meta property="og:image" content="/icon.png">';echo "\n";}}?>
+  } else {echo '<meta property="og:image" content="/img/icon.png">';echo "\n";}}?>
 <meta property="og:site_name" content="<?php bloginfo('name');?>">
 <meta property="og:locale" content="ja_JP" />
 <meta property="fb:admins" content="100010188733942">
@@ -59,7 +59,7 @@ if (is_single()){
     $img_url = get_header_image();
     echo '<meta name="twitter:image" content="'.$img_url.'">';echo "\n";
   } else {
-    $img_url = '/icon.png';
+    $img_url = '/img/icon.png';
     echo '<meta name="twitter:image" content="'.$img_url.'">';echo "\n";}}
 preg_match( '/https?:\/\/(.+?)\//i', admin_url(), $results );
 list($width,$height) = getimagesize($img_url);?>
