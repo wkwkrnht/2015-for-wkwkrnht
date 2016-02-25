@@ -61,7 +61,7 @@ if (is_single()){
     $img_url = get_header_image();
     echo '<meta name="twitter:image" content="'.$img_url.'">';echo "\n";
   } else {
-    $img_url = get_stylesheet_directory_uri().' /screenshot.png';
+    $img_url = get_stylesheet_directory_uri().'/screenshot.png';
     echo '<meta name="twitter:image" content="'.$img_url.'">';echo "\n";}
 }
 preg_match( '/https?:\/\/(.+?)\//i', admin_url(), $results );
