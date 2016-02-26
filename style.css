@@ -37,7 +37,7 @@ h3 .entry-content{border-left:10px solid #ffcc00;box-shadow:0 2px 5px 0 #999;bor
 .information::before,.question::before{color:#EAE3B4;font-family:"FontAwesome";font-size:50px;position:absolute;top:20px;left:13px;}
 @media screen and (max-width:440px){.information,.question{padding:10px;}.information::before,.question::before{display:none;}}
 /*パンくず*/
-.bread{width:100%;height:80%;background:#fff;}
+.bread{width:100%;height:60%;}
 .bread div{float:left;margin:0 0.5em 0 1em;}
 .bread a{color:#fff;background:#ffcc00;padding:0.7em 1em;float:left;text-decoration:none;position:relative;}
 .bread a:hover,.bread a::before:hover,.bread a::after:hover{background:#00b8ff;}
@@ -54,8 +54,8 @@ h3 .entry-content{border-left:10px solid #ffcc00;box-shadow:0 2px 5px 0 #999;bor
   }
   /*for PC*/
   @media screen and (min-width:55em){
-    h1 .entry-header{color:#fff;background-color:#ffcc00;text-align:center;box-shadow:0 3px 3px 0 #999;}
-    .secoundary{width:230px;box-shadow:0 5px 10px 0 #999;}
+    .entry-header{text-align:center;}
+    .secondary{width:230px;box-shadow:0 5px 10px 0 #999;}
     .comments-area,.post-navigation{margin:6% 6% 0;}
     /*top cardstyle
     .post{}
@@ -63,6 +63,4 @@ h3 .entry-content{border-left:10px solid #ffcc00;box-shadow:0 2px 5px 0 #999;bor
     .card-content{background-color:#fff;color:#707070;font-size:16px;font-size:1.6rem;line-height:1.5;padding:3.8461% 7.6923%;}
   }
   /*without phone*/
-  @media screen and (min-width:46.25em){
-    .post,.nav-links{box-shadow:0 3px 3px 0 #999;}
-  }
+  @media screen and (min-width:46.25em){.post,.nav-links{box-shadow:0 3px 3px 0 #999;}}
