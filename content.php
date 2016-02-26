@@ -2,26 +2,26 @@
 	<?php twentyfifteen_post_thumbnail();?>
 	<header class="entry-header">
 		<?php if(is_single() ) :
-				the_title('<h1 class="entry-title">', '</h1>');
+				the_title('<h1 class="entry-title">','</h1>');
 			else :
-				the_title(sprintf('<h1 class="entry-title"><a href="%s" rel="bookmark">',esc_url(get_permalink())), '</a></h1>');
-			endif;
-			get_template_part('parts/bread');?>
+				the_title(sprintf('<h1 class="entry-title"><a href="%s" rel="bookmark">',esc_url(get_permalink())),'</a></h1>');
+			endif;?>
 	</header><!-- .entry-header -->
+	<?php get_template_part('parts/bread');?>
 	<div class="entry-content">
 		<?php the_content(sprintf(__('Continue reading %s','twentyfifteen'),the_title('<span class="screen-reader-text">','</span>',false)));//%s=Name of current post
 			wp_link_pages(array(
-				'before'      =>'<div class="page-links"><span class="page-links-title">' . __('Pages:', 'twentyfifteen') . '</span>',
+				'before'      =>'<div class="page-links"><span class="page-links-title">' . __('Pages:','twentyfifteen') . '</span>',
 				'after'       =>'</div>',
 				'link_before' =>'<span>',
 				'link_after'  =>'</span>',
-				'pagelink'    =>'<span class="screen-reader-text">' . __('Page', 'twentyfifteen') . ' </span>%',
+				'pagelink'    =>'<span class="screen-reader-text">' . __('Page','twentyfifteen') . ' </span>%',
 				'separator'   =>'<span class="screen-reader-text">, </span>',));?>
 	</div><!-- .entry-content -->
-  <?php get_template_part('parts/related'); else: get_template_part('author-bio');endif;wp_reset_postdata();?>
-	</div><!-- #related-entries -->
+  <?php get_template_part('parts/related');wp_reset_postdata();?>
+</div><!-- .related-entries -->
 	<footer class="entry-footer">
-		<?php twentyfifteen_entry_meta(); ?>
-		<?php edit_post_link( __( 'Edit', 'twentyfifteen' ), '<span class="edit-link">', '</span>' ); ?>
+		<?php twentyfifteen_entry_meta();
+		edit_post_link(__('Edit','twentyfifteen'),'<span class="edit-link">','</span>');?>
 	</footer><!-- .entry-footer -->
 </article><!-- #post-## -->
