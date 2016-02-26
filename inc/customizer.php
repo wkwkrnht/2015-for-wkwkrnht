@@ -7,15 +7,13 @@
 	$wp_customize->add_setting('color_scheme', array(
 		'default'           => 'default',
 		'sanitize_callback' => 'twentyfifteen_sanitize_color_scheme',
-		'transport'         => 'postMessage',
-	) );
+		'transport'         => 'postMessage',));
 	$wp_customize->add_control('color_scheme',array(
 		'label'    => __('Base Color Scheme','twentyfifteen'),
 		'section'  => 'colors',
 		'type'     => 'select',
 		'choices'  => twentyfifteen_get_color_scheme_choices(),
-		'priority' => 1,
-	) );
+		'priority' => 1,));
 
 	// Add custom header and sidebar text color setting and control.
 	$wp_customize->add_setting('sidebar_textcolor',array(
@@ -33,21 +31,19 @@
 	$wp_customize->remove_control('header_textcolor');
 
 	// Add custom header and sidebar background color setting and control.
-	$wp_customize->add_setting( 'header_background_color', array(
+	$wp_customize->add_setting('header_background_color',array(
 		'default'           => $color_scheme[1],
 		'sanitize_callback' => 'sanitize_hex_color',
-		'transport'         => 'postMessage',
-	) );
-	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'header_background_color', array(
-		'label'       => __( 'Header and Sidebar Background Color', 'twentyfifteen' ),
-		'description' => __( 'Applied to the header on small screens and the sidebar on wide screens.', 'twentyfifteen' ),
-		'section'     => 'colors',
-	) ) );
+		'transport'         => 'postMessage',));
+	$wp_customize->add_control( new WP_Customize_Color_Control($wp_customize,'header_background_color',array(
+		'label'       => __('Header and Sidebar Background Color','twentyfifteen'),
+		'description' => __('Applied to the header on small screens and the sidebar on wide screens.','twentyfifteen'),
+		'section'     => 'colors',)));
 
 	// Add an additional description to the header image section.
 	$wp_customize->get_section('header_image')->description = __('Applied to the header on small screens and the sidebar on wide screens.','twentyfifteen');
 }
-add_action('customize_register','twentyfifteen_customize_register',11);
+add_action('customize_register','twentyfifteen_customize_register',12);
 
 /* Register color schemes for Twenty Fifteen.
  * The order of colors in a colors array:
@@ -146,7 +142,7 @@ if ( ! function_exists('twentyfifteen_sanitize_color_scheme') ) :
  * @param string $value Color scheme name value.
  * @return string Color scheme name.
  */
-function twentyfifteen_sanitize_color_scheme( $value ) {
+function twentyfifteen_sanitize_color_scheme($value){
 	$color_schemes = twentyfifteen_get_color_scheme_choices();
 	if ( ! array_key_exists( $value, $color_schemes ) ) {$value = 'default';}
 	return $value;
@@ -158,10 +154,10 @@ endif; // twentyfifteen_sanitize_color_scheme
  * @see wp_add_inline_style()
  */
 function twentyfifteen_color_scheme_css(){
-	$color_scheme_option = get_theme_mod( 'color_scheme', 'default' );
+	$color_scheme_option = get_theme_mod('color_scheme','default');
 
 	// Don't do anything if the default color scheme is selected.
-	if ( 'default' === $color_scheme_option ){return;}
+	if ('default' === $color_scheme_option){return;}
 	$color_scheme = twentyfifteen_get_color_scheme();
 
 	// Convert main and sidebar text hex color to rgba.
@@ -180,10 +176,9 @@ function twentyfifteen_color_scheme_css(){
 		'sidebar_border_focus_color'  => vsprintf('rgba( %1$s, %2$s, %3$s, 0.3)', $color_sidebar_textcolor_rgb ),
 		'secondary_sidebar_textcolor' => vsprintf('rgba( %1$s, %2$s, %3$s, 0.7)', $color_sidebar_textcolor_rgb ),
 		'meta_box_background_color'   => $color_scheme[5],);
-	$color_scheme_css = twentyfifteen_get_color_scheme_css( $colors );
-	wp_add_inline_style( 'twentyfifteen-style', $color_scheme_css );
-}
-add_action( 'wp_enqueue_scripts', 'twentyfifteen_color_scheme_css' );
+	$color_scheme_css = twentyfifteen_get_color_scheme_css($colors);
+	wp_add_inline_style('twentyfifteen-style',$color_scheme_css);}
+add_action('wp_enqueue_scripts','twentyfifteen_color_scheme_css');
 
 /**
  * Binds JS listener to make Customizer color_scheme control.
@@ -202,9 +197,7 @@ add_action('customize_controls_enqueue_scripts','twentyfifteen_customize_control
  *
  * @since Twenty Fifteen 1.0
  */
-function twentyfifteen_customize_preview_js() {
-	wp_enqueue_script('twentyfifteen-customize-preview', get_template_directory_uri() . '/js/customize-preview.js',array('customize-preview'),'20141216',true);
-}
+function twentyfifteen_customize_preview_js(){wp_enqueue_script('twentyfifteen-customize-preview',get_template_directory_uri() . '/js/customize-preview.js',array('customize-preview'),'20141216',true);}
 add_action('customize_preview_init','twentyfifteen_customize_preview_js');
 
 /**
@@ -263,10 +256,7 @@ function twentyfifteen_get_color_scheme_css($colors){
 	}
 
 	/* Main Text Color */
-	body,
-	blockquote cite,
-	blockquote small,
-	a,
+	body,a,blockquote cite,blockquote small,
 	.dropdown-toggle:after,
 	.image-navigation a:hover,
 	.image-navigation a:focus,
