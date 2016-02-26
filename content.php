@@ -16,9 +16,13 @@
 				'link_before' =>'<span>',
 				'link_after'  =>'</span>',
 				'pagelink'    =>'<span class="screen-reader-text">' . __('Page','twentyfifteen') . ' </span>%',
-				'separator'   =>'<span class="screen-reader-text">, </span>',));?>
+				'separator'   =>'<span class="screen-reader-text">,</span>',));?>
 	</div><!-- .entry-content -->
-  <?php get_template_part('parts/related');wp_reset_postdata();?>
+  <?php get_template_part('parts/snsbutton');?>
+	<div id="related-entries">
+   	<h3>関連記事</h3>
+   	<?php get_template_part('parts/related');?>
+  </div>
 	<footer class="entry-footer">
 		<?php twentyfifteen_entry_meta();
 		edit_post_link(__('Edit','twentyfifteen'),'<span class="edit-link">','</span>');?>
