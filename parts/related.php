@@ -15,9 +15,9 @@ $query = new WP_Query($args);
   <a href="<?php the_permalink() ?>" title="<?php the_title_attribute();?>">
         <?php if (has_post_thumbnail()):
          echo get_the_post_thumbnail($post->ID,'thumb100');
-         else:
-        echo <img src="/img/no-image.png" alt="NO IMAGE" title="NO IMAGE" width="200px"/>
-        endif;?>
+       else:?>
+         <img src="/img/no-image.png" alt="NO IMAGE" title="NO IMAGE" width="200px"/>
+        <?php endif;?>
         </a>
       </div><!-- /.related-entry-thumb -->
       <div class="related-entry-content">
