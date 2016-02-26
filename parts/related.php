@@ -15,9 +15,9 @@ $query = new WP_Query($args);
   <a href="<?php the_permalink() ?>" title="<?php the_title_attribute();?>">
         <?php if (has_post_thumbnail()):
          echo get_the_post_thumbnail($post->ID,'thumb100');
-         else:?>
-        <img src="<?php echo get_template_directory_uri(); ?>/img/no-image.png" alt="NO IMAGE" title="NO IMAGE" width="200px"/>
-        <?php endif; ?>
+         else:
+        echo <img src="/img/no-image.png" alt="NO IMAGE" title="NO IMAGE" width="200px"/>
+        endif;?>
         </a>
       </div><!-- /.related-entry-thumb -->
       <div class="related-entry-content">
@@ -28,6 +28,6 @@ $query = new WP_Query($args);
   <?php endwhile;
    else:
   echo '<p>記事はありませんでした</p>'
-endif;
-wp_reset_postdata();?>
+endif;?>
+<?php wp_reset_postdata();?>
 <br style="clear:both;">
