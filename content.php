@@ -19,7 +19,6 @@
 				'separator'   =>'<span class="screen-reader-text">, </span>',));?>
 	</div><!-- .entry-content -->
   <?php get_template_part('parts/related');wp_reset_postdata();?>
-</div><!-- .related-entries -->
 	<footer class="entry-footer">
 		<?php twentyfifteen_entry_meta();
 		edit_post_link(__('Edit','twentyfifteen'),'<span class="edit-link">','</span>');?>

@@ -19,4 +19,5 @@
       </a>
       <div class="title"><a href="<?php the_permalink();?>"><?php the_title();?></a></div>
     </div>
-  </div><!--related-entry-->
+  </div>
+</div><!-- .related-entries -->
