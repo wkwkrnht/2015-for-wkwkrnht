@@ -47,7 +47,7 @@ if (is_single()){
     $img_url = $imgurl[2];
     echo '<meta name="twitter:image" content="'.$imgurl[2].'">';echo "\n";
   }else{echo '<meta name="twitter:image" content="/img/no-img.png">';echo "\n";}
-}else{if(get_header_image()){echo '<meta name="twitter:image" content="'.get_header_image();.'">';echo "\n";}else{echo '<meta name="twitter:image" content="/img/icon.png">';echo "\n";}}
+}else{if(get_header_image()){echo '<meta name="twitter:image" content="'.get_header_image().'">';echo "\n";}else{echo '<meta name="twitter:image" content="/img/icon.png">';echo "\n";}}
 preg_match( '/https?:\/\/(.+?)\//i', admin_url(), $results );
 list($width,$height) = getimagesize($img_url);?>
 <meta name="twitter:domain" content="<?php echo $results[1] ?>">
