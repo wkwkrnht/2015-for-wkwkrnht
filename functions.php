@@ -111,11 +111,11 @@ function auto_post_thumbnail_image(){
     }
   }
 }
-add_action('save_post', 'auto_post_thumbnail_image');
-add_action('draft_to_publish', 'auto_post_thumbnail_image');
-add_action('new_to_publish', 'auto_post_thumbnail_image');
-add_action('pending_to_publish', 'auto_post_thumbnail_image');
-add_action('future_to_publish', 'auto_post_thumbnail_image');
+add_action('save_post','auto_post_thumbnail_image');
+add_action('draft_to_publish','auto_post_thumbnail_image');
+add_action('new_to_publish','auto_post_thumbnail_image');
+add_action('pending_to_publish','auto_post_thumbnail_image');
+add_action('future_to_publish','auto_post_thumbnail_image');
 //from:URL to:はてなブログカード
 function url_to_hatena_blog_card($the_content){
   if(is_singular()){
@@ -131,7 +131,7 @@ $twtreplace = preg_replace('/([^a-zA-Z0-9-_&])@([0-9a-zA-Z_]+)/',"$1<a href=\"ht
 return $twtreplace;}
 add_filter('the_content', 'twtreplace');
 add_filter('comment_text', 'twtreplace');
-//add keyword highlight & ルビサポート
+//add keyword highlight & ルビサポート & Editbutton
 function wps_highlight_results($text){
 	if(is_search()){
 	$sr = get_query_var('s');
@@ -164,7 +164,7 @@ function my_archives_link($link_html){
     if(($currentMonth == $month) AND ($currentYear == $year)){$linkYear = sprintf($yearHtml, $year);
     }else{if((intval($month) == 12) AND ($currentYear != $year)){$linkYear = '<br />'.sprintf($yearHtml, $year);}}
     return sprintf($linkString, $linkYear, $ym[1]);}
-add_filter('get_archives_link', 'my_archives_link');
+add_filter('get_archives_link','my_archives_link');
 //add pic&© to RSS
 function rss_edit($content){
 	global $post;
