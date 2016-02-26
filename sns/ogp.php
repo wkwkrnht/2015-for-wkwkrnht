@@ -1,5 +1,5 @@
 <meta property="og:type" content="blog">
-<?php if (is_single()){
+<?php if(is_single()){
 if(have_posts()): while(have_posts()): the_post();
   echo '<meta property="og:description" content="'.mb_substr(get_the_excerpt(), 0, 100).'">';echo "\n";
 endwhile; endif;
@@ -11,8 +11,8 @@ endwhile; endif;
   echo '<meta property="og:url" content="'; bloginfo('url'); echo '">';echo "\n";}
 $str = $post->post_content;
 $searchPattern = '/<img.*?src=(["\'])(.+?)\1.*?>/i';
-if (is_single()){
-  if (has_post_thumbnail()){
+if(is_single()){
+  if(has_post_thumbnail()){
     $image_id = get_post_thumbnail_id();
     $image = wp_get_attachment_image_src( $image_id, 'full');
     echo '<meta property="og:image" content="'.$image[0].'">';echo "\n";
@@ -22,8 +22,7 @@ if (is_single()){
     $ogp_image = '/img/no-img.png';
     echo '<meta property="og:image" content="'.$ogp_image.'">';echo "\n";}
 }else{
-  if (get_header_image()){echo '<meta property="og:image" content="'.get_header_image().'">';echo "\n";
-  } else {echo '<meta property="og:image" content="/img/icon.png">';echo "\n";}}?>
+  if (get_header_image()){echo '<meta property="og:image" content="'.get_header_image().'">';echo "\n";}else{echo '<meta property="og:image" content="/img/icon.png">';echo "\n";}}?>
 <meta property="og:site_name" content="<?php bloginfo('name');?>">
 <meta property="og:locale" content="ja_JP" />
 <meta property="fb:admins" content="100010188733942">
@@ -58,9 +57,7 @@ if (is_single()){
   if (get_header_image()){
     $img_url = get_header_image();
     echo '<meta name="twitter:image" content="'.$img_url.'">';echo "\n";
-  } else {
-    $img_url = '/img/icon.png';
-    echo '<meta name="twitter:image" content="'.$img_url.'">';echo "\n";}}
+  }else{echo '<meta name="twitter:image" content="/img/icon.png">';echo "\n";}}
 preg_match( '/https?:\/\/(.+?)\//i', admin_url(), $results );
 list($width,$height) = getimagesize($img_url);?>
 <meta name="twitter:domain" content="<?php echo $results[1] ?>">
