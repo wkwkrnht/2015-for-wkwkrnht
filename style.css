@@ -8,7 +8,7 @@
 /*hide*/
 .site-footer,.more-link,.bread div:first-child a::before{display:none;}
 /*font指定*/
-.entry-header,.home-header,.home-footer{font-family:sans-serif;}
+.entry-header,.home-header,.home-footer,.editbutton{font-family:sans-serif;}
 /*footer
 .site-info{text-align:center;font-family:sans-serif;font-weight:lighter;color:#000}
 .site-footer{background:#fff;box-shadow:0 2px 2px 0 #999;}*/
@@ -56,7 +56,7 @@ h3 .entry-content{border-left:10px solid #ffcc00;box-shadow:0 2px 5px 0 #999;bor
   /*for PC*/
   @media screen and (min-width:55em){
     .entry-header{text-align:center;}
-    .sidebar{box-shadow:0 5px 10px 0 #999;}
+    .sidebar{box-shadow:0 0 10px 0 #999;}
     .comments-area,.post-navigation{margin:6% 6% 0;}
     /*top cardstyle
     .post{}
