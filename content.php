@@ -19,10 +19,8 @@
 				'separator'   =>'<span class="screen-reader-text">,</span>',));?>
 	</div><!-- .entry-content -->
   <?php get_template_part('parts/snsbutton');?>
-	<div class="related">
-   	<h3>関連記事</h3>
-   	<?php get_template_part('parts/related');?>
-  </div>
+	<h2 class="related-title">関連記事</h2>
+	<div class="swiper-container"><div class="swiper-wrapper"><?php get_template_part('parts/related');?></div></div>
 	<footer class="entry-footer">
 		<?php twentyfifteen_entry_meta();
 		edit_post_link(__('Edit','twentyfifteen'),'<span class="edit-link">','</span>');?>

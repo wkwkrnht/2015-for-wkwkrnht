@@ -2,15 +2,11 @@
 foreach($categories as $category):
   array_push($category_ID,$category -> cat_ID);
 endforeach ;
-$args = array(
-  'post__not_in' => array($post -> ID),
-  'posts_per_page'=> 8,
-  'category__in' => $category_ID,
-  'orderby' => 'rand',);
+$args = array('posts_per_page'=> 8,'post__not_in' => array($post -> ID),'category__in' => $category_ID,'orderby' => 'rand',);
 $query = new WP_Query($args);
   if($query -> have_posts()):
    while ($query -> have_posts()) : $query -> the_post();?>
-    <div class="content">
+    <div class="content swiper-slide">
       <div class="thumb">
         <a href="<?php the_permalink()?>" title="<?php the_title_attribute();?>">
         <?php if(has_post_thumbnail()):
