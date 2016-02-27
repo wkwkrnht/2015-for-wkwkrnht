@@ -1,4 +1,4 @@
-		<a id="move-page-top" class="page-top">Λ</a>
+		<div class="page-top"><a id="move-page-top"></a></div>
 	</div><!-- .site-content -->
 	<footer id="colophon" class="site-footer" role="contentinfo">
 		<div class="site-info">
