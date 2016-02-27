@@ -137,7 +137,7 @@ $twtreplace = preg_replace('/([^a-zA-Z0-9-_&])@([0-9a-zA-Z_]+)/',"$1<a href=\"ht
 return $twtreplace;}
 add_filter('the_content', 'twtreplace');
 add_filter('comment_text', 'twtreplace');
-//add keyword highlight & ルビサポート & Editbutton
+//add keyword highlight & ルビサポート
 function wps_highlight_results($text){
 	if(is_search()){
 	$sr = get_query_var('s');
@@ -148,12 +148,6 @@ add_filter('the_title','wps_highlight_results');
 add_filter('the_content','wps_highlight_results');
 add_action('after_setup_theme', 'ruby_setup');
 function ruby_setup(){global $allowedposttags;foreach(array('ruby','rp','rt') as $tag )	if(!isset($allowedposttags[$tag]))$allowedposttags[$tag] = array();}
-function edit($the_content){
-    if (is_single() && is_user_logged_in()){
-        $return = $the_content;
-        $return .= '<a target="_blank" href="'.get_edit_post_link().'" class="editbutton">Edit</a>';
-        return $return;}else{return $the_content;}}
-add_filter('the_content','edit');
 //カレンダー短縮
 function my_archives_link($link_html){
     $currentMonth = date('n');

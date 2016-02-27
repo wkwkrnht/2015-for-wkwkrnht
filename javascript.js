@@ -17,7 +17,7 @@ jQuery(function(){
 		var mokuji = '';
 		var currentlevel = 0
 		var sectionTopArr = new Array();
-		jQuery('article h2,article h3,article h4').each(function(i){
+		jQuery('entry-content h2,entry-content h3,entry-content h4').each(function(i){
 			this.id = 'chapter-' + idcount;
 			idcount ++;
 			var level = 0;
@@ -27,7 +27,7 @@ jQuery(function(){
 			mokuji += '<li><a href="#' + this.id + '">' + jQuery(this).html() + '</a></li>\n';
 		});
 		while(currentlevel > 0) {mokuji += '</ol>';currentlevel --;}
-		strMokuji = '<h4>目次で流し読みする<span class="closeBtn"><i class="fa fa-times-circle-o"></i></span></h4>\<div class="mokujiInner">'+ mokuji +'<!-- /.mokujiInner --></div>';
+		strMokuji = '<h4>目次<span class="closeBtn"><i class="fa fa-times-circle-o"></i></span></h4>\<div class="mokujiInner">'+ mokuji +'</div>';
 		jQuery('.mokuji').html(strMokuji);
 		jQuery('.mokuji li').not('.accordion, .accBtn').click(function(){
 			var speed = 800;
@@ -42,15 +42,11 @@ jQuery(function(){
 		jQuery('.accBtn').click(function(){
 			jQuery(this).parents('li').next().stop().slideToggle(300,'easeInOutCirc');
 			jQuery('.closeBtn').removeClass('active').addClass('active');
-			if( jQuery(this).find('i').hasClass('fa-plus-square-o')){
-				jQuery(this).find('i').removeClass('fa-plus-square-o').addClass('fa-minus-square-o');
-			} else {
-				jQuery(this).find('i').removeClass('fa-minus-square-o').addClass('fa-plus-square-o');
-			}
+			if(jQuery(this).find('i').hasClass('fa-plus-square-o')){jQuery(this).find('i').removeClass('fa-plus-square-o').addClass('fa-minus-square-o');}else{jQuery(this).find('i').removeClass('fa-minus-square-o').addClass('fa-plus-square-o');}
 			return false;
 		});
 		var closeBtnFlag = '';
-		jQuery('.mokuji li').each(function(){if( jQuery(this).hasClass('accordion') ) {closeBtnFlag = false;}});
+		jQuery('.mokuji li').each(function(){if(jQuery(this).hasClass('accordion')){closeBtnFlag = false;}});
 		if( closeBtnFlag == true ) {jQuery('.closeBtn').hide();}
 		jQuery('.closeBtn').click(function(){
 			jQuery(this).toggleClass('active');
