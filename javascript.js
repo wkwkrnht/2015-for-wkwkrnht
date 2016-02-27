@@ -1,4 +1,4 @@
-jQuery(function(){
-  //ページトップへ移動するボタン
-  jQuery('#move-page-top').click(function(){jQuery('html,body').animate({scrollTop:0},slow);});
+jQuery( function(){
+  var topBth = jQuery('#page-top');//スクロールしてトップ
+    topBth.click(function(){jQuery('body,html').animate({scrollTop:0},500);return false;});
 });
