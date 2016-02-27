@@ -26,8 +26,8 @@ $query = new WP_Query($args);
       </div><!-- /.related-entry-content -->
     </div><!-- /.new-entry -->
   <?php endwhile;
-  else:
-    echo '<p>記事はありませんでした</p>'
-  endif:
-wp_reset_postdata();?>
+  else:?>
+    <p>記事はありませんでした</p>
+  <?php endif;?>
+<?php wp_reset_postdata();?>
 <br style="clear:both;">

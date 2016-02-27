@@ -21,6 +21,8 @@ add_filter('embed_oembed_discover','__return_false');
 remove_action('parse_query','wp_oembed_parse_query');
 remove_action('wp_head','wp_oembed_remove_discovery_links');
 remove_action('wp_head','wp_oembed_remove_host_js');
+//Alt属性がないIMGタグにalt=""を追加する
+add_filter('the_content',function($content){return preg_replace('/<img((?![^>]*alt=)[^>]*)>/i','<img alt=""${1}>',$content);});
 //ゆめぴょん流相対時間
 function yumepyon_diff(){$now_yumepyon_time = current_time('timestamp');
 //投稿時とhuman_time_diffの取得
