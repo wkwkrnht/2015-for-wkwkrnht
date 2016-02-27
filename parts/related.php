@@ -11,7 +11,7 @@ $query = new WP_Query($args);
         <?php if(has_post_thumbnail()):
          echo get_the_post_thumbnail($post->ID);
         else:?>
-         <img src="/img/no-image.png" alt="NO IMAGE"/>
+         <img src="<?php get_stylesheet_directory_uri();?>/img/no-image.png" alt="NO IMAGE"/>
         <?php endif;?>
       </div>
       <div class="title"><?php the_title();?></div>
@@ -26,7 +26,7 @@ $query = new WP_Query($args);
           <?php if(has_post_thumbnail()):
             echo get_the_post_thumbnail($post->ID);
           else:?>
-            <img src="/img/no-image.png" alt="NO IMAGE"/>
+            <img src="<?php get_stylesheet_directory_uri();?>/img/no-image.png" alt="NO IMAGE"/>
           <?php endif;?>
         </div>
         <div class="title"><?php the_title();?></div>

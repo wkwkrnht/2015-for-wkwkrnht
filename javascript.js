@@ -1,16 +1,6 @@
 jQuery(function(){
   //top-button
   jQuery('#page-top').click(function(){jQuery('body,html').animate({scrollTop:0},500);return false;});
-  //favicon
-  jQuery('a[href^="http://"]').filter(function(){return this.hostname && this.hostname !== location.hostname;}).each(function(){
-        var l = jQuery(this);
-        var fu =l.attr('href').replace(/^(http:\/\/[^\/]+).*jQuery/, 'jQuery1') + '/favicon.ico';
-        var fi = jQuery('<img src="favicon.png" alt="favicon"/>')['prependTo'](l);
-        var e = new Image();
-        e.src = fu;
-        if (e.complete) fi.attr('src',fu);
-          else e.onload = function(){fi.attr('src',fu);};
-        });
   //目次
   function makeMokuji(){
 		var idcount = 1;
