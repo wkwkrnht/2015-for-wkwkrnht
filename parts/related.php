@@ -28,6 +28,6 @@ $query = new WP_Query($args);
   <?php endwhile;
   else:
     echo '<p>記事はありませんでした</p>'
-  endif;
+  endif
 wp_reset_postdata();?>
 <br style="clear:both;">
