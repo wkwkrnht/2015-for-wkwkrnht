@@ -1,7 +1,5 @@
 <?php add_action('wp_enqueue_scripts','theme_enqueue_styles');function theme_enqueue_styles(){wp_enqueue_style('parent-style',get_template_directory_uri() . '/style.css' );}
 //外部スクリプト読み込み
-function local_java_script(){wp_enqueue_script('localjavascript','get_template_directory_uri()./jyvascript.js',array('jquery'),false,false);}
-add_action('wp_enqueue_script','local_java_script');
 function swiper_Initialize_script(){wp_enqueue_script('swiper_Initialize','get_template_directory_uri()./inc/swiper-local.js',array(),false,false);}
 add_action('wp_enqueue_script','swiper_Initialize_script');
 function rightclick_tweet_script(){wp_enqueue_script('rightclick_tweet','get_template_directory_uri()./inc/select-and-tweet.js',array('jquery'),false,false);}

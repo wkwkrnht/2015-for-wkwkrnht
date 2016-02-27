@@ -13,6 +13,7 @@
 	<script src="<?php echo esc_url( get_template_directory_uri() );?>/js/html5.js"></script>
 	<![endif]-->
 	<?php wp_head();?>
+	<script src="<?php echo get_template_directory_uri();?>/javascript.js" charset="UTF-8"></script>
 </head>
 <body <?php body_class();?>>
 <div id="page" class="hfeed site">
