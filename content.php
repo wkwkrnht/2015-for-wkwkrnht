@@ -19,7 +19,7 @@
 				'separator'   =>'<span class="screen-reader-text">,</span>',));?>
 	</div><!-- .entry-content -->
   <?php get_template_part('parts/snsbutton');?>
-	<div id="related-entries">
+	<div class="related">
    	<h3>関連記事</h3>
    	<?php get_template_part('parts/related');?>
   </div>
