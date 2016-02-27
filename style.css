@@ -45,6 +45,29 @@ h3 .entry-content{border-left:10px solid #ffcc00;box-shadow:0 2px 5px 0 #999;bor
 .bread a::before,.bread a::after{content:"";position:absolute;top:50%;margin-top:-1.5em;}
 .bread a::before{border-top:1.55em solid #ffcc00;border-bottom:1.55em solid #ffcc00;border-left:1em solid transparent;left:-1em;}
 .bread a::after{border-top:1.55em solid transparent;border-bottom:1.55em solid transparent;border-left:1em solid #ffcc00;right:-1em;}
+/*目次*/
+.mokuji {background:#fff;box-shadow:0 2px 5px 0 #999;}
+.mokuji.fixed-side {box-shadow:0 2px 5px 0 #999;width:300px;top:30px;position:fixed;left:auto;}
+.mokuji h4{color:#6C501B;background:#FDD835;position:relative;padding:1em 1em 0.8em;font-size:96%;font-weight:bold;text-shadow:1px 1px 0 rgba(255,255,255,0.5);}
+.mokuji h4 .kao{display:inline-block;*display:inline;*zoom:1;margin-left:0.5em;font-weight:normal;}
+.mokuji h4 .closeBtn{cursor:pointer;position:absolute;top:11px;right:12px;font-size:1.5em;transition:0.2s;transform:rotate(45deg);transform-origin:center;}
+.mokuji h4 .closeBtn.active{transform: rotate(0deg);}
+.mokuji .mokujiInner{border:1px solid #ddd;border-top:none;}
+.mokuji li {width:100%;height:100%;overflow:hidden;position:relative;cursor:pointer;list-style:none;transition:0.2s;box-sizing:border-box;text-indent:-1em;}
+.mokuji ul.mokujiShare li{background:#f2f2f2;list-style:none;text-align:center;}
+.mokuji ol ol{display:none;}
+.mokuji ol ol li{padding-left:1em;}
+.mokuji ol ol ol li{padding-left:2em;}
+.mokuji li a {color:#333;padding:1em;font-size:75%;line-height:1.5;text-decoration:none;display:block;}
+.mokuji > ol li.accordion .inner a{padding-left:0;}
+.mokuji li:hover{background:#f2f2f2;}
+.mokuji li.current{background:#FFECB3;}
+.mokuji li.active{background:#f00;}
+.mokuji li.current a{color:#6C501B;font-weight:bold;}
+.mokuji li.accordion{padding:0;}
+.mokuji li.accordion .inner{display:table;width:100%;table-layout:fixed;}
+.mokuji li.accordion .inner a{display:table-cell;width:100%;text-indent:0;padding:1em;vertical-align:middle;}
+.mokuji li.accordion .inner .accBtn{color:#fff;background:#555;width:30px;margin-top:12px;font-size:1.5em;text-indent:0;display:table-cell;text-align:center;vertical-align:middle;}
 /*メディアクエリ*/
   /*for mobile*/
   @media screen and (max-width:55em){
