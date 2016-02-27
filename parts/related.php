@@ -8,11 +8,11 @@ $args = array(
   'category__in' => $category_ID,
   'orderby' => 'rand',);
 $query = new WP_Query($args);
-   if($query -> have_posts()):
+  if($query -> have_posts()):
    while ($query -> have_posts()) : $query -> the_post();?>
     <div class="related-entry">
       <div class="thumb">
-  <a href="<?php the_permalink()?>" title="<?php the_title_attribute();?>">
+        <a href="<?php the_permalink()?>" title="<?php the_title_attribute();?>">
         <?php if (has_post_thumbnail()):
          echo get_the_post_thumbnail($post->ID,'thumb100');
        else:?>
@@ -26,8 +26,8 @@ $query = new WP_Query($args);
       </div><!-- /.related-entry-content -->
     </div><!-- /.new-entry -->
   <?php endwhile;
-   else:
-  echo '<p>記事はありませんでした</p>'
-endif;
+  else:
+    echo '<p>記事はありませんでした</p>'
+  endif;
 wp_reset_postdata();?>
 <br style="clear:both;">
