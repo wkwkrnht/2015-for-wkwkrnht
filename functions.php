@@ -202,7 +202,7 @@ function get_the_logo_image_url(){return esc_url(get_theme_mod(LOGO_IMAGE_URL));
 //投稿記事一覧にアイキャッチ画像を表示
 function customize_admin_manage_posts_columns($columns){$columns['thumbnail'] = __('Thumbnail');return $columns;}
 function customize_admin_add_column($column_name,$post_id){
-    if('thumbnail' == $column_name){$thum = get_the_post_thumbnail($post_id,,array('style'=>'width:75px;height:auto;'));}
+    if('thumbnail' == $column_name){$thum = get_the_post_thumbnail($post_id,array(100,100),array('style'=>'width:75px;height:auto;'));}
     if(isset($thum) && $thum){echo $thum;}
 }
 function customize_admin_css_list() {echo '<style TYPE="text/css">.column-thumbnail{width:80px;}</style>';}
