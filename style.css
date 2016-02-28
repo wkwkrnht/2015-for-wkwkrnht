@@ -6,7 +6,7 @@
  Version:      0.0.6
 */
 /*hide*/
-.site-footer,.more-link,.bread div:first-child a::before{display:none;}
+.page-links>.page-links-title,.site-footer,.more-link,.bread div:first-child a::before{display:none;}
 /*font指定*/
 .entry-header,.home-header,.home-footer,.mokuji,.page-top a{font-family:sans-serif;}
 /*footer
@@ -26,10 +26,14 @@
 .social-navigation a[href*="wordpress.com"]:before{color:#0033ff;}
 .social-navigation a[href*="/feed"]:before,.social-navigation a[href*="/feed/"]:before{content:"\f413";color:#2aff00;}
 .social-navigation a[href*="youtube.com"]:before,.social-navigation a[href*="plus.google.com"]:before{color:#ff0033;}
+/*ページャー*/
+.page-links{font-family:sans-serif;margin-bottom:1.3333em;clear:both;}
+.page-links a,.page-links>span{border:1px solid #eaeaea;font-size:12px;font-size:1.2rem;width:3em;height:3em;line-height:3;margin:0 0.3333em 0.3333em 0;text-align:center;display:inline-block;}
+.page-links a{color:#fff;border-color:#333;background-color:#333;-webkit-tap-highlight-color:rgba(255, 255, 255, 0.3);}
 /*SNSbutton*/
 .sharebutton{color:#fff;background:#ffcc00;box-shadow:0 2px 5px 0 #999;width:96%;height:20%;margin:15px;font-size:40px;text-align:center;}
 .buttonarea{display:inline-flex;display:-ms-inline-flexbox;display:-webkit-inline-box;display:-webkit-inline-flex;}
-.tweet::before,.fblike::before,.g1::before,.pocket::before,.thmblr::before,.linkedin::before{color:#fff;font-size:60%;font-family:"Genericons";top:0;left:0;position:absolute;}
+.tweet::before,.fblike::before,.g1::before,.pocket::before,.thmblr::before,.linkedin::before{color:#fff;font-size:60%;font-family:"Genericons";position:absolute;text-align:center;vertical-align:middle;}
 .tweet,.fblike,.g1,.pocket,.thmblr,.linkedin,.line,.hatebu{width:70px;height:70px;border-radius:50%;margin:5px;box-shadow:0 2px 5px 0 #999;position:relative;}
 .tweet::before{content:"\f202";}
 .tweet{background-color:#00b8ff;}
