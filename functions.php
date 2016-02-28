@@ -4,8 +4,6 @@ function swiper_Initialize_script(){wp_enqueue_script('swiper_Initialize','get_t
 add_action('wp_enqueue_script','swiper_Initialize_script');
 function rightclick_tweet_script(){wp_enqueue_script('rightclick_tweet','get_template_directory_uri()./inc/select-and-tweet.js',array('jquery'),false,false);}
 add_action('wp_enqueue_script','rightclick_tweet_script');
-function masonry_script(){wp_enqueue_script('masonry','//npmcdn.com/masonry-layout@4.0/dist/masonry.pkgd.min.js',array('jquery'),false,false);}
-add_action('wp_enqueue_script','masonry_script');
 function code_scripts(){wp_enqueue_style('code','//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.1.0/styles/default.min.css',array(),false,false);wp_enqueue_script('code', '//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.1.0/highlight.min.js',array('jquery'),false,false);}
 add_action('wp_enqueue_scripts','code_scripts');
 function swiper_scripts(){wp_enqueue_script('swiper','//cdnjs.cloudflare.com/ajax/libs/Swiper/3.3.1/js/swiper.min.js',array(),false,false);wp_enqueue_style('swiper','//cdnjs.cloudflare.com/ajax/libs/Swiper/3.3.1/css/swiper.min.css',array(),false,false);}
@@ -36,8 +34,8 @@ function yumepyon_diff(){$now_yumepyon_time = current_time('timestamp');
 //日本サーバー仕様
 $post_yumepyon_time = get_post_time();
 $human_yumepyon_diff = human_time_diff($post_yumepyon_time,$now_yumepyon_time);
-$yesterday_flag = 18;//何時間後から「昨日表示」にするか
-$month_flag = 100;//何日以上前からを「〜ヶ月前表示」にするか
+$yesterday_flag = 18;
+$month_flag = 100;
 $difference_sec = $now_yumepyon_time - $post_yumepyon_time;
 $difference_day = floor($difference_sec / 86400);
 $difference_month = date('n',$now_yumepyon_time) - date('n',$post_yumepyon_time);
@@ -48,13 +46,13 @@ $today_weekly = date('w',$now_yumepyon_time);
 $difference_week = $today_weekly - $post_weekly;
 $difference_weekly = array('7','8','9','10','11','12','13');
 $weekly_label = array('日','月','火','水','木','金','土');
-    if( date('n',$now_yumepyon_time) >= 7 && $difference_year > 0 ){
+    if(date('n',$now_yumepyon_time) >= 7 && $difference_year > 0){
         echo "昨年".date('n',$post_yumepyon_time)."月に作成";
-    }elseif( $difference_day >= $month_flag && abs($difference_month) != 6 && 12 > $day_to_year ){
+    }elseif($difference_day >= $month_flag && abs($difference_month) != 6 && 12 > $day_to_year ){
         echo $day_to_year."ヶ月前に作成";
-    }elseif( ( $difference_month == 6  && $difference_year == 0 ) || ( $difference_month == -6 && $difference_year == 1 ) ){
+    }elseif(($difference_month == 6  && $difference_year == 0) || ($difference_month == -6 && $difference_year == 1 ) ){
         echo "半年前に作成";
-    }elseif( $difference_year > 0 ){echo get_the_date();
+    }elseif($difference_year > 0){echo get_the_date();
     }elseif(3>$difference_day && ($difference_week == 2 || $difference_week == -5)){echo "一昨日作成";
     }elseif(2>$difference_day && ($difference_week == 1 || $difference_week == -6) && $difference_sec>3600*$yesterday_flag){echo "昨日作成";
     }else{echo $human_yumepyon_diff."前に作成";}}
@@ -144,11 +142,9 @@ function url_to_hatena_blog_card($the_content){
       $the_content = preg_replace('{'.preg_quote($match).'}', $tag , $the_content, 1);}}return $the_content;}
 add_filter('the_content','url_to_hatena_blog_card');
 //from:@* to:twitter name
-function twtreplace($content){
-$twtreplace = preg_replace('/([^a-zA-Z0-9-_&])@([0-9a-zA-Z_]+)/',"$1<a href=\"http://twitter.com/$2\" target=\"_blank\" rel=\"nofollow\">@$2</a>",$content);
-return $twtreplace;}
-add_filter('the_content', 'twtreplace');
-add_filter('comment_text', 'twtreplace');
+function twtreplace($content){$twtreplace = preg_replace('/([^a-zA-Z0-9-_&])@([0-9a-zA-Z_]+)/',"$1<a href=\"http://twitter.com/$2\" target=\"_blank\" rel=\"nofollow\">@$2</a>",$content);return $twtreplace;}
+add_filter('the_content','twtreplace');
+add_filter('comment_text','twtreplace');
 //カテゴリー説明文をメタ化
 function get_meta_description_from_category(){$cate_desc = trim(strip_tags(category_description()));if ($cate_desc){return $cate_desc;}$cate_desc = '「' . single_cat_title('', false) . '」の記事一覧です。' . get_bloginfo('description');return $cate_desc;}
 function get_meta_keyword_from_category(){return single_cat_title('', false) . ',ブログ,記事一覧';}
@@ -201,11 +197,6 @@ add_action( 'customize_register', 'themename_theme_customizer' );
 function get_the_logo_image_url(){return esc_url(get_theme_mod(LOGO_IMAGE_URL));}
 //投稿記事一覧にアイキャッチ画像を表示
 function customize_admin_manage_posts_columns($columns){$columns['thumbnail'] = __('Thumbnail');return $columns;}
-function customize_admin_add_column($column_name,$post_id){
-    if('thumbnail' == $column_name){$thum = get_the_post_thumbnail($post_id,array(100,100),array('style'=>'width:75px;height:auto;'));}
-    if(isset($thum) && $thum){echo $thum;}
-}
-function customize_admin_css_list() {echo '<style TYPE="text/css">.column-thumbnail{width:80px;}</style>';}
+function customize_admin_add_column($column_name,$post_id){if('thumbnail' == $column_name){$thum = get_the_post_thumbnail($post_id,array(100,100));}if(isset($thum) && $thum){echo $thum;}}
 add_filter('manage_posts_columns','customize_admin_manage_posts_columns');
 add_action('manage_posts_custom_column','customize_admin_add_column',10,2);
-add_action('admin_print_styles','customize_admin_css_list',21);
