@@ -5,8 +5,8 @@
 	<meta charset="<?php bloginfo('charset');?>">
 	<meta name="viewport" content="width=device-width">
 	<meta name="theme-color" content="#ffcc00">
-	<meta name="description" content="<?php if(is_category()):echo get_meta_description_from_category():else:echo bloginfo('description')endif;?>">
-	<meta name="keywords" content="<?php if(is_single()){echo get_the_tags();}else{if(is_category())echo get_meta_keyword_from_category(); endif;?>">
+	<meta name="description" content="<?php if(is_category()){echo get_meta_description_from_category()}else{echo bloginfo('description')}?>">
+	<meta name="keywords" content="<?php if(is_single()){echo get_the_tags()}elseif(is_category()){echo get_meta_keyword_from_category()};?>">
 	<?php get_template_part('inc/ogp');?>
 	<link rel="profile" href="http://gmpg.org/xfn/11">
 	<link rel="pingback" href="<?php bloginfo('pingback_url');?>">
