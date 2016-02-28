@@ -6,31 +6,31 @@ $args = array('posts_per_page'=>8,'post__not_in'=>array($post->ID),'category__in
 $query = new WP_Query($args);
   if($query -> have_posts()):
    while ($query -> have_posts()) : $query->the_post();?>
-    <div class="content swiper-slide"><a href="<?php the_permalink()?>" title="<?php the_title_attribute();?>">
+    <div class="swiper-slide"><div class="content"><a href="<?php the_permalink()?>" title="<?php the_title_attribute();?>">
       <div class="thumb">
         <?php if(has_post_thumbnail()):
          echo get_the_post_thumbnail($post->ID);
         else:?>
-         <img src="<?php get_stylesheet_directory_uri();?>/img/no-image.png" alt="NO IMAGE"/>
+         <img src="<?php echo get_stylesheet_directory_uri();?>/img/no-image.png" alt="NO IMAGE"/>
         <?php endif;?>
       </div>
       <div class="title"><?php the_title();?></div>
-    </a></div>
+    </a></div></div>
   <?php endwhile;
   else:
     $args = array('numberposts'=>8,'orderby'=>'rand','post_status'=>'publish','offset'=>1);
     $rand_posts = get_posts($args);
     foreach($rand_posts as $post) :?>
-      <div class="content swiper-slide"><a href="<?php the_permalink()?>" title="<?php the_title_attribute();?>">
+      <div class="swiper-slide"><div class="content"><a href="<?php the_permalink()?>" title="<?php the_title_attribute();?>">
         <div class="thumb">
           <?php if(has_post_thumbnail()):
             echo get_the_post_thumbnail($post->ID);
           else:?>
-            <img src="<?php get_stylesheet_directory_uri();?>/img/no-image.png" alt="NO IMAGE"/>
+            <img src="<?php echo get_stylesheet_directory_uri();?>/img/no-image.png" alt="NO IMAGE"/>
           <?php endif;?>
         </div>
         <div class="title"><?php the_title();?></div>
-      </a></div>
+      </a></div></div>
     <?php endforeach;?>
   <?php endif;?>
 <?php wp_reset_postdata();?>
