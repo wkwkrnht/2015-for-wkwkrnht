@@ -15,10 +15,8 @@ jQuery(function(){
         while(currentlevel > level) {toc += "</ul>";currentlevel--;}
         toc += '<li><a href="#' + this.id + '">' + jQuery(this).html() + "<\/a><\/li>\n";
     });
-    if(toc){toc = '<div class="mokuji_wrap"><div class="mokuji">目次</div>' + toc + '</div>';}
+    if(toc){toc = '<div class="mokuji">目次</div>' + toc + ;}
     jQuery("#toc").html(toc);
-
-    //ページ内リンク#非表示。加速スクロール
     jQuery('a[href^=#]').click(function(){
         var   speed = 1000,
                 href= jQuery(this).attr("href"),

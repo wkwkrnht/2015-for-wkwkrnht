@@ -8,7 +8,7 @@
 /*hide*/
 .site-footer,.more-link,.bread div:first-child a::before{display:none;}
 /*font指定*/
-.entry-header,.home-header,.home-footer,.editbutton,.page-top a{font-family:sans-serif;}
+.entry-header,.home-header,.home-footer,.mokuji,.page-top a{font-family:sans-serif;}
 /*footer
 .site-info{text-align:center;font-family:sans-serif;font-weight:lighter;color:#000}
 .site-footer{background:#fff;box-shadow:0 2px 2px 0 #999;}*/
@@ -29,9 +29,9 @@
 /*SNSbutton*/
 .sharebutton{color:#fff;background:#ffcc00;box-shadow:0 2px 5px 0 #999;width:96%;height:20%;margin:15px;font-size:40px;text-align:center;}
 .buttonarea{display:inline-flex;display:-ms-inline-flexbox;display:-webkit-inline-box;display:-webkit-inline-flex;}
-.tweet::before,.fblike::before,.g1::before,.pocket::before,.thmblr::before,.linkedin::before{color:#fff;font-size:25px;font-family:"Genericons";bottom:0;right:0;position:absolute;}
-.line::after,.hatebu::after{background:#fff;content:"";top:0;left:0;width:100%;height:100%;}
-.tweet,.fblike,.g1,.pocket,.thmblr,.linkedin,.line,.hatebu{width:70px;height:70px;border-radius:35px;margin:5px;box-shadow:0 2px 5px 0 #999;position:relative;}
+.tweet::before,.fblike::before,.g1::before,.pocket::before,.thmblr::before,.linkedin::before{color:#fff;font-size:60%;font-family:"Genericons";top:0;left:0;position:absolute;}
+.line::after,.hatebu::after{background:#fff;content:"";top:0;left:0;width:100%;height:100%;position:absolute;display:block;}
+.tweet,.fblike,.g1,.pocket,.thmblr,.linkedin,.line,.hatebu{width:70px;height:70px;border-radius:50%;margin:5px;box-shadow:0 2px 5px 0 #999;position:relative;}
 .tweet::before{content:"\f202";}
 .tweet{background-color:#00b8ff;}
 .fblike::before{content:"\f203";}
@@ -48,7 +48,7 @@
 .linkedin{background-color:#000;}
 /*other button*/
 .page-top{color:#fff;background-color:#ffcc00;box-shadow:0 2px 5px 0 #999;}
-.page-top{line-height:70px;border-radius:40px;width:70px;height:70px;right:35px;bottom:20px;margin:0;padding:0;display:block;cursor:pointer;text-decoration:none;text-align:center;position:fixed;}
+.page-top{line-height:70px;border-radius:50%;width:70px;height:70px;right:35px;bottom:20px;margin:0;padding:0;display:block;cursor:pointer;text-decoration:none;text-align:center;position:fixed;}
 /*blogcard,markar,addinfo*/
 .hatenablogcard{clear:both;width:100%;height:155px;margin:10px 0;max-width:680px;box-shadow: 0 2px 3px 0 #999;}
 .search-highlight span{background:yellow;}
@@ -57,7 +57,7 @@
 .question::before{content:'\f059';}
 .information::before,.question::before{color:#eae3b4;font-family:"Genericons";font-size:50px;top:20px;left:13px;position:absolute;}
 /*パンくず*/
-.bread{margin-bottom:5px;width:100%;height:60%;display:block;}
+.bread{margin-bottom:20px;width:100%;height:60%;display:block;}
 .bread div{float:left;margin:0 0.5em 0 1em;}
 .bread a{color:#fff;background:#ffcc00;padding:0.7em 1em;float:left;text-decoration:none;position:relative;}
 .bread a:hover,.bread a::before:hover,.bread a::after:hover{background:#00b8ff;}
@@ -65,11 +65,10 @@
 .bread a::before{border-top:1.55em solid #ffcc00;border-bottom:1.55em solid #ffcc00;border-left:1em solid transparent;left:-1em;}
 .bread a::after{border-top:1.55em solid transparent;border-bottom:1.55em solid transparent;border-left:1em solid #ffcc00;right:-1em;}
 /*目次*/
-#toc{background:#ffd;margin:0 auto;width:90%;}
+#toc{background:#ffcc00;margin:0 auto;width:90%;box-shadow:0 2px 5px 0 #999;}
 #toc li{line-height:1.2}
 #toc ul{border:0;font-size:14px;font-size:1.4rem;}
-.mokuji{color:#800;text-align:center;}
-.mokuji_wrap{border:1px solid #aaa;border-radius:7px;box-shadow:3px 3px 4px #bbb;}
+.mokuji{color:#fff;text-align:center;}
 /*メディアクエリ*/
   /*for mobile*/
   @media screen and (max-width:55em){
@@ -79,8 +78,8 @@
     .card-content{float:right;background-color:#fff;color:#707070;font-size:16px;font-size:1.6rem;line-height:1.5;padding:3.8461% 7.6923%;}*/
     /*addinfo*/
     .information,.question{padding:10px;}.information::before,.question::before{display:none;}
-  .tweet,.fblike,.g1,.pocket,.thmblr,.linkedin,.line,.hatebu{width:50px;height:50px;border-radius:25px;margin:5px;/*box-shadow:0 2px 5px 0 #999;position:relative;*/}
-  .tweet::before,.fblike::before,.g1::before,.pocket::before,.thmblr::before,.linkedin::before{font-size:25px;/*color:#fff;font-family:"Genericons";bottom:1px;right:3px;position:absolute;*/}
+    /*snsbutton*/
+    .tweet,.fblike,.g1,.pocket,.thmblr,.linkedin,.line,.hatebu{width:50px;height:50px;margin:5px;}
   }
   /*for PC*/
   @media screen and (min-width:55em){

@@ -58,6 +58,18 @@ $weekly_label = array('日','月','火','水','木','金','土');
     }elseif(3>$difference_day && ($difference_week == 2 || $difference_week == -5)){echo "一昨日作成";
     }elseif(2>$difference_day && ($difference_week == 1 || $difference_week == -6) && $difference_sec>3600*$yesterday_flag){echo "昨日作成";
     }else{echo $human_yumepyon_diff."前に作成";}}
+//カスタムフィールド追加
+add_action('admin_menu','add_custom_fields');
+add_action('save_post','save_custom_fields');
+function add_custom_fields(){add_meta_box('my_sectionid','カスタムフィールド','my_custom_fields','post');}
+function my_custom_fields(){
+  global $post;
+  $noindex = get_post_meta($post->ID,'noindex',true);
+  if($noindex==1){ $noindex_c="checked";}
+  else{$noindex_c= "/";}
+  echo '<p>低品質コンテンツならチェックすると「noindex」に<br/>';
+  echo '<input type="checkbox" name="noindex" value="1" ' . $noindex_c . '> noindex</p>';}
+function save_custom_fields($post_id){if(!empty($_POST['noindex']))update_post_meta($post_id,'noindex',$_POST['noindex']);else delete_post_meta($post_id,'noindex');}
 //アイキャッチ自動設定（YouTube対応版）
 require_once(ABSPATH . '/wp-admin/includes/image.php');
 function fetch_thumbnail_image($matches, $key, $post_content, $post_id){

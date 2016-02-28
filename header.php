@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html <?php language_attributes();?> class="no-js">
 <head>
+	<?php if(get_post_meta(get_the_ID(),'noindex',true)==1){echo <meta name="robots" content="noindex">}?>
 	<meta charset="<?php bloginfo('charset');?>">
 	<meta name="viewport" content="width=device-width">
 	<meta name="theme-color" content="#ffcc00">
