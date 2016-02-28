@@ -19,7 +19,7 @@ h3 .entry-content{border-left:10px solid #ffcc00;box-shadow:0 2px 5px 0 #999;bor
 /*関連記事*/
 .thumb .related{width:100%;height:100%;}
 .title .related{color:#fff;background-color:rgba(0, 0, 0, 0.5);position:absolute;bottom:0;padding:10px;}
-.content .related{line-height:150%;margin-bottom:20px;clear:both;position:relative;float:left;}
+.content .related{line-height:100%;margin-bottom:20px;clear:both;position:relative;float:left;}
 .swiper-container,.swiper-slide{width:300px;height:300px;}
 /*social-nav*/
 .social-navigation a[href*="twitter.com"]:before{color:#00b8ff;}
@@ -27,10 +27,10 @@ h3 .entry-content{border-left:10px solid #ffcc00;box-shadow:0 2px 5px 0 #999;bor
 .social-navigation a[href*="/feed"]:before,.social-navigation a[href*="/feed/"]:before{content:"\f413";color:#2aff00;}
 .social-navigation a[href*="youtube.com"]:before,.social-navigation a[href*="plus.google.com"]:before{color:#ff0033;}
 /*SNSbutton*/
-.sharebutton{color:#fff;background:#ffcc00;box-shadow:0 2px 5px 0 #999;width:600px;height:80px;margin:15px;text-align:center;}
+.sharebutton{color:#fff;background:#ffcc00;box-shadow:0 2px 5px 0 #999;width:80%;height:15%;margin:15px;text-align:center;}
 .buttonarea{display:inline-flex;display:-ms-inline-flexbox;display:-webkit-inline-box;display:-webkit-inline-flex;}
-.tweet::before,.fblike::before,.g1::before,.pocket::before,.thmblr::before,.linkedin::before{font-family:"Genericons";font-size:22px;color:#fff;position:absolute;}
-.tweet,.fblike,.g1,.pocket,.thmblr,.linkedin,.line,.hatebu{box-shadow:0 2px 5px 0 #999;width:70px;height:70px;border-radius:35px;margin:5px;position:relative;}
+.tweet::before,.fblike::before,.g1::before,.pocket::before,.thmblr::before,.linkedin::before{color:#fff;font-size:25px;font-family:"Genericons";bottom:0;position:absolute;}
+.tweet,.fblike,.g1,.pocket,.thmblr,.linkedin,.line,.hatebu{width:70px;height:70px;border-radius:35px;margin:5px;box-shadow:0 2px 5px 0 #999;position:relative;}
 .tweet::before{content:"\f202";}
 .tweet{background-color:#00b8ff;}
 .fblike::before{content:"\f203";}
@@ -94,6 +94,7 @@ h3 .entry-content{border-left:10px solid #ffcc00;box-shadow:0 2px 5px 0 #999;bor
     .card-content{float:right;background-color:#fff;color:#707070;font-size:16px;font-size:1.6rem;line-height:1.5;padding:3.8461% 7.6923%;}*/
     /*addinfo*/
     .information,.question{padding:10px;}.information::before,.question::before{display:none;}
+    .tweet,.fblike,.g1,.pocket,.thmblr,.linkedin,.line,.hatebu{box-shadow:0 2px 5px 0 #999;width:50px;height:50px;border-radius:25px;margin:5px;position:relative;}
   }
   /*for PC*/
   @media screen and (min-width:55em){
