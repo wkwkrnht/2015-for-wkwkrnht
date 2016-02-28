@@ -27,10 +27,10 @@ h3 .entry-content{border-left:10px solid #ffcc00;box-shadow:0 2px 5px 0 #999;bor
 .social-navigation a[href*="/feed"]:before,.social-navigation a[href*="/feed/"]:before{content:"\f413";color:#2aff00;}
 .social-navigation a[href*="youtube.com"]:before,.social-navigation a[href*="plus.google.com"]:before{color:#ff0033;}
 /*SNSbutton*/
-.sharebutton{color:#fff;background:#ffcc00;box-shadow:0 2px 5px 0 #999;text-align:center;}
+.sharebutton{color:#fff;background:#ffcc00;box-shadow:0 2px 5px 0 #999;width:600px;height:80px;margin:15px;text-align:center;}
 .buttonarea{display:inline-flex;display:-ms-inline-flexbox;display:-webkit-inline-box;display:-webkit-inline-flex;}
 .tweet::before,.fblike::before,.g1::before,.pocket::before,.thmblr::before,.linkedin::before{font-family:"Genericons";font-size:22px;color:#fff;position:absolute;}
-.tweet,.fblike,.g1,.pocket,.thmblr,.linkedin,.line,.hatebu{box-shadow:0 2px 5px 0 #999;width:50px;height:50px;border-radius:25px;position:relative;}
+.tweet,.fblike,.g1,.pocket,.thmblr,.linkedin,.line,.hatebu{box-shadow:0 2px 5px 0 #999;width:70px;height:70px;border-radius:35px;margin:5px;position:relative;}
 .tweet::before{content:"\f202";}
 .tweet{background-color:#00b8ff;}
 .fblike::before{content:"\f203";}
@@ -46,14 +46,14 @@ h3 .entry-content{border-left:10px solid #ffcc00;box-shadow:0 2px 5px 0 #999;bor
 .linkedin{background-color:#000;}
 /*other button*/
 .editbutton,.page-top{color:#fff;background-color:#ffcc00;box-shadow:0 2px 5px 0 #999;}
-.page-top{line-height:60px;border-radius:30px;width:60px;height:60px;display:block;cursor:pointer;text-decoration:none;text-align:center;right:20px;bottom:20px;position:fixed;margin:0;padding:0;}
+.page-top{line-height:60px;border-radius:40px;width:70px;height:70px;right:35px;bottom:20px;margin:0;padding:0;display:block;cursor:pointer;text-decoration:none;text-align:center;position:fixed;}
 /*blogcard,markar,addinfo*/
 .hatenablogcard{clear:both;width:100%;height:155px;margin:10px 0;max-width:680px;box-shadow: 0 2px 3px 0 #999;}
 .search-highlight span{background:yellow;}
 .information,.question{background-color:#f4f3eb;padding:20px 20px 20px 72px;border-radius:4px;position:relative;display:block;margin-top:1em;margin-bottom:1em;}
 .information::before{content:'\f05a';}
 .question::before{content:'\f059';}
-.information::before,.question::before{color:#eae3b4;font-family:"Genericons";font-size:50px;position:absolute;top:20px;left:13px;}
+.information::before,.question::before{color:#eae3b4;font-family:"Genericons";font-size:50px;top:20px;left:13px;position:absolute;}
 /*パンくず*/
 .bread{width:100%;height:60%;display:block;}
 .bread div{float:left;margin:0 0.5em 0 1em;}
@@ -94,7 +94,6 @@ h3 .entry-content{border-left:10px solid #ffcc00;box-shadow:0 2px 5px 0 #999;bor
     .card-content{float:right;background-color:#fff;color:#707070;font-size:16px;font-size:1.6rem;line-height:1.5;padding:3.8461% 7.6923%;}*/
     /*addinfo*/
     .information,.question{padding:10px;}.information::before,.question::before{display:none;}
-    .tweet,.fblike,.g1,.pocket,.thmblr,.linkedin,.line,.hatebu{box-shadow:0 2px 5px 0 #999;width:30px;height:30px;border-radius:15px;}
   }
   /*for PC*/
   @media screen and (min-width:55em){
