@@ -27,9 +27,9 @@ h3 .entry-content{border-left:10px solid #ffcc00;box-shadow:0 2px 5px 0 #999;bor
 .social-navigation a[href*="/feed"]:before,.social-navigation a[href*="/feed/"]:before{content:"\f413";color:#2aff00;}
 .social-navigation a[href*="youtube.com"]:before,.social-navigation a[href*="plus.google.com"]:before{color:#ff0033;}
 /*SNSbutton*/
-.sharebutton{color:#fff;background:#ffcc00;box-shadow:0 2px 5px 0 #999;width:96%;height:20%;margin:15px;font-size:25px;text-align:center;}
+.sharebutton{color:#fff;background:#ffcc00;box-shadow:0 2px 5px 0 #999;width:96%;height:20%;margin:15px;font-size:40px;text-align:center;}
 .buttonarea{display:inline-flex;display:-ms-inline-flexbox;display:-webkit-inline-box;display:-webkit-inline-flex;}
-.tweet::before,.fblike::before,.g1::before,.pocket::before,.thmblr::before,.linkedin::before{color:#fff;font-size:25px;font-family:"Genericons";bottom:3px;right:5px;position:absolute;}
+.tweet::before,.fblike::before,.g1::before,.pocket::before,.thmblr::before,.linkedin::before{color:#fff;font-size:25px;font-family:"Genericons";bottom:1px;right:3px;position:absolute;}
 .tweet,.fblike,.g1,.pocket,.thmblr,.linkedin,.line,.hatebu{width:70px;height:70px;border-radius:35px;margin:5px;box-shadow:0 2px 5px 0 #999;position:relative;}
 .tweet::before{content:"\f202";}
 .tweet{background-color:#00b8ff;}
@@ -66,7 +66,6 @@ h3 .entry-content{border-left:10px solid #ffcc00;box-shadow:0 2px 5px 0 #999;bor
 .mokuji {background:#fff;box-shadow:0 2px 5px 0 #999;}
 .mokuji.fixed-side {box-shadow:0 2px 5px 0 #999;width:300px;top:30px;position:fixed;left:auto;}
 .mokuji h4{color:#6C501B;background:#FDD835;position:relative;padding:1em 1em 0.8em;font-size:96%;font-weight:bold;text-shadow:1px 1px 0 rgba(255,255,255,0.5);}
-.mokuji h4 .kao{display:inline-block;*display:inline;*zoom:1;margin-left:0.5em;font-weight:normal;}
 .mokuji h4 .closeBtn{cursor:pointer;position:absolute;top:11px;right:12px;font-size:1.5em;transition:0.2s;transform:rotate(45deg);transform-origin:center;}
 .mokuji h4 .closeBtn.active{transform: rotate(0deg);}
 .mokuji .mokujiInner{border:1px solid #ddd;border-top:none;}
@@ -94,7 +93,8 @@ h3 .entry-content{border-left:10px solid #ffcc00;box-shadow:0 2px 5px 0 #999;bor
     .card-content{float:right;background-color:#fff;color:#707070;font-size:16px;font-size:1.6rem;line-height:1.5;padding:3.8461% 7.6923%;}*/
     /*addinfo*/
     .information,.question{padding:10px;}.information::before,.question::before{display:none;}
-    .tweet,.fblike,.g1,.pocket,.thmblr,.linkedin,.line,.hatebu{box-shadow:0 2px 5px 0 #999;width:50px;height:50px;border-radius:25px;margin:5px;position:relative;}
+  .tweet,.fblike,.g1,.pocket,.thmblr,.linkedin,.line,.hatebu{width:50px;height:50px;border-radius:25px;margin:5px;/*box-shadow:0 2px 5px 0 #999;position:relative;*/}
+  .tweet::before,.fblike::before,.g1::before,.pocket::before,.thmblr::before,.linkedin::before{font-size:25px;/*color:#fff;font-family:"Genericons";bottom:1px;right:3px;position:absolute;*/}
   }
   /*for PC*/
   @media screen and (min-width:55em){
