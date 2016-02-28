@@ -149,6 +149,10 @@ $twtreplace = preg_replace('/([^a-zA-Z0-9-_&])@([0-9a-zA-Z_]+)/',"$1<a href=\"ht
 return $twtreplace;}
 add_filter('the_content', 'twtreplace');
 add_filter('comment_text', 'twtreplace');
+//カテゴリー説明文をメタ化
+function get_meta_description_from_category(){$cate_desc = trim(strip_tags(category_description()));if ($cate_desc){return $cate_desc;}$cate_desc = '「' . single_cat_title('', false) . '」の記事一覧です。' . get_bloginfo('description');return $cate_desc;}
+function get_meta_keyword_from_category(){return single_cat_title('', false) . ',ブログ,記事一覧';}
+function get_mtime($format){$mtime = get_the_modified_time('Ymd');$ptime = get_the_time('Ymd');if ($ptime > $mtime) {return get_the_time($format);}elseif($ptime === $mtime){return null;}else{return get_the_modified_time($format);}}
 //add keyword highlight & ルビサポート
 function wps_highlight_results($text){
 	if(is_search()){
@@ -185,3 +189,23 @@ function rss_edit($content){
     return $content;}
 add_filter('the_excerpt_rss', 'add_thumb_to_RSS');
 add_filter('the_content_feed', 'add_thumb_to_RSS');
+// テーマカスタマイザーにロゴアップロード設定機能追加
+define('LOGO_SECTION','logo_section');
+define('LOGO_IMAGE_URL','logo_image_url');
+function themename_theme_customizer( $wp_customize ){
+ $wp_customize->add_section(LOGO_SECTION,array('title' => 'ロゴ画像','priority' => 30,'description' => 'サイトのロゴ設定。',));
+ $wp_customize->add_setting(LOGO_IMAGE_URL);
+ $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize,LOGO_IMAGE_URL,array('label' => 'ロゴ','section' => LOGO_SECTION,'settings' => LOGO_IMAGE_URL,'description' => '画像をアップロードするとヘッダーにあるデフォルトのサイト名と入れ替わります。',)));
+}
+add_action( 'customize_register', 'themename_theme_customizer' );
+function get_the_logo_image_url(){return esc_url(get_theme_mod(LOGO_IMAGE_URL));}
+//投稿記事一覧にアイキャッチ画像を表示
+function customize_admin_manage_posts_columns($columns){$columns['thumbnail'] = __('Thumbnail');return $columns;}
+function customize_admin_add_column($column_name,$post_id){
+    if('thumbnail' == $column_name){$thum = get_the_post_thumbnail($post_id,,array('style'=>'width:75px;height:auto;'));}
+    if(isset($thum) && $thum){echo $thum;}
+}
+function customize_admin_css_list() {echo '<style TYPE="text/css">.column-thumbnail{width:80px;}</style>';}
+add_filter('manage_posts_columns','customize_admin_manage_posts_columns');
+add_action('manage_posts_custom_column','customize_admin_add_column',10,2);
+add_action('admin_print_styles','customize_admin_css_list',21);
