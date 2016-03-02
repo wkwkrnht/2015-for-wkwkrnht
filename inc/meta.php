@@ -1,5 +1,5 @@
 <?php
-$content_summary= strip_tags($post-&gt;post_content);
+$content_summary= strip_tags($post->post_content);
 $content_summary = str_replace("\n","",$content_summary);
 $content_summary = str_replace("\r","",$content_summary);
 $content_summary = mb_substr($content_summary,0,60). "...";?>
