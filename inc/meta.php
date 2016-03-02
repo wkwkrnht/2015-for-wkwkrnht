@@ -8,4 +8,4 @@ elseif(is_category()){echo get_meta_description_from_category();}
 else{bloginfo('description');}?>">
 <meta name="keywords" content="<?php if(is_category()){echo get_meta_keyword_from_category();}
 elseif(is_single()){$posttags = get_the_tags();if($posttags){foreach($posttags as $tag){echo $tag->name . ','; }}the_title();}
-else{echo'RT狂,wkwkrnht'}?>">
+else{echo'RT狂,wkwkrnht';}?>">
