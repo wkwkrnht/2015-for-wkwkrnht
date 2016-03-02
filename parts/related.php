@@ -2,7 +2,7 @@
 foreach($categories as $category):array_push($category_ID,$category->cat_ID);endforeach;
 $args=array('posts_per_page'=>8,'post__not_in'=>array($post->ID),'category__in'=>$category_ID,'orderby'=>'rand',);
 $query=new WP_Query($args);
-if(has_post_thumbnail()):$image=get_the_post_thumbnail($post->ID);else:$image=print'get_stylesheet_directory_uri()/img/no-img.png';endif;
+if(has_post_thumbnail()):$image=print'get_the_post_thumbnail($post->ID)';else:$image=print'echo get_stylesheet_directory_uri()'print'./img/no-img.png';endif;
   if($query -> have_posts()):
    while($query -> have_posts()):$query->the_post();?>
     <div class="swiper-slide"><div class="content"><a href="<?php the_permalink()?>" title="<?php the_title_attribute();?>">
