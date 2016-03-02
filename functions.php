@@ -65,7 +65,7 @@ function my_custom_fields(){
   $noindex = get_post_meta($post->ID,'noindex',true);
   if($noindex==1){ $noindex_c="checked";}
   else{$noindex_c= "/";}
-  echo '<p>低品質コンテンツならチェックすると「noindex」に<br/>';
+  echo '<p>チェックすると「noindex」に<br/>';
   echo '<input type="checkbox" name="noindex" value="1" ' . $noindex_c . '> noindex</p>';}
 function save_custom_fields($post_id){if(!empty($_POST['noindex']))update_post_meta($post_id,'noindex',$_POST['noindex']);else delete_post_meta($post_id,'noindex');}
 //アイキャッチ自動設定（YouTube対応版）
@@ -148,7 +148,7 @@ add_filter('comment_text','twtreplace');
 //カテゴリー説明文をメタ化
 function get_meta_description_from_category(){$cate_desc = trim(strip_tags(category_description()));if ($cate_desc){return $cate_desc;}$cate_desc = '「' . single_cat_title('', false) . '」の記事一覧です。' . get_bloginfo('description');return $cate_desc;}
 function get_meta_keyword_from_category(){return single_cat_title('', false) . ',ブログ,記事一覧';}
-function get_mtime($format){$mtime = get_the_modified_time('Ymd');$ptime = get_the_time('Ymd');if ($ptime > $mtime) {return get_the_time($format);}elseif($ptime === $mtime){return null;}else{return get_the_modified_time($format);}}
+function get_mtime($format){$mtime = get_the_modified_time('Ymd');$ptime = get_the_time('Ymd');if ($ptime > $mtime){return get_the_time($format);}elseif($ptime === $mtime){return null;}else{return get_the_modified_time($format);}}
 //add keyword highlight & ルビサポート
 function wps_highlight_results($text){
 	if(is_search()){
@@ -158,7 +158,7 @@ function wps_highlight_results($text){
 	return $text;}
 add_filter('the_title','wps_highlight_results');
 add_filter('the_content','wps_highlight_results');
-add_action('after_setup_theme', 'ruby_setup');
+add_action('after_setup_theme','ruby_setup');
 function ruby_setup(){global $allowedposttags;foreach(array('ruby','rp','rt') as $tag )	if(!isset($allowedposttags[$tag]))$allowedposttags[$tag] = array();}
 //カレンダー短縮
 function my_archives_link($link_html){
