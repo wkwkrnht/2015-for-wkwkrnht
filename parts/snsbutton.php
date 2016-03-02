@@ -1,4 +1,3 @@
-<h2 class="sharebutton">Share Button</h2>
 <div class="buttonarea">
   <a href="https://twitter.com/share?url=<?php echo get_permalink()?>&amp;text=<?php echo trim(wp_title('',false));?>&amp;via=wkwkrnht`" onclick="window.open(encodeURI(decodeURI(this.href),'tweetwindow','width=550,height=450,personalbar=0,toolbar=0,scrollbars=1,resizable=1');return false;" target="_blank"><div class="tweet"></div></a>
   <a href="http://www.facebook.com/share.php?u=<?php echo trim(wp_title('',false));?>" onclick="window.open(this.href,'window','width=550,height=450,personalbar=0,toolbar=0,scrollbars=1,resizable=1');return false;"><div class="fblike"></div></a>

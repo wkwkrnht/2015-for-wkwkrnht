@@ -19,8 +19,8 @@
 				'pagelink'    =>'<span class="screen-reader-text">' . __('Page','twentyfifteen') . ' </span>%',
 				'separator'   =>'<span class="screen-reader-text">,</span>',));?>
 	</div><!-- .entry-content -->
+	<h2 class="aftercontent">Share Button＆関連記事</h2>
   <?php get_template_part('parts/snsbutton');?>
-	<h2 class="related-title">関連記事</h2>
 	<div class="swiper-container"><div class="swiper-wrapper"><?php get_template_part('parts/related');?></div></div>
 	<footer class="entry-footer">
 		<?php twentyfifteen_entry_meta();
