@@ -18,7 +18,6 @@
 				'link_after'  =>'</span>',
 				'pagelink'    =>'<span class="screen-reader-text">' . __('Page','twentyfifteen') . ' </span>%',
 				'separator'   =>'<span class="screen-reader-text">,</span>',));?>
-		<p><?php echo get_stylesheet_directory_uri()?></p><?php echo'<p>/img/no-img.png</p>';?>
 	</div><!-- .entry-content -->
 	<h2 class="aftercontent">Share Button＆関連記事</h2>
   <?php get_template_part('parts/snsbutton');?>
