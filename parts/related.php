@@ -5,9 +5,9 @@ $query=new WP_Query($args);
 if(has_post_thumbnail()):$image=get_the_post_thumbnail($post->ID);else:$image='http://wkwkrnht.wp.xdomain.jp/wp-content/themes/2015-for-wkwkrnht/img/no-img.png';endif;
   if($query -> have_posts()):
    while($query -> have_posts()):$query->the_post();?>
+   <style>.thumb{background-image=url("<?php echo($image)?>");}</style>
     <div class="swiper-slide"><div class="content"><a href="<?php the_permalink()?>" title="<?php the_title_attribute();?>">
-      <div class="thumb" style="background-image=url("<?php echo($image)?>")"></div>
-      <div class="title"><?php the_title();?></div>
+      <div class="thumb"></div><div class="title"><?php the_title();?></div>
     </a></div></div>
   <?php endwhile;
   else:
