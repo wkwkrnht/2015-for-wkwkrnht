@@ -1,13 +1,13 @@
-<?php add_action('wp_enqueue_scripts','theme_enqueue_styles');function theme_enqueue_styles(){wp_enqueue_style('parent-style',get_template_directory_uri() . '/style.css' );}
+<?php add_action('wp_enqueue_scripts','theme_enqueue_styles');function theme_enqueue_styles(){wp_enqueue_style('parent-style',get_template_directory_uri().'/style.css' );}
 //外部スクリプト読み込み
 function swiper_Initialize_script(){wp_enqueue_script('swiper_Initialize','get_template_directory_uri()./inc/swiper-local.js',array(),false,false);}
 add_action('wp_enqueue_script','swiper_Initialize_script');
-function rightclick_tweet_script(){wp_enqueue_script('rightclick_tweet','get_template_directory_uri()./inc/select-and-tweet.js',array('jquery'),false,false);}
-add_action('wp_enqueue_script','rightclick_tweet_script');
-function code_scripts(){wp_enqueue_style('code','//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.1.0/styles/default.min.css',array(),false,false);wp_enqueue_script('code', '//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.1.0/highlight.min.js',array('jquery'),false,false);}
-add_action('wp_enqueue_scripts','code_scripts');
+function toc_script(){wp_enqueue_script('toc','get_template_directory_uri()./parts/toc.min.js',array(),false,false);}
+add_action('wp_enqueue_script','toc_scripts');
 function swiper_scripts(){wp_enqueue_script('swiper','//cdnjs.cloudflare.com/ajax/libs/Swiper/3.3.1/js/swiper.min.js',array(),false,false);wp_enqueue_style('swiper','//cdnjs.cloudflare.com/ajax/libs/Swiper/3.3.1/css/swiper.min.css',array(),false,false);}
 add_action('wp_enqueue_script','swiper_scripts');
+function code_scripts(){wp_enqueue_style('code','//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.1.0/styles/default.min.css',array(),false,false);wp_enqueue_script('code', '//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.1.0/highlight.min.js',array('jquery'),false,false);}
+add_action('wp_enqueue_scripts','code_scripts');
 /*function _script(){wp_enqueue_script('','',array(),false,false);}
 add_action('wp_enqueue_script','_scripts');*/
 // hide /?ver= & emoji&error add_action & 標準埋め込み
