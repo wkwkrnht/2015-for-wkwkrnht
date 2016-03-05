@@ -33,7 +33,7 @@
 .page-links a,.page-links>span{border:1px solid #eaeaea;font-size:12px;font-size:1.2rem;width:3em;height:3em;line-height:3;margin:0 0.3333em 0.3333em 0;text-align:center;display:inline-block;}
 .page-links a{color:#fff;border-color:#333;background-color:#333;-webkit-tap-highlight-color:rgba(255, 255, 255, 0.3);}
 /*SNSbutton*/
-.entry-footer h2{color:#fff;background:#ffcc00;box-shadow:0 2px 5px 0 #999;width:95%;height:18%;margin:15px;font-size:40px;text-align:center;}
+.entry-footer h2{color:#fff;background:#ffcc00;box-shadow:0 2px 5px 0 #999;width:100%;height:16%;margin:15px;font-size:30px;text-align:center;}
 .buttonarea{display:inline-flex;display:-ms-inline-flexbox;display:-webkit-inline-box;display:-webkit-inline-flex;}
 .tweet::before,.fblike::before,.g1::before,.pocket::before,.tumblr::before,.linkedin::before{color:#fff;font-size:40px;font-family:"Genericons";position:absolute;top:10%;left:20%;}
 .tweet,.fblike,.g1,.pocket,.tumblr,.linkedin,.line,.hatebu,.pushdog{width:70px;height:70px;border-radius:50%;margin:5px;box-shadow:0 2px 5px 0 #999;position:relative;}
@@ -53,8 +53,7 @@
 .linkedin{background-color:#0077b5;}
 .pushdog{background-color:#fff;}
 /*other button*/
-.page-top{color:#fff;background-color:#ffcc00;box-shadow:0 2px 5px 0 #999;}
-.page-top{line-height:70px;border-radius:50%;width:70px;height:70px;right:35px;bottom:20px;margin:0;padding:0;display:block;cursor:pointer;text-decoration:none;text-align:center;position:fixed;}
+.page-top{color:#fff;background-color:#ffcc00;box-shadow:0 2px 5px 0 #999;line-height:70px;border-radius:50%;width:70px;height:70px;right:35px;bottom:20px;display:block;cursor:pointer;text-decoration:none;text-align:center;position:fixed;}
 /*blogcard,markar,addinfo*/
 .hatenablogcard{clear:both;width:100%;height:155px;margin:10px 0;max-width:680px;box-shadow: 0 2px 3px 0 #999;}
 .search-highlight span{background:yellow;}
@@ -71,7 +70,7 @@
 .bread a::before{border-top:1.55em solid #ffcc00;border-bottom:1.55em solid #ffcc00;border-left:1em solid transparent;left:-1em;}
 .bread a::after{border-top:1.55em solid transparent;border-bottom:1.55em solid transparent;border-left:1em solid #ffcc00;right:-1em;}
 /*目次*/
-#toc{color:#fff;background:#333;box-shadow:inset -5px 0 5px 0px #000;top:0px;left:0px;height:100%;width:130px;padding-top:20px;font-size:12px;position:fixed;}
+#toc{color:#fff;background:#333;box-shadow:0 2px 5px 0 #999;padding-top:20px;font-size:12px;}
 #toc ul{margin:0;padding:0;list-style:none;}
 #toc li{padding:5px 10px;}
 #toc a{color:#fff;text-decoration:none;display:block;}

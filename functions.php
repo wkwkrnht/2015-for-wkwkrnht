@@ -23,6 +23,34 @@ add_filter('embed_oembed_discover','__return_false');
 remove_action('parse_query','wp_oembed_parse_query');
 remove_action('wp_head','wp_oembed_remove_discovery_links');
 remove_action('wp_head','wp_oembed_remove_host_js');
+//twentyfifteen_entry_meta
+function twentyfifteen_entry_meta(){
+  //「この投稿を先頭に固定表示」にチェックして投稿すると上部に表示される
+  if(is_sticky()&&is_home()&& !is_paged()){printf('<span class="sticky-post">%s</span>',__('Featured','twentyfifteen'));}
+  //画像サイズ(横 x 縦)表示
+  if(is_attachment() && wp_attachment_is_image()){$metadata = wp_get_attachment_metadata();printf('<span class="full-size-link"><span class="screen-reader-text">%1$s</span><a href="%2$s">%3$s &times;%4$s</a></span>',_x('Full size','Used before full size attachment link.','twentyfifteen'),esc_url(wp_get_attachment_url()),$metadata['width'],$metadata['height']);}
+  //「投稿日」・「更新日」
+  if(in_array(get_post_type(),array('post','attachment'))){
+    $time_string = '<time class="entry-date published updated" datetime="%1$s">%2$s</time>';
+    if(get_the_time('U')!== get_the_modified_time('U')){$time_string = '<time class="entry-date published" datetime="%1$s">%2$s</time><time class="updated" datetime="%3$s">%4$s</time>';}
+      $time_string = sprintf($time_string,esc_attr(get_the_date('c')),get_the_date(),esc_attr(get_the_modified_date('c')),get_the_modified_date());
+      printf('<span class="posted-on"><span class="screen-reader-text">%1$s</span><a href="%2$s" rel="bookmark">%3$s</a></span>',_x('Posted on','Used before publish date.','twentyfifteen'),esc_url(get_permalink()),$time_string);
+  }
+  //投稿者|カテゴリー|タグ(順同)
+  if('post' == get_post_type()){
+    if(is_singular()||is_multi_author()){printf('<span class="byline"><span class="author vcard"><span class="screen-reader-text">%1$s</span><a class="url fn n" href="%2$s">%3$s</a></span></span>',_x('Author','Used before post author name.','twentyfifteen'),esc_url(get_author_posts_url(get_the_author_meta('ID'))),get_the_author());}
+    $categories_list = get_the_category_list(_x(',','Used between list items,there is a space after the comma.','twentyfifteen'));
+    if($categories_list && twentyfifteen_categorized_blog()){printf('<span class="cat-links"><span class="screen-reader-text">%1$s </span>%2$s</span>',_x('Categories','Used before category names.','twentyfifteen'),$categories_list);}
+    $tags_list = get_the_tag_list('',_x(',','Used between list items,there is a space after the comma.','twentyfifteen'));
+    if($tags_list){printf('<span class="tags-links"><span class="screen-reader-text">%1$s</span>%2$s</span>',_x('Tags','Used before tag names.','twentyfifteen'),$tags_list);}
+  }
+  //"コメントをどうぞ"、"n件のコメント"表示
+  if(!is_single() && !post_password_required() && (comments_open() || get_comments_number())){
+    echo'<span class="comments-link">';
+    comments_popup_link(__('Leave a comment','twentyfifteen'),__('1 Comment','twentyfifteen' ),__('% Comments','twentyfifteen'));
+    echo'</span>';
+  }
+}
 //Alt属性がないIMGタグにalt=""を追加する
 add_filter('the_content',function($content){return preg_replace('/<img((?![^>]*alt=)[^>]*)>/i','<img alt=""${1}>',$content);});
 //ゆめぴょん流相対時間

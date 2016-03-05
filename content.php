@@ -6,8 +6,8 @@
 			else:
 				the_title(sprintf('<h1 class="entry-title"><a href="%s" rel="bookmark">',esc_url(get_permalink())),'</a></h1>');
 			endif;
-		get_template_part('parts/bread');
-		twentyfifteen_entry_meta();?>
+		echo'<div>';twentyfifteen_entry_meta();echo'</div>';
+		get_template_part('parts/bread');?>
 	</header>
 	<div id="toc"></div>
 	<div class="entry-content">
