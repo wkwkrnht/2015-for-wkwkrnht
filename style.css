@@ -28,17 +28,17 @@
 .social-navigation a[href*="youtube.com"]:before,.social-navigation a[href*="plus.google.com"]:before{color:#ff0033;}
 /*ページャー*/
 .page-links{margin-bottom:1.3333em;clear:both;}
-.page-links a,.page-links>span{border:1px solid #eaeaea;font-size:12px;font-size:1.2rem;width:5em;height:5em;line-height:3;margin:0 0.3333em 0.3333em 0;text-align:center;display:inline-block;}
+.page-links a,.page-links>span{border:1px solid #eaeaea;font-size:15px;font-size:1.2rem;width:4em;height:4em;line-height:4;margin:0 0.3333em 0.3333em 0;text-align:center;display:inline-block;}
 .page-links a{color:#fff;border-color:#333;background-color:#333;-webkit-tap-highlight-color:rgba(255, 255, 255, 0.3);}
 /*関連記事*/
 .thumb .related{width:100%;height:100%;float:left;position:relative;}
 .title .related{color:#fff;bottom:0;padding:10px;position:absolute;}
 .content .related{display:inline-flex;display:-ms-inline-flexbox;display:-webkit-inline-box;display:-webkit-inline-flex;}
 /*SNSbutton*/
-.entry-footer h2{color:#fff;background:#ffcc00;box-shadow:0 2px 5px 0 #999;width:100%;height:16%;margin:15px;font-size:30px;text-align:center;}
+.entry-footer h2{color:#fff;background:#ffcc00;box-shadow:0 2px 5px 0 #999;height:16%;margin:15px;font-size:30px;text-align:center;}
 .buttonarea{display:inline-flex;display:-ms-inline-flexbox;display:-webkit-inline-box;display:-webkit-inline-flex;}
 .tweet::before,.fblike::before,.g1::before,.pocket::before,.tumblr::before,.linkedin::before{color:#fff;font-size:40px;font-family:"Genericons";position:absolute;top:10%;left:20%;}
-.tweet,.fblike,.g1,.pocket,.tumblr,.linkedin,.line,.hatebu,.pushdog{width:70px;height:70px;border-radius:50%;margin:2px;box-shadow:0 2px 5px 0 #999;position:relative;}
+.tweet,.fblike,.g1,.pocket,.tumblr,.linkedin,.line,.hatebu,.pushdog{width:70px;height:70px;border-radius:50%;margin:3px;box-shadow:0 2px 5px 0 #999;position:relative;}
 .tweet::before{content:"\f202";}
 .tweet{background-color:#00b8ff;}
 .fblike::before{content:"\f203";}
@@ -95,7 +95,7 @@
   /*for PC*/
   @media screen and (min-width:55em){
     .entry-header{text-align:center;}
-    .sidebar{box-shadow:0 0 10px 0 #999;}
+    body::before{box-shadow:0 0 10px 0 #999;}
     .comments-area,.post-navigation{margin:6% 6% 0;}
     /*top cardstyle
     .post{}

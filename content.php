@@ -10,7 +10,7 @@
 		get_template_part('parts/bread');?>
 	</header>
 	<div class="entry-content">
-		<div id="toc"></div>
+		<!-- <div id="toc"></div> -->
 		<?php the_content(sprintf(__('Continue reading %s','twentyfifteen'),the_title('<span class="screen-reader-text">','</span>',false)));//%s=Name of current post
 			wp_link_pages(array(
 				'before'      =>'<div class="page-links"><span class="page-links-title">' . __('Pages:','twentyfifteen') . '</span>',
