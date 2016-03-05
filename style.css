@@ -12,13 +12,15 @@
 .page-links>.page-links-title,.site-footer,.more-link,.bread div:first-child a::before{display:none;}
 /*font指定*/
 .entry-header,.home-header,.home-footer,.mokuji,.page-top a{font-family:sans-serif;}
+/*header*/
+.entry-header{box-shadow:0 2px 5px 0 #999;}
 /*footer
 .site-info{text-align:center;font-family:sans-serif;font-weight:lighter;color:#000}
 .site-footer{background:#fff;box-shadow:0 2px 2px 0 #999;}*/
 /*見出し*/
 .prev+.page-numbers,.next+.page-numbers{color:#fff;background:#ffcc00;}
 .entry-content h2{color:#fff;background:#ffcc00;box-shadow:0 2px 5px 0 #999;text-align:center;}
-.entry-content h3{border-left:10px solid #ffcc00;box-shadow:0 2px 5px 0 #999;border-bottom:none;text-align:center;}
+.entry-content h3{border-left:10% solid #ffcc00;box-shadow:0 2px 5px 0 #999;border-bottom:none;text-align:center;}
 /*関連記事*/
 .thumb .related{width:100%;height:100%;float:left;position:relative;}
 .title .related{color:#fff;bottom:0;padding:10px;position:absolute;}
@@ -70,7 +72,7 @@
 .bread a::before{border-top:1.55em solid #ffcc00;border-bottom:1.55em solid #ffcc00;border-left:1em solid transparent;left:-1em;}
 .bread a::after{border-top:1.55em solid transparent;border-bottom:1.55em solid transparent;border-left:1em solid #ffcc00;right:-1em;}
 /*目次*/
-#toc{color:#fff;background:#333;box-shadow:0 2px 5px 0 #999;padding-top:20px;font-size:12px;}
+#toc{color:#333;background-color:#fff;box-shadow:0 2px 5px 0 #999;padding-top:20px;font-size:12px;margin:10px;}
 #toc ul{margin:0;padding:0;list-style:none;}
 #toc li{padding:5px 10px;}
 #toc a{color:#fff;text-decoration:none;display:block;}
