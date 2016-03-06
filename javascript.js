@@ -6,7 +6,7 @@ jQuery(function(){
   //top-button
   jQuery('#page-top').click(function(){jQuery('body,html').animate({scrollTop:0},500);return false;});
   //目次
-  $('#toc').toc({
+  jQuery('#toc').toc({
     'selectors':'.entry-content h2,.entry-content h3',//目次として表示する要素のCSSセレクターを指定
     'container':'body',//コンテナ要素
     'smoothScrolling':true, //スムーズなスクロールを有効にするか
@@ -18,5 +18,9 @@ jQuery(function(){
     'headerText':function(i,heading,$heading){return $heading.text();},//ヘッダーアイテムテキストのカスタマイズ
     'itemClass':function(i,heading,$heading,prefix){return $heading[0].tagName.toLowerCase();}//アイテムクラスのカスタマイズ
   });
+  //slide
+  jQuery(document).ready(function(){var width=jQuery('#slide').overwidth()/3
+	  jQuery('#next').click(function(event){event.preventDefault();jQuery('#slide').animate({scrollLeft:'+=width'},'slow');});
+	  jQuery('#pre').click(function(event){event.preventDefault();jQuery('#slide').animate({scrollLeft:'-=width'},'slow');});});
   //next
 });
