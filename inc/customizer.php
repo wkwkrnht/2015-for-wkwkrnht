@@ -207,7 +207,7 @@ function twentyfifteen_get_color_scheme_css($colors){
 	/*Background Color */
 	body{background-color:{$colors['background_color']};}
 	/*Sidebar Background Color*/
-	body:before,.site-header{background-color:{$colors['header_background_color']};}
+	body:before,.site-header,.sidebar{background-color:{$colors['header_background_color']};}
 
 	/*Box Background Color*/
 	.post-navigation,.pagination,.secondary,.site-footer,.hentry,.page-header,.page-content,.comments-area,.widecolumn{background-color:{$colors['box_background_color']};}
