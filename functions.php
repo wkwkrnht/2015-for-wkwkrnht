@@ -35,7 +35,7 @@ function twentyfifteen_entry_meta(){
     if(get_the_time('U')!== get_the_modified_time('U')){$time_string = '<time class="entry-date published" datetime="%1$s">%2$s</time><time class="updated" datetime="%3$s">%4$s</time>';}
       $time_string = sprintf($time_string,esc_attr(get_the_date('c')),get_the_date(),esc_attr(get_the_modified_date('c')),get_the_modified_date());
       printf('<span class="posted-on"><span class="screen-reader-text">%1$s</span><a href="%2$s" rel="bookmark">%3$s</a></span>',_x('Posted on','Used before publish date.','twentyfifteen'),esc_url(get_permalink()),$time_string);
-      echo'('echo human_time_diff(get_the_time('U'))echo')'
+      echo'(';echo human_time_diff(get_the_time('U'));echo')';
   }
   //投稿者|カテゴリー|タグ(順同)
   if('post' == get_post_type()){
