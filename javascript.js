@@ -19,8 +19,8 @@ jQuery(function(){
     'itemClass':function(i,heading,$heading,prefix){return $heading[0].tagName.toLowerCase();}//アイテムクラスのカスタマイズ
   });
   //slide
-  jQuery(document).ready(function(){var width=jQuery('#slide').overwidth()/3
-	  jQuery('#next').click(function(event){event.preventDefault();jQuery('#slide').animate({scrollLeft:'+=width'},'slow');});
-	  jQuery('#pre').click(function(event){event.preventDefault();jQuery('#slide').animate({scrollLeft:'-=width'},'slow');});});
+  jQuery(document).ready(function(){
+	  jQuery('#next').click(function(event){event.preventDefault();jQuery('#slide').animate({scrollLeft:'+=70'},'slow');});
+	  jQuery('#pre').click(function(event){event.preventDefault();jQuery('#slide').animate({scrollLeft:'-=70'},'slow');});});
   //next
 });
