@@ -96,7 +96,8 @@
   /*for PC*/
   @media screen and (min-width:55em){
     .entry-header{text-align:center;}
-    body::before{box-shadow:0 0 10px 0 #999;z-index:3;}
+    .sidebar{z-index:2;}
+    body::before{box-shadow:0 0 10px 0 #999;z-index:2;}
     .comments-area,.post-navigation{margin:6% 6% 0;}
     /*top cardstyle
     .post{}
