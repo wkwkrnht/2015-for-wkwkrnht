@@ -574,8 +574,8 @@ function twentyfifteen_color_scheme_css_template(){
 		'sidebar_border_focus_color'  => '{{data.sidebar_border_focus_color}}',
 		'secondary_sidebar_textcolor' => '{{data.secondary_sidebar_textcolor}}',
 		'meta_box_background_color'   => '{{data.meta_box_background_color}}',);
-	echo <script type="text/html" id="tmpl-twentyfifteen-color-scheme">
+	echo'<script type="text/html" id="tmpl-twentyfifteen-color-scheme">'
 		 echo twentyfifteen_get_color_scheme_css($colors);
-	echo </script>
+	echo'</script>'
 }
 add_action('customize_controls_print_footer_scripts','twentyfifteen_color_scheme_css_template');
