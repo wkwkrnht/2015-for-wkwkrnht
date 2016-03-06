@@ -14,7 +14,7 @@
 /*font指定*/
 .entry-header,.home-header,.home-footer,.mokuji,.page-links,.page-top a{font-family:sans-serif;}
 /*header*/
-.entry-header{box-shadow:0 2px 5px 0 #999;}
+.entry-header{box-shadow:0 2px 5px 0 #999;text-align:center;}
 /*footer
 .site-info{text-align:center;font-family:sans-serif;font-weight:lighter;color:#000}
 .site-footer{background:#fff;box-shadow:0 2px 2px 0 #999;}*/
@@ -95,9 +95,8 @@
   }
   /*for PC*/
   @media screen and (min-width:55em){
-    .entry-header{text-align:center;}
-    .sidebar{z-index:2;}
-    body::before{box-shadow:0 0 10px 0 #999;z-index:2;}
+    .sidebar{box-shadow:0 0 10px 0 #999;z-index:2;}
+    /*body::before{}*/
     .comments-area,.post-navigation{margin:6% 6% 0;}
     /*top cardstyle
     .post{}
