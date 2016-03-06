@@ -53,7 +53,7 @@
 .content+.related{max-width:170px;float:left;display:inline-flex;display:-ms-inline-flexbox;display:-webkit-inline-box;display:-webkit-inline-flex;}
 /*SNSbutton*/
 .entry-footer h2{color:#fff;background:#ffcc00;box-shadow:0 2px 5px 0 #999;height:16%;margin:15px;font-size:30px;text-align:center;}
-.tweet::before,.fblike::before,.g1::before,.pocket::before,.tumblr::before,.linkedin::before{color:#fff;font-size:40px;font-family:"Genericons";position:absolute;top:10%;left:20%;}
+.tweet::before,.fblike::before,.g1::before,.pocket::before,.tumblr::before,.linkedin::before{color:#fff;font-size:30px;font-family:"Genericons";position:absolute;top:5%;left:10%;}
 .tweet,.fblike,.g1,.pocket,.tumblr,.linkedin,.line,.hatebu,.pushdog{width:60px;height:60px;border-radius:50%;margin:3px;box-shadow:0 2px 5px 0 #999;float:left;position:relative;}
 .tweet::before{content:"\f202";}
 .tweet{background-color:#00b8ff;}
@@ -70,12 +70,12 @@
 .linkedin::before{content:"\f208";}
 .linkedin{background-color:#0077b5;}
 .pushdog{background-color:#fff;}
-#slide{max-width:910px;overflow:hidden;}
-#slide .content{width:455px;overflow:hidden;}
-.slidenav{height:50px;width:450px;padding:5px 175px;margin:0 2px;}
+#slide{max-width:924px;overflow:hidden;}
+#slide .content{width:462px;overflow:hidden;}
+.slidenav{height:50px;width:462px;padding:5px 181px;margin:0 2px;}
 .pre:before{transform:rotate(-90deg);}
 .next::before{transform:rotate(90deg);}
-.pre::before,.next::before{color:#fff;font-size:25px;font-family:"Genericons";content:'\f432';position:absolute;top:10%;left:20%;}
+.pre::before,.next::before{color:#fff;font-size:20px;font-family:"Genericons";content:'\f432';position:absolute;top:5%;left:10%;}
 .pre,.next{background-color:#ffcc00;width:40px;height:40px;border-radius:50%;margin:5px;box-shadow:0 2px 5px 0 #999;position:relative;}
 /*other button*/
 .page-top{color:#fff;background-color:#ffcc00;box-shadow:0 2px 5px 0 #999;line-height:70px;border-radius:50%;width:70px;height:70px;right:35px;bottom:20px;display:block;cursor:pointer;text-decoration:none;text-align:center;position:fixed;}
