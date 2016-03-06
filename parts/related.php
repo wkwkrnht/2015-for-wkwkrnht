@@ -26,4 +26,3 @@ $query=new WP_Query($args);
     <?php endforeach;?>
   <?php endif;?>
 <?php wp_reset_postdata();?>
-<br style="clear:both;">
