@@ -35,6 +35,7 @@ function twentyfifteen_entry_meta(){
     if(get_the_time('U')!== get_the_modified_time('U')){$time_string = '<time class="entry-date published" datetime="%1$s">%2$s</time><time class="updated" datetime="%3$s">%4$s</time>';}
       $time_string = sprintf($time_string,esc_attr(get_the_date('c')),get_the_date(),esc_attr(get_the_modified_date('c')),get_the_modified_date());
       printf('<span class="posted-on"><span class="screen-reader-text">%1$s</span><a href="%2$s" rel="bookmark">%3$s</a></span>',_x('Posted on','Used before publish date.','twentyfifteen'),esc_url(get_permalink()),$time_string);
+      echo'('echo human_time_diff(get_the_time('U'))echo')'
   }
   //投稿者|カテゴリー|タグ(順同)
   if('post' == get_post_type()){
@@ -88,14 +89,14 @@ $weekly_label = array('日','月','火','水','木','金','土');
 add_action('admin_menu','add_custom_fields');
 add_action('save_post','save_custom_fields');
 function add_custom_fields(){add_meta_box('my_sectionid','カスタムフィールド','my_custom_fields','post');}
-function my_custom_fields(){
-  global $post;
+function my_custom_fields(){global $post;
+  $meta_keywords = get_post_meta($post->ID,'meta_keywords',true);
   $noindex = get_post_meta($post->ID,'noindex',true);
   if($noindex==1){ $noindex_c="checked";}
   else{$noindex_c= "/";}
-  echo '<p>チェックすると「noindex」に<br/>';
-  echo '<input type="checkbox" name="noindex" value="1" ' . $noindex_c . '> noindex</p>';}
-function save_custom_fields($post_id){if(!empty($_POST['noindex']))update_post_meta($post_id,'noindex',$_POST['noindex']);else delete_post_meta($post_id,'noindex');}
+  echo'<p>チェックするとnoindexに<br/><input type="checkbox" name="noindex" value="1" ' . $noindex_c . '>noindex</p>';
+  echo'<p>meta keyword設定(カンマ区切りで2〜6つまで)<br/><input type="text" name="meta_keywords" value="'.esc_html($meta_keywords).'" size="40"/></p>';}
+function save_custom_fields($post_id){if(!empty($_POST['meta_keywords']))update_post_meta($post_id,'meta_keywords',$_POST['meta_keywords'] );else delete_post_meta($post_id,'meta_keywords');if(!empty($_POST['noindex']))update_post_meta($post_id,'noindex',$_POST['noindex']);else delete_post_meta($post_id,'noindex');}
 //アイキャッチ自動設定（YouTube対応版）
 require_once(ABSPATH . '/wp-admin/includes/image.php');
 function fetch_thumbnail_image($matches, $key, $post_content, $post_id){

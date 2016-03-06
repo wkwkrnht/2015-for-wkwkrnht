@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html <?php language_attributes();?> class="no-js">
 <head>
-	<?php if(get_post_meta(get_the_ID(),'noindex',true)==1)echo '<meta name="robots" content="noindex">'?>
+	<?php if(get_post_meta(get_the_ID(),'noindex',true)==1)echo'<meta name="robots" content="noindex">'?>
 	<meta charset="<?php bloginfo('charset');?>">
 	<meta name="viewport" content="width=device-width">
 	<meta name="theme-color" content="#ffcc00">
@@ -26,8 +26,8 @@
 					<?php else:?>
 						<p class="site-title"><a href="<?php echo esc_url(home_url('/'));?>" rel="home"><?php bloginfo('name');?></a></p>
 					<?php endif;?>
-			</div><!-- .site-branding -->
-		</header><!-- .site-header -->
+			</div>
+		</header>
 		<?php get_sidebar();?>
-	</div><!-- .sidebar -->
+	</div>
 	<div id="content" class="site-content">
