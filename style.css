@@ -12,7 +12,7 @@
 /*hide*/
 .page-links>.page-links-title,.site-footer,.more-link,.bread div:first-child a::before{display:none;}
 /*font指定*/
-.entry-header,.home-header,.home-footer,.mokuji,.page-links,.page-top a{font-family:sans-serif;}
+.entry-header,.home-header,.home-footer,.page-links,.page-top a{font-family:sans-serif;}
 /*header*/
 .entry-header{box-shadow:0 2px 5px 0 #999;text-align:center;}
 /*footer
@@ -48,9 +48,9 @@
 .page-links a,.page-links>span{border:1px solid #eaeaea;font-size:15px;font-size:1.2rem;width:4em;height:4em;line-height:4;margin:0 0.3333em 0.3333em 0;text-align:center;display:inline-block;}
 .page-links a{color:#fff;border-color:#333;background-color:#333;-webkit-tap-highlight-color:rgba(255, 255, 255, 0.3);}
 /*関連記事*/
-.thumb .related{width:100%;height:100%;float:left;position:relative;}
-.title .related{color:#fff;bottom:0;padding:10px;position:absolute;}
-.content .related{display:inline-flex;display:-ms-inline-flexbox;display:-webkit-inline-box;display:-webkit-inline-flex;}
+.thumb+.related{width:100%;height:100%;position:relative;}
+.title+.related{color:#000;background-color:#fff;bottom:0;position:absolute;}
+.content+.related{float:left;display:inline-flex;display:-ms-inline-flexbox;display:-webkit-inline-box;display:-webkit-inline-flex;}
 /*SNSbutton*/
 .entry-footer h2{color:#fff;background:#ffcc00;box-shadow:0 2px 5px 0 #999;height:16%;margin:15px;font-size:30px;text-align:center;}
 .buttonarea{display:inline-flex;display:-ms-inline-flexbox;display:-webkit-inline-box;display:-webkit-inline-flex;}
@@ -83,10 +83,9 @@
 /*メディアクエリ*/
   /*for mobile*/
   @media screen and (max-width:55em){
-    /*top cardstyle*/
-    /*.post{box-shadow:0 3px 3px 0 #999;}
-    .post-thumbnail{float:left;}
-    .card-content{float:right;background-color:#fff;color:#707070;font-size:16px;font-size:1.6rem;line-height:1.5;padding:3.8461% 7.6923%;}*/
+    /*cardstyle*/
+    /*.post-thumbnail{float:left;}
+    .card-list{float:right;background-color:#fff;color:#707070;font-size:16px;font-size:1.6rem;line-height:1.5;padding:3.8461% 7.6923%;}*/
     /*addinfo*/
     .information,.question{padding:10px;}.information::before,.question::before{display:none;}
     /*snsbutton*/
@@ -98,10 +97,10 @@
     .sidebar{z-index:2;position:fixed;}
     body::before{z-index:2;box-shadow:0 0 10px 0 #999;}
     .comments-area,.post-navigation{margin:6% 6% 0;}
-    /*top cardstyle
-    .post{}
+    /*cardstyle*/
+    /*.post{}
     .post-thumbnail{}*/
-    .card-content{background-color:#fff;color:#707070;font-size:16px;font-size:1.6rem;line-height:1.5;padding:3.8461% 7.6923%;}
+    .card-list{background-color:#fff;color:#707070;font-size:16px;font-size:1.6rem;line-height:1.5;padding:3.8461% 7.6923%;}
   }
   /*without phone*/
   @media screen and (min-width:46.25em){.post,.nav-links{box-shadow:0 3px 3px 0 #999;}}
