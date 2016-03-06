@@ -21,6 +21,6 @@ jQuery(function(){
   //slide
   jQuery(document).ready(function(){
 	  jQuery('#next').click(function(event){event.preventDefault();jQuery('#slide').animate({scrollLeft:'+=455'},'slow');});
-	  jQuery('#pre').click(function(event){event.preventDefault();jQuery('#slide').animate({scrollLeft:'-=455'},'slow');});});
+	  jQuery('#pre').click(function(event){event.preventDefault();jQuery('#slide').animate({scrollRight:'+=455'},'slow');});});
   //next
 });
