@@ -206,14 +206,26 @@ function my_archives_link($link_html){
     }else{if((intval($month) == 12) AND ($currentYear != $year)){$linkYear = '<br />'.sprintf($yearHtml, $year);}}
     return sprintf($linkString, $linkYear, $ym[1]);}
 add_filter('get_archives_link','my_archives_link');
-//add pic&© to RSS
-function rss_edit($content){
-	global $post;
-	if (has_post_thumbnail($post->ID)) {$img = get_the_post_thumbnail($post->ID);} else {$img = '<img src="/no-img.png" width="400" height="200" alt="' . get_the_title() . '">';}
-	$content = '<p>' . $img . '</p>' . $content . '<p>&raquo; <a href="' . get_permalink($post->ID)  . '">続きを読む</a></p>' . '<p>copyrights &copy; ALL Rights Reserved ' . ' <a href="http://wkwkrnht.gegahost.net">wkwkrnht</a>.</p>';
+//add pic&©&予約記事 to RSS
+function rss_edit($content){global $post;
+	if(has_post_thumbnail($post->ID)){$img = get_the_post_thumbnail($post->ID);}else{$img = '<img src="/no-img.png" width="400" height="200" alt="' . get_the_title() . '">';}
+	$content = '<p>'. $img .'</p>' . $content . '<p>&raquo; <a href="' . get_permalink($post->ID)  . '">続きを読む</a></p>' . '<p>copyrights &copy; ALL Rights Reserved ' . ' <a href="http://wkwkrnht.gegahost.net">wkwkrnht</a>.</p>';
     return $content;}
+function future_posts_in_feed($query){if ($query->is_feed){$query->set('post_status','publish,future');}return $query;}
+add_filter('pre_get_posts','future_posts_in_feed');
 add_filter('the_excerpt_rss', 'add_thumb_to_RSS');
 add_filter('the_content_feed', 'add_thumb_to_RSS');
+//ADD:プロフィール(表示はthe_author_meta('twitter')とか)
+function my_new_contactmethods($contactmethods){
+	$contactmethods['twitter'] = 'Twitter';
+	$contactmethods['facebook'] = 'Facebook';
+  $contactmethods['hatena'] = 'はてな';
+	$contactmethods['mixi'] = 'mixi';
+	$contactmethods['Flickr'] = 'Flickr';
+	$contactmethods['YouTube'] = 'YouTube';
+	$contactmethods['Tumblr'] = 'Tumblr';
+	return $contactmethods;}
+add_filter('user_contactmethods','my_new_contactmethods',10,1);
 // テーマカスタマイザーにロゴアップロード設定機能追加
 define('LOGO_SECTION','logo_section');
 define('LOGO_IMAGE_URL','logo_image_url');
