@@ -5,24 +5,20 @@ $query=new WP_Query($args);
   if($query -> have_posts()):
    while($query -> have_posts()):$query->the_post();?>
     <div class="swiper-slide content"><a href="<?php the_permalink()?>" title="<?php the_title_attribute();?>">
-      <?php if(has_post_thumbnail()):echo get_the_post_thumbnail($post->ID,'thumbnail',array('class'=>'thumbt'));else:echo'<img src="http://wkwkrnht.wp.xdomain.jp/wp-content/themes/2015-for-wkwkrnht/img/no-img.png" class="thumb" alt="no_thumbnail"/>';endif;?>
+      <?php if(has_post_thumbnail()):echo get_the_post_thumbnail($post->ID,'thumbnail',array('class'=>'thumb'));else:echo'<img src="http://wkwkrnht.wp.xdomain.jp/wp-content/themes/2015-for-wkwkrnht/img/no-img.png" class="thumb" alt="no_thumbnail"/>';endif;?>
       <div class="title"><?php the_title();?></div>
     </a></div>
+    <?php get_template_part('parts/slidenav');?>
   <?php endwhile;
   else:
     $args = array('numberposts'=>8,'orderby'=>'rand','post_status'=>'publish','offset'=>1);
     $rand_posts = get_posts($args);
     foreach($rand_posts as $post):?>
       <div class="swiper-slide"><div class="content"><a href="<?php the_permalink()?>" title="<?php the_title_attribute();?>">
-        <div class="thumb">
-          <?php if(has_post_thumbnail()):
-            echo get_the_post_thumbnail($post->ID);
-          else:?>
-            <img src="<?php echo get_stylesheet_directory_uri();?>/img/no-img.png" alt="NO IMAGE"/>
-          <?php endif;?>
-        </div>
+        <?php if(has_post_thumbnail()):echo get_the_post_thumbnail($post->ID,'thumbnail',array('class'=>'thumb'));else:echo'<img src="http://wkwkrnht.wp.xdomain.jp/wp-content/themes/2015-for-wkwkrnht/img/no-img.png" class="thumb" alt="no_thumbnail"/>';endif;?>
         <div class="title"><?php the_title();?></div>
       </a></div></div>
+      <?php get_template_part('parts/slidenav');?>
     <?php endforeach;?>
   <?php endif;?>
 <?php wp_reset_postdata();?>
