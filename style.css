@@ -94,7 +94,7 @@
   }
   /*for PC*/
   @media screen and (min-width:55em){
-    .sidebar{z-index:2;position:fixed;}
+    .sidebar{z-index:2;}
     body::before{z-index:2;box-shadow:0 0 10px 0 #999;}
     .comments-area,.post-navigation{margin:6% 6% 0;}
     /*cardstyle*/
