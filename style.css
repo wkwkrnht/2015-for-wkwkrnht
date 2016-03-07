@@ -50,12 +50,12 @@
 #slide{max-width:100%;overflow:hidden;}
 #slide .content{flex-direction:row;-webkit-flex-direction:row;justify-content:flex-start;-webkit-justify-content:flex-start;display:flex;display:-webkit-flex;}
 /*関連記事*/
-.related{max-width:150px;max-height:200px;border-radius:5px;margin:8px 10px;background-color:#fff;box-shadow:0 2px 5px 0 #999;}
+.related{max-width:150px;max-height:200px;border-radius:10px;margin:8px 10px;background-color:#fff;box-shadow:0 2px 5px 0 #999;}
 .thumb+.lelated{width:150px;height:150px;}
-.title{color:#333;font-size:18px;top:50%;height:50px;text-align:center;}
+.title{color:#333;font-size:18px;padding-top:20px;height:50px;text-align:center;}
 /*ボタン*/
-.tweet::before,.fblike::before,.g1::before,.pocket::before,.tumblr::before,.linkedin::before{color:#fff;font-size:40px;font-family:"Genericons";position:absolute;top:10%;left:10%;}
-.tweet,.fblike,.g1,.pocket,.tumblr,.linkedin,.line,.hatebu,.pushdog{width:60px;height:60px;border-radius:50%;margin:3px;box-shadow:0 2px 5px 0 #999;float:left;position:relative;}
+.tweet::before,.fblike::before,.g1::before,.pocket::before,.tumblr::before,.linkedin::before{color:#fff;font-size:40px;font-family:"Genericons";position:absolute;top:5%;left:15%;}
+.tweet,.fblike,.g1,.pocket,.tumblr,.linkedin,.line,.hatebu,.pushdog{width:60px;height:60px;border-radius:50%;margin:5px;box-shadow:0 2px 5px 0 #999;float:left;position:relative;}
 .tweet::before{content:"\f202";}
 .tweet{background-color:#00b8ff;}
 .fblike::before{content:"\f203";}
