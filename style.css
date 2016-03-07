@@ -49,9 +49,9 @@
 #slide{max-width:100%;overflow:hidden;}
 #slide .content{flex-direction:row;-webkit-flex-direction:row;justify-content:flex-start;-webkit-justify-content:flex-start;display:flex;display:-webkit-flex;}
 /*関連記事*/
-.content+.related{max-width:170px;margin:5px;}
-.thumb{width:150px;height:150px;}
-.title{color:#000;background-color:#fff;}
+.related{max-width:170px;margin:5px;background-color:#fff;box-shadow:0 2px 5px 0 #999;}
+.thumb+.lelated{width:150px;height:150px;}
+.title{color:#000;background-color:#ffcc00;}
 /*SNSbutton*/
 .entry-footer h2{color:#fff;background:#ffcc00;box-shadow:0 2px 5px 0 #999;height:16%;margin:15px;font-size:30px;text-align:center;}
 .tweet::before,.fblike::before,.g1::before,.pocket::before,.tumblr::before,.linkedin::before{color:#fff;font-size:40px;font-family:"Genericons";position:absolute;top:5%;left:10%;}
