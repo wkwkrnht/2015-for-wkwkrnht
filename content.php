@@ -22,7 +22,7 @@
 	</div>
 	<footer class="entry-footer">
 		<h2>Share Button＆関連記事</h2>
-		<div class="swiper-container swiper-wrapper">
+		<div id="slide">
 			<?php get_template_part('parts/snsbutton');?><?php get_template_part('parts/related');?>
 		</div>
 	</footer>
