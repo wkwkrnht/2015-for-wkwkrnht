@@ -36,8 +36,8 @@ function twentyfifteen_entry_meta(){
   //投稿者|カテゴリー|タグ(順同)
   if('post' == get_post_type()){
     if(is_singular()&&is_multi_author()){printf('<span class="byline"><span class="author vcard"><span class="screen-reader-text">%1$s</span><a class="url fn n" href="%2$s">%3$s</a></span></span>',_x('Author','Used before post author name.','twentyfifteen'),esc_url(get_author_posts_url(get_the_author_meta('ID'))),get_the_author());}
-    $categories_list = get_the_category_list(_x(',','Used between list items,there is a space after the comma.','twentyfifteen'));
-    if($categories_list && twentyfifteen_categorized_blog()){printf('<span class="cat-links"><span class="screen-reader-text">%1$s </span>%2$s</span>',_x('Categories','Used before category names.','twentyfifteen'),$categories_list);}
+    $categories_list=get_the_category_list(_x(',','Used between list items,there is a space after the comma.','twentyfifteen'));
+    if($categories_list&&twentyfifteen_categorized_blog()){printf('<span class="cat-links"><span class="screen-reader-text">%1$s</span>%2$s</span>',_x('Categories','Used before category names.','twentyfifteen'),$categories_list);}
     $tags_list = get_the_tag_list('',_x(',','Used between list items,there is a space after the comma.','twentyfifteen'));
     if($tags_list){printf('<span class="tags-links"><span class="screen-reader-text">%1$s</span>%2$s</span>',_x('Tags','Used before tag names.','twentyfifteen'),$tags_list);}
   }
@@ -46,37 +46,6 @@ function twentyfifteen_entry_meta(){
 }
 //Alt属性がないIMGタグにalt=""を追加する
 add_filter('the_content',function($content){return preg_replace('/<img((?![^>]*alt=)[^>]*)>/i','<img alt=""${1}>',$content);});
-//ゆめぴょん流相対時間
-function yumepyon_diff(){$now_yumepyon_time = current_time('timestamp');
-//投稿時とhuman_time_diffの取得
-//海外サーバー仕様
-//$post_yumepyon_time = get_post_time('U',true);
-//$human_yumepyon_diff = human_time_diff($post_yumepyon_time);
-//日本サーバー仕様
-$post_yumepyon_time = get_post_time();
-$human_yumepyon_diff = human_time_diff($post_yumepyon_time,$now_yumepyon_time);
-$yesterday_flag = 18;
-$month_flag = 100;
-$difference_sec = $now_yumepyon_time - $post_yumepyon_time;
-$difference_day = floor($difference_sec / 86400);
-$difference_month = date('n',$now_yumepyon_time) - date('n',$post_yumepyon_time);
-$difference_year = date('Y',$now_yumepyon_time) - date('Y',$post_yumepyon_time);
-$day_to_year = ceil($difference_day/30.4);
-$post_weekly = date('w',$post_yumepyon_time);
-$today_weekly = date('w',$now_yumepyon_time);
-$difference_week = $today_weekly - $post_weekly;
-$difference_weekly = array('7','8','9','10','11','12','13');
-$weekly_label = array('日','月','火','水','木','金','土');
-    if(date('n',$now_yumepyon_time) >= 7 && $difference_year > 0){
-        echo "昨年".date('n',$post_yumepyon_time)."月に作成";
-    }elseif($difference_day >= $month_flag && abs($difference_month) != 6 && 12 > $day_to_year ){
-        echo $day_to_year."ヶ月前に作成";
-    }elseif(($difference_month == 6  && $difference_year == 0) || ($difference_month == -6 && $difference_year == 1 ) ){
-        echo "半年前に作成";
-    }elseif($difference_year > 0){echo get_the_date();
-    }elseif(3>$difference_day && ($difference_week == 2 || $difference_week == -5)){echo "一昨日作成";
-    }elseif(2>$difference_day && ($difference_week == 1 || $difference_week == -6) && $difference_sec>3600*$yesterday_flag){echo "昨日作成";
-    }else{echo $human_yumepyon_diff."前に作成";}}
 //カスタムフィールド追加
 add_action('admin_menu','add_custom_fields');
 add_action('save_post','save_custom_fields');
@@ -89,62 +58,39 @@ function my_custom_fields(){global $post;
   echo'<p>チェックするとnoindexに<br/><input type="checkbox" name="noindex" value="1" ' . $noindex_c . '>noindex</p>';
   echo'<p>meta keyword設定(カンマ区切りで2〜6つまで)<br/><input type="text" name="meta_keywords" value="'.esc_html($meta_keywords).'" size="40"/></p>';}
 function save_custom_fields($post_id){if(!empty($_POST['meta_keywords']))update_post_meta($post_id,'meta_keywords',$_POST['meta_keywords'] );else delete_post_meta($post_id,'meta_keywords');if(!empty($_POST['noindex']))update_post_meta($post_id,'noindex',$_POST['noindex']);else delete_post_meta($post_id,'noindex');}
-//アイキャッチ自動設定（YouTube対応版）
+//アイキャッチ自動設定
 require_once(ABSPATH . '/wp-admin/includes/image.php');
-function fetch_thumbnail_image($matches, $key, $post_content, $post_id){
-  $imageTitle = '';
-  preg_match_all('/<\s*img [^\>]*title\s*=\s*[\""\']?([^\""\'>]*)/i', $post_content, $matchesTitle);
-  if (count($matchesTitle) && isset($matchesTitle[1])) {$imageTitle = $matchesTitle[1][$key];}
-  $imageUrl = $matches[1][$key];
-  $filename = substr($imageUrl, (strrpos($imageUrl, '/'))+1);
-  if (!(($uploads = wp_upload_dir(current_time('mysql')) ) && false === $uploads['error'])){return null;}
-  $filename = wp_unique_filename($uploads['path'],$filename);
-  $new_file = $uploads['path'] . "/$filename";
-  if(!ini_get('allow_url_fopen')){
-    $file_data = curl_get_file_contents($imageUrl);
-  }else{if(WP_Filesystem()){global $wp_filesystem; $file_data = @$wp_filesystem->get_contents($imageUrl);}}
+function fetch_thumbnail_image($matches,$key,$post_content,$post_id){
+  $imageTitle='';
+  preg_match_all('/<\s*img [^\>]*title\s*=\s*[\""\']?([^\""\'>]*)/i',$post_content,$matchesTitle);
+  if(count($matchesTitle) && isset($matchesTitle[1])){$imageTitle=$matchesTitle[1][$key];}
+  $imageUrl=$matches[1][$key];$filename=substr($imageUrl,(strrpos($imageUrl,'/'))+1);
+  if(!(($uploads=wp_upload_dir(current_time('mysql')))&&false===$uploads['error'])){return null;}
+  $filename=wp_unique_filename($uploads['path'],$filename);$new_file=$uploads['path'] . "/$filename";
+  if(!ini_get('allow_url_fopen')){$file_data=curl_get_file_contents($imageUrl);
+  }else{if(WP_Filesystem()){global $wp_filesystem;$file_data=@$wp_filesystem->get_contents($imageUrl);}}
   if(!$file_data){return null;}
-  if(WP_Filesystem()){global $wp_filesystem;$wp_filesystem->put_contents($new_file, $file_data);}
-  $stat = stat(dirname($new_file));
-  $perms = $stat['mode'] & 0000666;
+  if(WP_Filesystem()){global $wp_filesystem;$wp_filesystem->put_contents($new_file,$file_data);}
+  $stat=stat(dirname($new_file));$perms=$stat['mode'] & 0000666;
   @ chmod($new_file,$perms );
-  $wp_filetype = wp_check_filetype($filename,$mimes);
+  $wp_filetype=wp_check_filetype($filename,$mimes);
   extract($wp_filetype);
-  if ( ( !$type || !$ext ) && !current_user_can( 'unfiltered_upload' ) ) {return null;}
-  $url = $uploads['url'] . "/$filename";
-  $attachment = array(
-    'post_mime_type' => $type,
-    'guid' => $url,
-    'post_parent' => null,
-    'post_title' => $imageTitle,
-    'post_content' => '',);
-  $thumb_id = wp_insert_attachment($attachment,$file,$post_id);
-  if(!is_wp_error($thumb_id)){
-    wp_update_attachment_metadata($thumb_id,wp_generate_attachment_metadata($thumb_id,$new_file));
-    update_attached_file($thumb_id,$new_file);
-    return $thumb_id;}
+  if((!$type || !$ext) && !current_user_can('unfiltered_upload')){return null;}
+  $url=$uploads['url'] . "/$filename";
+  $attachment=array('post_mime_type'=>$type,'guid'=>$url,'post_parent'=>null,'post_title'=>$imageTitle,'post_content'=>'',);
+  $thumb_id=wp_insert_attachment($attachment,$file,$post_id);
+  if(!is_wp_error($thumb_id)){wp_update_attachment_metadata($thumb_id,wp_generate_attachment_metadata($thumb_id,$new_file));update_attached_file($thumb_id,$new_file);return $thumb_id;}
   return null;}
-function auto_post_thumbnail_image(){
-  global $wpdb;
-  global $post;
-  $post_id = $post->ID;
-  if(get_post_meta($post_id,'_thumbnail_id',true) || get_post_meta($post_id, 'skip_post_thumb', true)) {return;}
-  $post = $wpdb->get_results("SELECT * FROM {$wpdb->posts} WHERE id = $post_id");
-  $matches = array();
+function auto_post_thumbnail_image(){global $wpdb;global $post;$post_id=$post->ID;
+  if(get_post_meta($post_id,'_thumbnail_id',true) || get_post_meta($post_id,'skip_post_thumb',true)){return;}
+  $post=$wpdb->get_results("SELECT * FROM {$wpdb->posts} WHERE id = $post_id");$matches=array();
   preg_match_all('/<\s*img [^\>]*src\s*=\s*[\""\']?([^\""\'>]*)/i', $post[0]->post_content, $matches);
-  if(empty($matches[0])){
-    preg_match('%(?:youtube\.com/(?:user/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $post[0]->post_content, $match);
-    if(!empty($match[1])){$matches=array(); $matches[0]=$matches[1]=array('http://img.youtube.com/vi/'.$match[1].'/mqdefault.jpg');}}
-  if(count($matches)){
-    foreach ($matches[0] as $key => $image){
-      preg_match('/wp-image-([\d]*)/i', $image, $thumb_id);
-      $thumb_id = $thumb_id[1];
-      if(!$thumb_id){
-        $image = substr($image, strpos($image, '"')+1);
-        $result = $wpdb->get_results("SELECT ID FROM {$wpdb->posts} WHERE guid = '".$image."'");
-        $thumb_id = $result[0]->ID;}
-      if (!$thumb_id) {$thumb_id = fetch_thumbnail_image($matches, $key, $post[0]->post_content, $post_id);}
-      if ($thumb_id) {update_post_meta( $post_id, '_thumbnail_id', $thumb_id );break;}
+  if(empty($matches[0])){preg_match('%(?:youtube\.com/(?:user/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $post[0]->post_content, $match);
+    if(!empty($match[1])){$matches=array();$matches[0]=$matches[1]=array('http://img.youtube.com/vi/'.$match[1].'/mqdefault.jpg');}}
+  if(count($matches)){foreach($matches[0]as$key=>$image){preg_match('/wp-image-([\d]*)/i', $image, $thumb_id);$thumb_id = $thumb_id[1];
+      if(!$thumb_id){$image=substr($image,strpos($image,'"')+1);$result=$wpdb->get_results("SELECT ID FROM {$wpdb->posts} WHERE guid = '".$image."'");$thumb_id=$result[0]->ID;}
+      if(!$thumb_id){$thumb_id = fetch_thumbnail_image($matches, $key, $post[0]->post_content, $post_id);}
+      if($thumb_id){update_post_meta($post_id,'_thumbnail_id',$thumb_id);break;}
     }
   }
 }
@@ -218,11 +164,18 @@ function my_new_contactmethods($contactmethods){
 	$contactmethods['Tumblr'] = 'Tumblr';
 	return $contactmethods;}
 add_filter('user_contactmethods','my_new_contactmethods',10,1);
+//オリジナルカスタマイザー
+add_action('customize_register','theme_customize_register');
+function theme_customize_register($wp_customize){$wp_customize->add_section('test_section',array('title'=>'2015_for_wkwkrnht','priority'=>100,));
+  /*ここの項目の設定を追加していきます*/
+  $wp_customize->add_setting('アナリティクスコード',array('type'=>'option',));
+  $wp_customize->add_control('test_textfield',array('settings'=>'アナリティクスコード','label'=>'アナリティクスコード','section'=>'test_section','type'=>'text',));
+}
 // テーマカスタマイザーにロゴアップロード設定機能追加
 define('LOGO_SECTION','logo_section');
 define('LOGO_IMAGE_URL','logo_image_url');
 function themename_theme_customizer($wp_customize){$wp_customize->add_section(LOGO_SECTION,array('title' => 'ロゴ画像','priority' => 30,'description' => 'サイトのロゴ設定。',));$wp_customize->add_setting(LOGO_IMAGE_URL);$wp_customize->add_control(new WP_Customize_Image_Control($wp_customize,LOGO_IMAGE_URL,array('label' => 'ロゴ','section' => LOGO_SECTION,'settings' => LOGO_IMAGE_URL,'description' => '画像をアップロードするとヘッダーにあるデフォルトのサイト名と入れ替わります。',)));}
-add_action( 'customize_register','themename_theme_customizer');
+add_action('customize_register','themename_theme_customizer');
 function get_the_logo_image_url(){return esc_url(get_theme_mod(LOGO_IMAGE_URL));}
 //投稿記事一覧にアイキャッチ画像を表示
 function customize_admin_manage_posts_columns($columns){$columns['thumbnail'] = __('Thumbnail');return $columns;}
