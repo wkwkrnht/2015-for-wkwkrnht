@@ -142,19 +142,22 @@ add_filter('get_archives_link','my_archives_link');
 function future_posts_in_feed($query){if($query->is_feed){$query->set('post_status','publish,future');}return $query;}
 function rss_edit($content){global $post;
   if(has_post_thumbnail($post->ID)){$img=get_the_post_thumbnail($post->ID);}else{$img='<img src="/img/no-img.png" width="400" height="200" alt="'.get_the_title().'"/>';}
-  $content=$img.$content.'<p>&raquo;<a href="'.get_permalink($post->ID).'">続きを読む</a></p>'.'<p>copyrights&copy; ALL Rights Reserved'.'<a href="'.bloginfo('url');.'">'.bloginfo('name');.'</a>.</p>';return $content;}
+  $content=$img.$content'<p>&raquo;<a href="'get_permalink($post->ID)'">続きを読む</a></p><p>copyrights&copy; ALL Rights Reserved'.'<a href="'bloginfo('url');'">'bloginfo('name');'</a>.</p>';return $content;}
 add_filter('pre_get_posts','future_posts_in_feed');
 add_filter('the_excerpt_rss','add_thumb_to_RSS');
 add_filter('the_content_feed','add_thumb_to_RSS');
 //ADD:プロフィール(表示はthe_author_meta('twitter')とか)
 function my_new_contactmethods($contactmethods){
   $contactmethods['LINE']='LINE';
+  $contactmethods['YO!']='YO!';
 	$contactmethods['twitter']='Twitter';
 	$contactmethods['facebook']='Facebook';
   $contactmethods['Google+']='Google+';
   $contactmethods['Github']='Github';
+  $contactmethods['Bitbucket']='Bitbucket';
   $contactmethods['hatena']='はてな';
   $contactmethods['ameba']='アメーバ';
+  $contactmethods['fc2']='fc2';
 	$contactmethods['mixi']='mixi';
   $contactmethods['Instagram']='Instagram';
 	$contactmethods['Flickr']='Flickr';
