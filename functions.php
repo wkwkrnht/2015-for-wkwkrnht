@@ -135,19 +135,23 @@ function my_archives_link($link_html){
     $linkYear='';
     $yearHtml='<span style="font-weight:bold;">%s</span><br />';
     if(($currentMonth == $month)AND($currentYear == $year)){$linkYear=sprintf($yearHtml,$year);
-    }else{if((intval($month) == 12)AND($currentYear != $year)){$linkYear='<br />'.sprintf($yearHtml,$year);}}
+    }else{if((intval($month) == 12)AND($currentYear != $year)){$linkYear='<br/>'.sprintf($yearHtml,$year);}}
     return sprintf($linkString,$linkYear,$ym[1]);}
 add_filter('get_archives_link','my_archives_link');
 //add pic&©&予約記事 to RSS
 function future_posts_in_feed($query){if($query->is_feed){$query->set('post_status','publish,future');}return $query;}
-function rss_edit($content){global $post;
+/*function rss_edit($content){global $post;
   if(has_post_thumbnail($post->ID)){$img=get_the_post_thumbnail($post->ID);}else{$img='<img src="/img/no-img.png" width="400" height="200" alt="'.get_the_title().'"/>';}
-  $content=$img.$content'<a href="'get_permalink($post->ID)'">'the_title('<p>','</p>');'</a><a href="'bloginfo('url');'"><p>'bloginfo('name');'&copy;copyrights ALL Rights Reserved</p></a>';return $content;}
+  $content=$img.$post'<a href="'bloginfo('url');'"><p>'blogin7fo('name');'&copy;copyrights ALL Rights Reserved</p></a>';return $content;}*/
 add_filter('pre_get_posts','future_posts_in_feed');
 add_filter('the_excerpt_rss','add_thumb_to_RSS');
 add_filter('the_content_feed','add_thumb_to_RSS');
 //ADD:プロフィール(表示はthe_author_meta('twitter')とか)
 function my_new_contactmethods($contactmethods){
+  $contactmethods['TEL']='TEL';
+  $contactmethods['FAX']='FAX';
+  $contactmethods['Addres']='住所';
+  $contactmethods['Graveter']='Graveter';
   $contactmethods['LINE']='LINE';
   $contactmethods['YO!']='YO!';
 	$contactmethods['twitter']='Twitter';
@@ -155,6 +159,7 @@ function my_new_contactmethods($contactmethods){
   $contactmethods['Google+']='Google+';
   $contactmethods['Github']='Github';
   $contactmethods['Bitbucket']='Bitbucket';
+  $contactmethods['Codepen']='Codepen';
   $contactmethods['hatena']='はてな';
   $contactmethods['ameba']='アメーバ';
   $contactmethods['fc2']='fc2';
@@ -175,8 +180,10 @@ function my_new_contactmethods($contactmethods){
   $contactmethods['Twitch']='Twitch';
   $contactmethods['niconico']='niconico';
   $contactmethods['twitcasting']='ツイキャス';
+  $contactmethods['Slideshare']='Slideshare';
   $contactmethods['Tumblr']='Tumblr';
   $contactmethods['Linkedin']='Linkedin';
+  $contactmethods['livedoor']='livedoor';
   $contactmethods['wordpress.com']='wordpress.com';
   $contactmethods['wordpress.org']='wordpress.org';
   $contactmethods['Adsense']='アドセンス';
