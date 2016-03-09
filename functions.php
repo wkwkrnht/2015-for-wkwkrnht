@@ -172,9 +172,9 @@ function theme_customize_register($wp_customize){
       $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize,LOGO_IMAGE_URL,array('label'=>'ロゴ','section'=>LOGO_SECTION,'settings'=>LOGO_IMAGE_URL,'description'=>'画像をアップロードするとヘッダーにあるデフォルトのサイト名と入れ替わります',)));
   $wp_customize->add_section('2015_for_wkwkrnht',array('title'=>'2015_for_wkwkrnht','priority'=>100,));
     $wp_customize->add_setting('analytics_code',array('type'=>'option',));
-      $wp_customize->add_control('analytics_code',new WP_Customize_Control(array('settings'=>'analytics_code','label'=>'アナリティクスコード','section'=>'2015_for_wkwkrnht','type'=>'text',)));
+      $wp_customize->add_control('analytics_code',new WP_Customize_Control($wp_customize,'analytics_code',array('settings'=>'analytics_code','label'=>'アナリティクスコード','section'=>'2015_for_wkwkrnht','type'=>'text',)));
     $wp_customize->add_setting('twitterid',array('type'=>'option',));
-      $wp_customize->add_control('twitterid',new WP_Customize_Control(array('settings'=>'twitterID','label'=>'TwitterID','section'=>'2015_for_wkwkrnht','priority'=>100,)));
+      $wp_customize->add_control('twitterid',new WP_Customize_Control($wp_customize,'twitterid',array('settings'=>'twitterID','label'=>'TwitterID','section'=>'2015_for_wkwkrnht','priority'=>100,)));
 }
 add_action('customize_register','theme_customize_register');
 add_action('customize_register','themename_theme_customizer');
