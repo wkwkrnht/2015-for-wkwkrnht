@@ -165,8 +165,7 @@ function my_new_contactmethods($contactmethods){
 	return $contactmethods;}
 add_filter('user_contactmethods','my_new_contactmethods',10,1);
 //オリジナルカスタマイザー
-define('LOGO_SECTION','logo_section');
-define('LOGO_IMAGE_URL','logo_image_url');
+define('LOGO_SECTION','logo_section');define('LOGO_IMAGE_URL','logo_image_url');
 function theme_customize_register($wp_customize){
   $wp_customize->add_section(LOGO_SECTION,array('title'=>'ロゴ画像','priority'=>30,'description'=>'サイトのロゴ設定',));
     $wp_customize->add_setting(LOGO_IMAGE_URL);
@@ -176,7 +175,6 @@ function theme_customize_register($wp_customize){
       $wp_customize->add_control('analytics_code',new WP_Customize_Control(array('settings'=>'analytics_code','label'=>'アナリティクスコード','section'=>'2015_for_wkwkrnht','type'=>'text',)));
     $wp_customize->add_setting('twitterid',array('type'=>'option',));
       $wp_customize->add_control('twitterid',new WP_Customize_Control(array('settings'=>'twitterID','label'=>'TwitterID','section'=>'2015_for_wkwkrnht','priority'=>100,)));
-
 }
 add_action('customize_register','theme_customize_register');
 add_action('customize_register','themename_theme_customizer');
