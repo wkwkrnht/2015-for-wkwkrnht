@@ -51,5 +51,5 @@ preg_match( '/https?:\/\/(.+?)\//i',admin_url(),$results);?>
 <meta name="twitter:domain" content="<?php echo $results[1] ?>">
 <meta name="twitter:image:width" content="825px">
 <meta name="twitter:image:height" content="510px">
-<meta name="twitter:creator" content="@<?php echo get_theme_mod('twiterid');?>">
-<meta name="twitter:site" content="@<?php echo get_theme_mod('twiterid');?>">
+<meta name="twitter:creator" content="@<?php echo the_author_meta('twitter');?>">
+<meta name="twitter:site" content="@<?php echo the_author_meta('twitter');?>">

@@ -31,7 +31,7 @@ function twentyfifteen_entry_meta(){
     if(get_the_time('U')!== get_the_modified_time('U')){$time_string = '<time class="entry-date published" datetime="%1$s">%2$s</time><time class="updated" datetime="%3$s">%4$s</time>';}
       $time_string = sprintf($time_string,esc_attr(get_the_date('c')),get_the_date(),esc_attr(get_the_modified_date('c')),get_the_modified_date());
       printf('<span class="posted-on"><span class="screen-reader-text">%1$s</span><a href="%2$s" rel="bookmark">%3$s</a></span>',_x('Posted on','Used before publish date.','twentyfifteen'),esc_url(get_permalink()),$time_string);
-      echo('（');echo human_time_diff(get_the_time('U'), current_time('timestamp'));echo('）');
+      echo('（');echo human_time_diff(get_the_time('U'), current_time('timestamp'));echo('前）');
   }
   //投稿者|カテゴリー|タグ(順同)
   if('post' == get_post_type()){
@@ -145,36 +145,45 @@ function my_archives_link($link_html){
     return sprintf($linkString, $linkYear, $ym[1]);}
 add_filter('get_archives_link','my_archives_link');
 //add pic&©&予約記事 to RSS
+function future_posts_in_feed($query){if($query->is_feed){$query->set('post_status','publish,future');}return $query;}
 function rss_edit($content){global $post;
-	if(has_post_thumbnail($post->ID)){$img = get_the_post_thumbnail($post->ID);}else{$img = '<img src="/no-img.png" width="400" height="200" alt="' . get_the_title() . '">';}
-	$content = '<p>'. $img .'</p>' . $content . '<p>&raquo; <a href="' . get_permalink($post->ID)  . '">続きを読む</a></p>' . '<p>copyrights &copy; ALL Rights Reserved ' . ' <a href="http://wkwkrnht.gegahost.net">wkwkrnht</a>.</p>';
-    return $content;}
-function future_posts_in_feed($query){if ($query->is_feed){$query->set('post_status','publish,future');}return $query;}
+  if(has_post_thumbnail($post->ID)){$img=get_the_post_thumbnail($post->ID);}else{$img='<img src="/img/no-img.png" width="400" height="200" alt="'.get_the_title().'"/>';}
+  $content=$img.$content.'<p>&raquo;<a href="'.get_permalink($post->ID).'">続きを読む</a></p>'.'<p>copyrights&copy; ALL Rights Reserved'.'<a href="'.echo bloginfo('url');.'">'.echo bloginfo('name');.'</a>.</p>';return $content;}
 add_filter('pre_get_posts','future_posts_in_feed');
 add_filter('the_excerpt_rss', 'add_thumb_to_RSS');
 add_filter('the_content_feed', 'add_thumb_to_RSS');
 //ADD:プロフィール(表示はthe_author_meta('twitter')とか)
 function my_new_contactmethods($contactmethods){
-	$contactmethods['twitter'] = 'Twitter';
-	$contactmethods['facebook'] = 'Facebook';
-  $contactmethods['hatena'] = 'はてな';
-	$contactmethods['mixi'] = 'mixi';
-	$contactmethods['Flickr'] = 'Flickr';
-	$contactmethods['YouTube'] = 'YouTube';
-	$contactmethods['Tumblr'] = 'Tumblr';
+	$contactmethods['twitter']='Twitter';
+	$contactmethods['facebook']='Facebook';
+  $contactmethods['Google+']='Google+';
+  $contactmethods['Github']='Github';
+  $contactmethods['hatena']='はてな';
+  $contactmethods['ameba']='アメーバ';
+	$contactmethods['mixi']='mixi';
+  $contactmethods['Instagram']='Instagram';
+	$contactmethods['Flickr']='Flickr';
+  $contactmethods['Swarm']='Swarm';
+	$contactmethods['YouTube']='YouTube';
+  $contactmethods['niconico']='niconico';
+  $contactmethods['vine']='vine';
+  $contactmethods['wordpress.com']='wordpress.com';
+  $contactmethods['wordpress.org']='wordpress.org';
+	$contactmethods['Tumblr']='Tumblr';
+  $contactmethods['Linkedin']='Linkedin';
 	return $contactmethods;}
 add_filter('user_contactmethods','my_new_contactmethods',10,1);
 //オリジナルカスタマイザー
 define('LOGO_SECTION','logo_section');define('LOGO_IMAGE_URL','logo_image_url');
 function theme_customize_register($wp_customize){
   $wp_customize->add_section(LOGO_SECTION,array('title'=>'ロゴ画像','priority'=>30,'description'=>'サイトのロゴ設定',));
-    $wp_customize->add_setting(LOGO_IMAGE_URL);
-      $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize,LOGO_IMAGE_URL,array('label'=>'ロゴ','section'=>LOGO_SECTION,'settings'=>LOGO_IMAGE_URL,'description'=>'画像をアップロードするとヘッダーにあるデフォルトのサイト名と入れ替わります',)));
+  $wp_customize->add_setting(LOGO_IMAGE_URL);
+  $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize,LOGO_IMAGE_URL,array('label'=>'ロゴ','section'=>LOGO_SECTION,'settings'=>LOGO_IMAGE_URL,'description'=>'画像をアップロードするとヘッダーにあるデフォルトのサイト名と入れ替わります',)));
   $wp_customize->add_section('2015_for_wkwkrnht',array('title'=>'2015_for_wkwkrnht','priority'=>100,));
-    $wp_customize->add_setting('google_analytics_code',array('type'=>'option',));
-      $wp_customize->add_control(new WP_Customize_Control($wp_customize,'google_analytics_code',array('settings'=>'analytics_code','label'=>'アナリティクスコード','section'=>'2015_for_wkwkrnht',)));
-    $wp_customize->add_setting('twitterid',array('type'=>'option',));
-      $wp_customize->add_control(new WP_Customize_Control($wp_customize,'twitterid',array('settings'=>'twitterID','label'=>'TwitterID','section'=>'2015_for_wkwkrnht','priority'=>100,)));
+  /*$wp_customize->add_setting('google_analytics_code',array('type'=>'option',));
+  $wp_customize->add_control($wp_customize,'google_analytics_code',array('settings'=>'analytics_code','label'=>'アナリティクスコード','section'=>'2015_for_wkwkrnht',));
+  $wp_customize->add_setting('twitterid',array('type'=>'option',));
+  $wp_customize->add_control($wp_customize,'twitterid',array('settings'=>'twitterID','label'=>'TwitterID','section'=>'2015_for_wkwkrnht','priority'=>100,));*/
 }
 add_action('customize_register','theme_customize_register');
 add_action('customize_register','themename_theme_customizer');
