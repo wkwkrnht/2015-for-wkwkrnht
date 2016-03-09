@@ -146,6 +146,18 @@ function future_posts_in_feed($query){if($query->is_feed){$query->set('post_stat
 add_filter('pre_get_posts','future_posts_in_feed');
 add_filter('the_excerpt_rss','add_thumb_to_RSS');
 add_filter('the_content_feed','add_thumb_to_RSS');
+//whitelist_optionsにフックし、有効な項目名にcontact_infoを追加。
+//$whitelist_optionsは設定画面で有効な項目名の配列
+//general=一般設定。その他、discussion、media、privacy、reading、writing、optionsが記述可能
+function add_google_analytics_code_field($whitelist_options){$whitelist_options['general'][]='google_analytics_code';return $whitelist_options;}
+add_filter('whitelist_options','add_contact_info_field');
+// add_settings_field関数を用いて、一般設定画面に表示項目を追加。
+// contact_infoは、$whitelist_optionsに追加した項目名、連絡先は項目の表示名。display_contact_infoは、フォームを表示させる関数名。generalは一般設定画面。
+function regist_google_analytics_code_field(){add_settings_field('google_analytics_code','連絡先','display_google_analytics_code','general');}
+add_action('admin_init','regist_google_analytics_code_field');
+// 一般設定でのフォームを表示する関数。
+// DBへの保存は、WordPressが自動的に行ってくれる。ただし、ファイルアップロードは対応不可能。
+function display_google_analytics_code_info(){$google_analytics_code=get_option('google_analytics_code');?><textarea cols="70" rows="3" name="google_analytics_code"><?php echo esc_html($google_analytics_code);?></textarea><?php}
 //ADD:プロフィール(表示はthe_author_meta('twitter')とか)
 function my_new_contactmethods($contactmethods){
   $contactmethods['TEL']='TEL';
@@ -160,7 +172,11 @@ function my_new_contactmethods($contactmethods){
   $contactmethods['Github']='Github';
   $contactmethods['Bitbucket']='Bitbucket';
   $contactmethods['Codepen']='Codepen';
-  $contactmethods['hatena']='はてな';
+  $contactmethods['Quita']='Quita';
+  $contactmethods['xda']='xda';
+  $contactmethods['hatenablog']='はてなブログ';
+  $contactmethods['hatenadiary6']='はてなダイアリー';
+  $contactmethods['hatebu']='はてなブックマーク';
   $contactmethods['ameba']='アメーバ';
   $contactmethods['fc2']='fc2';
 	$contactmethods['mixi']='mixi';
@@ -175,6 +191,7 @@ function my_new_contactmethods($contactmethods){
   $contactmethods['NINTENDOaccount']='ニンテンドーアカウント';
   $contactmethods['NINTENDONetworkID']='ニンテンドーネットワークID';
   $contactmethods['friendcode']='フレンドコード';
+  $contactmethods['MixCannel']='MixChannel';
   $contactmethods['vine']='vine';
   $contactmethods['YouTube']='YouTube';
   $contactmethods['Twitch']='Twitch';
@@ -186,6 +203,8 @@ function my_new_contactmethods($contactmethods){
   $contactmethods['livedoor']='livedoor';
   $contactmethods['wordpress.com']='wordpress.com';
   $contactmethods['wordpress.org']='wordpress.org';
+  $contactmethods['A8.net']='A8.net';
+  $contactmethods['GoogleAdsense']='GoogleAdsense';
   $contactmethods['Adsense']='アドセンス';
   $contactmethods['Amazonlist']='Amazonのほしいものリスト';
   $contactmethods['Yahooaction']='Yahooオークション';
@@ -202,9 +221,7 @@ function theme_customize_register($wp_customize){
   $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize,LOGO_IMAGE_URL,array('label'=>'ロゴ','section'=>LOGO_SECTION,'settings'=>LOGO_IMAGE_URL,'description'=>'画像をアップロードするとヘッダーにあるデフォルトのサイト名と入れ替わります',)));
   $wp_customize->add_section('2015_for_wkwkrnht',array('title'=>'2015_for_wkwkrnht','priority'=>100,));
   /*$wp_customize->add_setting('google_analytics_code',array('type'=>'option',));
-  $wp_customize->add_control($wp_customize,'google_analytics_code',array('settings'=>'analytics_code','label'=>'アナリティクスコード','section'=>'2015_for_wkwkrnht',));
-  $wp_customize->add_setting('twitterid',array('type'=>'option',));
-  $wp_customize->add_control($wp_customize,'twitterid',array('settings'=>'twitterID','label'=>'TwitterID','section'=>'2015_for_wkwkrnht','priority'=>100,));*/
+  $wp_customize->add_control($wp_customize,'google_analytics_code',array('settings'=>'analytics_code','label'=>'アナリティクスコード','section'=>'2015_for_wkwkrnht',));*/
 }
 add_action('customize_register','theme_customize_register');
 add_action('customize_register','themename_theme_customizer');
