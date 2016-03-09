@@ -102,47 +102,41 @@ add_action('future_to_publish','auto_post_thumbnail_image');
 //from:URL to:はてなブログカード
 function url_to_hatena_blog_card($the_content){
   if(is_singular()){
-    $res = preg_match_all('/^(<p>)?(<a.+?>)?https?:\/\/[-_.!~*\'()a-zA-Z0-9;\/?:\@&=+\$,%#]+(<\/a>)?(<\/p>)?(<br ? \/>)?$/im', $the_content,$m);
-    foreach ($m[0] as $match){
-      $url = strip_tags($match);
-      $tag = '<iframe class="hatenablogcard" src="http://hatenablog.com/embed?url='.$url.'" frameborder="0" scrolling="no"></iframe>';
-      $the_content = preg_replace('{'.preg_quote($match).'}', $tag , $the_content, 1);}}return $the_content;}
+    $res=preg_match_all('/^(<p>)?(<a.+?>)?https?:\/\/[-_.!~*\'()a-zA-Z0-9;\/?:\@&=+\$,%#]+(<\/a>)?(<\/p>)?(<br ? \/>)?$/im', $the_content,$m);
+    foreach($m[0] as $match){$url=strip_tags($match);
+      $tag='<iframe class="hatenablogcard" src="http://hatenablog.com/embed?url='.$url.'" frameborder="0" scrolling="no"></iframe>';
+      $the_content=preg_replace('{'.preg_quote($match).'}', $tag , $the_content, 1);}}return $the_content;}
 add_filter('the_content','url_to_hatena_blog_card');
 //from:@* to:twitter name
 function twtreplace($content){$twtreplace = preg_replace('/([^a-zA-Z0-9-_&])@([0-9a-zA-Z_]+)/',"$1<a href=\"http://twitter.com/$2\" target=\"_blank\" rel=\"nofollow\">@$2</a>",$content);return $twtreplace;}
 add_filter('the_content','twtreplace');
 add_filter('comment_text','twtreplace');
 //カテゴリー説明文をメタ化
-function get_meta_description_from_category(){$cate_desc = trim(strip_tags(category_description()));if ($cate_desc){return $cate_desc;}$cate_desc = '「' . single_cat_title('', false) . '」の記事一覧です。' . get_bloginfo('description');return $cate_desc;}
-function get_meta_keyword_from_category(){return single_cat_title('', false) . ',ブログ,記事一覧';}
-function get_mtime($format){$mtime = get_the_modified_time('Ymd');$ptime = get_the_time('Ymd');if ($ptime > $mtime){return get_the_time($format);}elseif($ptime === $mtime){return null;}else{return get_the_modified_time($format);}}
+function get_meta_description_from_category(){$cate_desc=trim(strip_tags(category_description()));if($cate_desc){return $cate_desc;}$cate_desc='「' . single_cat_title('', false) . '」の記事一覧です。' . get_bloginfo('description');return $cate_desc;}
+function get_meta_keyword_from_category(){return single_cat_title('',false) . ',ブログ,記事一覧';}
+function get_mtime($format){$mtime=get_the_modified_time('Ymd');$ptime=get_the_time('Ymd');if($ptime > $mtime){return get_the_time($format);}elseif($ptime === $mtime){return null;}else{return get_the_modified_time($format);}}
 //add keyword highlight & ルビサポート
-function wps_highlight_results($text){
-	if(is_search()){
-	$sr = get_query_var('s');
-	$keys = explode(" ",$sr);
-	$text = preg_replace('/('.implode('|', $keys) .')/iu','<span class="search-highlight">'.$sr.'</span>', $text);}
-	return $text;}
+function ruby_setup(){global $allowedposttags;foreach(array('ruby','rp','rt') as $tag )if(!isset($allowedposttags[$tag]))$allowedposttags[$tag]=array();}
+function wps_highlight_results($text){if(is_search()){$sr=get_query_var('s');$keys=explode(" ",$sr);$text=preg_replace('/('.implode('|',$keys) .')/iu','<span class="marker yelow">'.$sr.'</span>',$text);}return $text;}
 add_filter('the_title','wps_highlight_results');
 add_filter('the_content','wps_highlight_results');
 add_action('after_setup_theme','ruby_setup');
-function ruby_setup(){global $allowedposttags;foreach(array('ruby','rp','rt') as $tag )	if(!isset($allowedposttags[$tag]))$allowedposttags[$tag] = array();}
 //カレンダー短縮
 function my_archives_link($link_html){
-    $currentMonth = date('n');
-    $currentYear = date('Y');
-    $ym = explode('年', $link_html);
-    $monthArray = explode('月', $ym[1]);
-    $month = $monthArray[0];
-    $year = intval(strip_tags($ym[0]));
-    $linkMonth = substr('0'.$month, -2);
-    $url = site_url('/').$year.'/'.$linkMonth.'/';
-    $linkString = '%s<a href="'.$url.'" style="white-space: nowrap;">%s</a>'.
-    $linkYear = '';
-    $yearHtml = '<span style="font-weight:bold;">%s</span><br />';
-    if(($currentMonth == $month) AND ($currentYear == $year)){$linkYear = sprintf($yearHtml, $year);
-    }else{if((intval($month) == 12) AND ($currentYear != $year)){$linkYear = '<br />'.sprintf($yearHtml, $year);}}
-    return sprintf($linkString, $linkYear, $ym[1]);}
+    $currentMonth=date('n');
+    $currentYear=date('Y');
+    $ym=explode('年',$link_html);
+    $monthArray=explode('月',$ym[1]);
+    $month=$monthArray[0];
+    $year=intval(strip_tags($ym[0]));
+    $linkMonth=substr('0'.$month,-2);
+    $url=site_url('/').$year.'/'.$linkMonth.'/';
+    $linkString='%s<a href="'.$url.'" style="white-space: nowrap;">%s</a>'.
+    $linkYear='';
+    $yearHtml='<span style="font-weight:bold;">%s</span><br />';
+    if(($currentMonth == $month)AND($currentYear == $year)){$linkYear=sprintf($yearHtml,$year);
+    }else{if((intval($month) == 12)AND($currentYear != $year)){$linkYear='<br />'.sprintf($yearHtml,$year);}}
+    return sprintf($linkString,$linkYear,$ym[1]);}
 add_filter('get_archives_link','my_archives_link');
 //add pic&©&予約記事 to RSS
 function future_posts_in_feed($query){if($query->is_feed){$query->set('post_status','publish,future');}return $query;}
@@ -150,10 +144,11 @@ function rss_edit($content){global $post;
   if(has_post_thumbnail($post->ID)){$img=get_the_post_thumbnail($post->ID);}else{$img='<img src="/img/no-img.png" width="400" height="200" alt="'.get_the_title().'"/>';}
   $content=$img.$content.'<p>&raquo;<a href="'.get_permalink($post->ID).'">続きを読む</a></p>'.'<p>copyrights&copy; ALL Rights Reserved'.'<a href="'.bloginfo('url');.'">'.bloginfo('name');.'</a>.</p>';return $content;}
 add_filter('pre_get_posts','future_posts_in_feed');
-add_filter('the_excerpt_rss', 'add_thumb_to_RSS');
-add_filter('the_content_feed', 'add_thumb_to_RSS');
+add_filter('the_excerpt_rss','add_thumb_to_RSS');
+add_filter('the_content_feed','add_thumb_to_RSS');
 //ADD:プロフィール(表示はthe_author_meta('twitter')とか)
 function my_new_contactmethods($contactmethods){
+  $contactmethods['LINE']='LINE';
 	$contactmethods['twitter']='Twitter';
 	$contactmethods['facebook']='Facebook';
   $contactmethods['Google+']='Google+';
@@ -164,13 +159,29 @@ function my_new_contactmethods($contactmethods){
   $contactmethods['Instagram']='Instagram';
 	$contactmethods['Flickr']='Flickr';
   $contactmethods['Swarm']='Swarm';
-	$contactmethods['YouTube']='YouTube';
-  $contactmethods['niconico']='niconico';
+  $contactmethods['Steam']='Steam';
+  $contactmethods['UPlay']='UPlay';
+  $contactmethods['EAOrigin']='EAOrigin';
+  $contactmethods['XboxLive']='XboxLive';
+  $contactmethods['PSN']='PSN';
+  $contactmethods['NINTENDOaccount']='ニンテンドーアカウント';
+  $contactmethods['NINTENDONetworkID']='ニンテンドーネットワークID';
+  $contactmethods['friendcode']='フレンドコード';
   $contactmethods['vine']='vine';
+  $contactmethods['YouTube']='YouTube';
+  $contactmethods['Twitch']='Twitch';
+  $contactmethods['niconico']='niconico';
+  $contactmethods['twitcasting']='ツイキャス';
+  $contactmethods['Tumblr']='Tumblr';
+  $contactmethods['Linkedin']='Linkedin';
   $contactmethods['wordpress.com']='wordpress.com';
   $contactmethods['wordpress.org']='wordpress.org';
-	$contactmethods['Tumblr']='Tumblr';
-  $contactmethods['Linkedin']='Linkedin';
+  $contactmethods['Adsense']='アドセンス';
+  $contactmethods['Amazonlist']='Amazonのほしいものリスト';
+  $contactmethods['Yahooaction']='Yahooオークション';
+  $contactmethods['Rakutenaction']='楽天オークション';
+  $contactmethods['Merukari']='メルカリ';
+  $contactmethods['Bitcoin']='Bitcoin';
 	return $contactmethods;}
 add_filter('user_contactmethods','my_new_contactmethods',10,1);
 //オリジナルカスタマイザー
