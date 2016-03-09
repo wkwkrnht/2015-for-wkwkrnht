@@ -1,6 +1,6 @@
 <?php add_action('wp_enqueue_scripts','theme_enqueue_styles');function theme_enqueue_styles(){wp_enqueue_style('parent-style',get_template_directory_uri().'/style.css' );}
 //外部スクリプト読み込み
-function theme_script(){wp_enqueue_script('theme','get_template_directory_uri().javascript.js',array(),false,false);}
+function theme_script(){wp_enqueue_script('theme','//wkwkrnht.wp.xdomain.jp/wp-content/themes/2015-for-wkwkrnht/javascript.js',array(),false,false);}
 add_action('wp_enqueue_script','theme_script');
 function code_scripts(){wp_enqueue_style('code','//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.1.0/styles/default.min.css',array(),false,false);wp_enqueue_script('code', '//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.1.0/highlight.min.js',array('jquery'),false,false);}
 add_action('wp_enqueue_scripts','code_scripts');
@@ -165,18 +165,20 @@ function my_new_contactmethods($contactmethods){
 	return $contactmethods;}
 add_filter('user_contactmethods','my_new_contactmethods',10,1);
 //オリジナルカスタマイザー
-add_action('customize_register','theme_customize_register');
-function theme_customize_register($wp_customize){$wp_customize->add_section('2015_for_wkwkrnht',array('title'=>'2015_for_wkwkrnht','priority'=>100,));
-  /*ここの項目の設定を追加していきます*/
-  $wp_customize->add_setting('analytics_code',array('type'=>'option',));
-  $wp_customize->add_control('analytics_code',array('settings'=>'analytics_code','label'=>'アナリティクスコード','section'=>'2015_for_wkwkrnht','type'=>'text',));
-  $wp_customize->add_setting('twitterID',array('type'=>'option',));
-  $wp_customize->add_control('twitterID',array('settings'=>'twitterID','label'=>'TwitterID','section'=>'2015_for_wkwkrnht','type'=>'text','priority'=>100));
-}
-// テーマカスタマイザーにロゴアップロード設定機能追加
 define('LOGO_SECTION','logo_section');
 define('LOGO_IMAGE_URL','logo_image_url');
-function themename_theme_customizer($wp_customize){$wp_customize->add_section(LOGO_SECTION,array('title' => 'ロゴ画像','priority' => 30,'description' => 'サイトのロゴ設定',));$wp_customize->add_setting(LOGO_IMAGE_URL);$wp_customize->add_control(new WP_Customize_Image_Control($wp_customize,LOGO_IMAGE_URL,array('label' => 'ロゴ','section' => LOGO_SECTION,'settings' => LOGO_IMAGE_URL,'description' => '画像をアップロードするとヘッダーにあるデフォルトのサイト名と入れ替わります',)));}
+function theme_customize_register($wp_customize){
+  $wp_customize->add_section(LOGO_SECTION,array('title'=>'ロゴ画像','priority'=>30,'description'=>'サイトのロゴ設定',));
+    $wp_customize->add_setting(LOGO_IMAGE_URL);
+      $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize,LOGO_IMAGE_URL,array('label'=>'ロゴ','section'=>LOGO_SECTION,'settings'=>LOGO_IMAGE_URL,'description'=>'画像をアップロードするとヘッダーにあるデフォルトのサイト名と入れ替わります',)));
+  $wp_customize->add_section('2015_for_wkwkrnht',array('title'=>'2015_for_wkwkrnht','priority'=>100,));
+    $wp_customize->add_setting('analytics_code',array('type'=>'option',));
+      $wp_customize->add_control('analytics_code',new WP_Customize_Control(array('settings'=>'analytics_code','label'=>'アナリティクスコード','section'=>'2015_for_wkwkrnht','type'=>'text',)));
+    $wp_customize->add_setting('twitterid',array('type'=>'option',));
+      $wp_customize->add_control('twitterid',new WP_Customize_Control(array('settings'=>'twitterID','label'=>'TwitterID','section'=>'2015_for_wkwkrnht','priority'=>100,)));
+
+}
+add_action('customize_register','theme_customize_register');
 add_action('customize_register','themename_theme_customizer');
 function get_the_logo_image_url(){return esc_url(get_theme_mod(LOGO_IMAGE_URL));}
 //投稿記事一覧にアイキャッチ画像を表示
