@@ -52,5 +52,5 @@ preg_match( '/https?:\/\/(.+?)\//i',admin_url(),$results);?>
 <meta name="twitter:domain" content="<?php echo $results[1] ?>">
 <meta name="twitter:image:width" content="825px">
 <meta name="twitter:image:height" content="510px">
-<meta name="twitter:creator" content="<?php $options=get_option('TwiterID');echo $options['TwiterID'];?>">
-<meta name="twitter:site" content="<?php $options=get_option('TwiterID');echo $options['TwiterID'];?>">
+<meta name="twitter:creator" content="<?php echo get_option('twiterID');?>">
+<meta name="twitter:site" content="<?php echo get_option('twiterID');?>">
