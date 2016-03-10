@@ -27,9 +27,9 @@ function twentyfifteen_entry_meta(){
   if(is_attachment()&&wp_attachment_is_image()){$metadata = wp_get_attachment_metadata();printf('<span class="full-size-link"><span class="screen-reader-text">%1$s</span><a href="%2$s">%3$s &times;%4$s</a></span>',_x('Full size','Used before full size attachment link.','twentyfifteen'),esc_url(wp_get_attachment_url()),$metadata['width'],$metadata['height']);}
   //「投稿日」・「更新日」
   if(in_array(get_post_type(),array('post','attachment'))){
-    $time_string = '<time class="entry-date published updated" datetime="%1$s">%2$s</time>';
-    if(get_the_time('U')!== get_the_modified_time('U')){$time_string = '<time class="entry-date published" datetime="%1$s">%2$s</time><time class="updated" datetime="%3$s">%4$s</time>';}
-      $time_string = sprintf($time_string,esc_attr(get_the_date('c')),get_the_date(),esc_attr(get_the_modified_date('c')),get_the_modified_date());
+    $time_string='<time class="entry-date published updated" datetime="%1$s">%2$s</time>';
+    if(get_the_time('U')!== get_the_modified_time('U')){$time_string='<time class="entry-date published" datetime="%1$s">%2$s</time><time class="updated" datetime="%3$s">%4$s</time>';}
+      $time_string=sprintf($time_string,esc_attr(get_the_date('c')),get_the_date(),esc_attr(get_the_modified_date('c')),get_the_modified_date());
       printf('<span class="posted-on"><span class="screen-reader-text">%1$s</span><a href="%2$s" rel="bookmark">%3$s</a></span>',_x('Posted on','Used before publish date.','twentyfifteen'),esc_url(get_permalink()),$time_string);
       echo('<span class="humantime">（');echo human_time_diff(get_the_time('U'), current_time('timestamp'));echo('前）</span>');
   }
@@ -41,8 +41,9 @@ function twentyfifteen_entry_meta(){
     $tags_list = get_the_tag_list('',_x(',','Used between list items,there is a space after the comma.','twentyfifteen'));
     if($tags_list){printf('<span class="tags-links"><span class="screen-reader-text">%1$s</span>%2$s</span>',_x('Tags','Used before tag names.','twentyfifteen'),$tags_list);}
   }
-  //"コメントをどうぞ"、"n件のコメント"表示
+  //"コメントをどうぞ"&コメント数&WLW編集
   if(!is_single()&&!post_password_required()&&(comments_open()||get_comments_number())){echo'<span class="comments-link">';comments_popup_link(__('Leave a comment','twentyfifteen'),__('1 Comment','twentyfifteen' ),__('% Comments','twentyfifteen'));echo'</span>';}
+  if(is_user_logged_in()){$wlwurl=substr(bloginfo('url'),0,5);echo'<a href="wlw://'string substr(bloginfo('url'),if($wlwurl='https'){8}else{7})'/?postid=';echo the_ID();echo'">WLWで編集</a>';}
 }
 //Alt属性がないIMGタグにalt=""を追加する
 add_filter('the_content',function($content){return preg_replace('/<img((?![^>]*alt=)[^>]*)>/i','<img alt=""${1}>',$content);});
@@ -51,8 +52,8 @@ add_action('admin_menu','add_custom_fields');
 add_action('save_post','save_custom_fields');
 function add_custom_fields(){add_meta_box('my_sectionid','カスタムフィールド','my_custom_fields','post');}
 function my_custom_fields(){global $post;
-  $meta_keywords = get_post_meta($post->ID,'meta_keywords',true);
-  $noindex = get_post_meta($post->ID,'noindex',true);
+  $meta_keywords=get_post_meta($post->ID,'meta_keywords',true);
+  $noindex=get_post_meta($post->ID,'noindex',true);
   if($noindex==1){ $noindex_c="checked";}
   else{$noindex_c= "/";}
   echo'<p>チェックするとnoindexに<br/><input type="checkbox" name="noindex" value="1" ' . $noindex_c . '>noindex</p>';
@@ -123,6 +124,38 @@ function wps_highlight_results($text){if(is_search()){$sr=get_query_var('s');$ke
 add_filter('the_title','wps_highlight_results');
 add_filter('the_content','wps_highlight_results');
 add_action('after_setup_theme','ruby_setup');
+//PCのみ表示テキストウイジェットの追加
+class PcTextWidgetItem extends WP_Widget {
+  function PcTextWidgetItem(){parent::WP_Widget(false,$name='PCのみ表示テキストウィジェット');}
+  function widget($args,$instance){extract($args);
+    $title=apply_filters('widget_title_pc_text',$instance['title_pc_text']);
+    $text=apply_filters('widget_text_pc_text',$instance['text_pc_text']);
+      if(!wp_is_mobile()):?>
+      <div id="pc-text-widget" class="widget pc_text">
+        <?php if($title){echo '<h4>'.$title.'</h4>';}?>
+        <div class="text-pc"><?php echo $text;?></div>
+      </div>
+      <?php endif
+  }
+  function update($new_instance, $old_instance){$instance=$old_instance;
+    $instance['title_pc_text']=strip_tags($new_instance['title_pc_text']);
+    $instance['text_pc_text']=$new_instance['text_pc_text'];
+      return $instance;
+  }
+  function form($instance){if(empty($instance)){$instance = array('title_pc_text'=>null,'text_pc_text'=>null,);}
+    $title=esc_attr($instance['title_pc_text']);$text=esc_attr($instance['text_pc_text']);?>
+    <p>
+      <label for="<?php echo $this->get_field_id('title_pc_text');?>"><?php _e('タイトル');?></label>
+      <input class="widefat" id="<?php echo $this->get_field_id('title_pc_text');?>" name="<?php echo $this->get_field_name('title_pc_text');?>" type="text" value="<?php echo $title;?>"/>
+    </p>
+    <p>
+      <label for="<?php echo $this->get_field_id('text_pc_text');?>"><?php _e('テキスト');?></label>
+      <textarea class="widefat" id="<?php echo $this->get_field_id('text_pc_text');?>" name="<?php echo $this->get_field_name('text_pc_text');?>" cols="20" rows="16"><?php echo $text;?></textarea>
+    </p>
+    <?php
+  }
+}
+add_action('widgets_init',create_function('','return register_widget("PcTextWidgetItem");'));
 //カレンダー短縮
 function my_archives_link($link_html){
     $currentMonth=date('n');
