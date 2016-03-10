@@ -1,4 +1,4 @@
-<article id="post-<?php the_ID(); ?>" <?php post_class();?>>
+<article id="post-<?php the_ID();?>" <?php post_class();?>>
 	<div class="card-list">
 		<div class="card-thumb"><?php twentyfifteen_post_thumbnail();?></div>
 		<div class="card-content">
