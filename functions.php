@@ -43,7 +43,7 @@ function twentyfifteen_entry_meta(){
   }
   //"コメントをどうぞ"&コメント数&WLW編集
   if(!is_single()&&!post_password_required()&&(comments_open()||get_comments_number())){echo'<span class="comments-link">';comments_popup_link(__('Leave a comment','twentyfifteen'),__('1 Comment','twentyfifteen' ),__('% Comments','twentyfifteen'));echo'</span>';}
-  if(is_user_logged_in()){$wlwurl=substr(bloginfo('url'),0,5);echo'<a href="wlw://'string substr(bloginfo('url'),if($wlwurl='https'){8}else{7})'/?postid=';echo the_ID();echo'">WLWで編集</a>';}
+  if(is_user_logged_in()){$wlwurl=substr(bloginfo('url'),0,5);echo'<a href="wlw://'substr(bloginfo('url'),if($wlwurl='https'){8}else{7});'/?postid=';echo the_ID();echo'">WLWで編集</a>';}
 }
 //Alt属性がないIMGタグにalt=""を追加する
 add_filter('the_content',function($content){return preg_replace('/<img((?![^>]*alt=)[^>]*)>/i','<img alt=""${1}>',$content);});
