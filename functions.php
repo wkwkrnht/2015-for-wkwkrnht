@@ -125,7 +125,7 @@ add_filter('the_title','wps_highlight_results');
 add_filter('the_content','wps_highlight_results');
 add_action('after_setup_theme','ruby_setup');
 //PCのみ表示テキストウイジェットの追加
-class PcTextWidgetItem extends WP_Widget {
+class PcTextWidgetItem extends WP_Widget{
   function PcTextWidgetItem(){parent::WP_Widget(false,$name='PCのみ表示テキストウィジェット');}
   function widget($args,$instance){extract($args);
     $title=apply_filters('widget_title_pc_text',$instance['title_pc_text']);
@@ -211,15 +211,19 @@ function my_new_contactmethods($contactmethods){
 	$contactmethods['Flickr']='Flickr';
   $contactmethods['Swarm']='Swarm';
   $contactmethods['Steam']='Steam';
-  $contactmethods['UPlay']='UPlay';
-  $contactmethods['EAOrigin']='EAOrigin';
   $contactmethods['XboxLive']='XboxLive';
   $contactmethods['PSN']='PSN';
   $contactmethods['NINTENDOaccount']='ニンテンドーアカウント';
   $contactmethods['NINTENDONetworkID']='ニンテンドーネットワークID';
   $contactmethods['friendcode']='フレンドコード';
+  $contactmethods['UPlay']='UPlay';
+  $contactmethods['EAOrigin']='EAOrigin';
+  $contactmethods['SQUAREENIXMembers']='SQUAREENIXMembers';
+  $contactmethods['BANDAINAMCOID']='BANDAINAMCOID';
+  $contactmethods['SEGAID']='SEGAID';
   $contactmethods['vine']='vine';
   $contactmethods['YouTube']='YouTube';
+  $contactmethods['USTREAM']='USTREAM';
   $contactmethods['Twitch']='Twitch';
   $contactmethods['niconico']='niconico';
   $contactmethods['twitcasting']='ツイキャス';
@@ -228,6 +232,7 @@ function my_new_contactmethods($contactmethods){
   $contactmethods['Slideshare']='Slideshare';
   $contactmethods['Medium']='Medium';
   $contactmethods['note']='note';
+  $contactmethods['Pxiv']='Pxiv';
   $contactmethods['Tumblr']='Tumblr';
   $contactmethods['Linkedin']='Linkedin';
   $contactmethods['livedoor']='livedoor';
