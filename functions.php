@@ -43,7 +43,7 @@ function twentyfifteen_entry_meta(){
   }
   //"コメントをどうぞ"&コメント数&WLW編集
   if(!is_single()&&!post_password_required()&&(comments_open()||get_comments_number())){echo'<span class="comments-link">';comments_popup_link(__('Leave a comment','twentyfifteen'),__('1 Comment','twentyfifteen' ),__('% Comments','twentyfifteen'));echo'</span>';}
-  if(is_user_logged_in()){$wlwp=7;$wlwurl=substr(bloginfo('url'),0,5);if($wlwurl='https')$wlwp=8;endif;echo'<a href="wlw://'substr(bloginfo('url'),$wlwp);'/?postid=';echo the_ID();echo'">WLWで編集</a>';}
+  if(is_user_logged_in()):echo'<a href="wlw://wkwkrnht.gegahost.net/?postid=';echo the_ID();echo'">WLWで編集</a>';endif;
 }
 //Alt属性がないIMGタグにalt=""を追加する
 add_filter('the_content',function($content){return preg_replace('/<img((?![^>]*alt=)[^>]*)>/i','<img alt=""${1}>',$content);});
@@ -130,12 +130,12 @@ class PcTextWidgetItem extends WP_Widget {
   function widget($args,$instance){extract($args);
     $title=apply_filters('widget_title_pc_text',$instance['title_pc_text']);
     $text=apply_filters('widget_text_pc_text',$instance['text_pc_text']);
-      if(!wp_is_mobile()):?>
-      <div id="pc-text-widget" class="widget pc_text">
-        <?php if($title){echo '<h4>'.$title.'</h4>';}?>
-        <div class="text-pc"><?php echo $text;?></div>
-      </div>
-      <?php endif
+      if(!wp_is_mobile()):
+        echo('<div id="pc-text-widget" class="widget pc_text">');
+          if($title){echo '<h4>'.$title.'</h4>';}
+          echo('<div class="text-pc">');echo $text;echo'</div>';
+        echo'</div>';
+      endif;
   }
   function update($new_instance, $old_instance){$instance=$old_instance;
     $instance['title_pc_text']=strip_tags($new_instance['title_pc_text']);
