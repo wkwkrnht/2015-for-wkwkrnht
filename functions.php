@@ -58,7 +58,9 @@ function my_custom_fields(){global $post;
   echo'<p>チェックするとnoindexに<br/><input type="checkbox" name="noindex" value="1" ' . $noindex_c . '>noindex</p>';
   echo'<p>meta keyword設定(カンマ区切りで2〜6つまで)<br/><input type="text" name="meta_keywords" value="'.esc_html($meta_keywords).'" size="40"/></p>';}
 function save_custom_fields($post_id){if(!empty($_POST['meta_keywords']))update_post_meta($post_id,'meta_keywords',$_POST['meta_keywords'] );else delete_post_meta($post_id,'meta_keywords');if(!empty($_POST['noindex']))update_post_meta($post_id,'noindex',$_POST['noindex']);else delete_post_meta($post_id,'noindex');}
-//アイキャッチ自動設定
+//サムネサイズ追加
+add_image_size('related',150,150,true);
+//サムネ自動設定
 require_once(ABSPATH . '/wp-admin/includes/image.php');
 function fetch_thumbnail_image($matches,$key,$post_content,$post_id){
   $imageTitle='';

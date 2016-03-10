@@ -24,37 +24,3 @@ jQuery(function(){
 	  jQuery('#pre').click(function(event){event.preventDefault();jQuery('#slide').animate({scrollRight:'+=455'},'slow');});});
   //next
 });
-jQuery(document).ready(function(jQuery){
-	function getRightClick(e){var rightclick;
-		if(!e) var e = window.event;
-		if(e.which) rightclick = (e.which == 3);
-		else if(e.button) rightclick = (e.button == 2);
-		return rightclick;
-	}
-	function getSelectionText(){var text = "";
-	    if(window.getSelection){text = window.getSelection().toString();
-	    }else if(document.selection && document.selection.type != "Control"){text = document.selection.createRange().text;}
-	    return text;
-	}
-	jQuery('.entry-content').mousedown(function (event){
-		jQuery('body').attr('mouse-top',event.clientY+window.pageYOffset);
-		jQuery('body').attr('mouse-left',event.clientX);
-		if(!getRightClick(event) && getSelectionText().length > 0){jQuery('.twtshare').remove();document.getSelection().removeAllRanges();}
-	});
-  	jQuery('.entry-content').mouseup(function (event){var t=jQuery(event.target);var st=getSelectionText();
-       	if(st.length > 3 && !getRightClick(event)){mts = jQuery('body').attr('mouse-top');
-      	 	mte = event.clientY+window.pageYOffset;
-      	 	if(parseInt(mts) < parseInt(mte)) mt = mts;
-      	 		else mt = mte;
-      	 	mlp = jQuery('body').attr('mouse-left');
-      	 	mrp = event.clientX;
-      	 	ml = parseInt(mlp)+(parseInt(mrp)-parseInt(mlp))/2;
-      	 	sl = window.location.href.split('?')[0];
-      	 	maxl = 107;
-      	 	st = st.substring(0,maxl);
-      	 	st = st+' @wpmudev';
-      	 	jQuery('body').append("<a href=\"https://twitter.com/share?url="+encodeURIComponent(sl)+"&text="+encodeURIComponent(st)+"\" class='twtshare icon-social-twitter' onclick=\"window.open(this.href, \'\', \'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600\');return false;\"></a>");
-      	 	jQuery('.twtshare').css({position: 'absolute',top: parseInt(mt)-60,left: parseInt(ml)});
-     	}
-  });
-});
