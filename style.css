@@ -12,10 +12,10 @@
 /*font指定*/
 .entry-header,.home-header,.home-footer,.page-links,.page-top a{font-family:sans-serif;}
 /*cardstyle*/
-.thumb+.card-list{max-width:825px;max-height:510px;}
-.content+.card-list{background-color:#f7f7f7;color:#707070;width:50px;padding:3px;position:relative;}
-.title+.card-list{font-size:24px;text-align:center;margin-bottom:1px;top:0px;position:absolute;}
-.meta+.card-list{font-size:16px;margin-top:1px;bottom:0px;position:absolute;}
+.card-thumb{max-width:825px;max-height:510px;}
+.card-content{background-color:#f7f7f7;color:#707070;width:50px;padding:3px;position:relative;}
+.card-title{font-size:24px;text-align:center;margin-bottom:1px;top:0px;position:absolute;}
+.card-meta{font-size:16px;margin-top:1px;bottom:0px;position:absolute;}
 /*header*/
 .entry-header{text-align:center;}
 /*footer
