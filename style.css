@@ -13,9 +13,9 @@
 .entry-header,.home-header,.home-footer,.page-links,.page-top a{font-family:sans-serif;}
 /*cardstyle*/
 .card-thumb{max-width:825px;max-height:510px;}
-.card-content{background-color:#f7f7f7;color:#707070;height:50px;padding:3px;}
-.card-title{font-size:24px;text-align:center;margin-bottom:1px;top:0px;}
-.card-meta{font-size:16px;margin-top:1px;bottom:0px;}
+.card-content{background-color:#f7f7f7;color:#707070;}
+.card-title{font-size:24px;text-align:center;}
+.card-meta{font-size:16px;}
 /*header*/
 .entry-header{text-align:center;}
 /*footer
