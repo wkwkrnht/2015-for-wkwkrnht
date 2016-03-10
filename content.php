@@ -21,7 +21,7 @@
 				'separator'   =>'<span class="screen-reader-text">,</span>',));?>
 	</div>
 	<footer class="entry-footer">
-		<h2>Share Button＆関連記事</h2>
+		<h2>Share＆関連記事</h2>
 		<div id="slide">
 			<?php get_template_part('parts/snsbutton');?><?php get_template_part('parts/related');?>
 		</div>
