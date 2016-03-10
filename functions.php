@@ -185,12 +185,13 @@ function my_new_contactmethods($contactmethods){
   $contactmethods['NINTENDOaccount']='ニンテンドーアカウント';
   $contactmethods['NINTENDONetworkID']='ニンテンドーネットワークID';
   $contactmethods['friendcode']='フレンドコード';
-  $contactmethods['MixCannel']='MixChannel';
   $contactmethods['vine']='vine';
   $contactmethods['YouTube']='YouTube';
   $contactmethods['Twitch']='Twitch';
   $contactmethods['niconico']='niconico';
   $contactmethods['twitcasting']='ツイキャス';
+  $contactmethods['Skype']='Skype';
+  $contactmethods['MixCannel']='MixChannel';
   $contactmethods['Slideshare']='Slideshare';
   $contactmethods['Medium']='Medium';
   $contactmethods['note']='note';
