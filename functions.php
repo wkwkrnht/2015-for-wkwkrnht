@@ -102,13 +102,13 @@ add_action('future_to_publish','auto_post_thumbnail_image');
 //from:URL to:はてなブログカード
 function url_to_hatena_blog_card($the_content){
   if(is_singular()){
-    $res=preg_match_all('/^(<p>)?(<a.+?>)?https?:\/\/[-_.!~*\'()a-zA-Z0-9;\/?:\@&=+\$,%#]+(<\/a>)?(<\/p>)?(<br ? \/>)?$/im', $the_content,$m);
+    $res=preg_match_all('/^(<p>)?(<a.+?>)?https?:\/\/[-_.!~*\'()a-zA-Z0-9;\/?:\@&=+\$,%#]+(<\/a>)?(<\/p>)?(<br ? \/>)?$/im',$the_content,$m);
     foreach($m[0] as $match){$url=strip_tags($match);
       $tag='<iframe class="hatenablogcard" src="http://hatenablog.com/embed?url='.$url.'" frameborder="0" scrolling="no"></iframe>';
       $the_content=preg_replace('{'.preg_quote($match).'}', $tag , $the_content, 1);}}return $the_content;}
 add_filter('the_content','url_to_hatena_blog_card');
 //from:@* to:twitter name
-function twtreplace($content){$twtreplace = preg_replace('/([^a-zA-Z0-9-_&])@([0-9a-zA-Z_]+)/',"$1<a href=\"http://twitter.com/$2\" target=\"_blank\" rel=\"nofollow\">@$2</a>",$content);return $twtreplace;}
+function twtreplace($content){$twtreplace=preg_replace('/([^a-zA-Z0-9-_&])@([0-9a-zA-Z_]+)/',"$1<a href=\"http://twitter.com/$2\" target=\"_blank\" rel=\"nofollow\">@$2</a>",$content);return $twtreplace;}
 add_filter('the_content','twtreplace');
 add_filter('comment_text','twtreplace');
 //カテゴリー説明文をメタ化
@@ -146,18 +146,10 @@ function future_posts_in_feed($query){if($query->is_feed){$query->set('post_stat
 add_filter('pre_get_posts','future_posts_in_feed');
 add_filter('the_excerpt_rss','add_thumb_to_RSS');
 add_filter('the_content_feed','add_thumb_to_RSS');
-//whitelist_optionsにフックし、有効な項目名にcontact_infoを追加。
-//$whitelist_optionsは設定画面で有効な項目名の配列
-//general=一般設定。その他、discussion、media、privacy、reading、writing、optionsが記述可能
-function add_google_analytics_code_field($whitelist_options){$whitelist_options['general'][]='google_analytics_code';return $whitelist_options;}
-add_filter('whitelist_options','add_contact_info_field');
-// add_settings_field関数を用いて、一般設定画面に表示項目を追加。
-// contact_infoは、$whitelist_optionsに追加した項目名、連絡先は項目の表示名。display_contact_infoは、フォームを表示させる関数名。generalは一般設定画面。
-function regist_google_analytics_code_field(){add_settings_field('google_analytics_code','連絡先','display_google_analytics_code','general');}
-add_action('admin_init','regist_google_analytics_code_field');
-// 一般設定でのフォームを表示する関数。
-// DBへの保存は、WordPressが自動的に行ってくれる。ただし、ファイルアップロードは対応不可能。
-function display_google_analytics_code_info(){$google_analytics_code=get_option('google_analytics_code');?><textarea cols="70" rows="3" name="google_analytics_code"><?php echo esc_html($google_analytics_code);?></textarea><?php}
+//設定にページ追加
+add_action('admin_menu', 'register_custom_menu_page');
+function register_custom_menu_page(){add_menu_page('サイト設定','サイト設定',0,'site_settings','create_custom_menu_page','',10);}
+function create_custom_menu_page(){get_template_part('inc/site_settings');}
 //ADD:プロフィール(表示はthe_author_meta('twitter')とか)
 function my_new_contactmethods($contactmethods){
   $contactmethods['TEL']='TEL';
@@ -198,15 +190,18 @@ function my_new_contactmethods($contactmethods){
   $contactmethods['niconico']='niconico';
   $contactmethods['twitcasting']='ツイキャス';
   $contactmethods['Slideshare']='Slideshare';
+  $contactmethods['Medium']='Medium';
+  $contactmethods['note']='note';
   $contactmethods['Tumblr']='Tumblr';
   $contactmethods['Linkedin']='Linkedin';
   $contactmethods['livedoor']='livedoor';
   $contactmethods['wordpress.com']='wordpress.com';
   $contactmethods['wordpress.org']='wordpress.org';
+  $contactmethods['Adsense']='アドセンス';
   $contactmethods['A8.net']='A8.net';
   $contactmethods['GoogleAdsense']='GoogleAdsense';
-  $contactmethods['Adsense']='アドセンス';
-  $contactmethods['Amazonlist']='Amazonのほしいものリスト';
+  $contactmethods['AmazonAdsense']='Amazonアフィリエイト';
+  $contactmethods['Amazonlist']='Amazonの欲しいものリスト';
   $contactmethods['Yahooaction']='Yahooオークション';
   $contactmethods['Rakutenaction']='楽天オークション';
   $contactmethods['Merukari']='メルカリ';
