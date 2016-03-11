@@ -23,9 +23,10 @@
 .site-footer{box-shadow:0 2px 2px 0 #999;}*/
 .entry-footer h2{color:#fff;background:#ffcc00;box-shadow:0 2px 5px 0 #999;height:45px;margin:15px;font-size:30px;text-align:center;}
 /*見出し*/
-.entry-content h2{color:#fff;background:#ffcc00;box-shadow:0 2px 5px 0 #999;height:45px;text-align:center;}
-.entry-content h3{border-left:20px solid #ffcc00;box-shadow:0 2px 5px 0 #999;height:45px;border-bottom:none;text-align:center;}
-.entry-content h4{background:#ffcc00;border-bottom:10px solid #fff;box-shadow:0 2px 5px 0 #999;height:45px;text-align:center;}
+.entry-content h*{box-shadow:0 2px 5px 0 #999;height:45px;text-align:center;}
+.entry-content h2{color:#fff;background:#ffcc00;}
+.entry-content h3{background:#fff;border-bottom:10px solid #ffcc00;}
+.entry-content h4{border-left:20px solid #ffcc00;border-bottom:none;}
 /*social-nav*/
 .social-navigation a[href*="twitter.com"]:before{color:#00b8ff;}
 .social-navigation a[href*="wordpress.com"]:before{color:#0033ff;}
