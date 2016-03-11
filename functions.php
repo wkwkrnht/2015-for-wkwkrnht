@@ -192,7 +192,7 @@ add_filter('pre_get_posts','future_posts_in_feed');
 add_filter('the_excerpt_rss','add_thumb_to_RSS');
 add_filter('the_content_feed','add_thumb_to_RSS');
 //設定にページ追加
-add_action('admin_menu', 'register_custom_menu_page');
+add_action('admin_menu','register_custom_menu_page');
 function register_custom_menu_page(){add_menu_page('サイト設定','サイト設定',0,'site_settings','create_custom_menu_page','',10);}
 function create_custom_menu_page(){get_template_part('inc/site_settings');}
 //ADD:プロフィール(表示はthe_author_meta('twitter')とか)
