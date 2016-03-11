@@ -4,7 +4,6 @@
 	<?php if(get_post_meta(get_the_ID(),'noindex',true)==1)echo'<meta name="robots" content="noindex">'?>
 	<meta charset="<?php bloginfo('charset');?>">
 	<meta name="viewport" content="width=device-width">
-	<meta name="theme-color" content="#ffcc00">
 	<?php get_template_part('inc/meta');get_template_part('inc/ogp');?>
 	<link rel="profile" href="http://gmpg.org/xfn/11">
 	<link rel="pingback" href="<?php bloginfo('pingback_url');?>">

@@ -22,8 +22,8 @@ if(is_single()){
 }else{if(get_header_image()){echo'<meta property="og:image" content="'.get_header_image().'">';echo "\n";}else{echo '<meta property="og:image" content="/img/icon.png">';echo "\n";}}?>
 <meta property="og:site_name" content="<?php bloginfo('name');?>">
 <meta property="og:locale" content="ja_JP"/>
-<meta property="fb:admins" content="100010188733942">
-<meta property="fb:app_id" content="951165034967338">
+<meta property="fb:admins" content="<?php echo get_option('fb:admins');?>">
+<meta property="fb:app_id" content="<?php echo get_option('fb:app_id');?>">
 <meta name="twitter:card" content="summary">
 <?php if (is_single()){
 if(have_posts()):while(have_posts()):the_post();
@@ -52,4 +52,4 @@ preg_match( '/https?:\/\/(.+?)\//i',admin_url(),$results);?>
 <meta name="twitter:image:width" content="825px">
 <meta name="twitter:image:height" content="510px">
 <meta name="twitter:creator" content="@<?php echo the_author_meta('twitter');?>">
-<meta name="twitter:site" content="@<?php echo the_author_meta('twitter');?>">
+<meta name="twitter:site" content="@<?php echo get_option('twitter');?>">

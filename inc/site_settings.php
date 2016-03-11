@@ -1,8 +1,8 @@
 <?php
 //add_option
 add_option('ganalytics');
-add_option('gserachconsole');
-add_option('bingserachconsole');
+add_option('gsearchconsole');
+add_option('bingwebmastertools');
 add_option('Pushdog');
 add_option('Push7');
 add_option('OnePush');
@@ -15,8 +15,8 @@ add_option('fb:app_id');
 if($_REQUEST['blogname'])update_option('blogname',$_REQUEST['blogname']);
 if($_REQUEST['blogdescription'])update_option('blogdescription',$_REQUEST['blogdescription']);
 if($_REQUEST['ganalytics'])update_option('ganalytics',$_REQUEST['ganalytics']);
-if($_REQUEST['gserachconsole'])update_option('gserachconsole',$_REQUEST['gserachconsole']);
-if($_REQUEST['bingserachconsole'])update_option('bingserachconsole',$_REQUEST['bingserachconsole']);
+if($_REQUEST['gsearchconsole'])update_option('gsearchconsole',$_REQUEST['gsearchconsole']);
+if($_REQUEST['bingwebmastertools'])update_option('bingwebmastertools',$_REQUEST['bingwebmastertools']);
 if($_REQUEST['Pushdog'])update_option('Pushdog',$_REQUEST['Pushdog']);
 if($_REQUEST['Push7'])update_option('Push7',$_REQUEST['Push7']);
 if($_REQUEST['OnePush'])update_option('OnePush',$_REQUEST['OnePush']);
@@ -45,14 +45,14 @@ if($_REQUEST['fb:app_id'])update_option('fb:app_id',$_REQUEST['fb:app_id']);
         <p class="description">UA-********-*となる様に入力して下さい</p></td>
     </tr>
     <tr valign="top">
-        <th scope="row"><label for="gserachconsole">Google Serach Consoleのコード</label></th>
-        <td><input name="gserachconsole" type="text" value="<?php echo get_option('gserachconsole');?>" class="regular-text">
-        <p class="description">UA-********-*となる様に入力して下さい</p></td>
+        <th scope="row"><label for="gsearchconsole">Google Search Consoleのコード</label></th>
+        <td><input name="gsearchconsole" type="text" value="<?php echo get_option('gsearchconsole');?>" class="regular-text">
+        <p class="description">content="***"の***の部分のみ入力して下さい</p></td>
     </tr>
     <tr valign="top">
-        <th scope="row"><label for="bingserachconsole">Bing Serach Consoleのコード</label></th>
-        <td><input name="bingserachconsole" type="text" value="<?php echo get_option('bingserachconsole');?>" class="regular-text">
-        <p class="description">UA-********-*となる様に入力して下さい</p></td>
+        <th scope="row"><label for="bingwebmastertools">bing Webmaster Toolsのコード</label></th>
+        <td><input name="bingwebmastertools" type="text" value="<?php echo get_option('bingwebmastertools');?>" class="regular-text">
+        <p class="description">content="***"の***の部分のみ入力して下さい</p></td>
     </tr>
     <tr valign="top">
         <th scope="row"><label for="Pushdog">Pushdog</label></th>
@@ -87,12 +87,12 @@ if($_REQUEST['fb:app_id'])update_option('fb:app_id',$_REQUEST['fb:app_id']);
     <tr valign="top">
         <th scope="row"><label for="fb:admins">fb:admins</label></label></th>
         <td><input name="fb:admins" type="text" value="<?php echo get_option('fb:admins');?>" class="regular-text">
-        <p class="description">このサイトのOGP用admins</p></td>
+        <p class="description">OGP用admins</p></td>
     </tr>
     <tr valign="top">
         <th scope="row"><label for="fb:app_id">fb:app_id</label></label></th>
         <td><input name="fb:app_id" type="text" value="<?php echo get_option('fb:app_id');?>" class="regular-text">
-        <p class="description">このサイトのOGP用app_id</p></td>
+        <p class="description">OGP用app_id</p></td>
     </tr>
     </table>
     <p class="submit"><input type="submit" name="submit" id="submit" class="button-primary" value="保存"></p>

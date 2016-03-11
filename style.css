@@ -14,8 +14,8 @@
 /*cardstyle*/
 .card-content{background-color:#f7f7f7;color:#707070;border-radius:8px;}
 .card-thumb{max-width:825px;max-height:510px;}
-.card-title{font-size:36px;text-align:center;}
-.card-meta{font-size:16px;}
+.card-title{font-size:40px;text-align:center;}
+.card-meta{font-size:18px;}
 /*header*/
 .entry-header{text-align:center;}
 /*footer
@@ -79,7 +79,7 @@
     .entry-content table tbody{display:block;width:auto;position:relative;overflow-x:auto;white-space:nowrap;}
     .entry-content table tbody tr{display:inline-block;vertical-align:top;}*/
     /*cardstyle*/
-    .card-content{margin-bottom:10px;}
+    .card-content{margin-bottom:15px;}
     .card-thumb{max-width:640px;max-height:480px;}
     .card-title{font-size:27px;}
     .card-meta{font-size:14px;}
