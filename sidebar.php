@@ -18,5 +18,5 @@
 	<?php if(is_active_sidebar('sidebar-1')):?>
 		<div id="widget-area" class="widget-area" role="complementary"><?php dynamic_sidebar('sidebar-1');?></div>
 	<?php endif;?>
-	<section class="copyright">copyright</section>
+	<section class="copyright">&copy;2016<?php bloginfo('name');?></section>
 </div>
