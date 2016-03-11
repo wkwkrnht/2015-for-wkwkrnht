@@ -8,7 +8,7 @@
 */
 /*http://wkwkrnht.wp.xdomain.jp/wp-content/themes/2015-for-wkwkrnht*/
 /*hide*/
-.page-links>.page-links-title,.more-link,.bread div:first-child a::before{display:none;}
+.site-footer,.page-links>.page-links-title,.more-link,.bread div:first-child a::before{display:none;}
 /*font指定*/
 .entry-header,.page-links,.page-top a{font-family:sans-serif;}
 /*cardstyle*/
@@ -16,11 +16,8 @@
 .card-thumb{max-width:825px;max-height:510px;}
 .card-title{font-size:40px;text-align:center;}
 .card-meta{font-size:18px;}
-/*header*/
+/*header&footer*/
 .entry-header{text-align:center;}
-/*footer
-.site-info{text-align:center;font-family:sans-serif;font-weight:lighter;}
-.site-footer{box-shadow:0 2px 2px 0 #999;}*/
 .entry-footer h2{color:#fff;background:#ffcc00;box-shadow:0 2px 5px 0 #999;height:45px;margin:15px;font-size:30px;text-align:center;}
 /*見出し*/
 .entry-content h2{color:#fff;background:#ffcc00;box-shadow:0 2px 5px 0 #999;height:45px;text-align:center;}
