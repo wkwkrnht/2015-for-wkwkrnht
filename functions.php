@@ -184,13 +184,12 @@ function my_archives_link($link_html){
     return sprintf($linkString,$linkYear,$ym[1]);}
 add_filter('get_archives_link','my_archives_link');
 //add pic&©&予約記事 to RSS
-function future_posts_in_feed($query){if($query->is_feed){$query->set('post_status','publish,future');}return $query;}
-/*function rss_edit($content){global $post;
-  if(has_post_thumbnail($post->ID)){$img=get_the_post_thumbnail($post->ID);}else{$img='<img src="/img/no-img.png" width="400" height="200" alt="'.get_the_title().'"/>';}
-  $content=$img.$post'<a href="'bloginfo('url');'"><p>'blogin7fo('name');'&copy;copyrights ALL Rights Reserved</p></a>';return $content;}*/
-add_filter('pre_get_posts','future_posts_in_feed');
-add_filter('the_excerpt_rss','add_thumb_to_RSS');
-add_filter('the_content_feed','add_thumb_to_RSS');
+function rss_post_thumbnail($content){global $post;if(has_post_thumbnail($post->ID)){$content = '<p>' . get_the_post_thumbnail($post->ID) . '</p>' . $content;}return $content;}
+function rss_feed_copyright($content){$content=$content.'<a href="' . home_url() . '"><p>Copyright &copy;' . get_bloginfo('name') . 'All Rights Reserved.</p></a>';return $content;}
+add_filter('the_excerpt_rss', 'rss_feed_copyright');
+add_filter('the_content_feed', 'rss_feed_copyright');
+add_filter('the_excerpt_rss','rss_post_thumbnail');
+add_filter('the_content_feed','rss_post_thumbnail');
 //設定にページ追加
 add_action('admin_menu','register_custom_menu_page');
 function register_custom_menu_page(){add_menu_page('サイト設定','サイト設定',0,'site_settings','create_custom_menu_page','',10);}

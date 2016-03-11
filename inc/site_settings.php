@@ -9,6 +9,8 @@ add_option('OnePush');
 add_option('LINE@');
 add_option('twitter');
 add_option('facebook');
+add_option('fb:admins');
+add_option('fb:app_id');
 //update_option
 if($_REQUEST['blogname'])update_option('blogname',$_REQUEST['blogname']);
 if($_REQUEST['blogdescription'])update_option('blogdescription',$_REQUEST['blogdescription']);
@@ -21,6 +23,8 @@ if($_REQUEST['OnePush'])update_option('OnePush',$_REQUEST['OnePush']);
 if($_REQUEST['LINE@'])update_option('LINE@',$_REQUEST['LINE@']);
 if($_REQUEST['twitter'])update_option('twitter',$_REQUEST['twitter']);
 if($_REQUEST['facebook'])update_option('facebook',$_REQUEST['facebook']);
+if($_REQUEST['fb:admins'])update_option('fb:admins',$_REQUEST['fb:admins']);
+if($_REQUEST['fb:app_id'])update_option('fb:app_id',$_REQUEST['fb:app_id']);
 ?>
 <div id="icon-options-general" class="icon32"></div>
 <h2>サイト設定</h2>
@@ -79,6 +83,16 @@ if($_REQUEST['facebook'])update_option('facebook',$_REQUEST['facebook']);
         <th scope="row"><label for="facebook">Facebookアカウント</label></label></th>
         <td><input name="facebook" type="text" value="<?php echo get_option('facebook');?>" class="regular-text">
         <p class="description">このサイトの公式アカウント</p></td>
+    </tr>
+    <tr valign="top">
+        <th scope="row"><label for="fb:admins">fb:admins</label></label></th>
+        <td><input name="fb:admins" type="text" value="<?php echo get_option('fb:admins');?>" class="regular-text">
+        <p class="description">このサイトのOGP用admins</p></td>
+    </tr>
+    <tr valign="top">
+        <th scope="row"><label for="fb:app_id">fb:app_id</label></label></th>
+        <td><input name="fb:app_id" type="text" value="<?php echo get_option('fb:app_id');?>" class="regular-text">
+        <p class="description">このサイトのOGP用app_id</p></td>
     </tr>
     </table>
     <p class="submit"><input type="submit" name="submit" id="submit" class="button-primary" value="保存"></p>

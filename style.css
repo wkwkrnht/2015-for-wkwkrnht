@@ -75,16 +75,16 @@
   /*for mobile*/
   @media screen and (max-width:55em){
     /*table*/
-    .entry-content table thead{display:block;float:left;}
+    /*.entry-content table thead{display:block;float:left;}
     .entry-content table tbody{display:block;width:auto;position:relative;overflow-x:auto;white-space:nowrap;}
-    .entry-content table tbody tr{display:inline-block;vertical-align:top;}
+    .entry-content table tbody tr{display:inline-block;vertical-align:top;}*/
     /*cardstyle*/
-    .card-content{margin-bottom:5px;}
+    .card-content{margin-bottom:10px;}
     .card-thumb{max-width:640px;max-height:480px;}
     .card-title{font-size:27px;}
     .card-meta{font-size:14px;}
     /*ページャー*/
-    .nav-links{margin-bottom:5px;}
+    .nav-links{margin-bottom:10px;}
     /*snsbutton*/
     .tweet::before,.fblike::before,.g1::before,.pocket::before,.thmblr::before,.linkedin::before{font-size:25px;}
     .button{width:50px;height:50px;}
