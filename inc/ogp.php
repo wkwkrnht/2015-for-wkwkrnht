@@ -6,9 +6,9 @@ endwhile;endif;
   echo'<meta property="og:title" content="';the_title();echo'">';echo"\n";
   echo'<meta property="og:url" content="';the_permalink();echo'">';echo"\n";
 }else{
-  echo'<meta property="og:description" content="'; bloginfo('description'); echo '">';echo "\n";
-  echo'<meta property="og:title" content="'; bloginfo('name'); echo '">';echo "\n";
-  echo'<meta property="og:url" content="'; bloginfo('url'); echo '">';echo "\n";}
+  echo'<meta property="og:description" content="'; bloginfo('description');echo '">';echo "\n";
+  echo'<meta property="og:title" content="'; bloginfo('name');echo '">';echo "\n";
+  echo'<meta property="og:url" content="'; bloginfo('url');echo '">';echo "\n";}
 $str=$post->post_content;
 $searchPattern = '/<img.*?src=(["\'])(.+?)\1.*?>/i';
 if(is_single()){
@@ -51,5 +51,5 @@ preg_match( '/https?:\/\/(.+?)\//i',admin_url(),$results);?>
 <meta name="twitter:domain" content="<?php echo $results[1] ?>">
 <meta name="twitter:image:width" content="825px">
 <meta name="twitter:image:height" content="510px">
-<meta name="twitter:creator" content="@<?php echo the_author_meta('twitter');?>">
+<meta name="twitter:creator" content="@<?php if(is_single()){echo the_author_meta('twitter');}else{echo get_option('twitter');};?>">
 <meta name="twitter:site" content="@<?php echo get_option('twitter');?>">
