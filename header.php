@@ -29,4 +29,4 @@
 		</header>
 		<?php get_sidebar();?>
 	</div>
-	<div id="content" class="site-content"><div class="overlay" id="js__overlay">
+	<div id="content" class="site-content">
