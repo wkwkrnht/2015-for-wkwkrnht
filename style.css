@@ -3,7 +3,7 @@
  Theme URI:    http://wkwkrnht.wp.xdomain.jp/
  Template:     twentyfifteen
  Author:       wkwkrnht
- Version:      0.0.7
+ Version:      0.0.8
  Tags:         twentyfifteen,2015,SNS button,Related Posts,Material,wkwkrnht,Blogcard,Swiper
 */
 /*http://wkwkrnht.wp.xdomain.jp/wp-content/themes/2015-for-wkwkrnht*/
@@ -12,8 +12,8 @@
 /*font指定*/
 .entry-header,.home-header,.home-footer,.page-links,.page-top a{font-family:sans-serif;}
 /*cardstyle*/
+.card-content{background-color:#f7f7f7;color:#707070;border-radius:8px;}
 .card-thumb{max-width:825px;max-height:510px;}
-.card-content{background-color:#f7f7f7;color:#707070;}
 .card-title{font-size:36px;text-align:center;}
 .card-meta{font-size:16px;}
 /*header*/
@@ -76,14 +76,15 @@
   @media screen and (max-width:55em){
     /*table*/
     .entry-content table thead{display:block;float:left;}
-    .entry-content table tbody{display:block; width:auto;position:relative;overflow-x:auto;white-space:nowrap;}
+    .entry-content table tbody{display:block;width:auto;position:relative;overflow-x:auto;white-space:nowrap;}
     .entry-content table tbody tr{display:inline-block;vertical-align:top;}
     /*cardstyle*/
+    .card-content{margin-bottom:5px;}
     .card-thumb{max-width:640px;max-height:480px;}
     .card-title{font-size:27px;}
     .card-meta{font-size:14px;}
-    /*addinfo*/
-    .information,.question{padding:10px;}.information::before,.question::before{display:none;}
+    /*ページャー*/
+    .nav-links{margin-bottom:5px;}
     /*snsbutton*/
     .tweet::before,.fblike::before,.g1::before,.pocket::before,.thmblr::before,.linkedin::before{font-size:25px;}
     .button{width:50px;height:50px;}
