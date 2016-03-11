@@ -5,9 +5,7 @@ ga('create',<?php echo get_option('ganalytics');?>,'auto');ga('send','pageview')
 jQuery(function(){
   //top-button
   jQuery('#page-top').click(function(){jQuery('body,html').animate({scrollTop:0},500);return false;});
-  //slide
-  jQuery(document).ready(function(){
-	  jQuery('#next').click(function(event){event.preventDefault();jQuery('#slide').animate({scrollLeft:'+=455'},'slow');});
-	  jQuery('#pre').click(function(event){event.preventDefault();jQuery('#slide').animate({scrollRight:'+=455'},'slow');});});
+  //mobilemenu
+  jQuery('#secondary-toggle').on('click',function(){jQuery('body').toggleClass('side-open');jQuery('#js__overlay').on('click',function(){jQuery('body').removeClass('side-open');});});
   //next
 });
