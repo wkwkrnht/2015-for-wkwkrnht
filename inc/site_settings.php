@@ -1,6 +1,8 @@
 <?php
 //add_option
 add_option('ganalytics');
+add_option('gserachconsole');
+add_option('bingserachconsole');
 add_option('Pushdog');
 add_option('Push7');
 add_option('OnePush');
@@ -11,10 +13,12 @@ add_option('facebook');
 if($_REQUEST['blogname'])update_option('blogname',$_REQUEST['blogname']);
 if($_REQUEST['blogdescription'])update_option('blogdescription',$_REQUEST['blogdescription']);
 if($_REQUEST['ganalytics'])update_option('ganalytics',$_REQUEST['ganalytics']);
-if($_REQUEST['Pushdog'])update_option('twitter',$_REQUEST['Pushdog']);
-if($_REQUEST['Push7'])update_option('twitter',$_REQUEST['Push7']);
-if($_REQUEST['OnePush'])update_option('twitter',$_REQUEST['OnePush']);
-if($_REQUEST['LINE@'])update_option('twitter',$_REQUEST['LINE@']);
+if($_REQUEST['gserachconsole'])update_option('gserachconsole',$_REQUEST['gserachconsole']);
+if($_REQUEST['bingserachconsole'])update_option('bingserachconsole',$_REQUEST['bingserachconsole']);
+if($_REQUEST['Pushdog'])update_option('Pushdog',$_REQUEST['Pushdog']);
+if($_REQUEST['Push7'])update_option('Push7',$_REQUEST['Push7']);
+if($_REQUEST['OnePush'])update_option('OnePush',$_REQUEST['OnePush']);
+if($_REQUEST['LINE@'])update_option('LINE@',$_REQUEST['LINE@']);
 if($_REQUEST['twitter'])update_option('twitter',$_REQUEST['twitter']);
 if($_REQUEST['facebook'])update_option('facebook',$_REQUEST['facebook']);
 ?>
@@ -34,6 +38,16 @@ if($_REQUEST['facebook'])update_option('facebook',$_REQUEST['facebook']);
     <tr valign="top">
         <th scope="row"><label for="ganalytics">Google Analyticsのコード</label></th>
         <td><input name="ganalytics" type="text" value="<?php echo get_option('ganalytics');?>" class="regular-text">
+        <p class="description">UA-********-*となる様に入力して下さい</p></td>
+    </tr>
+    <tr valign="top">
+        <th scope="row"><label for="gserachconsole">Google Serach Consoleのコード</label></th>
+        <td><input name="gserachconsole" type="text" value="<?php echo get_option('gserachconsole');?>" class="regular-text">
+        <p class="description">UA-********-*となる様に入力して下さい</p></td>
+    </tr>
+    <tr valign="top">
+        <th scope="row"><label for="bingserachconsole">Bing Serach Consoleのコード</label></th>
+        <td><input name="bingserachconsole" type="text" value="<?php echo get_option('bingserachconsole');?>" class="regular-text">
         <p class="description">UA-********-*となる様に入力して下さい</p></td>
     </tr>
     <tr valign="top">

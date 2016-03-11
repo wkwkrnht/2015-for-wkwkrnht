@@ -60,6 +60,7 @@ function my_custom_fields(){global $post;
   echo'<p>meta keyword設定(カンマ区切り|2〜6個)<br/><input type="text" name="meta_keywords" value="'.esc_html($meta_keywords).'" size="40"/></p>';}
 function save_custom_fields($post_id){if(!empty($_POST['meta_keywords']))update_post_meta($post_id,'meta_keywords',$_POST['meta_keywords'] );else delete_post_meta($post_id,'meta_keywords');if(!empty($_POST['noindex']))update_post_meta($post_id,'noindex',$_POST['noindex']);else delete_post_meta($post_id,'noindex');}
 //サムネサイズ追加
+add_image_size('640x480',640,480,true);
 add_image_size('related',150,150,true);
 //サムネ自動設定
 require_once(ABSPATH . '/wp-admin/includes/image.php');
@@ -102,6 +103,15 @@ add_action('draft_to_publish','auto_post_thumbnail_image');
 add_action('new_to_publish','auto_post_thumbnail_image');
 add_action('pending_to_publish','auto_post_thumbnail_image');
 add_action('future_to_publish','auto_post_thumbnail_image');
+//twentyfifteen_post_thumbnail
+function twentyfifteen_post_thumbnail(){
+	if(post_password_required()||is_attachment()||!has_post_thumbnail()){return;}
+	if(is_singular()):?>
+	<div class="post-thumbnail"><?php the_post_thumbnail();?></div>
+	<?php else:?>
+	<a class="post-thumbnail" href="<?php the_permalink();?>" aria-hidden="true"><?php the_post_thumbnail('post-thumbnail',array('alt'=>get_the_title()));?></a>
+	<?php endif;
+}
 //from:URL to:はてなブログカード
 function url_to_hatena_blog_card($the_content){
   if(is_singular()){
@@ -255,9 +265,6 @@ function theme_customize_register($wp_customize){
   $wp_customize->add_section(LOGO_SECTION,array('title'=>'ロゴ画像','priority'=>30,'description'=>'サイトのロゴ設定',));
   $wp_customize->add_setting(LOGO_IMAGE_URL);
   $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize,LOGO_IMAGE_URL,array('label'=>'ロゴ','section'=>LOGO_SECTION,'settings'=>LOGO_IMAGE_URL,'description'=>'画像をアップロードするとヘッダーにあるデフォルトのサイト名と入れ替わります',)));
-  $wp_customize->add_section('2015_for_wkwkrnht',array('title'=>'2015_for_wkwkrnht','priority'=>100,));
-  /*$wp_customize->add_setting('google_analytics_code',array('type'=>'option',));
-  $wp_customize->add_control($wp_customize,'google_analytics_code',array('settings'=>'analytics_code','label'=>'アナリティクスコード','section'=>'2015_for_wkwkrnht',));*/
 }
 add_action('customize_register','theme_customize_register');
 add_action('customize_register','themename_theme_customizer');
