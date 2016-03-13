@@ -73,7 +73,7 @@
 /*メディアクエリ*/
   /*for mobile*/
   @media screen and (max-width:55em){
-    .sidebar{position:fixed;top:0px;}
+    /*.sidebar{position:fixed;top:0px;}*/
     .copyright{color:#ffcc00;}
     /*cardstyle*/
     .card-list{margin-bottom:15px;}
