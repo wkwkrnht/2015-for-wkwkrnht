@@ -8,7 +8,7 @@
 */
 /*http://wkwkrnht.wp.xdomain.jp/wp-content/themes/2015-for-wkwkrnht*/
 /*hide&font指定*/
-.site-footer,.page-links>.page-links-title,.more-link,.bread div:first-child a::before{display:none;}
+.site-footer,.page-links>.page-links-title,.more-link,.bread div:first-child div::before{display:none;}
 .copyright,.entry-header,.page-links,.page-top a{font-family:'Quicksand',"游ゴシック体","Yu Gothic",'YuGothic',"ヒラギノ角ゴシック Pro","Hiragino Kaku Gothic Pro","メイリオ",'Meiryo','Osaka',"ＭＳ Ｐゴシック","MS PGothic",sans-serif;}
 /*cardstyle*/
 .card-list{border-radius:8px;}
@@ -33,9 +33,9 @@
 /*パンくず*/
 .bread div{height:30px;float:left;margin:0 2em 0 2.5em;}
 .bread a{color:#fff;background:#ffcc00;padding:0.7em 1em;float:left;text-decoration:none;position:relative;}
-.bread a::before,.bread a::after{content:"";position:absolute;top:50%;margin-top:-1.5em;}
-.bread a::before{border-top:1.55em solid #ffcc00;border-bottom:1.55em solid #ffcc00;border-left:1em solid transparent;left:-1em;}
-.bread a::after{border-top:1.55em solid transparent;border-bottom:1.55em solid transparent;border-left:1em solid #ffcc00;right:-1em;}
+.bread div::before,.bread div::after{content:"";position:absolute;top:50%;margin-top:-1.5em;}
+.bread div::before{border-top:1.55em solid #ffcc00;border-bottom:1.55em solid #ffcc00;border-left:1em solid transparent;left:-1em;}
+.bread div::after{border-top:1.55em solid transparent;border-bottom:1.55em solid transparent;border-left:1em solid #ffcc00;right:-1em;}
 /*ページャー*/
 .page-numbers+.prev,.page-numbers+.next{color:#fff;background-color:#ffcc00;}
 .page-links{margin-bottom:1.3333em;clear:both;}
@@ -73,16 +73,14 @@
 /*メディアクエリ*/
   /*for mobile*/
   @media screen and (max-width:55em){
-    /*.sidebar{position:fixed;top:0px;}*/
+    .sidebar{position:fixed;top:0px;z-index:9999;}
     .copyright{color:#ffcc00;}
-    /*cardstyle*/
+    #content{padding-top:340px;}
     .card-list{margin-bottom:15px;}
-    .card-thumb{max-width:640px;max-height:480px;}
+    .card-thumb{max-width:640px;max-height:480px;margin-bottom:3px;}
     .card-title{font-size:27px;}
     .card-meta{font-size:14px;}
-    /*ページャー*/
     .nav-links{margin-top:10px;}
-    /*snsbutton*/
     .tweet::before,.fblike::before,.g1::before,.pocket::before,.thmblr::before,.linkedin::before{font-size:25px;}
     #page-top,.button{width:50px;height:50px;}
     #page-top{line-height:50px;bottom:25px;}
