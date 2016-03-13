@@ -31,11 +31,11 @@
 .social-navigation a[href*="/feed"]:before,.social-navigation a[href*="/feed/"]:before{content:"\f413";color:#2aff00;}
 .social-navigation a[href*="youtube.com"]:before,.social-navigation a[href*="plus.google.com"]:before{color:#ff0033;}
 /*パンくず*/
-.bread div{height:30px;float:left;margin:0 2em 0 2.5em;}
+.bread{height:30px;float:left;margin:0 2em 0 2.5em;}
 .bread a{color:#fff;background:#ffcc00;padding:0.7em 1em;float:left;text-decoration:none;position:relative;}
-.bread div::before,.bread div::after{content:"";position:absolute;top:50%;margin-top:-1.5em;}
-.bread div::before{border-top:1.55em solid #ffcc00;border-bottom:1.55em solid #ffcc00;border-left:1em solid transparent;left:-1em;}
-.bread div::after{border-top:1.55em solid transparent;border-bottom:1.55em solid transparent;border-left:1em solid #ffcc00;right:-1em;}
+.bread a::before,.bread a::after{content:"";position:absolute;top:50%;margin-top:-1.5em;}
+.bread a::before{border-top:1.55em solid #ffcc00;border-bottom:1.55em solid #ffcc00;border-left:1em solid transparent;left:-1em;}
+.bread a::after{border-top:1.55em solid transparent;border-bottom:1.55em solid transparent;border-left:1em solid #ffcc00;right:-1em;}
 /*ページャー*/
 .page-numbers+.prev,.page-numbers+.next{color:#fff;background-color:#ffcc00;}
 .page-links{margin-bottom:1.3333em;clear:both;}
@@ -73,9 +73,10 @@
 /*メディアクエリ*/
   /*for mobile*/
   @media screen and (max-width:55em){
-    .sidebar{position:fixed;top:0px;z-index:9999;}
+    .site-header{position:fixed;top:0px;z-index:9999;width:100%;height:20vw;}
+    /*.secondary{z-index:9999;}*/
     .copyright{color:#ffcc00;}
-    #content{padding-top:340px;}
+    #content{padding-top:20vw;}
     .card-list{margin-bottom:15px;}
     .card-thumb{max-width:640px;max-height:480px;margin-bottom:3px;}
     .card-title{font-size:27px;}
