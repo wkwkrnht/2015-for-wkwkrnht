@@ -7,10 +7,9 @@
  Tags:         twentyfifteen,2015,SNS button,Related Posts,Material,wkwkrnht,Blogcard,Swiper
 */
 /*http://wkwkrnht.wp.xdomain.jp/wp-content/themes/2015-for-wkwkrnht*/
-/*hide*/
+/*hide&font指定*/
 .site-footer,.page-links>.page-links-title,.more-link,.bread div:first-child a::before{display:none;}
-/*font指定*/
-.entry-header,.page-links,.page-top a{font-family:sans-serif;}
+.copyright,.entry-header,.page-links,.page-top a{font-family:'Quicksand',"游ゴシック体","Yu Gothic",'YuGothic',"ヒラギノ角ゴシック Pro","Hiragino Kaku Gothic Pro","メイリオ",'Meiryo','Osaka',"ＭＳ Ｐゴシック","MS PGothic",sans-serif;}
 /*cardstyle*/
 .card-list{border-radius:8px;}
 .card-content{background-color:#f7f7f7;color:#707070;}
@@ -20,13 +19,11 @@
 /*header&footer*/
 .entry-header{text-align:center;}
 .entry-footer h2{color:#fff;background:#ffcc00;box-shadow:0 2px 5px 0 #999;height:45px;margin:15px;font-size:30px;text-align:center;}
-.copyright{color:#fff;font-family:monospace;}
+.copyright{color:#fff;text-align:center;}
 /*見出し*/
 .entry-content h2{color:#fff;background:#ffcc00;box-shadow:0 2px 5px 0 #999;height:45px;text-align:center;}
 .entry-content h3{background:#fff;border-left:20px solid #ffcc00;box-shadow:0 2px 5px 0 #999;height:45px;text-align:center;}
 .entry-content h4{background:#fff;border-bottom:10px solid #ffcc00;box-shadow:0 2px 5px 0 #999;height:45px;text-align:center;}
-/*ソース表示*/
-.entry-content code{font-family:monospace;font-weight:thin;color:#333;background-color:#707070;outline:solid 1px #ddd;padding:1em 1em 1em 0.5em;clear:both;}
 /*social-nav*/
 .social-navigation a[href*="goo.gl/forms/"]:before{content:"\f457";color:#fff;}
 .social-navigation a[href*="twitter.com"]:before{color:#00b8ff;}
@@ -49,8 +46,8 @@
 #slide .content{flex-direction:row;-webkit-flex-direction:row;justify-content:flex-start;-webkit-justify-content:flex-start;display:flex;display:-webkit-flex;}
 /*関連記事*/
 .related{max-width:150px;max-height:200px;border-radius:8px;margin:15px 8px 10px 0;background-color:#fff;box-shadow:0 2px 5px 0 #999;}
-.thumb+.lelated{background-color:#ffcc00;}
-.title+.lelated{color:#333;font-size:18px;padding-top:20px;height:50px;text-align:center;}
+#slide .thumb{background-color:#ffcc00;}
+#slide .title{color:#333;font-size:18px;padding-top:20px;height:50px;text-align:center;}
 /*ボタン*/
 .tweet::before,.fblike::before,.g1::before,.pocket::before,.tumblr::before,.linkedin::before{color:#fff;font-size:40px;font-family:"Genericons";position:absolute;top:5%;left:15%;}
 .button{width:60px;height:60px;border-radius:50%;margin:5px;box-shadow:0 2px 5px 0 #999;float:left;position:relative;}
@@ -76,7 +73,8 @@
 /*メディアクエリ*/
   /*for mobile*/
   @media screen and (max-width:55em){
-    .sidebar{position:fixed;}
+    .sidebar{position:fixed;top:0px;}
+    .copyright{color:#ffcc00;}
     /*cardstyle*/
     .card-list{margin-bottom:15px;}
     .card-thumb{max-width:640px;max-height:480px;}
