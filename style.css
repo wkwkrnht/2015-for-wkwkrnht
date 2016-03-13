@@ -73,6 +73,7 @@
 /*メディアクエリ*/
   /*for mobile*/
   @media screen and (max-width:55em){
+    #adminbar{top:auto;bottom:0;}
     #sidebar{position:fixed;top:0px;z-index:9999;width:100%;}
     .site-header{height:15vh;line-height:15vh;box-shadow:0 2px 2px 0 #999;}
     .secondary-toggle{border:none;}
