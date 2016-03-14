@@ -10,6 +10,7 @@
 /*hide&font指定*/
 .site-footer,.page-links>.page-links-title,.more-link,.bread div:first-child div::before{display:none;}
 .copyright,.entry-header,.page-links,.page-top a{font-family:'Quicksand',"游ゴシック体","Yu Gothic",'YuGothic',"ヒラギノ角ゴシック Pro","Hiragino Kaku Gothic Pro","メイリオ",'Meiryo','Osaka',"ＭＳ Ｐゴシック","MS PGothic",sans-serif;}
+*{font-family:'Quicksand',"游ゴシック体","Yu Gothic",'YuGothic',"ヒラギノ角ゴシック Pro","Hiragino Kaku Gothic Pro","メイリオ",'Meiryo','Osaka',"ＭＳ Ｐゴシック","MS PGothic",sans-serif;}
 /*cardstyle*/
 .card-list{border-radius:8px;}
 .card-content{background-color:#f7f7f7;color:#707070;}
@@ -73,13 +74,12 @@
 /*メディアクエリ*/
   /*for mobile*/
   @media screen and (max-width:55em){
-    .adminbar{top:auto;bottom:0;}
-    #sidebar{position:fixed;top:0px;width:100%;z-index:99999;}
+    /*#sidebar{position:fixed;top:0px;width:100%;z-index:99999;}
     .site-header{height:15vh;line-height:15vh;box-shadow:0 2px 2px 0 #999;}
     .secondary+.toggled-on{height:85vh;overflow:auto;}
     .secondary-toggle{border:none;}
     .copyright{color:#ffcc00;margin-bottom:3vh;}
-    #content{padding-top:15vh;}
+    #content{padding-top:15vh;}*/
     .card-list{margin-bottom:15px;}
     .card-thumb{max-width:640px;max-height:480px;margin-bottom:3px;}
     .card-title{font-size:27px;}
