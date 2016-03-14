@@ -11,7 +11,7 @@
 	<script src="<?php echo esc_url(get_template_directory_uri());?>/js/html5.js"></script>
 	<![endif]-->
 	<?php wp_head();?>
-	<script src="<?php bloginfo('url');?>/wp-content/themes/2015-for-wkwkrnht/javascript.js" charset="UTF-8"></script>
+	<script src="<?php echo esc_url(home_url());?>/wp-content/themes/2015-for-wkwkrnht/javascript.js" charset="UTF-8"></script>
 </head>
 <body <?php body_class();?>>
 <div id="page" class="hfeed site">

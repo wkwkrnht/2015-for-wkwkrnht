@@ -68,7 +68,7 @@
 /*メディアクエリ*/
   /*for mobile*/
   @media screen and (max-width:55em){
-    .site-header{box-shadow: 0 2px 2px 0 #999;}
+    .site-header{box-shadow: 0 4px 4px 0 #999;}
     .card-list{margin-bottom:15px;}
     .card-thumb{max-width:640px;max-height:480px;margin-bottom:3px;}
     .card-title{font-size:27px;}

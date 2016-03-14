@@ -1,5 +1,5 @@
 <?php add_action('wp_enqueue_scripts','theme_enqueue_styles');function theme_enqueue_styles(){wp_enqueue_style('parent-style',get_template_directory_uri().'/style.css' );}
-//オリジナル twentyfifteen_fonts_url in functions.php
+//Webfont stop
 function mytheme_dequeue_fonts(){wp_dequeue_style('twentyfifteen-fonts');}
 add_action('wp_enqueue_scripts','mytheme_dequeue_fonts',11);
 //外部スクリプト読み込み
@@ -137,7 +137,7 @@ add_filter('the_content','wps_highlight_results');
 add_action('after_setup_theme','ruby_setup');
 //PCのみ表示テキストウイジェットの追加
 class PcTextWidgetItem extends WP_Widget{
-  function PcTextWidgetItem(){parent::WP_Widget(false,$name='PCのみ表示テキストウィジェット');}
+  function PcTextWidgetItem(){parent::WP_Widget(false,$name='Text widget（PCのみ表示）');}
   function widget($args,$instance){extract($args);
     $title=apply_filters('widget_title_pc_text',$instance['title_pc_text']);
     $text=apply_filters('widget_text_pc_text',$instance['text_pc_text']);
@@ -156,11 +156,11 @@ class PcTextWidgetItem extends WP_Widget{
   function form($instance){if(empty($instance)){$instance = array('title_pc_text'=>null,'text_pc_text'=>null,);}
     $title=esc_attr($instance['title_pc_text']);$text=esc_attr($instance['text_pc_text']);?>
     <p>
-      <label for="<?php echo $this->get_field_id('title_pc_text');?>"><?php _e('タイトル');?></label>
+      <label for="<?php echo $this->get_field_id('title_pc_text');?>"><?php _e('Title');?></label>
       <input class="widefat" id="<?php echo $this->get_field_id('title_pc_text');?>" name="<?php echo $this->get_field_name('title_pc_text');?>" type="text" value="<?php echo $title;?>"/>
     </p>
     <p>
-      <label for="<?php echo $this->get_field_id('text_pc_text');?>"><?php _e('テキスト');?></label>
+      <label for="<?php echo $this->get_field_id('text_pc_text');?>"><?php _e('Text');?></label>
       <textarea class="widefat" id="<?php echo $this->get_field_id('text_pc_text');?>" name="<?php echo $this->get_field_name('text_pc_text');?>" cols="20" rows="16"><?php echo $text;?></textarea>
     </p>
     <?php
@@ -193,7 +193,7 @@ add_filter('the_excerpt_rss','rss_post_thumbnail');
 add_filter('the_content_feed','rss_post_thumbnail');
 //設定にページ追加
 add_action('admin_menu','register_custom_menu_page');
-function register_custom_menu_page(){add_menu_page('サイト設定','サイト設定',0,'site_settings','create_custom_menu_page','',10);}
+function register_custom_menu_page(){add_theme_page('サイト設定','サイト設定',0,'site_settings','create_custom_menu_page','',10);}
 function create_custom_menu_page(){get_template_part('inc/site_settings');}
 //ADD:プロフィール(表示はthe_author_meta('twitter')とか)
 function my_new_contactmethods($contactmethods){

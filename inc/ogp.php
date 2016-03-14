@@ -8,7 +8,7 @@ endwhile;endif;
 }else{
   echo'<meta property="og:description" content="'; bloginfo('description');echo '">';echo "\n";
   echo'<meta property="og:title" content="'; bloginfo('name');echo '">';echo "\n";
-  echo'<meta property="og:url" content="'; bloginfo('url');echo '">';echo "\n";}
+  echo'<meta property="og:url" content="';echo esc_url(home_url());echo '">';echo "\n";}
 $str=$post->post_content;
 $searchPattern = '/<img.*?src=(["\'])(.+?)\1.*?>/i';
 if(is_single()){
@@ -34,7 +34,7 @@ endwhile;endif;
 }else{
   echo'<meta name="twitter:description" content="';bloginfo('description');echo'">';echo"\n";
   echo'<meta name="twitter:title" content="'; bloginfo('name'); echo '">';echo "\n";
-  echo'<meta name="twitter:url" content="';bloginfo('url');echo'">';echo"\n";}
+  echo'<meta name="twitter:url" content="';echo esc_url(home_url());echo'">';echo"\n";}
 $str=$post->post_content;
 $searchPattern = '/<img.*?src=(["\'])(.+?)\1.*?>/i';
 if(is_single()){

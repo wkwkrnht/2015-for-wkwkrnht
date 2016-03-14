@@ -10,6 +10,6 @@
   <div class="content">
     <a href="https://plus.google.com/share?url=<?php echo get_permalink()?>" target="_blank"><div class="g1 button"></div></a>
     <a href="https://www.linkedin.com/shareArticle?mini=true&url=<?php echo get_permalink()?>&amp;title=<?php echo trim(wp_title('',false));?>" onclick="window.open(this.href,'window','width=550,height=450,personalbar=0,toolbar=0,scrollbars=1,resizable=1');return false;"><div class="linkedin button"></div></a>
-    <a href="https://push.dog/subscribe?url=<?php echo bloginfo('url')?>" onclick="window.open(this.href,'window','width=550,height=450,personalbar=0,toolbar=0,scrollbars=1,resizable=1');return false;"><img src="<?php echo get_stylesheet_directory_uri();?>/img/pushdog.png" class="pushdog button"/></a>
+    <a href="https://push.dog/subscribe?url=<?php echo esc_url(home_url())?>" onclick="window.open(this.href,'window','width=550,height=450,personalbar=0,toolbar=0,scrollbars=1,resizable=1');return false;"><img src="<?php echo get_stylesheet_directory_uri();?>/img/pushdog.png" class="pushdog button"/></a>
   </div>
 </div>
