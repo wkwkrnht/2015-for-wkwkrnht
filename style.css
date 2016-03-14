@@ -31,7 +31,8 @@
 .social-navigation a[href*="/feed"]:before,.social-navigation a[href*="/feed/"]:before{content:"\f413";color:#2aff00;}
 .social-navigation a[href*="youtube.com"]:before,.social-navigation a[href*="plus.google.com"]:before{color:#ff0033;}
 /*パンくず*/
-.bread{color:#ddd;}
+#bread{color:#ddd;}
+#bread .sp{font-weight:bold;}
 /*ページャー*/
 .page-numbers+.prev,.page-numbers+.next{color:#fff;background-color:#ffcc00;}
 .page-links{margin-bottom:1.3333em;clear:both;}
