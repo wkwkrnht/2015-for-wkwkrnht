@@ -23,6 +23,7 @@
 .entry-footer h2{color:#fff;background:#ffcc00;box-shadow:0 2px 5px 0 #999;height:45px;margin:15px;font-size:30px;text-align:center;}
 .copyright{color:#fff;text-align:center;margin-bottom:10px;}
 /*見出し*/
+.entry-content a{color:#1122cc;border-bottom:1px solid #1122cc;}
 .entry-content h2{color:#fff;background:#ffcc00;box-shadow:0 2px 5px 0 #999;height:45px;text-align:center;}
 .entry-content h3{background:#fff;border-left:20px solid #ffcc00;box-shadow:0 2px 5px 0 #999;height:45px;text-align:center;}
 .entry-content h4{background:#fff;border-bottom:10px solid #ffcc00;box-shadow:0 2px 5px 0 #999;height:45px;text-align:center;}
