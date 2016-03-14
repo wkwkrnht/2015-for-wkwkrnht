@@ -1,9 +1,7 @@
 <?php add_action('wp_enqueue_scripts','theme_enqueue_styles');function theme_enqueue_styles(){wp_enqueue_style('parent-style',get_template_directory_uri().'/style.css' );}
-// オリジナル twentyfifteen_fonts_url in functions.php
-function mytheme_dequeue_fonts() {
-    wp_dequeue_style( 'twentyfifteen-fonts' );
-}
-add_action( 'wp_enqueue_scripts', 'mytheme_dequeue_fonts', 11);
+//オリジナル twentyfifteen_fonts_url in functions.php
+function mytheme_dequeue_fonts(){wp_dequeue_style('twentyfifteen-fonts');}
+add_action('wp_enqueue_scripts','mytheme_dequeue_fonts',11);
 //外部スクリプト読み込み
 function code_scripts(){wp_enqueue_style('code','//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.1.0/styles/default.min.css',array(),false,false);wp_enqueue_script('code', '//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.1.0/highlight.min.js',array('jquery'),false,false);}
 add_action('wp_enqueue_scripts','code_scripts');
