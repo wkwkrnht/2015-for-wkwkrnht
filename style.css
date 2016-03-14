@@ -6,7 +6,6 @@
  Version:      0.0.8
  Tags:         twentyfifteen,2015,SNS button,Related Posts,Material,wkwkrnht,Blogcard
 */
-/*http://wkwkrnht.wp.xdomain.jp/wp-content/themes/2015-for-wkwkrnht*/
 /*hide&font指定*/
 .site-footer,.page-links>.page-links-title,.more-link{display:none;}
 *{font-family:'Quicksand',"游ゴシック体","Yu Gothic",'YuGothic',"ヒラギノ角ゴシック Pro","Hiragino Kaku Gothic Pro","メイリオ",'Meiryo','Osaka',"ＭＳ Ｐゴシック","MS PGothic",sans-serif;}
@@ -32,7 +31,7 @@
 .social-navigation a[href*="youtube.com"]:before,.social-navigation a[href*="plus.google.com"]:before{color:#ff0033;}
 /*パンくず*/
 #bread{color:#ddd;}
-#bread .sp{font-weight:bold;}
+#bread .sp{color:#333;margin:0 3px;font-weight:bold;}
 /*ページャー*/
 .page-numbers+.prev,.page-numbers+.next{color:#fff;background-color:#ffcc00;}
 .page-links{margin-bottom:1.3333em;clear:both;}
@@ -70,6 +69,7 @@
 /*メディアクエリ*/
   /*for mobile*/
   @media screen and (max-width:55em){
+    .site-header{box-shadow: 0 2px 2px 0 #999;}
     .card-list{margin-bottom:15px;}
     .card-thumb{max-width:640px;max-height:480px;margin-bottom:3px;}
     .card-title{font-size:27px;}
@@ -84,6 +84,7 @@
     .sidebar{width:25vw;z-index:2;}
     body::before{width:25vw;z-index:2;box-shadow:0 0 5px 0 #999;}
     .comments-area,.post-navigation{margin:6% 6% 0;}
+    /*http://wkwkrnht.wp.xdomain.jp/wp-content/themes/2015-for-wkwkrnht*/
   }
   /*without phone*/
   @media screen and (min-width:46.25em){.post,.nav-links{box-shadow:0 3px 3px 0 #999;}}
