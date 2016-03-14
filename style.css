@@ -2,7 +2,7 @@
  Theme Name:   2015 for wkwkrnht
  Theme URI:    http://wkwkrnht.wp.xdomain.jp/
  Template:     twentyfifteen
- Version:      0.0.9
+ Version:      0.1.0
  Author:       wkwkrnht
  Author URI:   http://wkwkrnht.wordpres.com/
 */
@@ -14,11 +14,12 @@
 .card-content{background-color:#f7f7f7;color:#707070;}
 .card-thumb{max-width:825px;max-height:510px;}
 .card-title{font-size:40px;text-align:center;}
-.card-meta{font-size:18px;}
+.card-meta{font-size:18px;vertical-align:baseline;}
 /*header&footer*/
 #bread{color:#ddd;}
 #bread .sp{color:#333;margin:0 1em;}
 .entry-header{background-color:#f7f7f7;text-align:center;margin-bottom:15px;}
+.entry-header+.meta{vertical-align:baseline;}
 .entry-title{font-size:35px;margin:0 30px;}
 .entry-footer h2{color:#fff;background:#ffcc00;box-shadow:0 2px 5px 0 #999;height:45px;margin:15px;font-size:30px;text-align:center;}
 .copyright{color:#fff;text-align:center;margin-bottom:15px;}

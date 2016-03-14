@@ -1,34 +1,30 @@
 <?php add_action('wp_enqueue_scripts','theme_enqueue_styles');function theme_enqueue_styles(){wp_enqueue_style('parent-style',get_template_directory_uri().'/style.css' );}
-//Webfont stop&Add editor-style
-function wkwkrnht_dequeue_fonts(){wp_dequeue_style('twentyfifteen-fonts');}
-add_action('wp_enqueue_scripts','wkwkrnht_dequeue_fonts',11);
-function wkwkrnht_add_editor_styles(){add_editor_style('home_url() . /wp-content/themes/2015-for-wkwkrnhtinc/editor-style.css');}
-add_action('after_setup_theme','wkwkrnht_add_editor_styles');
 //外部スクリプト読み込み
 function code_scripts(){wp_enqueue_style('code','//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.1.0/styles/default.min.css',array(),false,false);wp_enqueue_script('code', '//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.1.0/highlight.min.js',array('jquery'),false,false);}
 add_action('wp_enqueue_scripts','code_scripts');
 /*function _script(){wp_enqueue_script('','',array(),false,false);}
 add_action('wp_enqueue_script','_scripts');*/
-// hide /?ver= & emoji&error add_action & 標準埋め込み
+// hide /?ver=&emoji&error add_action&標準埋め込み&Webfont stop
 function wps_login_error() {remove_action('login_head','wp_shake_js',12);}
-add_action('login_head', 'wps_login_error');
 function vc_remove_wp_ver_css_js($src){if(strpos($src,'ver='))$src=remove_query_arg('ver',$src);return $src;}
+function wkwkrnht_dequeue_fonts(){wp_dequeue_style('twentyfifteen-fonts');}
+add_action('login_head', 'wps_login_error');
+add_action('wp_enqueue_scripts','wkwkrnht_dequeue_fonts',11);
 add_filter('style_loader_src','vc_remove_wp_ver_css_js',9999);
 add_filter('script_loader_src','vc_remove_wp_ver_css_js',9999);
+add_filter('embed_oembed_discover','__return_false');
 remove_action('wp_head','wp_generator');
 remove_action('wp_head','print_emoji_detection_script',7);
 remove_action('wp_print_styles','print_emoji_styles');
-add_filter('embed_oembed_discover','__return_false');
 remove_action('parse_query','wp_oembed_parse_query');
 remove_action('wp_head','wp_oembed_remove_discovery_links');
 remove_action('wp_head','wp_oembed_remove_host_js');
 //twentyfifteen_entry_meta
 function twentyfifteen_entry_meta(){
-  //「この投稿を先頭に固定表示」にチェックして投稿すると上部に表示される
+  //投稿を先頭に固定&画像サイズ(横 x 縦)表示
   if(is_sticky()&&is_home()&&!is_paged()){printf('<span class="sticky-post">%s</span>',__('Featured','twentyfifteen'));}
-  //画像サイズ(横 x 縦)表示
   if(is_attachment()&&wp_attachment_is_image()){$metadata = wp_get_attachment_metadata();printf('<span class="full-size-link"><span class="screen-reader-text">%1$s</span><a href="%2$s">%3$s &times;%4$s</a></span>',_x('Full size','Used before full size attachment link.','twentyfifteen'),esc_url(wp_get_attachment_url()),$metadata['width'],$metadata['height']);}
-  //「投稿日」・「更新日」
+  //投稿日&更新日
   if(in_array(get_post_type(),array('post','attachment'))){
     $time_string='<time class="entry-date published updated" datetime="%1$s">%2$s</time>';
     if(get_the_time('U')!== get_the_modified_time('U')){$time_string='<time class="entry-date published" datetime="%1$s">%2$s</time><time class="updated" datetime="%3$s">%4$s</time>';}
@@ -63,7 +59,6 @@ function my_custom_fields(){global $post;
   echo'<p>meta keyword設定(カンマ区切り|2〜6個)<br/><input type="text" name="meta_keywords" value="'.esc_html($meta_keywords).'" size="40"/></p>';}
 function save_custom_fields($post_id){if(!empty($_POST['meta_keywords']))update_post_meta($post_id,'meta_keywords',$_POST['meta_keywords'] );else delete_post_meta($post_id,'meta_keywords');if(!empty($_POST['noindex']))update_post_meta($post_id,'noindex',$_POST['noindex']);else delete_post_meta($post_id,'noindex');}
 //サムネサイズ追加
-add_image_size('640x480',640,480,true);
 add_image_size('related',150,150,true);
 //サムネ自動設定
 require_once(ABSPATH . '/wp-admin/includes/image.php');
@@ -106,15 +101,6 @@ add_action('draft_to_publish','auto_post_thumbnail_image');
 add_action('new_to_publish','auto_post_thumbnail_image');
 add_action('pending_to_publish','auto_post_thumbnail_image');
 add_action('future_to_publish','auto_post_thumbnail_image');
-//twentyfifteen_post_thumbnail
-function twentyfifteen_post_thumbnail(){
-	if(post_password_required()||is_attachment()||!has_post_thumbnail()){return;}
-	if(is_singular()):?>
-	<div class="post-thumbnail"><?php the_post_thumbnail();?></div>
-	<?php else:?>
-	<a class="post-thumbnail" href="<?php the_permalink();?>" aria-hidden="true"><?php the_post_thumbnail('post-thumbnail',array('alt'=>get_the_title()));?></a>
-	<?php endif;
-}
 //from:URL to:はてなブログカード
 function url_to_hatena_blog_card($the_content){
   if(is_singular()){
@@ -140,21 +126,8 @@ add_action('after_setup_theme','ruby_setup');
 //PCのみ表示テキストウイジェットの追加
 class PcTextWidgetItem extends WP_Widget{
   function PcTextWidgetItem(){parent::WP_Widget(false,$name='Text widget（PCのみ表示）');}
-  function widget($args,$instance){extract($args);
-    $title=apply_filters('widget_title_pc_text',$instance['title_pc_text']);
-    $text=apply_filters('widget_text_pc_text',$instance['text_pc_text']);
-      if(!wp_is_mobile()):
-        echo('<div id="pc-text-widget" class="widget pc_text">');
-          if($title){echo '<h4>'.$title.'</h4>';}
-          echo('<div class="text-pc">');echo $text;echo'</div>';
-        echo'</div>';
-      endif;
-  }
-  function update($new_instance, $old_instance){$instance=$old_instance;
-    $instance['title_pc_text']=strip_tags($new_instance['title_pc_text']);
-    $instance['text_pc_text']=$new_instance['text_pc_text'];
-      return $instance;
-  }
+  function widget($args,$instance){extract($args);$title=apply_filters('widget_title_pc_text',$instance['title_pc_text']);$text=apply_filters('widget_text_pc_text',$instance['text_pc_text']);if(!wp_is_mobile()):echo('<div id="pc-text-widget" class="widget pc_text">');if($title){echo '<h4>'.$title.'</h4>';}echo('<div class="text-pc">');echo $text;echo'</div></div>';endif;}
+  function update($new_instance, $old_instance){$instance=$old_instance;$instance['title_pc_text']=strip_tags($new_instance['title_pc_text']);$instance['text_pc_text']=$new_instance['text_pc_text'];return $instance;}
   function form($instance){if(empty($instance)){$instance = array('title_pc_text'=>null,'text_pc_text'=>null,);}
     $title=esc_attr($instance['title_pc_text']);$text=esc_attr($instance['text_pc_text']);?>
     <p>
@@ -221,6 +194,7 @@ function my_new_contactmethods($contactmethods){
 	$contactmethods['mixi']='mixi';
   $contactmethods['Instagram']='Instagram';
 	$contactmethods['Flickr']='Flickr';
+  $contactmethods['FourSquare']='FourSquare';
   $contactmethods['Swarm']='Swarm';
   $contactmethods['Steam']='Steam';
   $contactmethods['XboxLive']='XboxLive';
@@ -238,8 +212,8 @@ function my_new_contactmethods($contactmethods){
   $contactmethods['USTREAM']='USTREAM';
   $contactmethods['Twitch']='Twitch';
   $contactmethods['niconico']='niconico';
-  $contactmethods['twitcasting']='ツイキャス';
   $contactmethods['Skype']='Skype';
+  $contactmethods['twitcasting']='ツイキャス';
   $contactmethods['MixCannel']='MixChannel';
   $contactmethods['Slideshare']='Slideshare';
   $contactmethods['Medium']='Medium';
@@ -269,7 +243,6 @@ function theme_customize_register($wp_customize){
   $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize,LOGO_IMAGE_URL,array('label'=>'ロゴ','section'=>LOGO_SECTION,'settings'=>LOGO_IMAGE_URL,'description'=>'画像をアップロードするとヘッダーにあるデフォルトのサイト名と入れ替わります',)));
 }
 add_action('customize_register','theme_customize_register');
-add_action('customize_register','themename_theme_customizer');
 function get_the_logo_image_url(){return esc_url(get_theme_mod(LOGO_IMAGE_URL));}
 //投稿記事一覧にアイキャッチ画像を表示
 function customize_admin_manage_posts_columns($columns){$columns['thumbnail']=__('Thumbnail');return $columns;}
