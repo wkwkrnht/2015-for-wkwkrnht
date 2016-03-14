@@ -1,5 +1,6 @@
 <?php
 //add_option
+add_option('blogkeyword');
 add_option('ganalytics');
 add_option('gsearchconsole');
 add_option('bingwebmastertools');
@@ -14,6 +15,7 @@ add_option('fb:app_id');
 //update_option
 if($_REQUEST['blogname'])update_option('blogname',$_REQUEST['blogname']);
 if($_REQUEST['blogdescription'])update_option('blogdescription',$_REQUEST['blogdescription']);
+if($_REQUEST['blogkeyword'])update_option('blogkeyword',$_REQUEST['blogkeyword']);
 if($_REQUEST['ganalytics'])update_option('ganalytics',$_REQUEST['ganalytics']);
 if($_REQUEST['gsearchconsole'])update_option('gsearchconsole',$_REQUEST['gsearchconsole']);
 if($_REQUEST['bingwebmastertools'])update_option('bingwebmastertools',$_REQUEST['bingwebmastertools']);
@@ -38,6 +40,11 @@ if($_REQUEST['fb:app_id'])update_option('fb:app_id',$_REQUEST['fb:app_id']);
         <th scope="row"><label for="blogdescription">キャッチフレーズ</label></th>
         <td><input name="blogdescription" type="text" value="<?php echo get_option('blogdescription');?>" class="regular-text">
         <p class="description">このサイトの簡単な説明</p></td>
+    </tr>
+    <tr valign="top">
+        <th scope="row"><label for="blogkeyword">キーワード</label></th>
+        <td><input name="blogkeyword" type="text" value="<?php echo get_option('blogkeyword');?>" class="regular-text">
+        <p class="description">このサイトのキーワード</p></td>
     </tr>
     <tr valign="top">
         <th scope="row"><label for="ganalytics">Google Analyticsのコード</label></th>
