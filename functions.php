@@ -1,7 +1,9 @@
 <?php add_action('wp_enqueue_scripts','theme_enqueue_styles');function theme_enqueue_styles(){wp_enqueue_style('parent-style',get_template_directory_uri().'/style.css' );}
-//Webfont stop
-function mytheme_dequeue_fonts(){wp_dequeue_style('twentyfifteen-fonts');}
-add_action('wp_enqueue_scripts','mytheme_dequeue_fonts',11);
+//Webfont stop&Add editor-style
+function wkwkrnht_dequeue_fonts(){wp_dequeue_style('twentyfifteen-fonts');}
+add_action('wp_enqueue_scripts','wkwkrnht_dequeue_fonts',11);
+function wkwkrnht_add_editor_styles(){add_editor_style('home_url() . /wp-content/themes/2015-for-wkwkrnhtinc/editor-style.css');}
+add_action('after_setup_theme','wkwkrnht_add_editor_styles');
 //外部スクリプト読み込み
 function code_scripts(){wp_enqueue_style('code','//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.1.0/styles/default.min.css',array(),false,false);wp_enqueue_script('code', '//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.1.0/highlight.min.js',array('jquery'),false,false);}
 add_action('wp_enqueue_scripts','code_scripts');

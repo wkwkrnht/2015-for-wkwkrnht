@@ -21,7 +21,7 @@
 .entry-header{background-color:#f7f7f7;text-align:center;margin-bottom:15px;}
 .entry-title{font-size:35px;margin:0 30px;}
 .entry-footer h2{color:#fff;background:#ffcc00;box-shadow:0 2px 5px 0 #999;height:45px;margin:15px;font-size:30px;text-align:center;}
-.copyright{color:#fff;text-align:center;margin-bottom:10px;}
+.copyright{color:#fff;text-align:center;margin-bottom:15px;}
 /*見出し*/
 .entry-content a{color:#1122cc;border-bottom:1px solid #1122cc;}
 .entry-content h2{color:#fff;background:#ffcc00;box-shadow:0 2px 5px 0 #999;height:45px;text-align:center;}
@@ -71,6 +71,7 @@
   /*for mobile*/
   @media screen and (max-width:55em){
     .site-header{box-shadow: 0 4px 4px 0 #999;}
+    .copyright{color:#ffcc00;}
     .entry-title{font-size:24px;margin:0 15px;}
     .card-list{margin-bottom:15px;}
     .card-thumb{max-width:640px;max-height:480px;margin-bottom:3px;}
