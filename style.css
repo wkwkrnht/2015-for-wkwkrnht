@@ -7,7 +7,7 @@
  Tags:         twentyfifteen,2015,SNS button,Related Posts,Material,wkwkrnht,Blogcard
 */
 /*hide&font指定*/
-.site-footer,.page-links>.page-links-title,.more-link{display:none;}
+.site-info,.page-links>.page-links-title,.more-link{display:none;}
 *{font-family:'Quicksand',"游ゴシック体","Yu Gothic",'YuGothic',"ヒラギノ角ゴシック Pro","Hiragino Kaku Gothic Pro","メイリオ",'Meiryo','Osaka',"ＭＳ Ｐゴシック","MS PGothic",sans-serif;}
 /*cardstyle*/
 .card-list{border-radius:8px;}
@@ -16,7 +16,9 @@
 .card-title{font-size:40px;text-align:center;}
 .card-meta{font-size:18px;}
 /*header&footer*/
-.entry-header{text-align:center;}
+#bread{color:#ddd;margin-bottom:5px;}
+#bread .sp{color:#333;margin:0 1em;font-weight:bold;}
+.entry-header{background-color:#f7f7f7;text-align:center;}
 .entry-footer h2{color:#fff;background:#ffcc00;box-shadow:0 2px 5px 0 #999;height:45px;margin:15px;font-size:30px;text-align:center;}
 .copyright{color:#fff;text-align:center;}
 /*見出し*/
@@ -29,9 +31,6 @@
 .social-navigation a[href*="wordpress.com"]:before{color:#0033ff;}
 .social-navigation a[href*="/feed"]:before,.social-navigation a[href*="/feed/"]:before{content:"\f413";color:#2aff00;}
 .social-navigation a[href*="youtube.com"]:before,.social-navigation a[href*="plus.google.com"]:before{color:#ff0033;}
-/*パンくず*/
-#bread{color:#ddd;}
-#bread .sp{color:#333;margin:0 3px;font-weight:bold;}
 /*ページャー*/
 .page-numbers+.prev,.page-numbers+.next{color:#fff;background-color:#ffcc00;}
 .page-links{margin-bottom:1.3333em;clear:both;}

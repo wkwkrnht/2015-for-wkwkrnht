@@ -18,5 +18,8 @@
 	<?php if(is_active_sidebar('sidebar-1')):?>
 		<div id="widget-area" class="widget-area" role="complementary"><?php dynamic_sidebar('sidebar-1');?></div>
 	<?php endif;?>
-	<section class="copyright">&copy;2016<?php bloginfo('name');?></section>
+	<footer id="site-footer">
+		<div class="site-info"role="contentinfo"><?php do_action('twentyfifteen_credits');?></div>
+		<div class="copyright">&copy;2016<?php bloginfo('name');?></div>
+	</footer>
 </div>
