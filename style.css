@@ -8,7 +8,7 @@
 */
 /*http://wkwkrnht.wp.xdomain.jp/wp-content/themes/2015-for-wkwkrnht*/
 /*hide&font指定*/
-.site-footer,.page-links>.page-links-title,.more-link,.bread div:first-child div::before{display:none;}
+.site-footer,.page-links>.page-links-title,.more-link{display:none;}
 *{font-family:'Quicksand',"游ゴシック体","Yu Gothic",'YuGothic',"ヒラギノ角ゴシック Pro","Hiragino Kaku Gothic Pro","メイリオ",'Meiryo','Osaka',"ＭＳ Ｐゴシック","MS PGothic",sans-serif;}
 /*cardstyle*/
 .card-list{border-radius:8px;}
@@ -31,7 +31,7 @@
 .social-navigation a[href*="/feed"]:before,.social-navigation a[href*="/feed/"]:before{content:"\f413";color:#2aff00;}
 .social-navigation a[href*="youtube.com"]:before,.social-navigation a[href*="plus.google.com"]:before{color:#ff0033;}
 /*パンくず*/
-
+.bread{color:#ddd;}
 /*ページャー*/
 .page-numbers+.prev,.page-numbers+.next{color:#fff;background-color:#ffcc00;}
 .page-links{margin-bottom:1.3333em;clear:both;}
