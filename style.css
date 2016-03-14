@@ -74,9 +74,9 @@
   /*for mobile*/
   @media screen and (max-width:55em){
     .adminbar{top:auto;bottom:0;}
-    #sidebar{position:fixed;top:0px;width:100%;}
-    .site-header{height:15vh;line-height:15vh;box-shadow:0 2px 2px 0 #999;z-index:99999;}
-    .secondary+.toggled-on{z-index:99998;}
+    #sidebar{position:fixed;top:0px;width:100%;z-index:99999;}
+    .site-header{height:15vh;line-height:15vh;box-shadow:0 2px 2px 0 #999;}
+    .secondary+.toggled-on{height:85vh;overflow:auto;}
     .secondary-toggle{border:none;}
     .copyright{color:#ffcc00;margin-bottom:3vh;}
     #content{padding-top:15vh;}
