@@ -1,10 +1,4 @@
-<?php
-/**
- * The sidebar containing the main widget area
- * @package WordPress
- * @subpackage Twenty_Fifteen
- * @since Twenty Fifteen 1.0*/?>
-<div id="secondary" class="secondary">
+<section id="secondary" class="secondary">
 	<?php if(has_nav_menu('primary')):?>
 		<nav id="site-navigation" class="main-navigation" role="navigation">
 			<?php wp_nav_menu(array('menu_class'=>'nav-menu','theme_location'=>'primary',));?>
@@ -22,4 +16,4 @@
 		<div class="site-info"role="contentinfo"><?php do_action('twentyfifteen_credits');?></div>
 		<div class="copyright">&copy;2016<?php bloginfo('name');?></div>
 	</footer>
-</div>
+</section>
