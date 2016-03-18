@@ -4,7 +4,9 @@
 	<?php if(get_post_meta($post->ID,"noindex",true)){echo'<meta name="robots" content="noindex,nofollow" />';};?>
 	<meta charset="<?php bloginfo('charset');?>">
 	<meta name="viewport" content="width=device-width">
-	<?php /*get_template_part('inc/meta');*/get_template_part('inc/ogp');?>
+	<meta name="google-site-verification" content="<?php echo get_option('Google_Webmaster');?>">
+	<meta name="msvalidate.01" content="<?php echo get_option('Bing_Webmaster');?>" />
+	<?php //get_template_part('inc/ogp');?>
 	<link rel="profile" href="http://gmpg.org/xfn/11">
 	<link rel="pingback" href="<?php bloginfo('pingback_url');?>">
 	<!--[if lt IE 9]>

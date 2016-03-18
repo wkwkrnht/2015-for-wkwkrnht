@@ -35,3 +35,20 @@ preg_match( '/https?:\/\/(.+?)\//i',admin_url(),$results);?>
 <meta name="twitter:image:height" content="510px">
 <meta name="twitter:creator" content="@<?php if(is_single()){echo the_author_meta('twitter');}else{echo get_option('Twitter_URL');};?>">
 <meta name="twitter:site" content="@<?php echo get_option('Twitter_URL');?>">
+<?php
+$content_summary=strip_tags($post->post_content);
+$content_summary=str_replace("\n","",$content_summary);
+$content_summary=str_replace("\r","",$content_summary);
+$content_summary=mb_substr($content_summary,0,60). "...";
+if($post->my_description):?><meta name="description" content="<?php echo esc_attr($post->my_description);?>" />
+<?php elseif(is_single()):?><meta name="description" content="<?php echo $content_summary;?>" />
+<?php
+  elseif(is_category()){echo get_meta_description_from_category();}
+  else:?><meta name="description" content="<?php bloginfo('description');?>" />
+<?php endif;?>
+<?php if($post->my_keywords):?>
+	<meta name="keywords" content="<?php echo esc_attr($post->my_keywords);?>" />
+<?php else:?>
+	<meta name="keywords" content="デフォルトワード,デフォルトワード,デフォルトワード" />
+<?php endif;?>
+<?php if(wp_is_mobile()){echo'<meta name="theme-color" content="'echo get_option('GoogleChrome_URLbar');'">';}?>

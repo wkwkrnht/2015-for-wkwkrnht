@@ -1,0 +1,11 @@
+/*
+  Name:White
+  Priority:1
+*/
+#slide .thumb{background-color:#fff;}
+#page-top{color:#333;background-color:#fff;}
+.page-links a,.entry-footer h2,.entry-content h2,.page-numbers+.prev,.page-numbers+.next{color:#fff;background-color:#333;}
+.page-links a{border-color:#ffcc00;}
+.entry-content a{color:#1122cc;border-bottom:1px solid #1122cc;}
+.entry-content h3{border-left:20px solid #333;}
+.entry-content h4{border-bottom:10px solid #333;}

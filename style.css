@@ -21,14 +21,12 @@
 #bread{color:#ddd;}
 #bread .sp{color:#333;margin:0 1em;}
 .entry-header{background-color:#f7f7f7;text-align:center;margin-bottom:15px;}
-.entry-title{font-size:35px;margin:0 30px;}
-.entry-footer h2{color:#fff;background:#333;box-shadow:0 2px 5px 0 #999;height:45px;margin:15px;font-size:30px;text-align:center;}
+.entry-title{font-size:33px;margin:0 32px;}
+.entry-footer h2{box-shadow:0 2px 5px 0 #999;height:45px;margin:15px;font-size:30px;text-align:center;}
 .copyright{color:#fff;text-align:center;margin-bottom:15px;}
 /*見出し*/
-.entry-content h2{color:#fff;background:#333;box-shadow:0 2px 5px 0 #999;height:45px;text-align:center;}
+.entry-content h2{box-shadow:0 2px 5px 0 #999;height:45px;text-align:center;}
 .entry-content h3,.entry-content h4{background:#fff;box-shadow:0 2px 5px 0 #999;height:45px;text-align:center;}
-.entry-content h3{border-left:20px solid #333;}
-.entry-content h4{border-bottom:10px solid #333;}
 /*social-nav*/
 .social-navigation a[href*="goo.gl/forms/"]:before{content:"\f457";}
 .social-navigation a[href*="twitter.com"]:before{color:#00b8ff;}
@@ -63,7 +61,7 @@
 .linkedin::before{content:"\f208";}
 .linkedin{background-color:#0077b5;}
 .pushdog{background-color:#fff;}
-#page-top{color:#333;background-color:#fff;box-shadow:0 2px 5px 0 #999;border-radius:50%;font-weight:bold;line-height:70px;width:70px;height:70px;right:10px;bottom:20px;display:block;cursor:pointer;text-decoration:none;text-align:center;position:fixed;}
+#page-top{box-shadow:0 2px 5px 0 #999;border-radius:50%;font-weight:bold;line-height:70px;width:70px;height:70px;right:10px;bottom:20px;display:block;cursor:pointer;text-decoration:none;text-align:center;position:fixed;}
 /*メディアクエリ*/
   /*for mobile*/
   @media screen and (max-width:55em){

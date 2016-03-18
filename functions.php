@@ -42,8 +42,6 @@ function twentyfifteen_entry_meta(){
   if(!is_single()&&!post_password_required()&&(comments_open()||get_comments_number())){echo'<span class="comments-link">';comments_popup_link(__('Leave a comment','twentyfifteen'),__('1 Comment','twentyfifteen' ),__('% Comments','twentyfifteen'));echo'</span>';}
   if(is_user_logged_in()):echo'<a href="wlw://wkwkrnht.gegahost.net/?postid=';echo the_ID();echo'">WLWで編集</a>';endif;
 }
-//カスタムフィールド追加
-
 //サムネサイズ追加
 add_image_size('related',150,150,true);
 //Alt属性がないIMGタグにalt=""を追加する
@@ -127,9 +125,9 @@ function get_skin_files(){$dir=dirname(__FILE__) . '/skins/';
   uasort($results, 'skin_files_comp');return $results;}
 add_action('customize_register','my_theme_customize_register');
 function my_theme_customize_register($wp_customize){
-  $wp_customize->add_section('skin_section',array('title'=>'スキンの設定','priority'=> 88,));
+  $wp_customize->add_section('skin_section',array('title'=>'スキンの設定','priority'=>88,));
   $wp_customize->add_setting('skin_options[skin_file]',array('default'=>'','type'=>'option',));
-  $skins=get_skin_files();$radio_items=array(''=>'選択しない（デフォルト）',);
+  $skins=get_skin_files();$radio_items=array(''=>'White',);
   foreach($skins as $skin){$radio_items += array($skin['path']=>$skin['name']);}
   $wp_customize->add_control('skin_file_radio',array('settings'=>'skin_options[skin_file]','label'=>'スキン選択（色指定などが優先）','section'=>'skin_section','type'=>'radio','choices'=>$radio_items,'priority'=>1,));
 }
