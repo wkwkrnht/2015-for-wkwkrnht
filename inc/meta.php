@@ -1,5 +1,5 @@
-<meta name="google-site-verification" content="<?php echo get_option('gsearchconsole');?>">
-<meta name="msvalidate.01" content="<?php get_option('bingwebmastertools');?>">
+<meta name="google-site-verification" content="<?php echo get_option('Google_Webmaster');?>">
+<meta name="msvalidate.01" content="<?php echo get_option('Bing_Webmaster');?>">
 <?php
 $content_summary=strip_tags($post->post_content);
 $content_summary=str_replace("\n","",$content_summary);
@@ -16,4 +16,4 @@ if($post->my_description):?><meta name="description" content="<?php echo esc_att
 <?php else:?>
 	<meta name="keywords" content="デフォルトワード,デフォルトワード,デフォルトワード" />
 <?php endif;?>
-<?php if(wp_is_mobile()){echo'<meta name="theme-color" content="#ffcc00">';}?>
+<?php if(wp_is_mobile()){echo'<meta name="theme-color" content="'echo get_option('GoogleChrome_URLbar');'">';}?>

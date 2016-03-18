@@ -13,8 +13,8 @@ if(is_single()){if(has_post_thumbnail()){$image_id=get_post_thumbnail_id();$imag
 }else{if(get_header_image()){echo'<meta property="og:image" content="'.get_header_image().'">';echo "\n";}else{echo '<meta property="og:image" content="/img/icon.png">';echo "\n";}}?>
 <meta property="og:site_name" content="<?php bloginfo('name');?>">
 <meta property="og:locale" content="ja_JP"/>
-<meta property="fb:admins" content="<?php echo get_option('fb:admins');?>">
-<meta property="fb:app_id" content="<?php echo get_option('fb:app_id');?>">
+<meta property="fb:admins" content="<?php echo get_option('facebookr_admins');?>">
+<meta property="fb:app_id" content="<?php echo get_option('facebookr_appid');?>">
 <meta name="twitter:card" content="summary">
 <?php if(is_single()){if(have_posts()):while(have_posts()):the_post();echo'<meta name="twitter:description" content="'.mb_substr(get_the_excerpt(),0,100).'">';echo"\n";endwhile;endif;
   echo'<meta name="twitter:title" content="';the_title();echo'">';echo"\n";
@@ -33,5 +33,5 @@ preg_match( '/https?:\/\/(.+?)\//i',admin_url(),$results);?>
 <meta name="twitter:domain" content="<?php echo $results[1] ?>">
 <meta name="twitter:image:width" content="825px">
 <meta name="twitter:image:height" content="510px">
-<meta name="twitter:creator" content="@<?php if(is_single()){echo the_author_meta('twitter');}else{echo get_option('twitter');};?>">
-<meta name="twitter:site" content="@<?php echo get_option('twitter');?>">
+<meta name="twitter:creator" content="@<?php if(is_single()){echo the_author_meta('twitter');}else{echo get_option('Twitter_URL');};?>">
+<meta name="twitter:site" content="@<?php echo get_option('Twitter_URL');?>">

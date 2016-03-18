@@ -43,17 +43,7 @@ function twentyfifteen_entry_meta(){
   if(is_user_logged_in()):echo'<a href="wlw://wkwkrnht.gegahost.net/?postid=';echo the_ID();echo'">WLWで編集</a>';endif;
 }
 //カスタムフィールド追加
-/*function add_custom_fields(){add_meta_box('my_sectionid','カスタムフィールド','my_custom_fields','post');}
-function my_custom_fields(){global $post;
-  $meta_keywords=get_post_meta($post->ID,'meta_keywords',true);
-  $noindex=get_post_meta($post->ID,'noindex',true);
-  if($noindex==1){ $noindex_c="checked";}
-  else{$noindex_c= "/";}
-  echo'<p>チェックするとnoindexに<br/><input type="checkbox" name="noindex" value="1" ' . $noindex_c . '>noindex</p>
-  <p>meta keyword設定(カンマ区切り|2〜6個)<br/><input type="text" name="meta_keywords" value="'.esc_html($meta_keywords).'" size="40"/></p>';}
-function save_custom_fields($post_id){if(!empty($_POST['meta_keywords']))update_post_meta($post_id,'meta_keywords',$_POST['meta_keywords'] );else delete_post_meta($post_id,'meta_keywords');if(!empty($_POST['noindex']))update_post_meta($post_id,'noindex',$_POST['noindex']);else delete_post_meta($post_id,'noindex');}
-add_action('admin_menu','add_custom_fields');
-add_action('save_post','save_custom_fields');*/
+
 //サムネサイズ追加
 add_image_size('related',150,150,true);
 //Alt属性がないIMGタグにalt=""を追加する
@@ -188,9 +178,30 @@ add_filter('the_content_feed', 'rss_feed_copyright');
 add_filter('the_excerpt_rss','rss_post_thumbnail');
 add_filter('the_content_feed','rss_post_thumbnail');
 //設定追加
-/*function register_custom_menu_page(){add_theme_page('サイト設定','サイト設定',0,'site_settings','create_custom_menu_page','',10);}
-function create_custom_menu_page(){get_template_part('inc/site_settings');}
-add_action('admin_menu','register_custom_menu_page*/
+add_action('customize_register','theme_customize');
+function theme_customize($wp_customize){
+    $wp_customize->add_section('sns_section',array('title'=>'独自設定','priority'=>1,'description'=>'セクションの詳細',));
+    $wp_customize->add_setting('GoogleChrome_URLbar',array('type'=>'option',));
+    $wp_customize->add_control('GoogleChrome_URLbar',array('section'=>'sns_section','settings'=>'GoogleChrome_URLbar','label'=>'モバイル版GoogleChrome向けURLバーの色コードを指定する','type'=>'text'));
+    $wp_customize->add_setting('Google_Webmaster',array('type'=>'option',));
+    $wp_customize->add_control('Google_Webmaster',array('section'=>'sns_section','settings'=>'Google_Webmaster','label'=>'サイトのGoogleSerchconsole向けコードを指定する','type'=>'text'));
+    $wp_customize->add_setting('Bing_Webmaster',array('type'=>'option',));
+    $wp_customize->add_control('Bing_Webmaster',array('section'=>'sns_section','settings'=>'Bing_Webmaster','label'=>'サイトのBingWebmaster向けコードを指定する','type'=>'text'));
+    $wp_customize->add_setting('Google_Analytics',array('type'=>'option',));
+    $wp_customize->add_control('Google_Analytics',array('section'=>'sns_section','settings'=>'Google_Analytics','label'=>'サイトのGoogleAnalyticsコードを指定する','type'=>'text'));
+    $wp_customize->add_setting('Other_Analytics',array('type'=>'option',));
+    $wp_customize->add_control('Other_Analytics',array('section'=>'sns_section','settings'=>'Other_Analytics','label'=>'サイトのAnalyticsコードを指定する','type'=>'text'));
+    $wp_customize->add_setting('Twitter_URL',array('type'=>'option',));
+    $wp_customize->add_control('Twitter_URL',array('section'=>'sns_section','settings'=>'Twitter_URL','label'=>'サイト全体のTwitterアカウントへを指定する','type'=>'text'));
+    $wp_customize->add_setting('facebookr_appid',array('type'=>'option',));
+    $wp_customize->add_control('facebookr_appid',array('section'=>'sns_section','settings'=>'facebookr_appid','label'=>'facebookのappidを表示する','type'=>'text'));
+    $wp_customize->add_setting('facebookr_admins',array('type'=>'option',));
+    $wp_customize->add_control('facebookr_admins',array('section'=>'sns_section','settings'=>'facebookr_admins','label'=>'facebookのadminidを指定する','type'=>'text'));
+    $wp_customize->add_setting('Pushnotice_Dsp',array('type'=>'option',));
+    $wp_customize->add_control('Pushnotice_Dsp',array('section'=>'sns_section','settings'=>'Pushnotice_Dsp','label'=>'プッシュ通知の登録アイコンを表示する','type'=>'checkbox'));
+    $wp_customize->add_setting('Pushnotice_URL',array('type'=>'option', ));
+    $wp_customize->add_control('Pushnotice_URL',array('section'=>'sns_section','settings'=>'Pushnotice_URL','label'=>'プッシュ通知の登録URLを指定する','type'=>'text'));
+}
 //ADD:プロフィール(表示はthe_author_meta('twitter')とか)
 function my_new_contactmethods($contactmethods){
   $contactmethods['TEL']='TEL';
