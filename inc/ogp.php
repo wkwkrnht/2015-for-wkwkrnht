@@ -1,23 +1,14 @@
 <meta property="og:type" content="blog">
-<?php if(is_single()){
-if(have_posts()):while(have_posts()):the_post();
-  echo '<meta property="og:description" content="'.mb_substr(get_the_excerpt(),0,100).'">';echo "\n";
-endwhile;endif;
+<?php if(is_single()){if(have_posts()):while(have_posts()):the_post();echo '<meta property="og:description" content="'.mb_substr(get_the_excerpt(),0,100).'">';echo "\n";endwhile;endif;
   echo'<meta property="og:title" content="';the_title();echo'">';echo"\n";
   echo'<meta property="og:url" content="';the_permalink();echo'">';echo"\n";
 }else{
   echo'<meta property="og:description" content="'; bloginfo('description');echo '">';echo "\n";
   echo'<meta property="og:title" content="'; bloginfo('name');echo '">';echo "\n";
   echo'<meta property="og:url" content="';echo esc_url(home_url());echo '">';echo "\n";}
-$str=$post->post_content;
-$searchPattern = '/<img.*?src=(["\'])(.+?)\1.*?>/i';
-if(is_single()){
-  if(has_post_thumbnail()){
-    $image_id = get_post_thumbnail_id();
-    $image = wp_get_attachment_image_src($image_id,'full');
-    echo'<meta property="og:image" content="'.$image[0].'">';echo "\n";
-  }else if(preg_match($searchPattern,$str,$imgurl) && !is_archive()){
-    echo'<meta property="og:image" content="'.$imgurl[2].'">';echo "\n";
+$str=$post->post_content;$searchPattern = '/<img.*?src=(["\'])(.+?)\1.*?>/i';
+if(is_single()){if(has_post_thumbnail()){$image_id=get_post_thumbnail_id();$image=wp_get_attachment_image_src($image_id,'full');echo'<meta property="og:image" content="'.$image[0].'">';echo "\n";
+  }elseif(preg_match($searchPattern,$str,$imgurl) && !is_archive()){echo'<meta property="og:image" content="'.$imgurl[2].'">';echo "\n";
   }else{echo'<meta property="og:image" content="/img/no-img.png">';echo "\n";}
 }else{if(get_header_image()){echo'<meta property="og:image" content="'.get_header_image().'">';echo "\n";}else{echo '<meta property="og:image" content="/img/icon.png">';echo "\n";}}?>
 <meta property="og:site_name" content="<?php bloginfo('name');?>">
@@ -25,28 +16,19 @@ if(is_single()){
 <meta property="fb:admins" content="<?php echo get_option('fb:admins');?>">
 <meta property="fb:app_id" content="<?php echo get_option('fb:app_id');?>">
 <meta name="twitter:card" content="summary">
-<?php if (is_single()){
-if(have_posts()):while(have_posts()):the_post();
-  echo'<meta name="twitter:description" content="'.mb_substr(get_the_excerpt(),0,100).'">';echo"\n";
-endwhile;endif;
+<?php if(is_single()){if(have_posts()):while(have_posts()):the_post();echo'<meta name="twitter:description" content="'.mb_substr(get_the_excerpt(),0,100).'">';echo"\n";endwhile;endif;
   echo'<meta name="twitter:title" content="';the_title();echo'">';echo"\n";
   echo'<meta name="twitter:url" content="';the_permalink();echo'">';echo"\n";
 }else{
   echo'<meta name="twitter:description" content="';bloginfo('description');echo'">';echo"\n";
   echo'<meta name="twitter:title" content="'; bloginfo('name'); echo '">';echo "\n";
   echo'<meta name="twitter:url" content="';echo esc_url(home_url());echo'">';echo"\n";}
-$str=$post->post_content;
-$searchPattern = '/<img.*?src=(["\'])(.+?)\1.*?>/i';
+$str=$post->post_content;$searchPattern = '/<img.*?src=(["\'])(.+?)\1.*?>/i';
 if(is_single()){
-  if(has_post_thumbnail()){
-    $image_id=get_post_thumbnail_id();$img_url=$image[0];
-    $image=wp_get_attachment_image_src($image_id,'full');
-    echo'<meta name="twitter:image" content="'.$image[0].'">';echo"\n";
-  }elseif(preg_match($searchPattern,$str,$imgurl)&&!is_archive()){
-    $img_url = $imgurl[2];
-    echo'<meta name="twitter:image" content="'.$imgurl[2].'">';echo"\n";
+  if(has_post_thumbnail()){$image_id=get_post_thumbnail_id();$img_url=$image[0];$image=wp_get_attachment_image_src($image_id,'full');echo'<meta name="twitter:image" content="'.$image[0].'">';echo"\n";
+  }elseif(preg_match($searchPattern,$str,$imgurl)&&!is_archive()){$img_url=$imgurl[2];echo'<meta name="twitter:image" content="'.$imgurl[2].'">';echo"\n";
   }else{echo '<meta name="twitter:image" content="/img/no-img.png">';echo"\n";}
-}else{if(get_header_image()){echo '<meta name="twitter:image" content="'.get_header_image().'">';echo"\n";}else{echo'<meta name="twitter:image" content="/img/icon.png">';echo"\n";}}
+}else{if(get_header_image()){echo'<meta name="twitter:image" content="'.get_header_image().'">';echo"\n";}else{echo'<meta name="twitter:image" content="/img/icon.png">';echo"\n";}}
 preg_match( '/https?:\/\/(.+?)\//i',admin_url(),$results);?>
 <meta name="twitter:domain" content="<?php echo $results[1] ?>">
 <meta name="twitter:image:width" content="825px">

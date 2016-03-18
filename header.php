@@ -4,14 +4,15 @@
 	<?php if(get_post_meta(get_the_ID(),'noindex',true)==1){echo'<meta name="robots" content="noindex">';};?>
 	<meta charset="<?php bloginfo('charset');?>">
 	<meta name="viewport" content="width=device-width">
-	<?php get_template_part('inc/meta');get_template_part('inc/ogp');?>
+	<?php /*get_template_part('inc/meta');*/get_template_part('inc/ogp');?>
 	<link rel="profile" href="http://gmpg.org/xfn/11">
 	<link rel="pingback" href="<?php bloginfo('pingback_url');?>">
 	<!--[if lt IE 9]>
 	<script src="<?php echo esc_url(get_template_directory_uri());?>/js/html5.js"></script>
 	<![endif]-->
-	<?php wp_head();?>
 	<script src="<?php echo esc_url(home_url());?>/wp-content/themes/2015-for-wkwkrnht/javascript.js" charset="UTF-8"></script>
+	<?php if(get_skin_file()):?><link rel="stylesheet" href="<?php echo get_skin_file();?>"><?php endif;
+	wp_head();?>
 </head>
 <body <?php body_class();?>>
 <div id="page" class="hfeed site">

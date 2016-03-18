@@ -3,25 +3,18 @@ add_option('blogkeyword');
 add_option('ganalytics');
 add_option('gsearchconsole');
 add_option('bingwebmastertools');
-add_option('Pushdog');
-add_option('Push7');
-add_option('OnePush');
 add_option('Pushnotice');
 add_option('LINE@');
 add_option('twitter');
 add_option('facebook');
 add_option('fb:admins');
 add_option('fb:app_id');
-
 if($_REQUEST['blogname'])update_option('blogname',$_REQUEST['blogname']);
 if($_REQUEST['blogdescription'])update_option('blogdescription',$_REQUEST['blogdescription']);
 if($_REQUEST['blogkeyword'])update_option('blogkeyword',$_REQUEST['blogkeyword']);
 if($_REQUEST['ganalytics'])update_option('ganalytics',$_REQUEST['ganalytics']);
 if($_REQUEST['gsearchconsole'])update_option('gsearchconsole',$_REQUEST['gsearchconsole']);
 if($_REQUEST['bingwebmastertools'])update_option('bingwebmastertools',$_REQUEST['bingwebmastertools']);
-if($_REQUEST['Pushdog'])update_option('Pushdog',$_REQUEST['Pushdog']);
-if($_REQUEST['Push7'])update_option('Push7',$_REQUEST['Push7']);
-if($_REQUEST['OnePush'])update_option('OnePush',$_REQUEST['OnePush']);
 if($_REQUEST['Pushnotice'])update_option('Pushnotice',$_REQUEST['Pushnotice']);
 if($_REQUEST['LINE@'])update_option('LINE@',$_REQUEST['LINE@']);
 if($_REQUEST['twitter'])update_option('twitter',$_REQUEST['twitter']);
@@ -29,8 +22,8 @@ if($_REQUEST['facebook'])update_option('facebook',$_REQUEST['facebook']);
 if($_REQUEST['fb:admins'])update_option('fb:admins',$_REQUEST['fb:admins']);
 if($_REQUEST['fb:app_id'])update_option('fb:app_id',$_REQUEST['fb:app_id']);
 ?>
-<div id="icon-options-general" class="icon32"></div>
 <h2>サイト設定</h2>
+<?php if(isset($_POST['my_text'])){echo'<div id="setting-error-settings_updated" class="updated settings-error notice is-dismissible">p><strong>設定を保存しました。</strong></p></div>';}?>
 <form method="post" action="admin.php?page=site_settings">
     <table class="form-table">
     <tr valign="top">
@@ -63,22 +56,7 @@ if($_REQUEST['fb:app_id'])update_option('fb:app_id',$_REQUEST['fb:app_id']);
         <p class="description">content="***"の***の部分のみ入力して下さい</p></td>
     </tr>
     <tr valign="top">
-        <th scope="row"><label for="Pushdog">Pushdog</label></th>
-        <td><input name="Pushdog" type="text" value="<?php echo get_option('Pushdog');?>" class="regular-text">
-        <p class="description">このサイトの登録URL</p></td>
-    </tr>
-    <tr valign="top">
-        <th scope="row"><label for="Push7">Push7</label></th>
-        <td><input name="Push7" type="text" value="<?php echo get_option('Push7');?>" class="regular-text">
-        <p class="description">このサイトの登録URL</p></td>
-    </tr>
-    <tr valign="top">
-        <th scope="row"><label for="OnePush">OnePush</label></th>
-        <td><input name="OnePush" type="text" value="<?php echo get_option('OnePush');?>" class="regular-text">
-        <p class="description">このサイトの登録URL</p></td>
-    </tr>
-    <tr valign="top">
-        <th scope="row"><label for="Pushnotice">ほかのプッシュ通知サービス</label></th>
+        <th scope="row"><label for="Pushnotice">プッシュ通知サービス</label></th>
         <td><input name="Pushnotice" type="text" value="<?php echo get_option('Pushnotice');?>" class="regular-text">
         <p class="description">このサイトの登録URL</p></td>
     </tr>

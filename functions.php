@@ -42,22 +42,22 @@ function twentyfifteen_entry_meta(){
   if(!is_single()&&!post_password_required()&&(comments_open()||get_comments_number())){echo'<span class="comments-link">';comments_popup_link(__('Leave a comment','twentyfifteen'),__('1 Comment','twentyfifteen' ),__('% Comments','twentyfifteen'));echo'</span>';}
   if(is_user_logged_in()):echo'<a href="wlw://wkwkrnht.gegahost.net/?postid=';echo the_ID();echo'">WLWで編集</a>';endif;
 }
-//Alt属性がないIMGタグにalt=""を追加する
-add_filter('the_content',function($content){return preg_replace('/<img((?![^>]*alt=)[^>]*)>/i','<img alt=""${1}>',$content);});
 //カスタムフィールド追加
-add_action('admin_menu','add_custom_fields');
-add_action('save_post','save_custom_fields');
-function add_custom_fields(){add_meta_box('my_sectionid','カスタムフィールド','my_custom_fields','post');}
+/*function add_custom_fields(){add_meta_box('my_sectionid','カスタムフィールド','my_custom_fields','post');}
 function my_custom_fields(){global $post;
   $meta_keywords=get_post_meta($post->ID,'meta_keywords',true);
   $noindex=get_post_meta($post->ID,'noindex',true);
   if($noindex==1){ $noindex_c="checked";}
   else{$noindex_c= "/";}
-  echo'<p>チェックするとnoindexに<br/><input type="checkbox" name="noindex" value="1" ' . $noindex_c . '>noindex</p>';
-  echo'<p>meta keyword設定(カンマ区切り|2〜6個)<br/><input type="text" name="meta_keywords" value="'.esc_html($meta_keywords).'" size="40"/></p>';}
+  echo'<p>チェックするとnoindexに<br/><input type="checkbox" name="noindex" value="1" ' . $noindex_c . '>noindex</p>
+  <p>meta keyword設定(カンマ区切り|2〜6個)<br/><input type="text" name="meta_keywords" value="'.esc_html($meta_keywords).'" size="40"/></p>';}
 function save_custom_fields($post_id){if(!empty($_POST['meta_keywords']))update_post_meta($post_id,'meta_keywords',$_POST['meta_keywords'] );else delete_post_meta($post_id,'meta_keywords');if(!empty($_POST['noindex']))update_post_meta($post_id,'noindex',$_POST['noindex']);else delete_post_meta($post_id,'noindex');}
+add_action('admin_menu','add_custom_fields');
+add_action('save_post','save_custom_fields');*/
 //サムネサイズ追加
 add_image_size('related',150,150,true);
+//Alt属性がないIMGタグにalt=""を追加する
+add_filter('the_content',function($content){return preg_replace('/<img((?![^>]*alt=)[^>]*)>/i','<img alt=""${1}>',$content);});
 //サムネ自動設定
 require_once(ABSPATH . '/wp-admin/includes/image.php');
 function fetch_thumbnail_image($matches,$key,$post_content,$post_id){
@@ -121,11 +121,34 @@ function wps_highlight_results($text){if(is_search()){$sr=get_query_var('s');$ke
 add_filter('the_title','wps_highlight_results');
 add_filter('the_content','wps_highlight_results');
 add_action('after_setup_theme','ruby_setup');
+//スキン実装
+function skin_files_comp($a, $b){if($a['priority'] == $b['priority']){return 0;}return($a['priority'] < $b['priority']) ? -1 : 1;}
+function get_skin_files(){$dir=dirname(__FILE__) . '/skins/';
+  $iterator=new RecursiveIteratorIterator(new RecursiveDirectoryIterator($dir,FilesystemIterator::SKIP_DOTS|FilesystemIterator::KEY_AS_PATHNAME|FilesystemIterator::CURRENT_AS_FILEINFO),RecursiveIteratorIterator::LEAVES_ONLY);
+  $results=array();
+  foreach($iterator as $pathname=>$info){$pathname=str_replace('\\', '/', $pathname);$this_dir=str_replace('\\', '/', dirname(__FILE__));
+    if(preg_match('/([a-zA-Z\-_]+).style\.css$/i', $pathname, $matches)){$dir_name=$matches[1];$css=file_get_contents($pathname);
+      if(preg_match('/Name: *(.+)/i', $css, $matches)){
+        if(preg_match('/Priority: *(.+)/i', $css, $m)){$priority=intval($m[1]);}else{$priority=9999;}
+        $results[]=array('name'=>$matches[1],'dir'=>$dir_name,'priority'=>$priority,'path'=>str_replace($this_dir,get_stylesheet_directory_uri(),$pathname),);
+      }
+    }
+  }
+  uasort($results, 'skin_files_comp');return $results;}
+add_action('customize_register','my_theme_customize_register');
+function my_theme_customize_register($wp_customize){
+  $wp_customize->add_section('skin_section',array('title'=>'スキンの設定','priority'=> 88,));
+  $wp_customize->add_setting('skin_options[skin_file]',array('default'=>'','type'=>'option',));
+  $skins=get_skin_files();$radio_items=array(''=>'選択しない（デフォルト）',);
+  foreach($skins as $skin){$radio_items += array($skin['path']=>$skin['name']);}
+  $wp_customize->add_control('skin_file_radio',array('settings'=>'skin_options[skin_file]','label'=>'スキン選択（色指定などが優先）','section'=>'skin_section','type'=>'radio','choices'=>$radio_items,'priority'=>1,));
+}
+function get_skin_file(){$o=get_option('skin_options');return $o['skin_file'];}
 //PCのみ表示テキストウイジェットの追加
 class PcTextWidgetItem extends WP_Widget{
-  function PcTextWidgetItem(){parent::WP_Widget(false,$name='Text widget（PCのみ表示）');}
+  function PcTextWidgetItem(){parent::WP_Widget(false,$name='Text widget（for PC）');}
   function widget($args,$instance){extract($args);$title=apply_filters('widget_title_pc_text',$instance['title_pc_text']);$text=apply_filters('widget_text_pc_text',$instance['text_pc_text']);if(!wp_is_mobile()):echo('<div id="pc-text-widget" class="widget pc_text">');if($title){echo '<h4>'.$title.'</h4>';}echo('<div class="text-pc">');echo $text;echo'</div></div>';endif;}
-  function update($new_instance, $old_instance){$instance=$old_instance;$instance['title_pc_text']=strip_tags($new_instance['title_pc_text']);$instance['text_pc_text']=$new_instance['text_pc_text'];return $instance;}
+  function update($new_instance,$old_instance){$instance=$old_instance;$instance['title_pc_text']=strip_tags($new_instance['title_pc_text']);$instance['text_pc_text']=$new_instance['text_pc_text'];return $instance;}
   function form($instance){if(empty($instance)){$instance = array('title_pc_text'=>null,'text_pc_text'=>null,);}
     $title=esc_attr($instance['title_pc_text']);$text=esc_attr($instance['text_pc_text']);?>
     <p>
@@ -164,10 +187,10 @@ add_filter('the_excerpt_rss', 'rss_feed_copyright');
 add_filter('the_content_feed', 'rss_feed_copyright');
 add_filter('the_excerpt_rss','rss_post_thumbnail');
 add_filter('the_content_feed','rss_post_thumbnail');
-//設定にページ追加
-add_action('admin_menu','register_custom_menu_page');
-function register_custom_menu_page(){add_theme_page('サイト設定','サイト設定',0,'site_settings','create_custom_menu_page','',10);}
+//設定追加
+/*function register_custom_menu_page(){add_theme_page('サイト設定','サイト設定',0,'site_settings','create_custom_menu_page','',10);}
 function create_custom_menu_page(){get_template_part('inc/site_settings');}
+add_action('admin_menu','register_custom_menu_page*/
 //ADD:プロフィール(表示はthe_author_meta('twitter')とか)
 function my_new_contactmethods($contactmethods){
   $contactmethods['TEL']='TEL';
