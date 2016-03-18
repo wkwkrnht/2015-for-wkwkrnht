@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html <?php language_attributes();?> class="no-js">
 <head>
-	<?php if(get_post_meta(get_the_ID(),'noindex',true)==1){echo'<meta name="robots" content="noindex">';};?>
+	<?php if(get_post_meta($post->ID,"noindex",true)){echo'<meta name="robots" content="noindex,nofollow" />';};?>
 	<meta charset="<?php bloginfo('charset');?>">
 	<meta name="viewport" content="width=device-width">
 	<?php /*get_template_part('inc/meta');*/get_template_part('inc/ogp');?>

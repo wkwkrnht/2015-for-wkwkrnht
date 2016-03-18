@@ -1,10 +1,19 @@
+<meta name="google-site-verification" content="<?php echo get_option('gsearchconsole');?>">
+<meta name="msvalidate.01" content="<?php get_option('bingwebmastertools');?>">
 <?php
 $content_summary=strip_tags($post->post_content);
 $content_summary=str_replace("\n","",$content_summary);
 $content_summary=str_replace("\r","",$content_summary);
-$content_summary=mb_substr($content_summary,0,60). "...";?>
-<meta name="description" content="<?php if(is_single()){echo $content_summary;}elseif(is_category()){echo get_meta_description_from_category();}else{bloginfo('description');}?>">
-<!--<meta name="keywords" content="<?php if(is_single()){$posttags=get_the_tags();if($posttags){foreach($posttags as $tag){echo $tag->name . ',';}}the_title();}elseif(!empty($custom['meta_keywords'][0])){echo['meta_keywords'][0];}elseif(is_category()){echo get_meta_keyword_from_category();}else{echo get_option('blogkeyword');}?>">-->
-<meta name="google-site-verification" content="<?php echo get_option('gsearchconsole');?>">
-<meta name="msvalidate.01" content="<?php get_option('bingwebmastertools');?>">
+$content_summary=mb_substr($content_summary,0,60). "...";
+if($post->my_description):?><meta name="description" content="<?php echo esc_attr($post->my_description);?>" />
+<?php elseif(is_single()):?><meta name="description" content="<?php echo $content_summary;?>" />
+<?php
+  elseif(is_category()){echo get_meta_description_from_category();}
+  else:?><meta name="description" content="<?php bloginfo('description');?>" />
+<?php endif;?>
+<?php if($post->my_keywords):?>
+	<meta name="keywords" content="<?php echo esc_attr($post->my_keywords);?>" />
+<?php else:?>
+	<meta name="keywords" content="デフォルトワード,デフォルトワード,デフォルトワード" />
+<?php endif;?>
 <?php if(wp_is_mobile()){echo'<meta name="theme-color" content="#ffcc00">';}?>
