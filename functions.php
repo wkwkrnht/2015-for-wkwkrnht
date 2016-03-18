@@ -109,29 +109,6 @@ function wps_highlight_results($text){if(is_search()){$sr=get_query_var('s');$ke
 add_filter('the_title','wps_highlight_results');
 add_filter('the_content','wps_highlight_results');
 add_action('after_setup_theme','ruby_setup');
-//スキン実装
-function skin_files_comp($a, $b){if($a['priority'] == $b['priority']){return 0;}return($a['priority'] < $b['priority']) ? -1 : 1;}
-function get_skin_files(){$dir=dirname(__FILE__) . '/skins/';
-  $iterator=new RecursiveIteratorIterator(new RecursiveDirectoryIterator($dir,FilesystemIterator::SKIP_DOTS|FilesystemIterator::KEY_AS_PATHNAME|FilesystemIterator::CURRENT_AS_FILEINFO),RecursiveIteratorIterator::LEAVES_ONLY);
-  $results=array();
-  foreach($iterator as $pathname=>$info){$pathname=str_replace('\\', '/', $pathname);$this_dir=str_replace('\\', '/', dirname(__FILE__));
-    if(preg_match('/([a-zA-Z\-_]+).style\.css$/i', $pathname, $matches)){$dir_name=$matches[1];$css=file_get_contents($pathname);
-      if(preg_match('/Name: *(.+)/i', $css, $matches)){
-        if(preg_match('/Priority: *(.+)/i', $css, $m)){$priority=intval($m[1]);}else{$priority=9999;}
-        $results[]=array('name'=>$matches[1],'dir'=>$dir_name,'priority'=>$priority,'path'=>str_replace($this_dir,get_stylesheet_directory_uri(),$pathname),);
-      }
-    }
-  }
-  uasort($results, 'skin_files_comp');return $results;}
-add_action('customize_register','my_theme_customize_register');
-function my_theme_customize_register($wp_customize){
-  $wp_customize->add_section('skin_section',array('title'=>'スキンの設定','priority'=>88,));
-  $wp_customize->add_setting('skin_options[skin_file]',array('default'=>'','type'=>'option',));
-  $skins=get_skin_files();$radio_items=array(''=>'White',);
-  foreach($skins as $skin){$radio_items += array($skin['path']=>$skin['name']);}
-  $wp_customize->add_control('skin_file_radio',array('settings'=>'skin_options[skin_file]','label'=>'スキン選択（色指定などが優先）','section'=>'skin_section','type'=>'radio','choices'=>$radio_items,'priority'=>1,));
-}
-function get_skin_file(){$o=get_option('skin_options');return $o['skin_file'];}
 //PCのみ表示テキストウイジェットの追加
 class PcTextWidgetItem extends WP_Widget{
   function PcTextWidgetItem(){parent::WP_Widget(false,$name='Text widget（for PC）');}
