@@ -23,9 +23,8 @@ if($_REQUEST['fb:admins'])update_option('fb:admins',$_REQUEST['fb:admins']);
 if($_REQUEST['fb:app_id'])update_option('fb:app_id',$_REQUEST['fb:app_id']);
 ?>
 <h2>サイト設定</h2>
-<?php if(isset($_POST['my_text'])){echo'<div id="setting-error-settings_updated" class="updated settings-error notice is-dismissible">p><strong>設定を保存しました。</strong></p></div>';}?>
 <form method="post" action="admin.php?page=site_settings">
-    <table class="form-table">
+  <table class="form-table">
     <tr valign="top">
         <th scope="row"><label for="blogname">サイトのタイトル</label></th>
         <td><input name="blogname" type="text" value="<?php echo get_option('blogname');?>" class="regular-text"></td>
@@ -85,6 +84,6 @@ if($_REQUEST['fb:app_id'])update_option('fb:app_id',$_REQUEST['fb:app_id']);
         <td><input name="fb:app_id" type="text" value="<?php echo get_option('fb:app_id');?>" class="regular-text">
         <p class="description">OGP用app_id</p></td>
     </tr>
-    </table>
-    <p class="submit"><input type="submit" name="submit" id="submit" class="button-primary" value="保存"></p>
+  </table>
+  <?php submit_button();if(isset($_POST['my_text'])){echo'<div id="setting-error-settings_updated" class="updated settings-error notice is-dismissible">p><strong>設定を保存しました。</strong></p></div>';}?>
 </form>
