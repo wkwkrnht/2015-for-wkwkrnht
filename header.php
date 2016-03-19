@@ -43,7 +43,7 @@
 	<meta name="twitter:image:height" content="510px">
 	<meta name="twitter:creator" content="@<?php if(is_single()){echo the_author_meta('twitter');}else{echo get_option('Twitter_URL');};?>">
 	<meta name="twitter:site" content="@<?php echo get_option('Twitter_URL');?>">
-	<?php if(wp_is_mobile()){echo'<meta name="theme-color" content="'echo get_option('GoogleChrome_URLbar');'">';}?>
+	<?php if(wp_is_mobile()){echo'<meta name="theme-color" content="'echo get_option('GoogleChrome_URLbar');echo'">';}?>
 	<link rel="profile" href="http://gmpg.org/xfn/11">
 	<link rel="pingback" href="<?php bloginfo('pingback_url');?>">
 	<!--[if lt IE 9]>
