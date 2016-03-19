@@ -1,3 +1,4 @@
+<div>
 <?php $categories=get_the_category($post->ID);$category_ID=array();
 foreach($categories as $category):array_push($category_ID,$category->cat_ID);endforeach;
 $args=array('posts_per_page'=>3,'post__not_in'=>array($post->ID),'category__in'=>$category_ID,'orderby'=>'rand',);
@@ -25,3 +26,4 @@ $query=new WP_Query($args);
     </div>
     <?php wp_reset_postdata();
   endif;?>
+</div>
