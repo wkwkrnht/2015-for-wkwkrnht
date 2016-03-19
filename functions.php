@@ -14,8 +14,6 @@ remove_action('wp_print_styles','print_emoji_styles');
 remove_action('parse_query','wp_oembed_parse_query');
 remove_action('wp_head','wp_oembed_remove_discovery_links');
 remove_action('wp_head','wp_oembed_remove_host_js');
-function fontawesome_style(){wp_enqueue_style('fontawesome','https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css',array(),false,false);}
-add_action('wp_enqueue_style','fontawesome_style');
 //カテゴリー説明文をメタ化
 function get_meta_description_from_category(){$cate_desc=trim(strip_tags(category_description()));if($cate_desc){return $cate_desc;}$cate_desc='「' . single_cat_title('',false) . '」の記事一覧です。' . get_bloginfo('description');return $cate_desc;}
 function get_meta_keyword_from_category(){return single_cat_title('',false) . ',ブログ,記事一覧';}
