@@ -2,7 +2,7 @@
  Theme Name:   2015 for wkwkrnht
  Theme URI:    http://wkwkrnht.wp.xdomain.jp/
  Template:     twentyfifteen
- Version:      0.1.0
+ Version:      0.1.1
  Author:       wkwkrnht
  Author URI:   http://wkwkrnht.gegahost.com/
 */
@@ -81,7 +81,7 @@
 .tumblr{background-color:#2c4762;}
 .linkedin{background-color:#0077b5;}
 .pushdog::before{content:"\f0f3";}
-.pushdog{background-color:#fff;}
+.pushdog{background-color:#ffcc00;}
 #page-top{color:#fff;background-color:#ffcc00;box-shadow:0 2px 5px 0 #999;border-radius:50%;font-weight:bold;line-height:70px;width:70px;height:70px;right:10px;bottom:20px;display:block;cursor:pointer;text-decoration:none;text-align:center;position:fixed;}
 /*メディアクエリ*/
   /*for mobile*/
