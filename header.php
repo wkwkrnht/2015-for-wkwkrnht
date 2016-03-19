@@ -43,21 +43,6 @@
 	<meta name="twitter:image:height" content="510px">
 	<meta name="twitter:creator" content="@<?php if(is_single()){echo the_author_meta('twitter');}else{echo get_option('Twitter_URL');};?>">
 	<meta name="twitter:site" content="@<?php echo get_option('Twitter_URL');?>">
-	<?php
-	$content_summary=strip_tags($post->post_content);
-	$content_summary=str_replace("\n","",$content_summary);
-	$content_summary=str_replace("\r","",$content_summary);
-	$content_summary=mb_substr($content_summary,0,60). "...";
-	if($post->my_description):?><meta name="description" content="<?php echo esc_attr($post->my_description);?>" />
-	<?php else:if(is_single()):?><meta name="description" content="<?php echo $content_summary;?>" /><?php endif;
-	else:if(is_category()):echo get_meta_description_from_category();endif;
-	else:?><meta name="description" content="<?php bloginfo('description');?>" />
-	<?php endif;?>
-	<?php if($post->my_keywords):?>
-		<meta name="keywords" content="<?php echo esc_attr($post->my_keywords);?>" />
-	<?php else:?>
-		<meta name="keywords" content="wkwkrnht" />
-	<?php endif;?>
 	<?php if(wp_is_mobile()){echo'<meta name="theme-color" content="'echo get_option('GoogleChrome_URLbar');'">';}?>
 	<link rel="profile" href="http://gmpg.org/xfn/11">
 	<link rel="pingback" href="<?php bloginfo('pingback_url');?>">
