@@ -16,7 +16,11 @@
 				'separator'   =>'<span class="screen-reader-text">,</span>',));?>
 	</section>
 	<footer class="entry-footer">
+<<<<<<< HEAD
 		<h2 class="slide">Share＆関連記事</h2>
+=======
+		<h2>Share＆関連記事</h2>
+>>>>>>> parent of e87b776... fix
 		<div id="slide">
 			<?php get_template_part('parts/snsbutton');get_template_part('parts/related');?>
 		</div>
