@@ -17,7 +17,7 @@
 	</section>
 	<footer class="entry-footer">
 		<div id="slide">
-			<h2>Share＆関連記事</h2>
+			<h2 class="slide">Share＆関連記事</h2>
 			<?php get_template_part('parts/snsbutton');get_template_part('parts/related');?>
 		</div>
 	</footer>

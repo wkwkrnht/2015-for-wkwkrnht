@@ -15,11 +15,12 @@
 .marker{background-color:yellow;}
 .entry-content a{color:#1122cc;border-bottom:1px solid #1122cc;}
 /*header&footer*/
-#bread{color:#ddd;margin:0 .5em;}
+#bread{color:#ddd;}
+#bread .sp{color:#333;margin:0 1em;}
 .copyright{color:#fff;text-align:center;margin-bottom:15px;}
 .entry-header{background-color:#f7f7f7;text-align:center;margin-bottom:15px;}
 .entry-title{font-size:33px;margin:0 32px;}
-#slide h2{color:#fff;background:#ffcc00;box-shadow:0 2px 5px 0 #999;height:45px;margin:15px;font-size:30px;text-align:center;}
+.slide{color:#fff;background:#ffcc00;box-shadow:0 2px 5px 0 #999;height:45px;margin:15px;font-size:30px;text-align:center;}
 #slide{max-width:100%;overflow:hidden;}
 #slide .content{flex-direction:row;-webkit-flex-direction:row;justify-content:flex-start;-webkit-justify-content:flex-start;display:flex;display:-webkit-flex;}
 .related{max-width:150px;max-height:300px;border-radius:8px;margin:15px 8px 10px 0;background-color:#fff;box-shadow:0 2px 5px 0 #999;}

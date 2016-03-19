@@ -13,7 +13,7 @@ $query=new WP_Query($args);
     </div>
     <?php wp_reset_postdata();
   else:?>
-    <div class=" related content">
+    <div class="related content">
     <?php $args=array('numberposts'=>3,'orderby'=>'rand','post_status'=>'publish','offset'=>1);
     $rand_posts=get_posts($args);
     foreach($rand_posts as $post):?>
