@@ -49,10 +49,9 @@
 	$content_summary=str_replace("\r","",$content_summary);
 	$content_summary=mb_substr($content_summary,0,60). "...";
 	if($post->my_description):?><meta name="description" content="<?php echo esc_attr($post->my_description);?>" />
-	<?php elseif(is_single()):?><meta name="description" content="<?php echo $content_summary;?>" />
-	<?php
-	  elseif(is_category()){echo get_meta_description_from_category();}
-	  else:?><meta name="description" content="<?php bloginfo('description');?>" />
+	<?php else:if(is_single()):?><meta name="description" content="<?php echo $content_summary;?>" /><?php endif;
+	else:if(is_category()):echo get_meta_description_from_category();endif;
+	else:?><meta name="description" content="<?php bloginfo('description');?>" />
 	<?php endif;?>
 	<?php if($post->my_keywords):?>
 		<meta name="keywords" content="<?php echo esc_attr($post->my_keywords);?>" />
