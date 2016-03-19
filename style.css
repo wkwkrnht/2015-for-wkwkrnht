@@ -31,7 +31,7 @@
 .entry-content h3{border-left:20px solid #ffcc00;background-color:#fff;}
 .entry-content h4{border-bottom:10px solid #ffcc00;background-color:#fff;}
 /*social-nav*/
-.social-navigation a:before{content:"\f415";font-family:"Font Awesome";font-size:24px;position:absolute;top:0;left:0;}
+.social-navigation a:before{content:"\f415";font-family:"FontAwesome";font-size:24px;position:absolute;top:0;left:0;}
 .social-navigation a[href*="/feed"]:before,.social-navigation a[href*="/feed/"]:before{content:"\f09e";color:#2aff00;}
 .social-navigation a[href*="codepen.io"]:before{content:"\f1cb";}
 .social-navigation a[href*="digg.com"]:before{content:"\f1a6";}
