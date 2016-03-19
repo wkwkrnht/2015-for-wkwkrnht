@@ -4,7 +4,7 @@ function wps_login_error(){remove_action('login_head','wp_shake_js',12);}
 function vc_remove_wp_ver_css_js($src){if(strpos($src,'ver='))$src=remove_query_arg('ver',$src);return $src;}
 function dequeue_genericons(){wp_dequeue_style('genericons');}
 add_action('wp_enqueue_scripts','dequeue_genericons',11);
-add_action('login_head', 'wps_login_error');
+add_action('login_head','wps_login_error');
 add_filter('style_loader_src','vc_remove_wp_ver_css_js',9999);
 add_filter('script_loader_src','vc_remove_wp_ver_css_js',9999);
 add_filter('embed_oembed_discover','__return_false');
