@@ -1,5 +1,5 @@
 <article id="post-<?php the_ID();?>" <?php post_class();?>>
-	<header id="entry-header">
+	<header class="entry-header">
 		<?php twentyfifteen_post_thumbnail();
 		get_template_part('parts/bread');
 		if(is_single()){the_title('<h1 class="entry-title">','</h1>');}else{the_title(sprintf('<h1 class="entry-title"><a href="%s" rel="bookmark">',esc_url(get_permalink())),'</a></h1>');};
@@ -15,7 +15,7 @@
 				'pagelink'    =>'<span class="screen-reader-text">' . __('Page','twentyfifteen') . ' </span>%',
 				'separator'   =>'<span class="screen-reader-text">,</span>',));?>
 	</section>
-	<footer id="entry-footer">
+	<footer class="entry-footer">
 		<div id="slide">
 			<h2>Share＆関連記事</h2>
 			<?php get_template_part('parts/snsbutton');get_template_part('parts/related');?>
