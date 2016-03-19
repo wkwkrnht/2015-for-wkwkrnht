@@ -16,8 +16,8 @@
 				'separator'   =>'<span class="screen-reader-text">,</span>',));?>
 	</section>
 	<footer class="entry-footer">
+		<h2 class="slide">Share＆関連記事</h2>
 		<div id="slide">
-			<h2 class="slide">Share＆関連記事</h2>
 			<?php get_template_part('parts/snsbutton');get_template_part('parts/related');?>
 		</div>
 	</footer>
