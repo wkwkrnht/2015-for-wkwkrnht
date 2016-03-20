@@ -33,7 +33,7 @@
 .entry-content h4{border-bottom:10px solid #ffcc00;background-color:#fff;}
 .entry-content h2,.entry-content h3,.entry-content h4{box-shadow:0 2px 5px 0 #999;min-height:45px;text-align:center;}
 /*ページャー*/
-.page-numbers+.prev::before,.page-numbers+.prev::before{font-family:"Noto Serif" sans-serif;font-size:18px;}
+.page-numbers+.prev::before,.page-numbers+.prev::before{font-family:"Noto Serif" sans-serif;font-size:16px;}
 .page-numbers+.prev::before{content:"＜";}
 .page-numbers+.next::before{content:"＞";}
 .page-numbers+.prev,.page-numbers+.next{color:#fff;background-color:#ffcc00;}
@@ -60,7 +60,7 @@
 .linkedin{background-color:#0077b5;}
 .pushnotice::before{content:"\f0f3";}
 .pushnotice{background-color:#ffc700;}
-#page-top{color:#fff;background-color:#ffcc00;box-shadow:0 2px 5px 0 #999;font-size:26px;font-weight:700;border-radius:50%;line-height:70px;width:70px;height:70px;right:10px;bottom:20px;display:block;cursor:pointer;text-decoration:none;text-align:center;position:fixed;}
+#page-top{color:#fff;background-color:#ffcc00;box-shadow:0 2px 5px 0 #999;font-size:26px;font-weight:1200;border-radius:50%;line-height:70px;width:70px;height:70px;right:10px;bottom:20px;display:block;cursor:pointer;text-decoration:none;text-align:center;position:fixed;}
 /*social-nav*/
 .social-navigation a:before{content:"\f07b";font-family:"FontAwesome";font-size:24px;position:absolute;top:0;left:0;}
 .social-navigation a[href*="/feed"]:before,.social-navigation a[href*="/feed/"]:before{content:"\f09e";color:#2aff00;}
@@ -106,7 +106,7 @@
     .nav-links{margin-top:10px;}
     .tweet::before,.fblike::before,.g1::before,.pocket::before,.thmblr::before,.linkedin::before{font-size:28px;top:8%;}
     #page-top,.button{width:50px;height:50px;}
-    #page-top{line-height:50px;bottom:25px;}
+    #page-top{line-height:50px;bottom:25px;font-size:23px;}
   }
   /*for PC*/
   @media screen and (min-width:55em){
