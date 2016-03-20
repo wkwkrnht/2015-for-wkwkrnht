@@ -50,6 +50,7 @@
 	<script src="<?php echo esc_url(get_template_directory_uri());?>/js/html5.js"></script>
 	<![endif]-->
 	<script src="<?php echo esc_url(home_url());?>/wp-content/themes/2015-for-wkwkrnht/javascript.js" charset="UTF-8"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 	<?php wp_head();?>
 </head>
 <body <?php body_class();?>>

@@ -2,27 +2,15 @@
  Theme Name:   2015 for wkwkrnht
  Theme URI:    http://wkwkrnht.wp.xdomain.jp/
  Template:     twentyfifteen
- Version:      0.1.0
+ Version:      0.1.1
  Author:       wkwkrnht
  Author URI:   http://wkwkrnht.gegahost.com/
 */
-.entry-footer h2{color:#fff;background:#ffcc00;}
-#slide .thumb{background-color:#ffcc00;}
-#page-top{color:#fff;background-color:#ffcc00;}
-.page-numbers+.prev,.page-numbers+.next{color:#fff;background-color:#ffcc00;}
-.page-links a{color:#fff;border-color:#ffcc00;background-color:#ffcc00;}
-.entry-content a{color:#1122cc;border-bottom:1px solid #1122cc;}
-.entry-content h2{color:#fff;background:#ffcc00;}
-.entry-content h3{border-left:20px solid #ffcc00;}
-.entry-content h4{border-bottom:10px solid #ffcc00;}
-/*hide*/
-.page-links>.page-links-title,.more-link{display:none;}
 /*cardstyle&blogcard&markar*/
 .card-list{border-radius:8px;}
 .card-content{background-color:#f7f7f7;color:#707070;}
 .card-thumb{max-width:825px;max-height:510px;}
 .card-title{font-size:40px;text-align:center;}
-.card-meta{font-size:18px;}
 .hatenablogcard{width:100%;height:160px;margin:5px 0;max-width:700px;box-shadow:0 2px 2px 0 #999;clear:both;}
 .marker+.yellow{background-color:yellow;}
 .marker+.green{background-color:green;}
@@ -31,26 +19,24 @@
 #bread .sp{color:#333;margin:0 1em;}
 .entry-header{background-color:#f7f7f7;text-align:center;margin-bottom:15px;}
 .entry-title{font-size:33px;margin:0 32px;}
-.entry-footer h2{box-shadow:0 2px 5px 0 #999;height:45px;margin:15px;font-size:30px;text-align:center;}
+.entry-footer h2{color:#fff;background-color:#ffcc00;box-shadow:0 2px 5px 0 #999;height:45px;margin:15px;font-size:30px;text-align:center;}
 .copyright{color:#fff;text-align:center;margin-bottom:15px;}
 /*見出し*/
-.entry-content h2{box-shadow:0 2px 5px 0 #999;height:45px;text-align:center;}
-.entry-content h3,.entry-content h4{background:#fff;box-shadow:0 2px 5px 0 #999;height:45px;text-align:center;}
-/*social-nav*/
-.social-navigation a[href*="goo.gl/forms/"]:before{content:"\f457";}
-.social-navigation a[href*="twitter.com"]:before{color:#00b8ff;}
-.social-navigation a[href*="wordpress.com"]:before{color:#0033ff;}
-.social-navigation a[href*="/feed"]:before,.social-navigation a[href*="/feed/"]:before{content:"\f413";color:#2aff00;}
-.social-navigation a[href*="youtube.com"]:before,.social-navigation a[href*="plus.google.com"]:before{color:#ff0033;}
+.entry-content a{color:#1122cc;border-bottom:1px solid #1122cc;}
+.entry-content h2{color:#fff;background:#ffcc00;}
+.entry-content h3{border-left:20px solid #ffcc00;background-color:#fff;}
+.entry-content h4{border-bottom:10px solid #ffcc00;background-color:#fff;}
+.entry-content h2,.entry-content h3,.entry-content h4{box-shadow:0 2px 5px 0 #999;min-height:45px;text-align:center;}
 /*ページャー*/
-.page-links{margin-bottom:1.3333em;clear:both;}
+.page-numbers+.prev,.page-numbers+.next{color:#fff;background-color:#ffcc00;}
 .page-links a,.page-links>span{border:1px solid #eaeaea;font-size:20px;font-size:2rem;width:3em;height:3em;line-height:3;margin:0 0.3333em 0.3333em 0;text-align:center;display:inline-block;}
-/*記事下*/
+.page-links a{color:#fff;border-color:#ffcc00;background-color:#ffcc00;}
+.page-links{margin-bottom:1.3333em;clear:both;}
+/*記事下&関連記事*/
 #slide{max-width:100%;overflow:hidden;}
 #slide .content{flex-direction:row;-webkit-flex-direction:row;justify-content:flex-start;-webkit-justify-content:flex-start;display:flex;display:-webkit-flex;}
-/*関連記事*/
 .related{max-width:150px;max-height:300px;border-radius:8px;margin:15px 8px 10px 0;background-color:#fff;box-shadow:0 2px 5px 0 #999;}
-#slide .thumb{max-height:150px;}
+#slide .thumb{background-color:#ffcc00;max-height:150px;}
 #slide .title{color:#333;font-size:18px;padding-top:20px;max-height:150px;text-align:center;}
 /*ボタン*/
 .tweet::before,.fblike::before,.g1::before,.pocket::before,.tumblr::before,.linkedin::before{color:#fff;font-size:40px;font-family:"Genericons";position:absolute;top:5%;left:15%;}
@@ -69,8 +55,14 @@
 .tumblr{background-color:#2c4762;}
 .linkedin::before{content:"\f208";}
 .linkedin{background-color:#0077b5;}
-.pushdog{background-color:#fff;}
-#page-top{box-shadow:0 2px 5px 0 #999;border-radius:50%;font-weight:bold;line-height:70px;width:70px;height:70px;right:10px;bottom:20px;display:block;cursor:pointer;text-decoration:none;text-align:center;position:fixed;}
+.pushdog{background-color:yellow;}
+#page-top{color:#fff;background-color:#ffcc00;box-shadow:0 2px 5px 0 #999;border-radius:50%;font-weight:bold;line-height:70px;width:70px;height:70px;right:10px;bottom:20px;display:block;cursor:pointer;text-decoration:none;text-align:center;position:fixed;}
+/*social-nav*/
+.social-navigation a[href*="goo.gl/forms/"]:before{content:"\f457";}
+.social-navigation a[href*="twitter.com"]:before{color:#00b8ff;}
+.social-navigation a[href*="wordpress.com"]:before{color:#0033ff;}
+.social-navigation a[href*="/feed"]:before,.social-navigation a[href*="/feed/"]:before{content:"\f413";color:#2aff00;}
+.social-navigation a[href*="youtube.com"]:before,.social-navigation a[href*="plus.google.com"]:before{color:#ff0033;}
 /*メディアクエリ*/
   /*for mobile*/
   @media screen and (max-width:55em){
@@ -90,6 +82,7 @@
   @media screen and (min-width:55em){
     .sidebar{width:28vw;z-index:2;}
     body::before{width:28vw;z-index:2;box-shadow:0 0 5px 0 #999;}
+    .card-meta{font-size:18px;}
     /*http://wkwkrnht.wp.xdomain.jp/wp-content/themes/2015-for-wkwkrnht*/
   }
   /*without phone*/
