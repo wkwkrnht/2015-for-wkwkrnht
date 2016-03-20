@@ -19,6 +19,10 @@
 #bread .sp{color:#333;margin:0 1em;}
 .entry-header{background-color:#f7f7f7;text-align:center;margin-bottom:15px;}
 .entry-title{font-size:33px;margin:0 32px;}
+.posted-on::before{content:"\f133";font-family:"FontAwesome";}
+.author::before{content:"\f007";font-family:"FontAwesome";}
+.cat-links::before{content:"\f114";font-family:"FontAwesome";}
+.tags-links::before{content:"\f02c";font-family:"FontAwesome";}
 .entry-footer h2{color:#fff;background-color:#ffcc00;box-shadow:0 2px 5px 0 #999;height:45px;margin:15px;font-size:30px;text-align:center;}
 .copyright{color:#fff;text-align:center;margin-bottom:15px;}
 /*見出し*/
@@ -28,7 +32,9 @@
 .entry-content h4{border-bottom:10px solid #ffcc00;background-color:#fff;}
 .entry-content h2,.entry-content h3,.entry-content h4{box-shadow:0 2px 5px 0 #999;min-height:45px;text-align:center;}
 /*ページャー*/
-.page-numbers+.prev,.page-numbers+.next{color:#fff;background-color:#ffcc00;}
+.page-numbers+.prev{content:"＜";}
+.page-numbers+.next{content:"＞"}
+.page-numbers+.prev,.page-numbers+.next{color:#fff;background-color:#ffcc00;font-family:"Noto Serif" sans-serif;}
 .page-links a,.page-links>span{border:1px solid #eaeaea;font-size:20px;font-size:2rem;width:3em;height:3em;line-height:3;margin:0 0.3333em 0.3333em 0;text-align:center;display:inline-block;}
 .page-links a{color:#fff;border-color:#ffcc00;background-color:#ffcc00;}
 .page-links{margin-bottom:1.3333em;clear:both;}
