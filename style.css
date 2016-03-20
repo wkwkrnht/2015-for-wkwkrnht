@@ -39,30 +39,52 @@
 #slide .thumb{background-color:#ffcc00;max-height:150px;}
 #slide .title{color:#333;font-size:18px;padding-top:20px;max-height:150px;text-align:center;}
 /*ボタン*/
-.tweet::before,.fblike::before,.g1::before,.pocket::before,.tumblr::before,.linkedin::before{color:#fff;font-size:40px;font-family:"Genericons";position:absolute;top:5%;left:15%;}
+.tweet::before,.fblike::before,.g1::before,.pocket::before,.tumblr::before,.linkedin::before,.pushnotice::before{color:#fff;font-size:40px;font-family:"FontAwesome";position:absolute;top:5%;left:15%;}
 .button{width:60px;height:60px;border-radius:50%;margin:5px;box-shadow:0 2px 5px 0 #999;float:left;position:relative;}
-.tweet::before{content:"\f202";}
-.tweet{background-color:#00b8ff;}
-.fblike::before{content:"\f203";}
+.fblike::before{content:"\f164";}
 .fblike{background-color:#0033ff;}
-.g1::before{content:"\f206";}
+.tweet{background-color:#00b8ff;}
 .g1{background-color:#ff0033;}
 .line{background-color:#2aff00;}
 .hatebu{background-color:#3c7dd1;}
-.pocket::before{content:"\f224";}
 .pocket{background-color:#ee4056;}
-.tumblr::before{content:"\f214";}
 .tumblr{background-color:#2c4762;}
-.linkedin::before{content:"\f208";}
 .linkedin{background-color:#0077b5;}
-.pushdog{background-color:yellow;}
+.pushnotice::before{content:"\f0f3";}
+.pushnotice{background-color:yellow;}
 #page-top{color:#fff;background-color:#ffcc00;box-shadow:0 2px 5px 0 #999;border-radius:50%;font-weight:bold;line-height:70px;width:70px;height:70px;right:10px;bottom:20px;display:block;cursor:pointer;text-decoration:none;text-align:center;position:fixed;}
 /*social-nav*/
-.social-navigation a[href*="goo.gl/forms/"]:before{content:"\f457";}
-.social-navigation a[href*="twitter.com"]:before{color:#00b8ff;}
-.social-navigation a[href*="wordpress.com"]:before{color:#0033ff;}
-.social-navigation a[href*="/feed"]:before,.social-navigation a[href*="/feed/"]:before{content:"\f413";color:#2aff00;}
-.social-navigation a[href*="youtube.com"]:before,.social-navigation a[href*="plus.google.com"]:before{color:#ff0033;}
+.social-navigation a:before{content:"\f07b";font-family:"FontAwesome";font-size:24px;position:absolute;top:0;left:0;}
+.social-navigation a[href*="/feed"]:before,.social-navigation a[href*="/feed/"]:before{content:"\f09e";color:#2aff00;}
+.social-navigation a[href*="codepen.io"]:before{content:"\f1cb";}
+.social-navigation a[href*="digg.com"]:before{content:"\f1a6";}
+.social-navigation a[href*="dribbble.com"]:before{content:"\f17d";}
+.social-navigation a[href*="dropbox.com"]:before{content:"\f16b";}
+.social-navigation a[href*="facebook.com"]:before{content:"\f230";}
+.social-navigation a[href*="flickr.com"]:before{content:"\f16e";}
+.social-navigation a[href*="foursquare.com"]:before{content:"\f180";}
+.g1::before,.social-navigation a[href*="plus.google.com"]:before{content:"\f0d5";color:#ff0033;}
+.social-navigation a[href*="github.com"]:before{content:"\f09b";}
+.social-navigation a[href*="instagram.com"]:before{content:"\f09b";}
+.linkedin::before,.social-navigation a[href*="linkedin.com"]:before{content:"\f0e1";}
+.social-navigation a[href*="pinterest.com"]:before{content:"\f231";}
+.pocket::before,.social-navigation a[href*="getpocket.com"]:before{content:"\f265";}
+.social-navigation a[href*="reddit.com"]:before{content:"\f1a1";}
+.social-navigation a[href*="stumbleupon.com"]:before{content:"\f1a4";}
+.tumblr::before,.social-navigation a[href*="tumblr.com"]:before{content:"\f173";}
+.tweet::before,.social-navigation a[href*="twitter.com"]:before{content:"\f099";color:#00b8ff;}
+.social-navigation a[href*="vimeo.com"]:before{content:"\f27d";}
+.social-navigation a[href*="youtube.com"]:before{content:"\f167";color:#ff0033;}
+.social-navigation a[href*="spotify.com"]:before{content:"\f1bc";}
+.social-navigation a[href*="twitch.tv"]:before{content:"\f1e8";}
+.social-navigation a[href*="goo.gl/forms/"]:before{content:"\f128";}
+.social-navigation a[href*="skype.com"]:before{content:"\f17e";}
+.social-navigation a[href*="wordpress.com"]:before,.social-navigation a[href*="wordpress.org"]:before{content:"\f19a";color:#0033ff;}
+.social-navigation a[href*="mailto:"]:before{content:"\f0e0";}
+/*
+.social-navigation a[href*="path.com"]:before{content:"\f219";}
+.social-navigation a[href*="polldaddy.com"]:before{content:"\f217";}
+*/
 /*メディアクエリ*/
   /*for mobile*/
   @media screen and (max-width:55em){
