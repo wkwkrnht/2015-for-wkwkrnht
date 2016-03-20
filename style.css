@@ -18,7 +18,7 @@
 #bread{color:#ddd;}
 #bread .sp{color:#333;margin:0 1em;}
 .entry-header{background-color:#f7f7f7;text-align:center;margin-bottom:15px;}
-.entry-title{font-size:33px;margin:0 32px;}
+.entry-title{font-size:33px;margin:32px 0;}
 .posted-on::before,.author::before,.cat-links::before,.tags-links::before{font-family:"FontAwesome";top:auto;bottom:0;}
 .posted-on::before{content:"\f133";}
 .author::before{content:"\f007";}
@@ -47,7 +47,7 @@
 #slide .thumb{background-color:#ffcc00;max-height:150px;}
 #slide .title{color:#333;font-size:18px;padding-top:20px;max-height:150px;text-align:center;}
 /*ボタン*/
-.tweet::before,.fblike::before,.g1::before,.pocket::before,.tumblr::before,.linkedin::before,.pushnotice::before{color:#fff;font-size:40px;font-family:"FontAwesome";position:absolute;top:5%;left:15%;}
+.tweet::before,.fblike::before,.g1::before,.pocket::before,.tumblr::before,.linkedin::before,.pushnotice::before{color:#fff;font-size:40px;font-family:"FontAwesome";position:absolute;top:3%;left:10%;}
 .button{width:60px;height:60px;border-radius:50%;margin:5px;box-shadow:0 2px 5px 0 #999;float:left;position:relative;}
 .fblike::before{content:"\f164";}
 .fblike{background-color:#0033ff;}
@@ -106,7 +106,7 @@
     .nav-links{margin-top:10px;}
     .tweet::before,.fblike::before,.g1::before,.pocket::before,.thmblr::before,.linkedin::before{font-size:28px;top:8%;}
     #page-top,.button{width:50px;height:50px;}
-    #page-top{line-height:50px;bottom:25px;font-size:23px;}
+    #page-top{line-height:50px;bottom:25px;}
   }
   /*for PC*/
   @media screen and (min-width:55em){
