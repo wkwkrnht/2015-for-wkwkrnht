@@ -104,7 +104,10 @@
 /*メディアクエリ*/
   /*for mobile*/
   @media screen and (max-width:55em){
-    .site-header{box-shadow: 0 4px 4px 0 #999;}
+    #sidebar{position:fixed;z-index:10;}
+    #secondary{position:inherit;z-index:inherit;overflow:auto;}
+    .site-header{width:100vw;height:20vh;box-shadow: 0 4px 4px 0 #999;}
+    #content{padding-top:20vh;}
     .copyright{color:#ffcc00;}
     .entry-title{font-size:24px;margin:0 15px;}
     .card-list{margin-bottom:15px;}
