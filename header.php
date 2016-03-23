@@ -54,7 +54,5 @@
 <body <?php body_class();?>>
 <div id="page" class="hfeed site">
 	<a class="skip-link screen-reader-text" href="#content"><?php _e('Skip to content','twentyfifteen');?></a>
-	<section id="sidebar" class="sidebar">
-		<?php get_sidebar();?>
-	</section>
+	<?php get_sidebar();?>
 	<section id="content" class="site-content">

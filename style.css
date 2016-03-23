@@ -19,7 +19,7 @@
 #bread{color:#ddd;}
 #bread .sp{color:#333;margin:0 1em;}
 .page-header{border-left:20px solid #ffcc00;background-color:#fff;box-shadow:0 3px 3px 0 #999;}
-.page-title{font-size:33px;}
+.page-title{font-size:28px;}
 .entry-header{background-color:#f7f7f7;text-align:center;margin-bottom:15px;}
 .entry-title{font-size:33px;margin:32px 0;}
 .posted-on::before,.author::before,.cat-links::before,.tags-links::before{font-family:"FontAwesome";top:auto;bottom:0;}
