@@ -48,23 +48,23 @@
 #slide .thumb{background-color:#ffcc00;max-height:150px;}
 #slide .title{color:#333;font-size:18px;padding-top:20px;max-height:150px;text-align:center;}
 /*ボタン*/
-.tweet::before,.fblike::before,.g1::before,.pocket::before,.tumblr::before,.linkedin::before,.pushnotice::before{color:#fff;font-size:40px;font-family:"FontAwesome";position:absolute;top:3%;left:10%;}
+.tweet::before,.fblike::before,.g1::before,.pocket::before,.tumblr::before,.linkedin::before,.pushnotice::before{color:#fff;font-size:40px;font-family:"FontAwesome";position:absolute;left:10%;}
 .button{width:60px;height:60px;border-radius:50%;margin:5px;box-shadow:0 2px 5px 0 #999;float:left;position:relative;}
-.tweet::before{content:"\f099";}
+.tweet::before{content:"\f099";top:4%;}
 .tweet{background-color:#00b8ff;}
-.fblike::before{content:"\f164";}
+.fblike::before{content:"\f164";top:4%;}
 .fblike{background-color:#0033ff;}
-.g1::before{content:"\f0d5";}
+.g1::before{content:"\f0d5";top:3%;}
 .g1{background-color:#ff0033;}
 .line{background-color:#2aff00;}
 .hatebu{background-color:#3c7dd1;}
-.pocket::before{content:"\f265";}
+.pocket::before{content:"\f265";top:5%;}
 .pocket{background-color:#ee4056;}
-.tumblr::before{content:"\f173";}
+.tumblr::before{content:"\f173";top:5%;}
 .tumblr{background-color:#2c4762;}
-.linkedin::before{content:"\f0e1";}
+.linkedin::before{content:"\f0e1";top:3%;}
 .linkedin{background-color:#0077b5;}
-.pushnotice::before{content:"\f0f3";}
+.pushnotice::before{content:"\f0f3";top:5%;}
 .pushnotice{background-color:#ffc700;}
 #page-top{color:#fff;background-color:#ffcc00;box-shadow:0 2px 5px 0 #999;font-size:26px;font-weight:1200;border-radius:50%;line-height:70px;width:70px;height:70px;right:10px;bottom:20px;display:block;cursor:pointer;text-decoration:none;text-align:center;position:fixed;}
 /*social-nav*/
