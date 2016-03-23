@@ -49,24 +49,12 @@
 	<!--[if lt IE 9]>
 	<script src="<?php echo esc_url(get_template_directory_uri());?>/js/html5.js"></script>
 	<![endif]-->
-	<script src="<?php echo esc_url(home_url());?>/wp-content/themes/2015-for-wkwkrnht/javascript.js" charset="UTF-8"></script>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 	<?php wp_head();?>
 </head>
 <body <?php body_class();?>>
 <div id="page" class="hfeed site">
 	<a class="skip-link screen-reader-text" href="#content"><?php _e('Skip to content','twentyfifteen');?></a>
 	<section id="sidebar" class="sidebar">
-		<header id="masthead" class="site-header" role="banner">
-			<div class="site-branding">
-				<button class="secondary-toggle"><?php _e('Menu and widgets','twentyfifteen');?></button>
-				<?php if(is_front_page()&&is_home()):?>
-					<h1 class="site-title"><a href="<?php echo esc_url(home_url('/'));?>" rel="home"><?php bloginfo('name');?></a></h1>
-				<?php else:?>
-					<p class="site-title"><a href="<?php echo esc_url(home_url('/'));?>" rel="home"><?php bloginfo('name');?></a></p>
-				<?php endif;?>
-			</div>
-		</header>
 		<?php get_sidebar();?>
 	</section>
 	<section id="content" class="site-content">
