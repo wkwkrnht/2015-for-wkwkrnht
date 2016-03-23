@@ -104,9 +104,10 @@
 /*メディアクエリ*/
   /*for mobile*/
   @media screen and (max-width:55em){
-    #sidebar{position:fixed;z-index:11;}
-    .site-header{width:100vw;height:20vh;top:0;box-shadow:0 4px 4px 0 #999;}
-    .secondary-toggle::before{content:"\f0c9";font-family:"FontAwesome";border:none;}
+    #adminbar{position:fixed;z-index:11;top:0;}
+    #sidebar{position:fixed;z-index:11;top:0;}
+    .site-header{width:100vw;height:20vh;box-shadow:0 4px 4px 0 #999;}
+    .secondary-toggle.toggled-on::before{content:"\f0c9";font-family:"FontAwesome";border:none;}
     #secondary{position:inherit;z-index:inherit;overflow:auto;height:80vh}
     #content{padding-top:20vh;}
     .copyright{color:#ffcc00;}
