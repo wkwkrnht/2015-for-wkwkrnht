@@ -36,7 +36,7 @@ function twentyfifteen_entry_meta(){if(is_sticky()&&is_home()&&!is_paged()){prin
   //画像サイズ(横 x 縦)表示&コメントをどうぞ&コメント数&WLW編集
   if(is_attachment()&&wp_attachment_is_image()){$metadata=wp_get_attachment_metadata();printf('<span class="full-size-link"><span class="screen-reader-text">%1$s</span><a href="%2$s">%3$s &times;%4$s</a></span>',_x('Full size','Used before full size attachment link.','twentyfifteen'),esc_url(wp_get_attachment_url()),$metadata['width'],$metadata['height']);}
   if(!is_single()&&!post_password_required()&&(comments_open()||get_comments_number())){echo'<span class="comments-link">';comments_popup_link(__('Leave a comment','twentyfifteen'),__('1 Comment','twentyfifteen' ),__('% Comments','twentyfifteen'));echo'</span>';}
-  if(is_user_logged_in()){if(is_home()){echo'<a target="_blank" href="';edit_post_link();echo'">WPで編集</a>';echo'<a href="wlw://wkwkrnht.gegahost.net/?postid=';echo the_ID();echo'">WLWで編集</a>';}else{echo'<a href="wlw://wkwkrnht.gegahost.net/?postid=';echo the_ID();echo'">WLWで編集</a>';}}
+  if(is_user_logged_in()){if(is_home()){edit_post_link();echo'<a href="wlw://wkwkrnht.gegahost.net/?postid=';echo the_ID();echo'">WLWで編集</a>';}else{echo'<a href="wlw://wkwkrnht.gegahost.net/?postid=';echo the_ID();echo'">WLWで編集</a>';}}
 }
 //サムネサイズ追加&Alt属性がないIMGタグにalt=""を追加する
 add_image_size('related',150,150,true);
