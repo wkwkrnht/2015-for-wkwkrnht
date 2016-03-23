@@ -83,8 +83,8 @@
 .social-navigation a[href*="github.com"]:before{content:"\f09b";}
 .social-navigation a[href*="instagram.com"]:before{content:"\f09b";}
 .social-navigation a[href*="linkedin.com"]:before{content:"\f0e1";color:#0077b5;}
-.social-navigation a[href*="pinterest.com"]:before{content:"\f231";}
-.social-navigation a[href*="getpocket.com"]:before{content:"\f265";}
+.social-navigation a[href*="pinterest.com"]:before{content:"\f231";color:#ff0033;}
+.social-navigation a[href*="getpocket.com"]:before{content:"\f265";color:#ee4056;}
 .social-navigation a[href*="reddit.com"]:before{content:"\f1a1";}
 .social-navigation a[href*="stumbleupon.com"]:before{content:"\f1a4";}
 .social-navigation a[href*="tumblr.com"]:before{content:"\f173";color:#2c4762;}
@@ -105,8 +105,8 @@
   /*for mobile*/
   @media screen and (max-width:55em){
     #sidebar{position:fixed;z-index:11;}
-    .site-header{width:100vw;height:20vh;box-shadow:0 4px 4px 0 #999;}
-    .secondary-toggle{content:"\f0c9";font-family:"FontAwesome";}
+    .site-header{width:100vw;height:20vh;top:0;box-shadow:0 4px 4px 0 #999;}
+    .secondary-toggle::before{content:"\f0c9";font-family:"FontAwesome";border:none;}
     #secondary{position:inherit;z-index:inherit;overflow:auto;height:80vh}
     #content{padding-top:20vh;}
     .copyright{color:#ffcc00;}
@@ -122,7 +122,7 @@
   }
   /*for PC*/
   @media screen and (min-width:55em){
-    .sidebar{width:28vw;z-index:2;}
+    #sidebar{width:28vw;z-index:2;}
     body::before{width:28vw;z-index:2;box-shadow:0 0 5px 0 #999;}
     .card-meta{font-size:18px;}
     /*http://wkwkrnht.wp.xdomain.jp/wp-content/themes/2015-for-wkwkrnht*/
