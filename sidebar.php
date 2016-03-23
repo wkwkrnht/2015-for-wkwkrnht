@@ -9,7 +9,7 @@
 			<?php endif;?>
 		</div>
 	</header>
-	<!--<section id="secondary" class="secondary">-->
+	<section class="secondary">
 		<?php if(has_nav_menu('primary')):?>
 			<nav id="site-navigation" class="main-navigation" role="navigation">
 				<?php wp_nav_menu(array('menu_class'=>'nav-menu','theme_location'=>'primary',));?>
@@ -23,9 +23,9 @@
 		<?php if(is_active_sidebar('sidebar-1')):?>
 			<div id="widget-area" class="widget-area" role="complementary"><?php dynamic_sidebar('sidebar-1');?></div>
 		<?php endif;?>
-		<footer id="site-footer">
+	</section>
+	<footer id="site-footer">
 			<div class="site-info"role="contentinfo"><?php do_action('twentyfifteen_credits');?></div>
 			<div class="copyright">&copy;2016<?php bloginfo('name');?></div>
-		</footer>
-	<!--</section>-->
+	</footer>
 </section>
