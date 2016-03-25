@@ -1,8 +1,8 @@
 <div class="author-info">
-	<h2 class="author-heading"><?php echo get_the_author();?></h2>
 	<div class="author-avatar">
-		<?php $author_bio_avatar_size=apply_filters('twentyfifteen_author_bio_avatar_size',56);echo get_avatar(get_the_author_meta('user_email'),$author_bio_avatar_size);?>
+		<?php $author_bio_avatar_size=apply_filters('twentyfifteen_author_bio_avatar_size',56);echo get_avatar(get_the_author_meta('ID'),$author_bio_avatar_size,,avatarimg,);?>
 	</div>
+	<h2 class="author-heading"><?php echo get_the_author();?></h2>
 	<div class="author-description">
 		<p class="author-bio">
 			<?php the_author_meta('description');?>
