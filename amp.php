@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ⚡ class="amp">
+<html amp class="amp">
 <head>
 	<meta charset="utf-8">
 	<?php $canonical_url=get_permalink();?>

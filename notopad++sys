@@ -4,7 +4,6 @@
             <File name="img\hatebu.svg" />
             <File name="img\line.svg" />
             <File name="img\no-img.png" />
-            <File name="img\pushdog.png" />
         </Folder>
         <Folder name="parts">
             <File name="parts\adminnav.php" />
@@ -20,15 +19,16 @@
         <File name="content-card.php" />
         <File name="content-none.php" />
         <File name="content.php" />
-        <File name="footer.php" />
+        <File name="amp.php" />
         <File name="functions.php" />
         <File name="header.php" />
         <File name="index.php" />
+        <File name="footer.php" />
         <File name="javascript.js" />
-        <File name="notopad++sys" />
         <File name="screenshot.png" />
         <File name="search.php" />
         <File name="sidebar.php" />
         <File name="style.css" />
+        <File name="notopad++sys" />
     </Project>
 </NotepadPlus>
