@@ -1,0 +1,34 @@
+<NotepadPlus>
+    <Project name="2015 for wkwkrnht">
+        <Folder name="img">
+            <File name="img\hatebu.svg" />
+            <File name="img\line.svg" />
+            <File name="img\no-img.png" />
+            <File name="img\pushdog.png" />
+        </Folder>
+        <Folder name="parts">
+            <File name="parts\adminnav.php" />
+            <File name="parts\bread.php" />
+            <File name="parts\editor-style.css" />
+            <File name="parts\related.php" />
+            <File name="parts\snsbutton.php" />
+        </Folder>
+        <File name=".gitattributes" />
+        <File name=".gitignore" />
+        <File name="404.php" />
+        <File name="author-bio.php" />
+        <File name="content-card.php" />
+        <File name="content-none.php" />
+        <File name="content.php" />
+        <File name="footer.php" />
+        <File name="functions.php" />
+        <File name="header.php" />
+        <File name="index.php" />
+        <File name="javascript.js" />
+        <File name="notopad++sys" />
+        <File name="screenshot.png" />
+        <File name="search.php" />
+        <File name="sidebar.php" />
+        <File name="style.css" />
+    </Project>
+</NotepadPlus>
