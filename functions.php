@@ -172,9 +172,9 @@ function theme_customize($wp_customize){
     $wp_customize->add_setting('facebookr_admins',array('type'=>'option',));
     $wp_customize->add_control('facebookr_admins',array('section'=>'sns_section','settings'=>'facebookr_admins','label'=>'facebookのadminidを指定する','type'=>'text'));
     $wp_customize->add_setting('Pushnotice_Dsp',array('type'=>'option',));
-    $wp_customize->add_control('Pushnotice_Dsp',array('section'=>'sns_section','settings'=>'Pushnotice_Dsp','label'=>'プッシュ通知の登録アイコンを表示する','type'=>'checkbox'));
-    $wp_customize->add_setting('Pushnotice_URL',array('type'=>'option', ));
-    $wp_customize->add_control('Pushnotice_URL',array('section'=>'sns_section','settings'=>'Pushnotice_URL','label'=>'プッシュ通知の登録URLを指定する','type'=>'text'));
+    $wp_customize->add_control('Pushnotice_Dsp',array('section'=>'sns_section','settings'=>'Pushnotice_Dsp','label'=>'プッシュ通知の登録URLを指定する','type'=>'checkbox'));
+    $wp_customize->add_setting('Pushnotice_URL',array('type'=>'option',));
+    $wp_customize->add_control('Pushnotice_URL',array('section'=>'sns_section','settings'=>'Pushnotice_URL','label'=>'プッシュ通知の登録URLを入力する','type'=>'text'));
 }
 function is_pushnotice_dsp(){return get_theme_mod('Pushnotice_Dsp');}
 function is_adminnav_dsp(){return get_theme_mod('Adminnav_Dsp');}
