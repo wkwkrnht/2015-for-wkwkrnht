@@ -3,4 +3,4 @@ function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)}(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 ga('create',<?php echo get_option('Google_Analytics');?>,'auto');ga('send','pageview');
 jQuery(document).ready(function(){jQuery('code').each(function(i,block){hljs.highlightBlock(block);});});
-jQuery(document).ready(function(){jQuery('#movetop').click(function(){jQuery('body,html').animate({scrollTop:0},slow);});});
+jQuery(document).ready(function(){jQuery('#movetop').click(function(){jQuery('body,html').animate({scrollTop:0},500);});});

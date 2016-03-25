@@ -74,7 +74,7 @@
 .loginbutton::before{content:"\f090";}
 .adminmenubutton::before{content:"\f013";}
 .postnewbutton::before{content:"\f040";color:green;}
-.postnewbutton::after{content:"\f067";font-family:"FontAwesome";font-size:18px;position:relative;right:.5em;bottom:.1em;}
+.postnewbutton::after{content:"\f067";font-family:"FontAwesome";font-size:14px;position:relative;right:.5em;bottom:0;}
 /*social-nav*/
 .social-navigation a::before{content:"\f07b";font-family:"FontAwesome";font-size:24px;position:absolute;top:0;left:0;}
 .social-navigation a[href*="/feed"]::before,.social-navigation a[href*="/feed/"]::before{content:"\f09e";color:#2aff00;}
@@ -98,9 +98,9 @@
 .social-navigation a[href*="tumblr.com"]::before{content:"\f173";color:#2c4762;}
 .social-navigation a[href*="twitter.com"]::before{content:"\f099";color:#00b8ff;}
 .social-navigation a[href*="twilog.org"]::before{content:"\f099";color:#00b8ff;}
-.social-navigation a[href*="twilog.org"]::after{content:"\f022";font-family:"FontAwesome";font-size:16px;}
+.social-navigation a[href*="twilog.org"]::after{content:"\f022";font-family:"FontAwesome";font-size:14px;position:relative;right:.5em;bottom:0;}
 .social-navigation a[href*="twipf.jp"]::before{content:"\f099";color:#00b8ff;}
-.social-navigation a[href*="twipf.jp"]::after{content:"\f007";font-family:"FontAwesome";font-size:16px;}
+.social-navigation a[href*="twipf.jp"]::after{content:"\f007";font-family:"FontAwesome";font-size:14px;position:relative;right:.5em;bottom:0;}
 .social-navigation a[href*="vimeo.com"]::before{content:"\f27d";}
 .social-navigation a[href*="youtube.com"]::before{content:"\f167";color:#ff0033;}
 .social-navigation a[href*="spotify.com"]::before{content:"\f1bc";}
