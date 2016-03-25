@@ -1,4 +1,7 @@
 <section id="secondary" class="secondary">
+	<?php if(is_adminnav_dsp()):?>
+		<?phpget_template_part('parts/adminnav');?>
+	<?php endif;?>
 	<?php if(has_nav_menu('primary')):?>
 		<nav id="site-navigation" class="main-navigation" role="navigation">
 			<?php wp_nav_menu(array('menu_class'=>'nav-menu','theme_location'=>'primary',));?>

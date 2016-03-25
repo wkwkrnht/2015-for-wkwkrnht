@@ -153,6 +153,8 @@ add_action('manage_posts_custom_column','customize_admin_add_column',10,2);
 add_action('customize_register','theme_customize');
 function theme_customize($wp_customize){
     $wp_customize->add_section('sns_section',array('title'=>'独自設定','priority'=>1,'description'=>'セクションの詳細',));
+	$wp_customize->add_setting('Adminnav_Dsp',array('type'=>'option',));
+    $wp_customize->add_control('Adminnav_Dsp',array('section'=>'sns_section','settings'=>'Adminnav_Dsp','label'=>'管理者向けメニューを表示する','type'=>'checkbox'));
     $wp_customize->add_setting('GoogleChrome_URLbar',array('type'=>'option',));
     $wp_customize->add_control('GoogleChrome_URLbar',array('section'=>'sns_section','settings'=>'GoogleChrome_URLbar','label'=>'モバイル版GoogleChrome向けURLバーの色コードを指定する','type'=>'text'));
     $wp_customize->add_setting('Google_Webmaster',array('type'=>'option',));
@@ -174,6 +176,8 @@ function theme_customize($wp_customize){
     $wp_customize->add_setting('Pushnotice_URL',array('type'=>'option', ));
     $wp_customize->add_control('Pushnotice_URL',array('section'=>'sns_section','settings'=>'Pushnotice_URL','label'=>'プッシュ通知の登録URLを指定する','type'=>'text'));
 }
+function is_pushnotice_dsp(){return get_theme_mod('Pushnotice_Dsp');}
+function is_adminnav_dsp(){return get_theme_mod('Adminnav_Dsp');}
 //プロフィール欄追加(the_author_meta('twitter')で表示)
 function my_new_contactmethods($contactmethods){
   $contactmethods['TEL']='TEL';
