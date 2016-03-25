@@ -113,15 +113,15 @@
   /*for mobile*/
   @media screen and (max-width:55em){
     #sidebar{position:fixed;z-index:11;top:0;}
-    .site-header{width:100vw;height:20vh;box-shadow:0 4px 4px 0 #999;}
+    .site-header{width:100vw;height:280px;box-shadow:0 4px 4px 0 #999;}
     .secondary-toggle::before{content:"\f0c9";font-family:"FontAwesome";border:none;}
     .secondary-toggle.toggled-on::before{content:"\f00d";font-family:"FontAwesome";border:none;}
-    #secondary{position:inherit;z-index:inherit;overflow:auto;height:80vh}
-    #content{padding-top:20vh;}
+    #secondary{position:inherit;z-index:inherit;overflow:auto;height:calc(100vh-280px);}
+    #content{padding-top:280px;}
     .copyright{color:#ffcc00;}
     .entry-title{font-size:24px;margin:0 15px;}
     .card-list{margin-bottom:15px;}
-    .card-thumb{max-width:640px;max-height:480px;margin-bottom:3px;}
+    .card-thumb{max-width:825px;max-height:510px;margin-bottom:5px;}
     .card-title{font-size:27px;}
     .card-meta{font-size:14px;}
     .nav-links{margin-top:10px;}
