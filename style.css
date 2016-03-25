@@ -27,6 +27,7 @@
 .author::before{content:"\f007";}
 .cat-links::before{content:"\f114";}
 .tags-links::before{content:"\f02c";}
+.wlwlwedit{margin:0.5em 0;}
 .entry-footer h2{color:#fff;background-color:#ffcc00;box-shadow:0 2px 5px 0 #999;height:45px;margin:15px;font-size:30px;text-align:center;}
 .copyright{color:#fff;text-align:center;margin-bottom:15px;}
 /*見出し*/
