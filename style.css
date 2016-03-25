@@ -71,7 +71,7 @@
 .pushnotice{background-color:#ffc700;}
 #page-top{color:#fff;background-color:#ffcc00;box-shadow:0 2px 5px 0 #999;font-size:26px;font-weight:1200;border-radius:50%;line-height:70px;width:70px;height:70px;right:10px;bottom:20px;display:block;cursor:pointer;text-decoration:none;text-align:center;position:fixed;}
 /*admin-nav*/
-#admin-navigation{display:block;margin:0 20%;}
+#admin-navigation{display:block;margin:0 20% 5%;}
 .loginbutton::before,.adminmenubutton::before,.posnewbutton::before{font-family:"FontAwesome";font-size:24px;}
 .loginbutton::before{content:"\f090";}
 .adminmenubutton::before{content:"\f013";}
