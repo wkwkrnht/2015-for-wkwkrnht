@@ -70,42 +70,46 @@
 #movetop{color:#fff;background-color:#ffcc00;box-shadow:0 2px 5px 0 #999;font-size:26px;font-weight:1200;border-radius:50%;line-height:70px;width:70px;height:70px;right:10px;bottom:20px;display:block;cursor:pointer;text-decoration:none;text-align:center;position:fixed;}
 /*admin-nav*/
 #admin-navigation{display:block;margin:0 20% 5%;}
-.loginbutton::before,.adminmenubutton::before,.posnewbutton::before{font-family:"FontAwesome";font-size:24px;}
+.loginbutton::before,.adminmenubutton::before,.postnewbutton::before{font-family:"FontAwesome";font-size:24px;}
 .loginbutton::before{content:"\f090";}
 .adminmenubutton::before{content:"\f013";}
 .postnewbutton::before{content:"\f040";}
 .postnewbutton::after{content:"\f067";font-family:"FontAwesome";font-size:18px;}
 /*social-nav*/
-.social-navigation a:before{content:"\f07b";font-family:"FontAwesome";font-size:24px;position:absolute;top:0;left:0;}
-.social-navigation a[href*="/feed"]:before,.social-navigation a[href*="/feed/"]:before{content:"\f09e";color:#2aff00;}
-.social-navigation a[href*="codepen.io"]:before{content:"\f1cb";color:#ffc700;}
-.social-navigation a[href*="digg.com"]:before{content:"\f1a6";}
-.social-navigation a[href*="dribbble.com"]:before{content:"\f17d";}
-.social-navigation a[href*="dropbox.com"]:before{content:"\f16b";color:#00b8ff;}
-.social-navigation a[href*="facebook.com"]:before{content:"\f230";color:#0033ff;}
-.social-navigation a[href*="flickr.com"]:before{content:"\f16e";}
-.social-navigation a[href*="foursquare.com"]:before{content:"\f180";}
-.social-navigation a[href*="plus.google.com"]:before{content:"\f0d5";color:#ff0033;}
-.social-navigation a[href*="github.com"]:before{content:"\f09b";}
-.social-navigation a[href*="instagram.com"]:before{content:"\f09b";}
-.social-navigation a[href*="linkedin.com"]:before{content:"\f0e1";color:#0077b5;}
-.social-navigation a[href*="pinterest.com"]:before{content:"\f231";color:#ff0033;}
-.social-navigation a[href*="getpocket.com"]:before{content:"\f265";color:#ee4056;}
-.social-navigation a[href*="reddit.com"]:before{content:"\f1a1";}
-.social-navigation a[href*="stumbleupon.com"]:before{content:"\f1a4";}
-.social-navigation a[href*="tumblr.com"]:before{content:"\f173";color:#2c4762;}
-.social-navigation a[href*="twitter.com"]:before{content:"\f099";color:#00b8ff;}
-.social-navigation a[href*="vimeo.com"]:before{content:"\f27d";}
-.social-navigation a[href*="youtube.com"]:before{content:"\f167";color:#ff0033;}
-.social-navigation a[href*="spotify.com"]:before{content:"\f1bc";}
-.social-navigation a[href*="twitch.tv"]:before{content:"\f1e8";}
-.social-navigation a[href*="goo.gl/forms/"]:before{content:"\f128";}
-.social-navigation a[href*="skype.com"]:before{content:"\f17e";}
-.social-navigation a[href*="wordpress.com"]:before,.social-navigation a[href*="wordpress.org"]:before{content:"\f19a";color:#0033ff;}
-.social-navigation a[href*="mailto:"]:before{content:"\f0e0";}
+.social-navigation a::before{content:"\f07b";font-family:"FontAwesome";font-size:24px;position:absolute;top:0;left:0;}
+.social-navigation a[href*="/feed"]::before,.social-navigation a[href*="/feed/"]::before{content:"\f09e";color:#2aff00;}
+.social-navigation a[href*="codepen.io"]::before{content:"\f1cb";color:#ffc700;}
+.social-navigation a[href*="digg.com"]::before{content:"\f1a6";}
+.social-navigation a[href*="dribbble.com"]::before{content:"\f17d";}
+.social-navigation a[href*="dropbox.com"]::before{content:"\f16b";color:#00b8ff;}
+.social-navigation a[href*="facebook.com"]::before{content:"\f230";color:#0033ff;}
+.social-navigation a[href*="flickr.com"]::before{content:"\f16e";}
+.social-navigation a[href*="foursquare.com"]::before{content:"\f180";}
+.social-navigation a[href*="plus.google.com"]::before{content:"\f0d5";color:#ff0033;}
+.social-navigation a[href*="github.com"]::before{content:"\f09b";}
+.social-navigation a[href*="instagram.com"]::before{content:"\f09b";}
+.social-navigation a[href*="linkedin.com"]::before{content:"\f0e1";color:#0077b5;}
+.social-navigation a[href*="mailto:"]::before{content:"\f0e0";}
+.social-navigation a[href*="pinterest.com"]::before{content:"\f231";color:#ff0033;}
+.social-navigation a[href*="getpocket.com"]::before{content:"\f265";color:#ee4056;}
+.social-navigation a[href*="polldaddy.com"]:before{content:"\f200";}
+.social-navigation a[href*="reddit.com"]::before{content:"\f1a1";}
+.social-navigation a[href*="stumbleupon.com"]::before{content:"\f1a4";}
+.social-navigation a[href*="tumblr.com"]::before{content:"\f173";color:#2c4762;}
+.social-navigation a[href*="twitter.com"]::before{content:"\f099";color:#00b8ff;}
+.social-navigation a[href*="twilog.org"]::before{content:"\f099";color:#00b8ff;}
+.social-navigation a[href*="twilog.org"]::after{content:"\f022";font-family:"FontAwesome";font-size:16px;color:#00b8ff;}
+.social-navigation a[href*="twipf.jp"]::before{content:"\f099";color:#00b8ff;}
+.social-navigation a[href*="twipf.jp"]::after{content:"\f007";font-family:"FontAwesome";font-size:16px;color:#00b8ff;}
+.social-navigation a[href*="vimeo.com"]::before{content:"\f27d";}
+.social-navigation a[href*="youtube.com"]::before{content:"\f167";color:#ff0033;}
+.social-navigation a[href*="spotify.com"]::before{content:"\f1bc";}
+.social-navigation a[href*="twitch.tv"]::before{content:"\f1e8";}
+.social-navigation a[href*="goo.gl/forms/"]::before{content:"\f128";}
+.social-navigation a[href*="skype.com"]::before{content:"\f17e";}
+.social-navigation a[href*="wordpress.com"]::before,.social-navigation a[href*="wordpress.org"]::before{content:"\f19a";color:#0033ff;}
 /*
 .social-navigation a[href*="path.com"]:before{content:"\f219";}
-.social-navigation a[href*="polldaddy.com"]:before{content:"\f217";}
 */
 /*メディアクエリ*/
   /*for mobile*/

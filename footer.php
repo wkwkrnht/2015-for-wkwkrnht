@@ -2,7 +2,7 @@
 		<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.2.0/styles/default.min.css">
 		<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.2.0/highlight.min.js"></script>
 	</section>
-	<a id="movetop">∧</a>
+	<a href="#content" id="movetop">∧</a>
 </div>
 <?php wp_footer();?>
 </body>
