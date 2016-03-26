@@ -55,10 +55,10 @@
 	<link rel="stylesheet" href="//fonts.googleapis.com/earlyaccess/notosans.css">
 </head>
 <body>
-	<div class="siteinfo">
-		<amp-img src="<?php get_site_icon_url();?>" width="200px" height="200px" />
-		<?php bloginfo('name');?>
-	</div>
+	<a href="<?php bloginfo('URL');?>"><div class="siteinfo">
+		<p><amp-img src="<?php get_site_icon_url();?>" width="200px" height="200px" />
+		<span><?php bloginfo('name');?></span></p>
+	</div></a>
 	<header>
 		<?php twentyfifteen_post_thumbnail();
 		the_title(sprintf('<h1 class="entry-title"><a href="%s" rel="bookmark">',esc_url(get_permalink())),'</a></h1>');?>
@@ -85,9 +85,9 @@
 	$pattern='/<iframe/i';$append='<amp-iframe layout="responsive"';$content=preg_replace($pattern,$append,$content);
 	echo $content;?>
 	<style amp-custom>
-		.siteinfo{width:100vw;height:15vh;color:#fff;background-color:#ffcc00;box-shadow:0 2px 2px 0 #999;}body{font-style:"Noto Serif" sans-serif;}.bread{color:#ddd;}.bread .sp{color:#333;margin:0 .5em;}header{text-align:center;margin:5px 0;}span header{padding:3px 0;}section{width:86vw;margin:0 7vw;}
+		.siteinfo{width:100vw;height:15vh;color:#fff;background-color:#ffcc00;box-shadow:0 2px 2px 0 #999;}body{font-style:"Noto Serif" sans-serif;line-height:1.3;}.bread{color:#ddd;}.bread .sp{color:#333;margin:0 .5em;}header{text-align:center;margin:5px 0;}span header{padding:3px 0;}section{width:86vw;margin:0 7vw;}
 		table{border-collapse:separate;border-spacing:1px;line-height:1.5;border-top:1px solid #ccc;}th{width:150px;padding:10px;font-weight:bold;vertical-align:top;border-bottom:1px solid #ccc;background:#efefef;text-align:center;}td{width:350px;padding:10px;vertical-align:top;border-bottom:1px solid #ccc;text-align:left;}
-		a{color:#1122cc;}amp-iframe,amp-img,h2,h3,h4{text-align:center;}h2,h3,h4{min-height:45px;}h3,h4{background-color:#fff;}h2{color:#fff;background:#ffcc00;}h3{border-left:10px solid #ffcc00;}h4{border-bottom:8px solid #ffcc00;}
+		a section{color:#1122cc;border-bottom:none;}amp-iframe,amp-img,h2,h3,h4{text-align:center;}h2,h3,h4{min-height:45px;}h3,h4{background-color:#fff;}h2{color:#fff;background:#ffcc00;}h3{border-left:10px solid #ffcc00;}h4{border-bottom:8px solid #ffcc00;}
 	</style>
 	<amp-pixel src="//ssl.google-analytics.com/collect?v=1&amp;tid=<?php echo get_option('Google_Analytics');?>&amp;t=pageview&amp;cid=$RANDOM&amp;dt=$TITLE&amp;dl=$CANONICAL_URL&amp;z=$RANDOM"></amp-pixel>
 </body>
