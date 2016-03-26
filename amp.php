@@ -67,8 +67,7 @@
 		<div class="meta"><?php twentyfifteen_entry_meta();?></div>
 	</header>
 	<section>
-		<?php the_content();?> 
-		<?php the_content(sprintf(__('Continue reading %s','twentyfifteen'),the_title('<h2>','</h2>',false)));
+		<?php while(have_posts()):the_post();the_content(sprintf(__('Continue reading %s','twentyfifteen'),the_title('<h2>','</h2>',false)));endwhile;
 		remove_filter('the_content',array($GLOBALS['wp_embed'],'autoembed'),8);
 		$content=apply_filters('the_content',get_the_content());$content=str_replace(']]>',']]&gt;',$content);
 		$pattern='/<img/i';preg_match($pattern,$content,$matches);$append=$matches[0];$append='<amp-img layout="responsive"';$content=preg_replace($pattern,$append,$content);
