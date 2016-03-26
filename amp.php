@@ -87,11 +87,11 @@
 <body>
 	<div class="siteinfo"><a href="<?php bloginfo('URL');?>">
 		<p><amp-img src="<?php get_site_icon_url();?>" width="200px" height="200px" />
-		<span><?php bloginfo('name');?></span></p>
+		<span class="title"><?php bloginfo('name');?></span></p>
 	</a></div>
 	<header>
-		<p><amp-img src="<?php $image_url=wp_get_attachment_image_src(get_post_thumbnail_id($post->ID),'twentyfifteen');echo $image_url[0];?>" alt="thumb" /></p>
-		<?php the_title(sprintf('<h1 class="entry-title"><a href="%s" rel="bookmark">',esc_url(get_permalink())),'</a></h1>');?>
+		<?php twentyfifteen_post_thumbnail();
+		the_title(sprintf('<h1 class="entry-title"><a href="%s" rel="bookmark">',esc_url(get_permalink())),'</a></h1>');?>
 		<div itemtype="http://data-vocabulary.org/Breadcrumb" itemscope="" class="bread"><?php if(!is_home()&&!is_front_page()):
 			$cat = is_single() ? get_the_category():array(get_category($cat));
 			if($cat&&!is_wp_error($cat)){$par=get_category($cat[0]->parent);
@@ -104,7 +104,7 @@
 		<?php if(empty($post->post_password)):echo apply_filters('the_content',$post->post_content);endif;?>
 	</section>
 	<style amp-custom>
-		.siteinfo{width:100vw;height:15vh;color:#fff;background-color:#ffcc00;box-shadow:0 2px 2px 0 #999;}body{font-style:"Noto Serif" sans-serif;line-height:1.3;}.bread{color:#ddd;}.bread .sp{color:#333;margin:0 .5em;}header{text-align:center;margin:5px 0;}span header{padding:2px;}section{width:86vw;margin:0 7vw;}
+		.siteinfo{width:100vw;height:15vh;background-color:#ffcc00;box-shadow:0 2px 2px 0 #999;}.title .siteinfo{font-size:26px;color:#fff;}body{font-style:"Noto Serif" sans-serif;line-height:1.3;}.bread{color:#ddd;}.bread .sp{color:#333;margin:0 .5em;}header{text-align:center;margin:5px 0;}span .meta{padding:2px;}section{width:86vw;margin:0 7vw;}
 		table{border-collapse:separate;border-spacing:1px;line-height:1.5;border-top:1px solid #ccc;}th{width:150px;padding:10px;font-weight:bold;vertical-align:top;border-bottom:1px solid #ccc;background:#efefef;text-align:center;}td{width:350px;padding:10px;vertical-align:top;border-bottom:1px solid #ccc;text-align:left;}
 		a section{color:#1122cc;border-bottom:none;}amp-iframe,amp-img,h2,h3,h4{text-align:center;}h2,h3,h4{min-height:45px;}h3,h4{background-color:#fff;}h2{color:#fff;background:#ffcc00;}h3{border-left:10px solid #ffcc00;}h4{border-bottom:8px solid #ffcc00;}
 	</style>
