@@ -7,7 +7,11 @@
 					<p><?php _e('It looks like nothing was found at this location. Maybe try a search?','twentyfifteen');?></p>
 					<?php get_search_form();?>
 				</header>
-				<div class="page-content"><?php wp_tag_cloud();?></div>
+				<div id="page-content">
+					<h2>カテゴリから検索</h2>
+					<h2>タグから検索</h2>
+					<?php wp_tag_cloud();?>
+				</div>
 			</section>
 		</main>
 	</div>
