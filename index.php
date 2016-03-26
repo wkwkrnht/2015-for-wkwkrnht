@@ -1,7 +1,7 @@
 <?php
     $myAmp = false;
     $string = $post->post_content;
-    if($_GET['amp'] === '1' && strpos($string,'<script>') === false && is_single()){$myAmp = true;}
+    if($_GET['amp'] === '1' && strpos($string,'<script>') === false && is_single()){$myAmp = true;};
 ?>
 <?php if($myAmp):?>
 	<?php get_template_part('amp');?>
