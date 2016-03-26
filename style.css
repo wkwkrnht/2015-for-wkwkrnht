@@ -117,11 +117,11 @@ a #admin-navigation{padding:0 2.5em;}
   /*for mobile*/
   @media screen and (max-width:55em){
     #sidebar{position:fixed;z-index:11;top:0;}
-    .site-header{width:100vw;height:180px;box-shadow:0 4px 4px 0 #999;}
+    .site-header{width:100vw;height:120px;box-shadow:0 4px 4px 0 #999;}
     .secondary-toggle::before{content:"\f0c9";font-family:"FontAwesome";border:none;}
     .secondary-toggle.toggled-on::before{content:"\f00d";font-family:"FontAwesome";border:none;}
-    #secondary{position:inherit;z-index:inherit;overflow:auto;height:calc(100vh-180px);}
-    #content{padding-top:180px;}
+    #secondary{position:inherit;z-index:inherit;overflow:auto;height:calc(100vh-120px);}
+    #content{padding-top:120px;}
     .copyright{color:#ffcc00;}
     .entry-title{font-size:24px;margin:0 15px;}
     .card-list{margin-bottom:15px;}
