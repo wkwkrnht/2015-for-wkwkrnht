@@ -56,7 +56,7 @@
 </head>
 <body>
 	<div class="siteinfo">
-		<p><amp-img src="<?php get_site_icon_url();?>" width="200px" height="200px" /></p>
+		<amp-img src="<?php get_site_icon_url();?>" width="200px" height="200px" />
 		<?php bloginfo('name');?>
 	</div>
 	<header>
@@ -66,7 +66,7 @@
 			$cat = is_single() ? get_the_category():array(get_category($cat));
 			if($cat&&!is_wp_error($cat)){$par=get_category($cat[0]->parent);
 			echo'<a href="'.home_url().'" itemprop="url"><span itemprop="title">Home</span></a><span class="sp">/</span>';
-			while($par && !is_wp_error($par) && $par->term_id != 0){$echo='<a href="'.get_category_link($par->term_id).'" itemprop="url"><span itemprop="title">'.$par->name.'</span></a><span class="sp">/</span>'.$echo;$par = get_category($par->parent);}
+			while($par&&!is_wp_error($par$par->term_id != 0){$echo='<a href="'.get_category_link($par->term_id).'" itemprop="url"><span itemprop="title">'.$par->name.'</span></a><span class="sp">/</span>'.$echo;$par=get_category($par->parent);}
 			echo $echo.'<a href="'.get_category_link($cat[0]->term_id).'" itemprop="url"><span itemprop="title">'.$cat[0]->name.'</span></a>';}endif;?></div>
 		<div class="meta"><?php twentyfifteen_entry_meta();?></div>
 	</header>
@@ -85,8 +85,8 @@
 	$pattern='/<iframe/i';$append='<amp-iframe layout="responsive"';$content=preg_replace($pattern,$append,$content);
 	echo $content;?>
 	<style amp-custom>
-		.siteinfo{width:100vw;height:15vh;color:#fff;background:#ffcc00;box-shadow:0 2px 2px 0 #999;}body{font-style:"Noto Serif" sans-serif;max-width:90vw;margin:0;}.bread{color:#ddd;}.bread .sp{color:#333;margin:0 .5em;}header{text-align:center;margin:5px 0;}span header{padding:3px 0;}
-		table{border:1px solid #333;}a{color:#1122cc;}h2,h3,h4{min-height:45px;max-width:70vw;text-align:center;}h2{color:#fff;background:#ffcc00;}h3{border-left:10px solid #ffcc00;background-color:#fff;}h4{border-bottom:8px solid #ffcc00;background-color:#fff;}
+		.siteinfo{width:100vw;height:15vh;color:#fff;background-color:#ffcc00;box-shadow:0 2px 2px 0 #999;}body{font-style:"Noto Serif" sans-serif;max-width:90vw;margin:0;}.bread{color:#ddd;}.bread .sp{color:#333;margin:0 .5em;}header{text-align:center;margin:5px 0;}span header{padding:3px 0;}
+		td{border:1px solid #333;}a{color:#1122cc;}h2,h3,h4{min-height:45px;max-width:70vw;text-align:center;}h2{color:#fff;background:#ffcc00;}h3{border-left:10px solid #ffcc00;background-color:#fff;}h4{border-bottom:8px solid #ffcc00;background-color:#fff;}
 	</style>
 	<amp-pixel src="//ssl.google-analytics.com/collect?v=1&amp;tid=<?php echo get_option('Google_Analytics');?>&amp;t=pageview&amp;cid=$RANDOM&amp;dt=$TITLE&amp;dl=$CANONICAL_URL&amp;z=$RANDOM"></amp-pixel>
 </body>
