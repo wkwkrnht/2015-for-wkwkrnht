@@ -70,6 +70,7 @@
 			echo $echo.'<a href="'.get_category_link($cat[0]->term_id).'" itemprop="url"><span itemprop="title">'.$cat[0]->name.'</span></a>';}endif;?></div>
 		<div class="meta"><?php twentyfifteen_entry_meta();?></div>
 	</header>
+	<?php if(have_posts()):while(have_posts()):the_post();the_content();endwhile;endif;?> 
 	<?php the_content(sprintf(__('Continue reading %s','twentyfifteen'),the_title('<h2>','</h2>',false)));
 	remove_filter('the_content',array($GLOBALS['wp_embed'],'autoembed'),8);
 	$content=apply_filters('the_content',get_the_content());$content=str_replace(']]>',']]&gt;',$content);
