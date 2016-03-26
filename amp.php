@@ -55,6 +55,10 @@
 	<link rel="stylesheet" href="//fonts.googleapis.com/earlyaccess/notosans.css">
 </head>
 <body>
+	<div class="siteinfo">
+		<p><amp-img src="<?php get_site_icon_url();?>" width="200px" height="200px" /></p>
+		<?php bloginfo('name');?>
+	</div>
 	<header>
 		<?php twentyfifteen_post_thumbnail();
 		the_title(sprintf('<h1 class="entry-title"><a href="%s" rel="bookmark">',esc_url(get_permalink())),'</a></h1>');?>
@@ -81,6 +85,7 @@
 	$pattern='/<iframe/i';$append='<amp-iframe layout="responsive"';$content=preg_replace($pattern,$append,$content);
 	echo $content;?>
 	<style amp-custom>
+		.header{color:#fff;background:#ffcc00;box-shadow:0 2px 2px 0 #999;}
 		body{font-style:"Noto Serif" sans-serif;max-width:90vw;margin:0 auto;}.bread{color:#ddd;}.bread .sp{color:#333;margin:0 .5em;}header{;text-align:center;margin:5px 0;}
 		a{color:#1122cc;}h2,h3,h4{min-height:45px;max-width:70vw;text-align:center;}h2{color:#fff;background:#ffcc00;}h3{border-left:10px solid #ffcc00;background-color:#fff;}h4{border-bottom:8px solid #ffcc00;background-color:#fff;}
 	</style>
