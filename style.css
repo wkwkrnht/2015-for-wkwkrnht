@@ -11,7 +11,7 @@
 /*header&footer&cardstyle*/
 #bread{color:#ddd;}
 #bread .sp{color:#333;margin:0 .5em;}
-.page-header{border-left:20px solid #ffcc00;background-color:#fff;box-shadow:0 3px 3px 0 #999;}
+.page-header{border-left:15px solid #ffcc00;background-color:#fff;box-shadow:0 3px 2px 0 #999;}
 .page-title{font-size:33px;}
 .entry-header{background-color:#f7f7f7;text-align:center;margin-bottom:15px;}
 .card-list{border-radius:8px;}
@@ -46,8 +46,8 @@
 #slide{max-width:100%;overflow:hidden;}
 #slide .content{flex-direction:row;-webkit-flex-direction:row;justify-content:flex-start;-webkit-justify-content:flex-start;display:flex;display:-webkit-flex;}
 .related{max-width:150px;max-height:300px;border-radius:8px;margin:15px 8px 10px 0;background-color:#fff;box-shadow:0 2px 5px 0 #999;}
-#slide .thumb{background-color:#ffcc00;max-height:150px;}
-#slide .title{color:#333;font-size:18px;padding-top:20px;max-height:150px;text-align:center;}
+.related .thumb{background-color:#ffcc00;max-height:150px;}
+.related .title{color:#333;font-size:18px;padding-top:20px;max-height:150px;text-align:center;}
 /*ボタン*/
 .tweet::before,.fblike::before,.g1::before,.pocket::before,.tumblr::before,.linkedin::before,.pushnotice::before{color:#fff;font-size:40px;font-family:"FontAwesome";position:absolute;top:3%;}
 .button{width:60px;height:60px;border-radius:50%;margin:5px;box-shadow:0 2px 5px 0 #999;float:left;position:relative;}

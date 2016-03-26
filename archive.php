@@ -1,4 +1,4 @@
-<?php $myAmp=false;$string=$post->post_content;$nowurl=$_SERVER["REQUEST_URI"];if(strpos($nowurl,'amp')!==false&&strpos($string,'<script>')===false&&is_single()){$myAmp=true;};?>
+<?php $myAmp=false;$string=$post->post_content;$nowurl=echo $_SERVER["REQUEST_URI"];if(strpos($nowurl,'amp')!==false&&strpos($string,'<script>')===false&&is_single()){$myAmp=true;};?>
 <?php if($myAmp):?>
 	<?php get_template_part('amp');?>
 <?php else:?>

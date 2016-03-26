@@ -2,6 +2,7 @@
 	<header class="entry-header">
 		<?php twentyfifteen_post_thumbnail();
 		the_title('<h1 class="entry-title">','</h1>');?>
+		<div class="meta"><?php twentyfifteen_entry_meta();?></div>
 	</header>
 	<div class="entry-content">
 		<?php the_content();?>

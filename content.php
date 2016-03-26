@@ -2,8 +2,8 @@
 	<header class="entry-header">
 		<?php twentyfifteen_post_thumbnail();
 		get_template_part('parts/bread');
-		if(is_single()){the_title('<h1 class="entry-title">','</h1>');}else{the_title(sprintf('<h1 class="entry-title"><a href="%s" rel="bookmark">',esc_url(get_permalink())),'</a></h1>');};
-		echo'<div class="meta">';twentyfifteen_entry_meta();echo'</div>';?>
+		if(is_single()){the_title('<h1 class="entry-title">','</h1>');}else{the_title(sprintf('<h1 class="entry-title"><a href="%s" rel="bookmark">',esc_url(get_permalink())),'</a></h1>');};?>
+		<div class="meta"><?php twentyfifteen_entry_meta();?></div>
 	</header>
 	<section class="entry-content">
 		<?php the_content(sprintf(__('Continue reading %s','twentyfifteen'),the_title('<span class="screen-reader-text">','</span>',false)));
