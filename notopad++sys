@@ -30,11 +30,12 @@
         <File name="header.php" />
         <File name="index.php" />
         <File name="javascript.js" />
-        <File name="notopad++sys" />
         <File name="page.php" />
-        <File name="screenshot.png" />
         <File name="search.php" />
         <File name="sidebar.php" />
         <File name="style.css" />
+        <File name="screenshot.png" />
+        <File name="notopad++sys" />
+        <File name="single.php" />
     </Project>
 </NotepadPlus>
