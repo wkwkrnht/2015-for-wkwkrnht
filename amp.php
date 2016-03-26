@@ -81,7 +81,7 @@
 		echo $content;?>
 	</section>
 	<style amp-custom>
-		body{font-style:"Noto Serif" sans-serif;max-width:90vw}.bread{color:#ddd;}.bread .sp{color:#333;margin:0 .5em;}header{;text-align:center;margin:5px 0;}iframe{margin:5px auto;}
+		body{font-style:"Noto Serif" sans-serif;max-width:90vwmargin:0 auto;}.bread{color:#ddd;}.bread .sp{color:#333;margin:0 .5em;}header{;text-align:center;margin:5px 0;}
 		a{color:#1122cc;}h2,h3,h4{min-height:45px;max-width:70vw;text-align:center;}h2{color:#fff;background:#ffcc00;}h3{border-left:10px solid #ffcc00;background-color:#fff;}h4{border-bottom:8px solid #ffcc00;background-color:#fff;}
 	</style>
 	<amp-pixel src="//ssl.google-analytics.com/collect?v=1&amp;tid=<?php echo get_option('Google_Analytics');?>&amp;t=pageview&amp;cid=$RANDOM&amp;dt=$TITLE&amp;dl=$CANONICAL_URL&amp;z=$RANDOM"></amp-pixel>
