@@ -29,7 +29,7 @@
 			"dateModified": "<?php the_modified_date('Y/m/d')?>",
 			"author": {
 				"@type": "Person",
-				"name": "<?php the_author_meta('nickname');?>"
+				"name": "<?php the_author_meta('display_name');?>"
 				},
 			"publisher": {
 				"@type": "Organization",
@@ -44,8 +44,6 @@
 			"description": "<?php echo mb_substr(strip_tags($post->post_content),0,60);?>…"
 		}
 	</script>
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=notosans:500,300,700,400">
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=notosansjapanese:500,300,700,400">
 	<style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
 	<script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
 	<script async custom-element="amp-facebook" src="https://cdn.ampproject.org/v0/amp-facebook-0.1.js"></script>
@@ -53,19 +51,10 @@
 	<script async custom-element="amp-vine" src="https://cdn.ampproject.org/v0/amp-vine-0.1.js"></script>
 	<script custom-element="amp-twitter" src="https://cdn.ampproject.org/v0/amp-twitter-0.1.js" async></script>
 	<script custom-element="amp-instagram" src="https://cdn.ampproject.org/v0/amp-instagram-0.1.js" async></script>
+	<link rel="stylesheet" href="//fonts.googleapis.com/earlyaccess/notosansjapanese.css">
+	<link rel="stylesheet" href="//fonts.googleapis.com/earlyaccess/notosans.css">
 </head>
 <body>
-	<?php remove_filter('the_content',array($GLOBALS['wp_embed'],'autoembed'),8);
-	$content=apply_filters('the_content',get_the_content());$content=str_replace(']]>',']]&gt;',$content);
-	$pattern='/<img/i';preg_match($pattern,$content,$matches);$append=$matches[0];$append='<amp-img layout="responsive"';$content=preg_replace($pattern,$append,$content);
-	$pattern='/<p>https:\/\/twitter.com\/.*\/status\/(.*).*<\/p>/i';$append='<p><amp-twitter width=592 height=472 layout="responsive" data-tweetid="$1"></amp-twitter></p>';$content= preg_replace($pattern,$append,$content);
-	$pattern='/<blockquote class="twitter-tweet".*>.*<a href="https:\/\/twitter.com\/.*\/status\/(.*).*<\/blockquote>.*<script async src="\/\/platform.twitter.com\/widgets.js" charset="utf-8"><\/script>/i';$append='<p><amp-twitter width=592 height=472 layout="responsive" data-tweetid="$1"></amp-twitter></p>';$content=preg_replace($pattern,$append,$content);
-	$pattern='/<div class=\'embed-container\'><iframe width=\'100%\' src=\'https:\/\/vine.co\/v\/(.*)\/embed\/simple\'.*<\/div>/i';$append='<div class=\'embed-container\'><amp-vine data-vineid="$1" width="592" height="592" layout="responsive"></amp-vine></div>';$content=preg_replace($pattern,$append,$content);
-	$pattern='/<div class=\'embed-container\'><iframe src=\'\/\/instagram.com\/p\/(.*)\/embed\/\'.*<\/iframe><\/div>/i';$append='<div class=\'embed-container\'><amp-instagram layout="responsive" data-shortcode="$1" width="592" height="716" ></amp-instagram></div>';$content=preg_replace($pattern,$append,$content);
-	$pattern='/<div class="youtube">.*https:\/\/youtu.be\/(.*).*<\/div>/i';$append='<div class="youtube"><amp-youtube layout="responsive" data-videoid="$1" width="592" height="363"></amp-youtube></div>';$content=preg_replace($pattern,$append,$content);
-	$pattern='/<div class="youtube">.*<iframe width="853" height="480" src="https:\/\/www.youtube.com\/embed\/(.*)" frameborder="0" allowfullscreen><\/iframe>.*<\/div>/i';$append='<div class="youtube"><amp-youtube layout="responsive" data-videoid="$1" width="592" height="363"></amp-youtube></div>';$content=preg_replace($pattern,$append,$content);
-	$pattern='/<iframe/i';$append='<amp-iframe layout="responsive"';$content=preg_replace($pattern,$append,$content);
-	echo $content;?>
 	<header>
 		<?php twentyfifteen_post_thumbnail();
 		the_title(sprintf('<h1 class="entry-title"><a href="%s" rel="bookmark">',esc_url(get_permalink())),'</a></h1>');?>
@@ -78,8 +67,19 @@
 		<div class="meta"><?php twentyfifteen_entry_meta();?></div>
 	</header>
 	<section>
-		<?php if(have_posts()):the_content();endif;?>
+		<?php while(have_posts()):the_content();endwhile;?>
 	</section>
+	<?php remove_filter('the_content',array($GLOBALS['wp_embed'],'autoembed'),8);
+	$content=apply_filters('the_content',get_the_content());$content=str_replace(']]>',']]&gt;',$content);
+	$pattern='/<img/i';preg_match($pattern,$content,$matches);$append=$matches[0];$append='<amp-img layout="responsive"';$content=preg_replace($pattern,$append,$content);
+	$pattern='/<p>https:\/\/twitter.com\/.*\/status\/(.*).*<\/p>/i';$append='<p><amp-twitter width=592 height=472 layout="responsive" data-tweetid="$1"></amp-twitter></p>';$content= preg_replace($pattern,$append,$content);
+	$pattern='/<blockquote class="twitter-tweet".*>.*<a href="https:\/\/twitter.com\/.*\/status\/(.*).*<\/blockquote>.*<script async src="\/\/platform.twitter.com\/widgets.js" charset="utf-8"><\/script>/i';$append='<p><amp-twitter width=592 height=472 layout="responsive" data-tweetid="$1"></amp-twitter></p>';$content=preg_replace($pattern,$append,$content);
+	$pattern='/<div class=\'embed-container\'><iframe width=\'100%\' src=\'https:\/\/vine.co\/v\/(.*)\/embed\/simple\'.*<\/div>/i';$append='<div class=\'embed-container\'><amp-vine data-vineid="$1" width="592" height="592" layout="responsive"></amp-vine></div>';$content=preg_replace($pattern,$append,$content);
+	$pattern='/<div class=\'embed-container\'><iframe src=\'\/\/instagram.com\/p\/(.*)\/embed\/\'.*<\/iframe><\/div>/i';$append='<div class=\'embed-container\'><amp-instagram layout="responsive" data-shortcode="$1" width="592" height="716" ></amp-instagram></div>';$content=preg_replace($pattern,$append,$content);
+	$pattern='/<div class="youtube">.*https:\/\/youtu.be\/(.*).*<\/div>/i';$append='<div class="youtube"><amp-youtube layout="responsive" data-videoid="$1" width="592" height="363"></amp-youtube></div>';$content=preg_replace($pattern,$append,$content);
+	$pattern='/<div class="youtube">.*<iframe width="853" height="480" src="https:\/\/www.youtube.com\/embed\/(.*)" frameborder="0" allowfullscreen><\/iframe>.*<\/div>/i';$append='<div class="youtube"><amp-youtube layout="responsive" data-videoid="$1" width="592" height="363"></amp-youtube></div>';$content=preg_replace($pattern,$append,$content);
+	$pattern='/<iframe/i';$append='<amp-iframe layout="responsive"';$content=preg_replace($pattern,$append,$content);
+	echo $content;?>
 	<style amp-custom>
 		body{font-style:"Noto Serif" sans-serif;max-width:90vw;margin:0 auto;}.bread{color:#ddd;}.bread .sp{color:#333;margin:0 .5em;}header{;text-align:center;margin:5px 0;}
 		a{color:#1122cc;}h2,h3,h4{min-height:45px;max-width:70vw;text-align:center;}h2{color:#fff;background:#ffcc00;}h3{border-left:10px solid #ffcc00;background-color:#fff;}h4{border-bottom:8px solid #ffcc00;background-color:#fff;}
