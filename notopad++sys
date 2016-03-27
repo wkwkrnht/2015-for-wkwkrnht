@@ -8,9 +8,11 @@
         <Folder name="parts">
             <File name="parts\adminnav.php" />
             <File name="parts\bread.php" />
-            <File name="parts\editor-style.css" />
             <File name="parts\related.php" />
             <File name="parts\snsbutton.php" />
+			<File name="parts\author-bio.php" />
+			<File name="parts\comments.php" />
+			<File name="parts\editor-style.css" />
         </Folder>
 		<File name=".gitattributes" />
         <File name=".gitignore" />
@@ -33,8 +35,7 @@
 		<File name="amp.php" />
 		<File name="search.php" />
         <File name="javascript.js" />
-        <File name="author-bio.php" />
-        <File name="comments.php" />
+        
         <File name="screenshot.png" />
         <File name="notopad++sys" />
     </Project>
