@@ -98,9 +98,9 @@ a #admin-navigation{padding:0 2.5em;}
 .social-navigation a[href*="tumblr.com"]::before{content:"\f173";color:#2c4762;}
 .social-navigation a[href*="twitter.com"]::before{content:"\f099";color:#00b8ff;}
 .social-navigation a[href*="twilog.org"]::before{content:"\f099";color:#00b8ff;}
-.social-navigation a[href*="twilog.org"]::after{content:"\f022";font-family:"FontAwesome";font-size:16px;position:relative;right:.5em;bottom:0;}
+.social-navigation a[href*="twilog.org"]::after{content:"\f022";font-family:"FontAwesome";font-size:16px;position:relative;right:1em;bottom:0;}
 .social-navigation a[href*="twipf.jp"]::before{content:"\f099";color:#00b8ff;}
-.social-navigation a[href*="twipf.jp"]::after{content:"\f007";font-family:"FontAwesome";font-size:16px;position:relative;right:.5em;bottom:0;}
+.social-navigation a[href*="twipf.jp"]::after{content:"\f007";font-family:"FontAwesome";font-size:16px;position:relative;right:1em;bottom:0;}
 .social-navigation a[href*="vimeo.com"]::before{content:"\f27d";}
 .social-navigation a[href*="youtube.com"]::before{content:"\f167";color:#ff0033;}
 .social-navigation a[href*="spotify.com"]::before{content:"\f1bc";}

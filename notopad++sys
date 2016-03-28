@@ -18,6 +18,7 @@
         <File name=".gitignore" />
 		<File name="functions.php" />
         <File name="style.css" />
+		<File name="javascript.js" />
 		<File name="header.php" />
         <File name="sidebar.php" />
         <File name="footer.php" />
@@ -34,8 +35,6 @@
         <File name="content-search.php" />
 		<File name="amp.php" />
 		<File name="search.php" />
-        <File name="javascript.js" />
-        
         <File name="screenshot.png" />
         <File name="notopad++sys" />
     </Project>
