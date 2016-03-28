@@ -2,7 +2,7 @@
 <html <?php language_attributes();?> class="no-js">
 <head>
 	<?php if(get_post_meta($post->ID,"noindex",true)){echo'<meta name="robots" content="noindex,nofollow" />';};?>
-	<link rel="amphtml" href="<?php echo'get_permalink() . /amp-version.html';?>" />
+	<link rel="amphtml" href="<?php echo get_permalink() .'?amp=1';?>">
 	<meta charset="<?php bloginfo('charset');?>">
 	<meta name="viewport" content="width=device-width">
 	<meta name="google-site-verification" content="<?php echo get_option('Google_Webmaster');?>">
