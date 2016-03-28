@@ -4,7 +4,7 @@
             <File name="img\hatebu.svg" />
             <File name="img\line.svg" />
             <File name="img\no-img.png" />
-            <File name="img\embed.png" />
+            <File name="img\embed.svg" />
         </Folder>
         <Folder name="parts">
             <File name="parts\adminnav.php" />
