@@ -156,8 +156,6 @@ function theme_customize($wp_customize){
     $wp_customize->add_control('Adminnav_Dsp',array('section'=>'sns_section','settings'=>'Adminnav_Dsp','label'=>'管理者向けメニューを表示する','type'=>'checkbox'));
     $wp_customize->add_setting('GoogleChrome_URLbar',array('type'=>'option',));
     $wp_customize->add_control('GoogleChrome_URLbar',array('section'=>'sns_section','settings'=>'GoogleChrome_URLbar','label'=>'モバイル版GoogleChrome向けURLバーの色コードを指定する','type'=>'text'));
-	$wp_customize->add_setting('embedly_API_Key',array('type'=>'option',));
-    $wp_customize->add_control('embedly_API_Key',array('section'=>'sns_section','settings'=>'embedly_API_Key','label'=>'embedlyのAPIKeyを入力する','type'=>'text'));
     $wp_customize->add_setting('Google_Webmaster',array('type'=>'option',));
     $wp_customize->add_control('Google_Webmaster',array('section'=>'sns_section','settings'=>'Google_Webmaster','label'=>'サイトのGoogleSerchconsole向けコードを指定する','type'=>'text'));
     $wp_customize->add_setting('Bing_Webmaster',array('type'=>'option',));
