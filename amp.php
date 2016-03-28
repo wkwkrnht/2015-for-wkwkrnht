@@ -86,8 +86,7 @@
 </head>
 <body>
 	<div class="siteinfo"><a href="<?php bloginfo('URL');?>">
-		<p><amp-img src="<?php get_site_icon_url();?>" width="200px" height="200px" />
-		<span class="title"><?php bloginfo('name');?></span></p>
+		<span class="title"><?php bloginfo('name');?></span>
 	</a></div>
 	<header>
 		<?php twentyfifteen_post_thumbnail();
