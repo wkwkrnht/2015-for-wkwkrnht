@@ -10,7 +10,9 @@
   <div class="content">
     <a href="https://plus.google.com/share?url=<?php echo get_permalink()?>" target="_blank"><div class="g1 button"></div></a>
     <a href="https://www.linkedin.com/shareArticle?mini=true&url=<?php echo get_permalink()?>&amp;title=<?php echo trim(wp_title('',false));?>" onclick="window.open(this.href,'window','width=550,height=450,personalbar=0,toolbar=0,scrollbars=1,resizable=1');return false;"><div class="linkedin button"></div></a>
-    <?php if(is_pushnotice_dsp()):?>
+	<a href="http://embed.ly/code" data-url="<?php the_permalink(); ?>"><img src="<?php echo get_stylesheet_directory_uri();?>/img/embedly.png" class="embedly button"></img></a><script>!function(a){var b="embedly-platform",c="script";if(!a.getElementById(b)){var d=a.createElement(c);d.id=b,d.src=("https:"===document.location.protocol?"https":"http")+"://cdn.embedly.com/widgets/platform.js";var e=document.getElementsByTagName(c)[0];e.parentNode.insertBefore(d,e)}}(document);</script>
+
+	<?php if(is_pushnotice_dsp()):?>
       <a href="<?php echo get_option('Pushnotice_URL');?>" onclick="window.open(this.href,'window','width=550,height=450,personalbar=0,toolbar=0,scrollbars=1,resizable=1');return false;"><div class="pushnotice button"></div></a>
     <?php else:?>
       <a href="https://push.dog/subscribe?url=<?php echo esc_url(home_url());?>" onclick="window.open(this.href,'window','width=550,height=450,personalbar=0,toolbar=0,scrollbars=1,resizable=1');return false;"><div class="pushnotice button"></div></a>
