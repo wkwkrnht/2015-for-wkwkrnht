@@ -90,12 +90,11 @@ function get_mtime($format){$mtime=get_the_modified_time('Ymd');$ptime=get_the_t
 function ruby_setup(){global $allowedposttags;foreach(array('ruby','rp','rt') as $tag )if(!isset($allowedposttags[$tag]))$allowedposttags[$tag]=array();}
 function wps_highlight_results($text){if(is_search()){$sr=get_query_var('s');$keys=explode(" ",$sr);$text=preg_replace('/('.implode('|',$keys) .')/iu','<span class="marker">'.$sr.'</span>',$text);}return $text;}
 function twtreplace($content){$twtreplace=preg_replace('/([^a-zA-Z0-9-_&])@([0-9a-zA-Z_]+)/',"$1<a href=\"http://twitter.com/$2\" target=\"_blank\" rel=\"nofollow\">@$2</a>",$content);return $twtreplace;}
-function url_to_hatena_blog_card($the_content){
-  if(is_singular()){
-    $res=preg_match_all('/^(<p>)?(<a.+?>)?https?:\/\/[-_.!~*\'()a-zA-Z0-9;\/?:\@&=+\$,%#]+(<\/a>)?(<\/p>)?(<br ? \/>)?$/im',$the_content,$m);
-    foreach($m[0] as $match){$url=strip_tags($match);
-      $tag='<iframe class="hatenablogcard" src="http://hatenablog.com/embed?url='.$url.'" frameborder="0" scrolling="no"></iframe>';
-      $the_content=preg_replace('{'.preg_quote($match).'}',$tag ,$the_content,1);}}return $the_content;}
+//本文中のURLをブログカードに変更する
+function url_to_hatena_blog_card($the_content){if(is_singular()){$res=preg_match_all('/^(<p>)?(<a.+?>)?https?:\/\/[-_.!~*\'()a-zA-Z0-9;\/?:\@&=+\$,%#]+(<\/a>)?(<\/p>)?(<br ? \/>)?$/im',$the_content,$m);
+    foreach($m[0] as $match){$url=strip_tags($match);$tag='<a class="embedly-card"href="'.$url.'"></a>';$the_content=preg_replace('{'.preg_quote($match).'}',$tag,$the_content,1);}
+  }
+  return $the_content;}
 add_filter('the_content','url_to_hatena_blog_card');
 add_filter('the_content','twtreplace');
 add_filter('comment_text','twtreplace');
@@ -157,6 +156,8 @@ function theme_customize($wp_customize){
     $wp_customize->add_control('Adminnav_Dsp',array('section'=>'sns_section','settings'=>'Adminnav_Dsp','label'=>'管理者向けメニューを表示する','type'=>'checkbox'));
     $wp_customize->add_setting('GoogleChrome_URLbar',array('type'=>'option',));
     $wp_customize->add_control('GoogleChrome_URLbar',array('section'=>'sns_section','settings'=>'GoogleChrome_URLbar','label'=>'モバイル版GoogleChrome向けURLバーの色コードを指定する','type'=>'text'));
+	$wp_customize->add_setting('embedly_API_Key',array('type'=>'option',));
+    $wp_customize->add_control('embedly_API_Key',array('section'=>'sns_section','settings'=>'embedly_API_Key','label'=>'embedlyのAPIKeyを入力する','type'=>'text'));
     $wp_customize->add_setting('Google_Webmaster',array('type'=>'option',));
     $wp_customize->add_control('Google_Webmaster',array('section'=>'sns_section','settings'=>'Google_Webmaster','label'=>'サイトのGoogleSerchconsole向けコードを指定する','type'=>'text'));
     $wp_customize->add_setting('Bing_Webmaster',array('type'=>'option',));

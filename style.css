@@ -33,7 +33,6 @@
 .entry-content h3{border-left:10px solid #ffcc00;background-color:#fff;}
 .entry-content h4{border-bottom:8px solid #ffcc00;background-color:#fff;}
 .entry-content h2,.entry-content h3,.entry-content h4{min-height:45px;text-align:center;}
-.hatenablogcard{width:100%;height:160px;margin:5px 0;max-width:700px;box-shadow:0 2px 2px 0 #999;clear:both;}
 /*ページャー*/
 .prev.page-numbers::before,.prev.page-numbers::before{font-family:"Noto Serif" sans-serif;font-size:16px;}
 .prev.page-numbers::before{content:"＜";}
