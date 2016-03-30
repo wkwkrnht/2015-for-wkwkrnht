@@ -6,7 +6,7 @@
 	<meta charset="<?php bloginfo('charset');?>">
 	<meta name="viewport" content="width=device-width">
 	<meta name="google-site-verification" content="<?php echo get_option('Google_Webmaster');?>">
-	<meta name="msvalidate.01" content="<?php echo get_option('Bing_Webmaster');?>" />
+	<meta name="msvalidate.01" content="<?php echo get_option('Bing_Webmaster');?>">
 	<meta property="og:type" content="blog">
 	<?php if(is_single()){if(have_posts()):while(have_posts()):the_post();echo'<meta property="og:description" content="';mb_substr(get_the_excerpt(),0,100);echo'">';echo"\n";endwhile;endif;
 	  echo'<meta property="og:title" content="';the_title();echo'">';echo"\n";

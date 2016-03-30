@@ -36,8 +36,17 @@ function twentyfifteen_entry_meta(){if(is_sticky()&&is_home()&&!is_paged()){prin
   //画像サイズ(横 x 縦)表示&コメントをどうぞ&コメント数&WLW編集
   if(is_attachment()&&wp_attachment_is_image()){$metadata=wp_get_attachment_metadata();printf('<span class="full-size-link"><span class="screen-reader-text">%1$s</span><a href="%2$s">%3$s &times;%4$s</a></span>',_x('Full size','Used before full size attachment link.','twentyfifteen'),esc_url(wp_get_attachment_url()),$metadata['width'],$metadata['height']);}
   if(!is_single()&&!post_password_required()&&(comments_open()||get_comments_number())){echo'<span class="comments-link">';comments_popup_link(__('Leave a comment','twentyfifteen'),__('1 Comment','twentyfifteen' ),__('% Comments','twentyfifteen'));echo'</span>';}
-  $myAmp=false;$nowurl=$_SERVER["REQUEST_URI"];if(strpos($nowurl,'amp')!==false&&is_single()){$myAmp=true;};if($myAmp=false){if(is_user_logged_in()){if(is_home()){edit_post_link();echo'<a href="wlw://wkwkrnht.gegahost.net/?postid=';echo the_ID();echo'" class="wlwedit">WLWで編集</a>';}else{echo'<a href="wlw://wkwkrnht.gegahost.net/?postid=';echo the_ID();echo'">WLWで編集</a>';}}}
+  if(is_user_logged_in()){if(is_home()){edit_post_link();echo'<a href="wlw://wkwkrnht.gegahost.net/?postid=';echo the_ID();echo'" class="wlwedit">WLWで編集</a>';}else{echo'<a href="wlw://wkwkrnht.gegahost.net/?postid=';echo the_ID();echo'">WLWで編集</a>';}}
 }
+function amp_entry_meta(){if(in_array(get_post_type(),array('post','attachment'))){$time_string='<time class="entry-date published updated" datetime="%1$s">%2$s</time>';
+	if(get_the_time('U')!==get_the_modified_time('U')){$time_string='<time class="entry-date published" datetime="%1$s">%2$s</time><time class="updated" datetime="%3$s">%4$s</time>';}
+	$time_string=sprintf($time_string,esc_attr(get_the_date('c')),get_the_date(),esc_attr(get_the_modified_date('c')),get_the_modified_date());
+	printf('<span>%1$s<a href="%2$s" rel="bookmark">%3$s</a></span>',_x('Posted on','Used before publish date.','twentyfifteen'),esc_url(get_permalink()),$time_string);
+	echo('<span>（');echo human_time_diff(get_the_time('U'), current_time('timestamp'));echo('前）</span>');}}
+if(!function_exists('twentyfifteen_post_thumbnail')):
+function twentyfifteen_post_thumbnail(){if(post_password_required()||is_attachment()||!has_post_thumbnail()){return;}if(is_singular()):?><div class="post-thumbnail"><?php the_post_thumbnail();?></div><?php else:?><a class="post-thumbnail" href="<?php the_permalink();?>" aria-hidden="true"><?php the_post_thumbnail('post-thumbnail',array('alt'=>get_the_title()));?></a><?php endif;}
+endif;
+function amp_post_thumbnail(){?><amp-img src="<?php get_post_thumbnail_id();?>" alt="thumbnail" width=825 heght=510 layout="responsive" class="thumbnail"></amp-amg><?php }
 //サムネサイズ追加&Alt属性がないIMGタグにalt=""を追加する
 add_image_size('related',150,150,true);
 add_filter('the_content',function($content){return preg_replace('/<img((?![^>]*alt=)[^>]*)>/i','<img alt=""${1}>',$content);});
@@ -120,6 +129,35 @@ class PcTextWidgetItem extends WP_Widget{
   }
 }
 add_action('widgets_init',create_function('','return register_widget("PcTextWidgetItem");'));
+//SNSボタンと関連記事のウィジェット化
+class sns_sharebutton extends WP_Widget{
+    function __construct(){parent::__construct('sns_sharebutton','SNSシェアボタン',array('description'=>'SNSシェアボタン',));}
+    public function widget($args,$instance){echo $args['before_widget'];get_template_part('parts/snsbutton');echo $args['after_widget'];}
+    public function form($instance){$title=!empty($instance['title']) ? $instance['title']:__( '新しいタイトル','text_domain');?>
+		<p>
+		<label for="<?php echo $this->get_field_id('title');?>"><?php _e('タイトル:');?></label> 
+		<input class="widefat" id="<?php echo $this->get_field_id('title');?>" name="<?php echo $this->get_field_name('title');?>" type="text" value="<?php echo esc_attr($title);?>">
+		</p>
+		<?php 
+	}
+	public function update($new_instance,$old_instance){$instance=array();$instance['title']=(!empty($new_instance['title'])) ? strip_tags($new_instance['title']):'';return $instance;}
+}
+add_action('widgets_init',function(){register_widget('sns_sharebutton');});
+class related_posts extends WP_Widget{
+    function __construct(){parent::__construct('related_posts','関連記事',array('description'=>'関連記事',));}
+    public function widget($args,$instance){echo $args['before_widget'];get_template_part('parts/related');echo $args['after_widget'];}
+    public function form($instance){$title=!empty($instance['title']) ? $instance['title']:__( '新しいタイトル','text_domain');?>
+		<p>
+		<label for="<?php echo $this->get_field_id('title');?>"><?php _e('タイトル:');?></label> 
+		<input class="widefat" id="<?php echo $this->get_field_id('title');?>" name="<?php echo $this->get_field_name('title');?>" type="text" value="<?php echo esc_attr($title);?>">
+		</p>
+		<?php 
+	}
+	public function update($new_instance,$old_instance){$instance=array();$instance['title']=(!empty($new_instance['title'])) ? strip_tags($new_instance['title']):'';return $instance;}
+}
+add_action('widgets_init',function(){register_widget('related_posts');});
+function entry_footer_sidebar(){register_sidebar(array('name'=>'エントリーフッター','id'=>'entryfooter','before_widget'=>'<div>','after_widget'=>'</div>','before_title'=>'','after_title'=>'',));}
+add_action('widgets_init','entry_footer_sidebar');
 //カレンダー短縮
 function my_archives_link($link_html){
     $currentMonth=date('n');
