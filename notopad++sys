@@ -22,6 +22,7 @@
         <File name="javascript.js" />
         <File name="header.php" />
         <File name="sidebar.php" />
+		<File name="sidebar-2.php" />
         <File name="footer.php" />
         <File name="index.php" />
         <File name="archive.php" />

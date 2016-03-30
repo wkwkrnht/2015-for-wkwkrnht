@@ -1,0 +1,1 @@
+<?php if(is_active_sidebar(2)):dynamic_sidebar('sidebar-1');endif;?>
