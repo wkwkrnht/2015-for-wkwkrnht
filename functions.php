@@ -132,7 +132,7 @@ add_action('widgets_init',create_function('','return register_widget("PcTextWidg
 class sns_sharebutton extends WP_Widget{
     function __construct(){parent::__construct('sns_sharebutton','SNSシェアボタン',array('description'=>'SNSシェアボタン',));}
     public function widget($args,$instance){echo $args['before_widget'];get_template_part('parts/snsbutton');echo $args['after_widget'];}
-    public function form($instance){$title=!empty($instance['title']) ? $instance['title']:__( '新しいタイトル','text_domain');?>
+    public function form($instance){$title=!empty($instance['title']) ? $instance['title']:__( '','text_domain');?>
 		<p>
 		<label for="<?php echo $this->get_field_id('title');?>"><?php _e('タイトル:');?></label> 
 		<input class="widefat" id="<?php echo $this->get_field_id('title');?>" name="<?php echo $this->get_field_name('title');?>" type="text" value="<?php echo esc_attr($title);?>">
@@ -145,7 +145,7 @@ add_action('widgets_init',function(){register_widget('sns_sharebutton');});
 class related_posts extends WP_Widget{
     function __construct(){parent::__construct('related_posts','関連記事',array('description'=>'関連記事',));}
     public function widget($args,$instance){echo $args['before_widget'];get_template_part('parts/related');echo $args['after_widget'];}
-    public function form($instance){$title=!empty($instance['title']) ? $instance['title']:__( '新しいタイトル','text_domain');?>
+    public function form($instance){$title=!empty($instance['title']) ? $instance['title']:__( '','text_domain');?>
 		<p>
 		<label for="<?php echo $this->get_field_id('title');?>"><?php _e('タイトル:');?></label> 
 		<input class="widefat" id="<?php echo $this->get_field_id('title');?>" name="<?php echo $this->get_field_name('title');?>" type="text" value="<?php echo esc_attr($title);?>">
@@ -158,7 +158,7 @@ add_action('widgets_init',function(){register_widget('related_posts');});
 class disqus_widget extends WP_Widget{
     function __construct(){parent::__construct('disqus_widget','Disqus',array('description'=>'Disqus',));}
     public function widget($args,$instance){echo $args['before_widget'];?><div id="disqus_thread"></div><script>(function(){var d=document,s=d.createElement('script');s.src='//<?php echo get_option('Disqus_ID')?>.disqus.com/embed.js';s.setAttribute('data-timestamp',+new Date());(d.head||d.body).appendChild(s);})();</script><noscript><a href="https://disqus.com/?ref_noscript" rel="nofollow">Please enable JavaScript to view the comments powered by Disqus.</a></noscript><?php echo $args['after_widget'];}
-    public function form($instance){$title=!empty($instance['title']) ? $instance['title']:__( '新しいタイトル','text_domain');?>
+    public function form($instance){$title=!empty($instance['title']) ? $instance['title']:__( '','text_domain');?>
 		<p>
 		<label for="<?php echo $this->get_field_id('title');?>"><?php _e('タイトル:');?></label> 
 		<input class="widefat" id="<?php echo $this->get_field_id('title');?>" name="<?php echo $this->get_field_name('title');?>" type="text" value="<?php echo esc_attr($title);?>">
@@ -168,7 +168,7 @@ class disqus_widget extends WP_Widget{
 	public function update($new_instance,$old_instance){$instance=array();$instance['title']=(!empty($new_instance['title'])) ? strip_tags($new_instance['title']):'';return $instance;}
 }
 add_action('widgets_init',function(){register_widget('disqus_widget');});
-function entry_footer_sidebar(){register_sidebar(array('name'=>'エントリーフッター','id'=>'2','before_widget'=>'<div>','after_widget'=>'</div>','before_title'=>'','after_title'=>'',));}
+function entry_footer_sidebar(){register_sidebar(array('name'=>'エントリーフッター','id'=>'8','before_widget'=>'<div>','after_widget'=>'</div>','before_title'=>'','after_title'=>'',));}
 add_action('widgets_init','entry_footer_sidebar');
 //カレンダー短縮
 function my_archives_link($link_html){

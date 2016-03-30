@@ -15,14 +15,5 @@
 				'pagelink'   =>'<span class="screen-reader-text">' . __('Page','twentyfifteen') . ' </span>%',
 				'separator'  =>'<span class="screen-reader-text">,</span>',));?>
 	</section>
-	<footer class="entry-footer">
-		<div id="slide">
-			<?php if(is_dynamic_sidebar('2')):
-				get_sidebar('2');
-			else:
-				echo'<h2>Share＆関連記事</h2>';
-				get_template_part('parts/snsbutton');get_template_part('parts/related');
-			endif;?>
-		</div>
-	</footer>
+	<?php get_sidebar('8');?>
 </article>
