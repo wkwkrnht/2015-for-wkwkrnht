@@ -168,7 +168,7 @@ class disqus_widget extends WP_Widget{
 	public function update($new_instance,$old_instance){$instance=array();$instance['title']=(!empty($new_instance['title'])) ? strip_tags($new_instance['title']):'';return $instance;}
 }
 add_action('widgets_init',function(){register_widget('disqus_widget');});
-function entry_footer_sidebar(){register_sidebar(array('name'=>'エントリーフッター','id'=>'8','before_widget'=>'<div>','after_widget'=>'</div>','before_title'=>'','after_title'=>'',));}
+function entry_footer_sidebar(){register_sidebars(array('name'=>'エントリーフッター','id'=>'8','before_widget'=>'<div>','after_widget'=>'</div>','before_title'=>'','after_title'=>'',));}
 add_action('widgets_init','entry_footer_sidebar');
 //カレンダー短縮
 function my_archives_link($link_html){
