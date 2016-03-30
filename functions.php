@@ -110,7 +110,7 @@ add_filter('comment_text','twtreplace');
 add_filter('the_title','wps_highlight_results');
 add_filter('the_content','wps_highlight_results');
 add_action('after_setup_theme','ruby_setup');
-//PCのみ表示テキストウイジェットの追加
+//SNSボタンと関連記事のウィジェット化&PCのみ表示テキストウイジェットの追加&entry-footerにウィジェットエリア追加
 class PcTextWidgetItem extends WP_Widget{
   function PcTextWidgetItem(){parent::WP_Widget(false,$name='Text widget（for PC）');}
   function widget($args,$instance){extract($args);$title=apply_filters('widget_title_pc_text',$instance['title_pc_text']);$text=apply_filters('widget_text_pc_text',$instance['text_pc_text']);if(!wp_is_mobile()):echo('<div id="pc-text-widget" class="widget pc_text">');if($title){echo '<h4>'.$title.'</h4>';}echo('<div class="text-pc">');echo $text;echo'</div></div>';endif;}
@@ -129,7 +129,6 @@ class PcTextWidgetItem extends WP_Widget{
   }
 }
 add_action('widgets_init',create_function('','return register_widget("PcTextWidgetItem");'));
-//SNSボタンと関連記事のウィジェット化
 class sns_sharebutton extends WP_Widget{
     function __construct(){parent::__construct('sns_sharebutton','SNSシェアボタン',array('description'=>'SNSシェアボタン',));}
     public function widget($args,$instance){echo $args['before_widget'];get_template_part('parts/snsbutton');echo $args['after_widget'];}
@@ -169,7 +168,7 @@ class disqus_widget extends WP_Widget{
 	public function update($new_instance,$old_instance){$instance=array();$instance['title']=(!empty($new_instance['title'])) ? strip_tags($new_instance['title']):'';return $instance;}
 }
 add_action('widgets_init',function(){register_widget('disqus_widget');});
-function entry_footer_sidebar(){register_sidebar(array('name'=>'エントリーフッター','id'=>'entryfooter','before_widget'=>'<div>','after_widget'=>'</div>','before_title'=>'','after_title'=>'',));}
+function entry_footer_sidebar(){register_sidebar(array('name'=>'エントリーフッター','id'=>'8','before_widget'=>'<div>','after_widget'=>'</div>','before_title'=>'','after_title'=>'',));}
 add_action('widgets_init','entry_footer_sidebar');
 //カレンダー短縮
 function my_archives_link($link_html){
