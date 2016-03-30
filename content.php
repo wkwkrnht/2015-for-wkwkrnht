@@ -20,7 +20,7 @@
 			<?php if(is_active_sidebar('entry-footer')):
 				dynamic_sidebar('entry-footer');
 			else:
-				echo'<h2 class="entry-footer">Share＆関連記事</h2>'
+				echo'<h2 class="entry-footer">Share＆関連記事</h2>';
 				get_template_part('parts/snsbutton');get_template_part('parts/related');
 			endif;?>
 		</div>
