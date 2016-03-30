@@ -156,6 +156,19 @@ class related_posts extends WP_Widget{
 	public function update($new_instance,$old_instance){$instance=array();$instance['title']=(!empty($new_instance['title'])) ? strip_tags($new_instance['title']):'';return $instance;}
 }
 add_action('widgets_init',function(){register_widget('related_posts');});
+class disqus_widget extends WP_Widget{
+    function __construct(){parent::__construct('disqus_widget','Disqus',array('description'=>'Disqus',));}
+    public function widget($args,$instance){echo $args['before_widget'];?><div id="disqus_thread"></div><script>(function(){var d=document,s=d.createElement('script');s.src='//<?php echo get_option('Disqus_ID')?>.disqus.com/embed.js';s.setAttribute('data-timestamp',+new Date());(d.head||d.body).appendChild(s);})();</script><noscript><a href="https://disqus.com/?ref_noscript" rel="nofollow">Please enable JavaScript to view the comments powered by Disqus.</a></noscript><?php echo $args['after_widget'];}
+    public function form($instance){$title=!empty($instance['title']) ? $instance['title']:__( '新しいタイトル','text_domain');?>
+		<p>
+		<label for="<?php echo $this->get_field_id('title');?>"><?php _e('タイトル:');?></label> 
+		<input class="widefat" id="<?php echo $this->get_field_id('title');?>" name="<?php echo $this->get_field_name('title');?>" type="text" value="<?php echo esc_attr($title);?>">
+		</p>
+		<?php 
+	}
+	public function update($new_instance,$old_instance){$instance=array();$instance['title']=(!empty($new_instance['title'])) ? strip_tags($new_instance['title']):'';return $instance;}
+}
+add_action('widgets_init',function(){register_widget('disqus_widget');});
 function entry_footer_sidebar(){register_sidebar(array('name'=>'エントリーフッター','id'=>'entryfooter','before_widget'=>'<div>','after_widget'=>'</div>','before_title'=>'','after_title'=>'',));}
 add_action('widgets_init','entry_footer_sidebar');
 //カレンダー短縮
@@ -212,6 +225,8 @@ function theme_customize($wp_customize){
     $wp_customize->add_control('Pushnotice_Dsp',array('section'=>'sns_section','settings'=>'Pushnotice_Dsp','label'=>'プッシュ通知の登録URLを指定する','type'=>'checkbox'));
     $wp_customize->add_setting('Pushnotice_URL',array('type'=>'option',));
     $wp_customize->add_control('Pushnotice_URL',array('section'=>'sns_section','settings'=>'Pushnotice_URL','label'=>'プッシュ通知の登録URLを入力する','type'=>'text'));
+	$wp_customize->add_setting('Disqus_ID',array('type'=>'option',));
+    $wp_customize->add_control('Disqus_ID',array('section'=>'sns_section','settings'=>'Disqus_ID','label'=>'DisqusのIDを入力するIDを入力する','type'=>'text'));
 }
 function is_pushnotice_dsp(){return get_theme_mod('Pushnotice_Dsp');}
 function is_adminnav_dsp(){return get_theme_mod('Adminnav_Dsp');}
