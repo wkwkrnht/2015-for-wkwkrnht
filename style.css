@@ -162,6 +162,7 @@ a #admin-navigation{padding:0 2.5em;}
 /*social-nav*/
 .social-navigation a::before{content:"\f07b";font-family:"FontAwesome";font-size:24px;position:absolute;top:0;left:0;}
 .social-navigation a[href*="/feed"]::before,.social-navigation a[href*="/feed/"]::before{content:"\f09e";color:#2aff00;}
+.social-navigation a[href*="feedly.com"]::before{content:"\f143";color:#2aff00;transform: rotate(-15deg);}
 .social-navigation a[href*="codepen.io"]::before{content:"\f1cb";color:#ffc700;}
 .social-navigation a[href*="digg.com"]::before{content:"\f1a6";}
 .social-navigation a[href*="dribbble.com"]::before{content:"\f17d";}
