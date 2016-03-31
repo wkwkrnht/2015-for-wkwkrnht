@@ -17,7 +17,7 @@ remove_action('wp_print_styles','print_emoji_styles');
 remove_action('parse_query','wp_oembed_parse_query');
 remove_action('wp_head','wp_oembed_remove_discovery_links');
 remove_action('wp_head','wp_oembed_remove_host_js');
-//twentyfifteen_entry_meta
+//メタとサムネ(標準とAMP)
 function twentyfifteen_entry_meta(){if(is_sticky()&&is_home()&&!is_paged()){printf('<span class="sticky-post">%s</span>',__('Featured','twentyfifteen'));}//投稿を先頭に固定
   //投稿日&更新日
   if(in_array(get_post_type(),array('post','attachment'))){
