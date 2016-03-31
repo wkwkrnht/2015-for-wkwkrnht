@@ -1,6 +1,6 @@
-<?php add_action('wp_enqueue_scripts','theme_enqueue_styles');function theme_enqueue_styles(){wp_enqueue_style('parent-style',get_template_directory_uri().'/style.css' );}
-//外部スクリプト読み込み
-/*function _script(){wp_enqueue_script('','',array(),false,false);}
+<?php add_action('wp_enqueue_scripts','theme_enqueue_styles');function theme_enqueue_styles(){wp_enqueue_style('parent-style',get_template_directory_uri().'/style.css');}
+/*外部スクリプト読み込み
+function _script(){wp_enqueue_script('','',array(),false,false);}
 add_action('wp_enqueue_script','_scripts');*/
 // hide /?ver=&emoji&error add_action&標準埋め込み&Webfont stop
 function wps_login_error() {remove_action('login_head','wp_shake_js',12);}
@@ -33,10 +33,9 @@ function twentyfifteen_entry_meta(){if(is_sticky()&&is_home()&&!is_paged()){prin
     if($categories_list&&twentyfifteen_categorized_blog()){printf('<span class="cat-links"><span class="screen-reader-text">%1$s</span>%2$s</span>',_x('Categories','Used before category names.','twentyfifteen'),$categories_list);}
     $tags_list=get_the_tag_list('',_x(',','Used between list items,there is a space after the comma.','twentyfifteen'));
     if($tags_list){printf('<span class="tags-links"><span class="screen-reader-text">%1$s</span>%2$s</span>',_x('Tags','Used before tag names.','twentyfifteen'),$tags_list);}}
-  //画像サイズ(横 x 縦)表示&コメントをどうぞ&コメント数&WLW編集
+  //画像サイズ(横 x 縦)表示&コメントをどうぞ&コメント数
   if(is_attachment()&&wp_attachment_is_image()){$metadata=wp_get_attachment_metadata();printf('<span class="full-size-link"><span class="screen-reader-text">%1$s</span><a href="%2$s">%3$s &times;%4$s</a></span>',_x('Full size','Used before full size attachment link.','twentyfifteen'),esc_url(wp_get_attachment_url()),$metadata['width'],$metadata['height']);}
   if(!is_single()&&!post_password_required()&&(comments_open()||get_comments_number())){echo'<span class="comments-link">';comments_popup_link(__('Leave a comment','twentyfifteen'),__('1 Comment','twentyfifteen' ),__('% Comments','twentyfifteen'));echo'</span>';}
-  if(is_user_logged_in()){if(is_home()){edit_post_link();echo'<a href="wlw://wkwkrnht.gegahost.net/?postid=';echo the_ID();echo'" class="wlwedit">WLWで編集</a>';}else{echo'<a href="wlw://wkwkrnht.gegahost.net/?postid=';echo the_ID();echo'">WLWで編集</a>';}}
 }
 if(!function_exists('twentyfifteen_post_thumbnail')):function twentyfifteen_post_thumbnail(){if(post_password_required()||is_attachment()||!has_post_thumbnail()){return;}if(is_singular()):?><div class="post-thumbnail"><?php the_post_thumbnail();?></div><?php else:?><a class="post-thumbnail" href="<?php the_permalink();?>" aria-hidden="true"><?php the_post_thumbnail('post-thumbnail',array('alt'=>get_the_title()));?></a><?php endif;}endif;
 function amp_post_thumbnail(){echo'<amp-img src="' . get_post_thumbnail_id() . '" alt="thumbnail" width=825 heght=510 layout="responsive" class="thumbnail"></amp-img>';}

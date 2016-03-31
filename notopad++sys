@@ -13,7 +13,6 @@
             <File name="parts\snsbutton.php" />
             <File name="parts\author-bio.php" />
             <File name="parts\comments.php" />
-            <File name="parts\editor-style.css" />
         </Folder>
         <File name=".gitattributes" />
         <File name=".gitignore" />

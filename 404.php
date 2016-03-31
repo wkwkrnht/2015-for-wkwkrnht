@@ -8,9 +8,8 @@
 					<?php get_search_form();?>
 				</header>
 				<div class="page-content">
-					<h2>カテゴリから検索</h2>
-					<h2>タグから検索</h2>
-					<?php wp_tag_cloud();?>
+					<h2>カテゴリとタグから検索</h2>
+					<?php wp_tag_cloud('taxonomy'=>array('post_tag','category'),);?>
 				</div>
 			</section>
 		</main>
