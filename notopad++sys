@@ -36,6 +36,7 @@
         <File name="content-search.php" />
         <File name="amp.php" />
         <File name="search.php" />
+		<File name="author.php" />
         <File name="screenshot.png" />
         <File name="notopad++sys" />
     </Project>
