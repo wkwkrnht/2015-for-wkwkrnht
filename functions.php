@@ -39,7 +39,7 @@ function twentyfifteen_entry_meta(){if(is_sticky()&&is_home()&&!is_paged()){prin
   if(is_user_logged_in()){if(is_home()){edit_post_link();echo'<a href="wlw://wkwkrnht.gegahost.net/?postid=';echo the_ID();echo'" class="wlwedit">WLWで編集</a>';}else{echo'<a href="wlw://wkwkrnht.gegahost.net/?postid=';echo the_ID();echo'">WLWで編集</a>';}}
 }
 if(!function_exists('twentyfifteen_post_thumbnail')):function twentyfifteen_post_thumbnail(){if(post_password_required()||is_attachment()||!has_post_thumbnail()){return;}if(is_singular()):?><div class="post-thumbnail"><?php the_post_thumbnail();?></div><?php else:?><a class="post-thumbnail" href="<?php the_permalink();?>" aria-hidden="true"><?php the_post_thumbnail('post-thumbnail',array('alt'=>get_the_title()));?></a><?php endif;}endif;
-function amp_post_thumbnail(){echo'<amp-img src="'echo get_post_thumbnail_id();echo'" alt="thumbnail" width=825 heght=510 layout="responsive" class="thumbnail"></amp-amg>';}
+function amp_post_thumbnail(){echo'<amp-img src="';echo get_post_thumbnail_id();echo'" alt="thumbnail" width=825 heght=510 layout="responsive" class="thumbnail"></amp-amg>';}
 function amp_entry_meta(){if(in_array(get_post_type(),array('post','attachment'))){$time_string='<time class="entry-date published updated" datetime="%1$s">%2$s</time>';
 	if(get_the_time('U')!==get_the_modified_time('U')){$time_string='<time class="entry-date published" datetime="%1$s">%2$s</time><time class="updated" datetime="%3$s">%4$s</time>';}
 	$time_string=sprintf($time_string,esc_attr(get_the_date('c')),get_the_date(),esc_attr(get_the_modified_date('c')),get_the_modified_date());
