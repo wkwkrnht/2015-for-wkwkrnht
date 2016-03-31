@@ -1,4 +1,5 @@
 <?php add_action('wp_enqueue_scripts','theme_enqueue_styles');function theme_enqueue_styles(){wp_enqueue_style('parent-style',get_template_directory_uri().'/style.css');}
+$myAmp=false;$string=$post->post_content;$nowurl=$_SERVER["REQUEST_URI"];if(strpos($nowurl,'amp')!==false&&strpos($string,'<script>')===false&&is_single()):$myAmp=true;endif;
 /*外部スクリプト読み込み
 function _script(){wp_enqueue_script('','',array(),false,false);}
 add_action('wp_enqueue_script','_scripts');*/
@@ -18,7 +19,7 @@ remove_action('parse_query','wp_oembed_parse_query');
 remove_action('wp_head','wp_oembed_remove_discovery_links');
 remove_action('wp_head','wp_oembed_remove_host_js');
 //メタとサムネ(標準とAMP)
-function twentyfifteen_entry_meta(){if(is_sticky()&&is_home()&&!is_paged()){printf('<span class="sticky-post">%s</span>',__('Featured','twentyfifteen'));}//投稿を先頭に固定
+function twentyfifteen_entry_meta(){if(is_sticky()&&is_home()&&!is_paged()):printf('<span class="sticky-post">%s</span>',__('Featured','twentyfifteen'));endif;//投稿を先頭に固定
   //投稿日&更新日
   if(in_array(get_post_type(),array('post','attachment'))){
     $time_string='<time class="entry-date published updated" datetime="%1$s">%2$s</time>';
@@ -97,7 +98,7 @@ function wps_highlight_results($text){if(is_search()){$sr=get_query_var('s');$ke
 function twtreplace($content){$twtreplace=preg_replace('/([^a-zA-Z0-9-_&])@([0-9a-zA-Z_]+)/',"$1<a href=\"http://twitter.com/$2\" target=\"_blank\" rel=\"nofollow\">@$2</a>",$content);return $twtreplace;}
 //本文中のURLをブログカードに変更する
 function url_to_hatena_blog_card($the_content){if(is_singular()){$res=preg_match_all('/^(<p>)?(<a.+?>)?https?:\/\/[-_.!~*\'()a-zA-Z0-9;\/?:\@&=+\$,%#]+(<\/a>)?(<\/p>)?(<br ? \/>)?$/im',$the_content,$m);
-    foreach($m[0] as $match){$url=strip_tags($match);$tag='<a class="embedly-card"href="'.$url.'"></a><script async src="//cdn.embedly.com/widgets/platform.js" charset="UTF-8"></script>';$the_content=preg_replace('{'.preg_quote($match).'}',$tag,$the_content,1);}
+    foreach($m[0] as $match){$url=strip_tags($match);if($myAmp):$tag='<a class="embedly-card"href="'.$url.'"></a>'else:$tag='<a class="embedly-card"href="'.$url.'"></a><script async src="//cdn.embedly.com/widgets/platform.js" charset="UTF-8"></script>';endif;$the_content=preg_replace('{'.preg_quote($match).'}',$tag,$the_content,1);}
   }
   return $the_content;}
 add_filter('the_content','url_to_hatena_blog_card');
