@@ -98,7 +98,7 @@ function wps_highlight_results($text){if(is_search()){$sr=get_query_var('s');$ke
 function twtreplace($content){$twtreplace=preg_replace('/([^a-zA-Z0-9-_&])@([0-9a-zA-Z_]+)/',"$1<a href=\"http://twitter.com/$2\" target=\"_blank\" rel=\"nofollow\">@$2</a>",$content);return $twtreplace;}
 //本文中のURLをブログカードに変更する
 function url_to_hatena_blog_card($the_content){if(is_singular()){$res=preg_match_all('/^(<p>)?(<a.+?>)?https?:\/\/[-_.!~*\'()a-zA-Z0-9;\/?:\@&=+\$,%#]+(<\/a>)?(<\/p>)?(<br ? \/>)?$/im',$the_content,$m);
-    foreach($m[0] as $match){$url=strip_tags($match);if($myAmp):$tag='<a class="embedly-card"href="'.$url.'"></a>'else:$tag='<a class="embedly-card"href="'.$url.'"></a><script async src="//cdn.embedly.com/widgets/platform.js" charset="UTF-8"></script>';endif;$the_content=preg_replace('{'.preg_quote($match).'}',$tag,$the_content,1);}
+    foreach($m[0] as $match){$url=strip_tags($match);if($myAmp):$tag='<a class="embedly-card"href="'.$url.'"></a>';else:$tag='<a class="embedly-card"href="'.$url.'"></a><script async src="//cdn.embedly.com/widgets/platform.js" charset="UTF-8"></script>';endif;$the_content=preg_replace('{'.preg_quote($match).'}',$tag,$the_content,1);}
   }
   return $the_content;}
 add_filter('the_content','url_to_hatena_blog_card');
