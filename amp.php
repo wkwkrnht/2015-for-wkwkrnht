@@ -106,7 +106,7 @@
 			<div class="meta"><?php amp_entry_meta();?></div>
 		</header>
 		<section>
-			<?php if(empty($post->post_password)):echo apply_filters('the_content',$post->post_content);endif;?>
+			<?php //if(empty($post->post_password)):echo apply_filters('the_content',$post->post_content);endif;?>
 			<?php $content=apply_filters('the_content',get_the_content());$content=str_replace(']]>',']]&gt;',$content);$pattern='/<img/i';preg_match($pattern,$content,$matches);$append=$matches[0];$append='<amp-img layout="responsive"';$result=preg_replace($pattern,$append,$content);echo $result;?>
 			<?php $pattern='/<iframe/i';$append='<amp-iframe width="80px" height="100px" layout="responsive"';$content=preg_replace($pattern,$append,$content);?>
 			<?php $pattern='/<p>https:\/\/twitter.com\/.*\/status\/(.*).*<\/p>/i';$append='<p><amp-twitter width=592 height=472 layout="responsive" data-tweetid="$1"></amp-twitter></p>';$content=preg_replace($pattern,$append,$content);$pattern='/<blockquote class="twitter-tweet".*>.*<a href="https:\/\/twitter.com\/.*\/status\/(.*).*<\/blockquote>.*<script async src="\/\/platform.twitter.com\/widgets.js" charset="utf-8"><\/script>/i';$append='<p><amp-twitter width=592 height=472 layout="responsive" data-tweetid="$1"></amp-twitter></p>';$content=preg_replace($pattern,$append,$content);?>
