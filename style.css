@@ -39,9 +39,7 @@ iframe[src*="cdn.embedly.com"]{background-color:#ebeef7;box-shadow:0 2px 2px 0 #
 .prev.page-numbers::before{content:"＜";}
 .next.page-numbers::before{content:"＞";}
 .prev.page-numbers,.next.page-numbers{color:#fff;background-color:#ffcc00;}
-.page-links a,.page-links>span{border:1px solid #eaeaea;font-size:20px;font-size:2rem;width:3em;height:3em;line-height:3;margin:0 0.3333em 0.3333em 0;text-align:center;display:inline-block;}
 .page-links a{color:#fff;border-color:#ffcc00;background-color:#ffcc00;}
-.page-links{margin-bottom:1.3333em;clear:both;}
 /*記事下&関連記事*/
 #slide{max-width:100%;overflow:hidden;}
 #slide .content{flex-direction:row;-webkit-flex-direction:row;justify-content:flex-start;-webkit-justify-content:flex-start;display:flex;display:-webkit-flex;}
