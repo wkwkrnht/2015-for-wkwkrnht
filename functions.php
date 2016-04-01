@@ -1,4 +1,6 @@
 <?php add_action('wp_enqueue_scripts','theme_enqueue_styles');function theme_enqueue_styles(){wp_enqueue_style('parent-style',get_template_directory_uri().'/style.css');}
+//プラグイン判別
+function is_active_plugin($path){$active_plugins=get_option('active_plugins');if(is_array($active_plugins)){foreach($active_plugins as $value){if($value==$path)return true;}}return false;}
 $myAmp=false;$string=$post->post_content;$nowurl=$_SERVER["REQUEST_URI"];if(strpos($nowurl,'amp')!==false&&strpos($string,'<script>')===false&&is_single()):$myAmp=true;endif;
 /*外部スクリプト読み込み
 function _script(){wp_enqueue_script('','',array(),false,false);}
@@ -60,8 +62,8 @@ function fetch_thumbnail_image($matches,$key,$post_content,$post_id){
   }else{if(WP_Filesystem()){global $wp_filesystem;$file_data=@$wp_filesystem->get_contents($imageUrl);}}
   if(!$file_data){return null;}
   if(WP_Filesystem()){global $wp_filesystem;$wp_filesystem->put_contents($new_file,$file_data);}
-  $stat=stat(dirname($new_file));$perms=$stat['mode'] & 0000666;
-  @ chmod($new_file,$perms );
+  $stat=stat(dirname($new_file));$perms=$stat['mode']&0000666;
+  @ chmod($new_file,$perms);
   $wp_filetype=wp_check_filetype($filename,$mimes);
   extract($wp_filetype);
   if((!$type||!$ext)&&!current_user_can('unfiltered_upload')){return null;}
@@ -97,8 +99,8 @@ function ruby_setup(){global $allowedposttags;foreach(array('ruby','rp','rt') as
 function wps_highlight_results($text){if(is_search()){$sr=get_query_var('s');$keys=explode(" ",$sr);$text=preg_replace('/('.implode('|',$keys) .')/iu','<span class="marker">'.$sr.'</span>',$text);}return $text;}
 function twtreplace($content){$twtreplace=preg_replace('/([^a-zA-Z0-9-_&])@([0-9a-zA-Z_]+)/',"$1<a href=\"http://twitter.com/$2\" target=\"_blank\" rel=\"nofollow\">@$2</a>",$content);return $twtreplace;}
 //本文中のURLをブログカードに変更する
-function url_to_hatena_blog_card($the_content){if(is_singular()){$res=preg_match_all('/^(<p>)?(<a.+?>)?https?:\/\/[-_.!~*\'()a-zA-Z0-9;\/?:\@&=+\$,%#]+(<\/a>)?(<\/p>)?(<br ? \/>)?$/im',$the_content,$m);
-    foreach($m[0] as $match){$url=strip_tags($match);if($myAmp):$tag='<a class="embedly-card"href="'.$url.'"></a>';else:$tag='<a class="embedly-card"href="'.$url.'"></a><script async src="//cdn.embedly.com/widgets/platform.js" charset="UTF-8"></script>';endif;$the_content=preg_replace('{'.preg_quote($match).'}',$tag,$the_content,1);}
+function url_to_hatena_blog_card($the_content){if(is_singular()){$res=preg_match_all('/^(<p>)?https?:\/\/[-_.!~*\'()a-zA-Z0-9;\/?:\@&=+\$,%#]+(<\/p>)?(<br ? \/>)?$/im',$the_content,$m);
+    foreach($m[0] as $match){$url=strip_tags($match);$tag='<a class="embedly-card"href="'.$url.'"></a><script async src="//cdn.embedly.com/widgets/platform.js" charset="UTF-8"></script>';$the_content=preg_replace('{'.preg_quote($match).'}',$tag,$the_content,1);}
   }
   return $the_content;}
 add_filter('the_content','url_to_hatena_blog_card');
@@ -199,7 +201,7 @@ add_action('manage_posts_custom_column','customize_admin_add_column',10,2);
 add_action('customize_register','theme_customize');
 function theme_customize($wp_customize){
     $wp_customize->add_section('sns_section',array('title'=>'独自設定','priority'=>1,'description'=>'セクションの詳細',));
-	$wp_customize->add_setting('Adminnav_Dsp',array('type'=>'option',));
+	$wp_customize->add_setting('Adminnav_Dsp',array('type'=>'theme_mod',));
     $wp_customize->add_control('Adminnav_Dsp',array('section'=>'sns_section','settings'=>'Adminnav_Dsp','label'=>'管理者向けメニューを表示する','type'=>'checkbox'));
 	$wp_customize->add_setting('entryfooter_txt',array('type'=>'option',));
     $wp_customize->add_control('entryfooter_txt',array('section'=>'sns_section','settings'=>'entryfooter_txt','label'=>'エントリーフッターのタイトルを入力する','type'=>'text'));
@@ -219,15 +221,17 @@ function theme_customize($wp_customize){
     $wp_customize->add_control('facebookr_appid',array('section'=>'sns_section','settings'=>'facebookr_appid','label'=>'facebookのappidを表示する','type'=>'text'));
     $wp_customize->add_setting('facebookr_admins',array('type'=>'option',));
     $wp_customize->add_control('facebookr_admins',array('section'=>'sns_section','settings'=>'facebookr_admins','label'=>'facebookのadminidを指定する','type'=>'text'));
-    $wp_customize->add_setting('Pushnotice_Dsp',array('type'=>'option',));
+    $wp_customize->add_setting('Pushnotice_Dsp',array('type'=>'theme_mod',));
     $wp_customize->add_control('Pushnotice_Dsp',array('section'=>'sns_section','settings'=>'Pushnotice_Dsp','label'=>'プッシュ通知の登録URLを指定する','type'=>'checkbox'));
     $wp_customize->add_setting('Pushnotice_URL',array('type'=>'option',));
     $wp_customize->add_control('Pushnotice_URL',array('section'=>'sns_section','settings'=>'Pushnotice_URL','label'=>'プッシュ通知の登録URLを入力する','type'=>'text'));
+	$wp_customize->add_setting('Pushnotice_APIkey',array('type'=>'option',));
+    $wp_customize->add_control('Pushnotice_APIkey',array('section'=>'sns_section','settings'=>'Pushnotice_APIkey','label'=>'プッシュ通知のAPIkeyを入力する','type'=>'text'));
 	$wp_customize->add_setting('Disqus_ID',array('type'=>'option',));
     $wp_customize->add_control('Disqus_ID',array('section'=>'sns_section','settings'=>'Disqus_ID','label'=>'DisqusのIDを入力する','type'=>'text'));
 }
-function is_pushnotice_dsp(){return get_theme_mod('Pushnotice_Dsp');}
-function is_adminnav_dsp(){return get_theme_mod('Adminnav_Dsp');}
+function is_pushnotice_dsp(){return get_theme_mod('Pushnotice_Dsp','false');}
+function is_adminnav_dsp(){return get_theme_mod('Adminnav_Dsp','false');}
 //プロフィール欄追加(the_author_meta('twitter')で表示)
 function my_new_contactmethods($contactmethods){
   $contactmethods['TEL']='TEL';

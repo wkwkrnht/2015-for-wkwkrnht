@@ -1,2 +1,3 @@
+function subscribe(){OneSignal.push(["registerForPushNotifications"]);event.preventDefault();}var OneSignal=OneSignal||[];OneSignal.push(["init",{appId:"<?php echo get_option('Pushnotice_APIkey');?>",autoRegister:false}]);OneSignal.push(function(){if(!OneSignal.isPushNotificationsSupported()){return;}OneSignal.isPushNotificationsEnabled(function(isEnabled){if(isEnabled){}else{document.getElementsByClass("pushnotice").textContent="Subscribe to Notifications";document.getElementsByClass("pushnotice").addEventListener('click',subscribe);}});});
 jQuery(document).ready(function(){jQuery('#movetop').click(function(){jQuery('body,html').animate({scrollTop:0},500);});});
 jQuery(document).ready(function(){jQuery('code').each(function(i,block){hljs.highlightBlock(block);});});
