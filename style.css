@@ -69,10 +69,10 @@ iframe[src*="cdn.embedly.com"]{background-color:#ebeef7;box-shadow:0 2px 2px 0 #
 /*admin-nav*/
 #admin-navigation{display:block;margin:0 20% 5%;}
 a #admin-navigation{padding:0 2.5em;}
-.loginbutton::before,.adminmenubutton::before,.postnewbutton::before{font-family:"FontAwesome";font-size:24px;}
+.loginbutton::before,.adminmenubutton::before,.postnewbutton::before,.wlwedit::before,.post-edit-link::before{font-family:"FontAwesome";font-size:24px;}
 .loginbutton::before{content:"\f090";}
 .adminmenubutton::before{content:"\f013";}
-.wlwedit::before,.postnewbutton::before{content:"\f040";color:green;}
+.postnewbutton::before,.wlwedit::before,.post-edit-link::before{content:"\f040";color:green;}
 .postnewbutton::after{content:"\f067";font-family:"FontAwesome";font-size:16px;position:relative;right:.5em;bottom:0;}
 /*social-nav*/
 .social-navigation a::before{content:"\f07b";font-family:"FontAwesome";font-size:24px;position:absolute;top:0;left:0;}
