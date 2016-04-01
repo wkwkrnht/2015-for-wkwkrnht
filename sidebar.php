@@ -1,5 +1,5 @@
 <section id="secondary" class="secondary">
-	<?php get_template_part('parts/adminnav');//if(is_adminnav_dsp()):get_template_part('parts/adminnav');endif;?>
+	<?php if(is_adminnav_dsp()):get_template_part('parts/adminnav');endif;//get_template_part('parts/adminnav');?>
 	<?php if(has_nav_menu('primary')):?>
 		<nav id="site-navigation" class="main-navigation" role="navigation">
 			<?php wp_nav_menu(array('menu_class'=>'nav-menu','theme_location'=>'primary',));?>
