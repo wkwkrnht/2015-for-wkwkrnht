@@ -5,7 +5,7 @@
 	<?php get_header();?>
 		<div id="primary" class="content-area">
 			<main id="main" class="site-main" role="main">
-			<?php while(have_posts()):the_post();get_template_part('content',get_post_format());
+			<?php while(have_posts()):the_post();if(is_page()||is_single()):get_template_part('content',get_post_format());else:get_template_part('content-card',get_post_format());endif;
 				if(comments_open()||get_comments_number()):comments_template();endif;
 				the_post_navigation(array(
 					'next_text'=>'<span class="meta-nav" aria-hidden="true">' . __('Next','twentyfifteen') . '</span> ' . '<span class="screen-reader-text">' . __('Next post:','twentyfifteen') . '</span> ' . '<span class="post-title">%title</span>',
