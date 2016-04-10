@@ -52,6 +52,7 @@
 		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)}(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 		ga('create',<?php echo get_option('Google_Analytics');?>,'auto');ga('send','pageview');
 	</script>
+	<script async defer src="//assets.pinterest.com/js/pinit.js"></script>
 	<!--[if lt IE 9]>
 	<script src="<?php echo esc_url(get_template_directory_uri());?>/js/html5.js"></script>
 	<![endif]-->

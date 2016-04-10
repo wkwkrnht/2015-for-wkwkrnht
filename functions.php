@@ -1,11 +1,11 @@
 <?php add_action('wp_enqueue_scripts','theme_enqueue_styles');function theme_enqueue_styles(){wp_enqueue_style('parent-style',get_template_directory_uri().'/style.css');}
-//プラグイン判別
+//判別
 function is_active_plugin($path){$active_plugins=get_option('active_plugins');if(is_array($active_plugins)){foreach($active_plugins as $value){if($value==$path)return true;}}return false;}
 $myAmp=false;$string=$post->post_content;$nowurl=$_SERVER["REQUEST_URI"];if(strpos($nowurl,'amp')!==false&&strpos($string,'<script>')===false&&is_single()):$myAmp=true;endif;
 /*外部スクリプト読み込み
 function _script(){wp_enqueue_script('','',array(),false,false);}
 add_action('wp_enqueue_script','_scripts');*/
-// hide /?ver=&emoji&error add_action&標準埋め込み&Webfont stop
+//消去 /?ver=&emoji&error add_action&標準埋め込み&genericons
 function wps_login_error() {remove_action('login_head','wp_shake_js',12);}
 function vc_remove_wp_ver_css_js($src){if(strpos($src,'ver='))$src=remove_query_arg('ver',$src);return $src;}
 function dequeue_genericons(){wp_dequeue_style('genericons');}
@@ -90,16 +90,11 @@ add_action('draft_to_publish','auto_post_thumbnail_image');
 add_action('new_to_publish','auto_post_thumbnail_image');
 add_action('pending_to_publish','auto_post_thumbnail_image');
 add_action('future_to_publish','auto_post_thumbnail_image');
-//カテゴリー説明文をメタ化
-function get_meta_description_from_category(){$cate_desc=trim(strip_tags(category_description()));if($cate_desc){return $cate_desc;}$cate_desc='「' . single_cat_title('',false) . '」の記事一覧です。' . get_bloginfo('description');return $cate_desc;}
-function get_meta_keyword_from_category(){return single_cat_title('',false) . ',ブログ,記事一覧';}
-function get_mtime($format){$mtime=get_the_modified_time('Ymd');$ptime=get_the_time('Ymd');if($ptime > $mtime){return get_the_time($format);}elseif($ptime === $mtime){return null;}else{return get_the_modified_time($format);}}
-//URL→はてなブログカード&@hoge→twitterリンク&キーワードハイライト&ルビサポート
+//URL→ブログカード&@hoge→twitterリンク&キーワードハイライト&ルビサポート
 function ruby_setup(){global $allowedposttags;foreach(array('ruby','rp','rt') as $tag )if(!isset($allowedposttags[$tag]))$allowedposttags[$tag]=array();}
 function wps_highlight_results($text){if(is_search()){$sr=get_query_var('s');$keys=explode(" ",$sr);$text=preg_replace('/('.implode('|',$keys) .')/iu','<span class="marker">'.$sr.'</span>',$text);}return $text;}
 function twtreplace($content){$twtreplace=preg_replace('/([^a-zA-Z0-9-_&])@([0-9a-zA-Z_]+)/',"$1<a href=\"http://twitter.com/$2\" target=\"_blank\" rel=\"nofollow\">@$2</a>",$content);return $twtreplace;}
-//本文中のURLをブログカードに変更する
-function url_to_hatena_blog_card($the_content){if(is_singular()){$res=preg_match_all('/^(<p>)?https?:\/\/[-_.!~*\'()a-zA-Z0-9;\/?:\@&=+\$,%#]+(<\/p>)?(<br ? \/>)?$/im',$the_content,$m);
+function url_to_hatena_blog_card($the_content){if(is_singular()){$res=preg_match_all('/^(<p>)?(<a.+?>)?https?:\/\/[-_.!~*\'()a-zA-Z0-9;\/?:\@&=+\$,%#]+(<\/a>)?(<\/p>)?(<br ? \/>)?$/im',$the_content,$m);
     foreach($m[0] as $match){$url=strip_tags($match);$tag='<a class="embedly-card"href="'.$url.'"></a><script async src="//cdn.embedly.com/widgets/platform.js" charset="UTF-8"></script>';$the_content=preg_replace('{'.preg_quote($match).'}',$tag,$the_content,1);}
   }
   return $the_content;}
@@ -141,6 +136,19 @@ class sns_sharebutton extends WP_Widget{
 	public function update($new_instance,$old_instance){$instance=array();$instance['title']=(!empty($new_instance['title'])) ? strip_tags($new_instance['title']):'';return $instance;}
 }
 add_action('widgets_init',function(){register_widget('sns_sharebutton');});
+class author-bio extends WP_Widget{
+    function __construct(){parent::__construct('author-bio','投稿者カード',array('description'=>'投稿者のプロフィールカード',));}
+    public function widget($args,$instance){echo $args['before_widget'];get_template_part('parts/author-bio');echo $args['after_widget'];}
+    public function form($instance){$title=!empty($instance['title']) ? $instance['title']:__( '','text_domain');?>
+		<p>
+		<label for="<?php echo $this->get_field_id('title');?>"><?php _e('タイトル:');?></label> 
+		<input class="widefat" id="<?php echo $this->get_field_id('title');?>" name="<?php echo $this->get_field_name('title');?>" type="text" value="<?php echo esc_attr($title);?>">
+		</p>
+		<?php 
+	}
+	public function update($new_instance,$old_instance){$instance=array();$instance['title']=(!empty($new_instance['title']))?strip_tags($new_instance['title']):'';return $instance;}
+}
+add_action('widgets_init',function(){register_widget('author-bio');});
 class related_posts extends WP_Widget{
     function __construct(){parent::__construct('related_posts','関連記事',array('description'=>'関連記事',));}
     public function widget($args,$instance){echo $args['before_widget'];get_template_part('parts/related');echo $args['after_widget'];}
@@ -186,13 +194,10 @@ function my_archives_link($link_html){
     }else{if((intval($month) == 12)AND($currentYear != $year)){$linkYear='<br/>'.sprintf($yearHtml,$year);}}
     return sprintf($linkString,$linkYear,$ym[1]);}
 add_filter('get_archives_link','my_archives_link');
-//add pic&©&予約記事 to RSS
-function rss_post_thumbnail($content){global $post;if(has_post_thumbnail($post->ID)){$content = '<p>' . get_the_post_thumbnail($post->ID) . '</p>' . $content;}return $content;}
-function rss_feed_copyright($content){$content=$content.'<a href="' . home_url() . '"><p>Copyright &copy;' . get_bloginfo('name') . 'All Rights Reserved.</p></a>';return $content;}
-add_filter('the_excerpt_rss','rss_feed_copyright');
-add_filter('the_content_feed','rss_feed_copyright');
-add_filter('the_excerpt_rss','rss_post_thumbnail');
-add_filter('the_content_feed','rss_post_thumbnail');
+//カテゴリー説明文をメタ化
+function get_meta_description_from_category(){$cate_desc=trim(strip_tags(category_description()));if($cate_desc){return $cate_desc;}$cate_desc='「' . single_cat_title('',false) . '」の記事一覧です。' . get_bloginfo('description');return $cate_desc;}
+function get_meta_keyword_from_category(){return single_cat_title('',false) . ',ブログ,記事一覧';}
+function get_mtime($format){$mtime=get_the_modified_time('Ymd');$ptime=get_the_time('Ymd');if($ptime > $mtime){return get_the_time($format);}elseif($ptime === $mtime){return null;}else{return get_the_modified_time($format);}}
 //カスタマイザー弄り&投稿記事一覧にアイキャッチ画像を表示
 function customize_admin_manage_posts_columns($columns){$columns['thumbnail']=__('Thumbnail');return $columns;}
 function customize_admin_add_column($column_name,$post_id){if('thumbnail'==$column_name){$thum=get_the_post_thumbnail($post_id,array(100,100));}if(isset($thum)&&$thum){echo $thum;}}
@@ -240,22 +245,25 @@ function my_new_contactmethods($contactmethods){
   $contactmethods['Graveter']='Graveter';
   $contactmethods['LINE']='LINE';
   $contactmethods['YO!']='YO!';
-	$contactmethods['twitter']='Twitter';
-	$contactmethods['facebook']='Facebook';
+  $contactmethods['twitter']='Twitter';
+  $contactmethods['facebook']='Facebook';
+  $contactmethods['Linkedin']='Linkedin';
   $contactmethods['Google+']='Google+';
   $contactmethods['Github']='Github';
   $contactmethods['Bitbucket']='Bitbucket';
   $contactmethods['Codepen']='Codepen';
+  $contactmethods['JSbuddle']='JSbuddle';
   $contactmethods['Quita']='Quita';
   $contactmethods['xda']='xda';
   $contactmethods['hatenablog']='はてなブログ';
-  $contactmethods['hatenadiary6']='はてなダイアリー';
+  $contactmethods['hatenadiary']='はてなダイアリー';
   $contactmethods['hatebu']='はてなブックマーク';
+  $contactmethods['Pocket']='Pocket';
   $contactmethods['ameba']='アメーバ';
   $contactmethods['fc2']='fc2';
-	$contactmethods['mixi']='mixi';
+  $contactmethods['mixi']='mixi';
   $contactmethods['Instagram']='Instagram';
-	$contactmethods['Flickr']='Flickr';
+  $contactmethods['Flickr']='Flickr';
   $contactmethods['FourSquare']='FourSquare';
   $contactmethods['Swarm']='Swarm';
   $contactmethods['Steam']='Steam';
@@ -270,6 +278,7 @@ function my_new_contactmethods($contactmethods){
   $contactmethods['BANDAINAMCOID']='BANDAINAMCOID';
   $contactmethods['SEGAID']='SEGAID';
   $contactmethods['vine']='vine';
+  $contactmethods['vimeo']='vimeo';
   $contactmethods['YouTube']='YouTube';
   $contactmethods['USTREAM']='USTREAM';
   $contactmethods['Twitch']='Twitch';
@@ -282,7 +291,7 @@ function my_new_contactmethods($contactmethods){
   $contactmethods['note']='note';
   $contactmethods['Pxiv']='Pxiv';
   $contactmethods['Tumblr']='Tumblr';
-  $contactmethods['Linkedin']='Linkedin';
+  $contactmethods['Blogger']='Blogger';
   $contactmethods['livedoor']='livedoor';
   $contactmethods['wordpress.com']='wordpress.com';
   $contactmethods['wordpress.org']='wordpress.org';
@@ -291,9 +300,17 @@ function my_new_contactmethods($contactmethods){
   $contactmethods['GoogleAdsense']='GoogleAdsense';
   $contactmethods['AmazonAdsense']='Amazonアフィリエイト';
   $contactmethods['Amazonlist']='Amazonの欲しいものリスト';
-  $contactmethods['Yahooaction']='Yahooオークション';
+  $contactmethods['Yahooaction']='Yahoo!オークション';
   $contactmethods['Rakutenaction']='楽天オークション';
+  $contactmethods['Rakuma']='ラクマ';
   $contactmethods['Merukari']='メルカリ';
   $contactmethods['Bitcoin']='Bitcoin';
-	return $contactmethods;}
+  return $contactmethods;}
 add_filter('user_contactmethods','my_new_contactmethods',10,1);
+//add pic&©&予約記事 to RSS
+function rss_post_thumbnail($content){global $post;if(has_post_thumbnail($post->ID)){$content = '<p>' . get_the_post_thumbnail($post->ID) . '</p>' . $content;}return $content;}
+function rss_feed_copyright($content){$content=$content.'<a href="' . home_url() . '"><p>Copyright &copy;' . get_bloginfo('name') . 'All Rights Reserved.</p></a>';return $content;}
+add_filter('the_excerpt_rss','rss_feed_copyright');
+add_filter('the_content_feed','rss_feed_copyright');
+add_filter('the_excerpt_rss','rss_post_thumbnail');
+add_filter('the_content_feed','rss_post_thumbnail');

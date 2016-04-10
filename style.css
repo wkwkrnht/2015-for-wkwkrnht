@@ -11,7 +11,7 @@
 /*header&footer&cardstyle*/
 #bread{color:#ddd;}
 #bread .sp{color:#333;margin:0 .5em;}
-.page-header{border-left:15px solid #ffcc00;background-color:#fff;box-shadow:0 3px 2px 0 #999;}
+.page-header{border-left:15px solid #ffcc00;background-color:#fff;box-shadow:0 1px 6px rgba(0,0,0,.12);}
 .page-title{font-size:33px;}
 .entry-header{background-color:#f7f7f7;text-align:center;margin-bottom:15px;}
 .card-list{border-radius:8px;}
@@ -32,7 +32,7 @@
 .entry-content h3{border-left:10px solid #ffcc00;background-color:#fff;}
 .entry-content h4{border-bottom:8px solid #ffcc00;background-color:#fff;}
 .entry-content h2,.entry-content h3,.entry-content h4{min-height:45px;text-align:center;}
-iframe[src*="cdn.embedly.com"]{background-color:#ebeef7;box-shadow:0 2px 2px 0 #999;}
+iframe[src*="cdn.embedly.com"]{background-color:#ebeef7;box-shadow:0 1px 6px rgba(0,0,0,.12);}
 /*ページャー*/
 .prev.page-numbers::before,.prev.page-numbers::before{font-family:"Noto Serif" sans-serif;font-size:16px;}
 .prev.page-numbers::before{content:"＜";}
@@ -40,9 +40,9 @@ iframe[src*="cdn.embedly.com"]{background-color:#ebeef7;box-shadow:0 2px 2px 0 #
 .prev.page-numbers,.next.page-numbers{color:#fff;background-color:#ffcc00;}
 .page-links a{color:#fff;border-color:#ffcc00;background-color:#ffcc00;}
 /*記事下&関連記事*/
-#slide{max-width:100%;overflow:hidden;}
-#slide .content{flex-direction:row;-webkit-flex-direction:row;justify-content:flex-start;-webkit-justify-content:flex-start;display:flex;display:-webkit-flex;}
-.related{max-width:150px;max-height:300px;border-radius:8px;margin:15px 8px 10px 0;background-color:#fff;box-shadow:0 2px 5px 0 #999;}
+#flex{max-width:100%;overflow:scroll;}
+#flex .content{flex-direction:row;-webkit-flex-direction:row;justify-content:flex-start;-webkit-justify-content:flex-start;display:flex;display:-webkit-flex;}
+.related{max-width:150px;max-height:300px;border-radius:8px;margin:15px 8px 10px 0;background-color:#fff;box-shadow:0 1px 6px rgba(0,0,0,.12);}
 .related .thumb{background-color:#ffcc00;max-height:150px;}
 .related .title{color:#333;font-size:18px;padding-top:20px;max-height:150px;text-align:center;}
 /*ボタン*/
@@ -137,4 +137,4 @@ a #admin-navigation{padding:0 2.5em;}
     /*http://wkwkrnht.wp.xdomain.jp/wp-content/themes/2015-for-wkwkrnht*/
   }
   /*without phone*/
-  @media screen and (min-width:46.25em){.post,.nav-links{box-shadow:0 4px 4px 0 #999;}}
+  @media screen and (min-width:46.25em){.post,.nav-links{box-shadow:0 1px 6px rgba(0,0,0,.12);}}

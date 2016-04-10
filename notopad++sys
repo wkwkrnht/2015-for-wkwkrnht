@@ -10,7 +10,8 @@
             <File name="parts\adminnav.php" />
             <File name="parts\bread.php" />
             <File name="parts\related.php" />
-            <File name="parts\snsbutton.php" />
+			<File name="parts\followbutton.php" />
+            <File name="parts\sharebutton.php" />
             <File name="parts\author-bio.php" />
             <File name="parts\comments.php" />
         </Folder>
@@ -36,7 +37,7 @@
         <File name="content-search.php" />
         <File name="amp.php" />
         <File name="search.php" />
-		<File name="author.php" />
+        <File name="author.php" />
         <File name="screenshot.png" />
         <File name="notopad++sys" />
     </Project>
