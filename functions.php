@@ -136,8 +136,8 @@ class sns_sharebutton extends WP_Widget{
 	public function update($new_instance,$old_instance){$instance=array();$instance['title']=(!empty($new_instance['title'])) ? strip_tags($new_instance['title']):'';return $instance;}
 }
 add_action('widgets_init',function(){register_widget('sns_sharebutton');});
-class author-bio extends WP_Widget{
-    function __construct(){parent::__construct('author-bio','投稿者カード',array('description'=>'投稿者のプロフィールカード',));}
+class author_bio extends WP_Widget{
+    function __construct(){parent::__construct('author_bio','投稿者カード',array('description'=>'投稿者のプロフィールカード',));}
     public function widget($args,$instance){echo $args['before_widget'];get_template_part('parts/author-bio');echo $args['after_widget'];}
     public function form($instance){$title=!empty($instance['title']) ? $instance['title']:__( '','text_domain');?>
 		<p>
@@ -148,7 +148,7 @@ class author-bio extends WP_Widget{
 	}
 	public function update($new_instance,$old_instance){$instance=array();$instance['title']=(!empty($new_instance['title']))?strip_tags($new_instance['title']):'';return $instance;}
 }
-add_action('widgets_init',function(){register_widget('author-bio');});
+add_action('widgets_init',function(){register_widget('author_bio');});
 class related_posts extends WP_Widget{
     function __construct(){parent::__construct('related_posts','関連記事',array('description'=>'関連記事',));}
     public function widget($args,$instance){echo $args['before_widget'];get_template_part('parts/related');echo $args['after_widget'];}

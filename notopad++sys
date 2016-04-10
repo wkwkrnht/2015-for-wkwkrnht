@@ -10,7 +10,7 @@
             <File name="parts\adminnav.php" />
             <File name="parts\bread.php" />
             <File name="parts\related.php" />
-			<File name="parts\followbutton.php" />
+            <File name="parts\followbutton.php" />
             <File name="parts\sharebutton.php" />
             <File name="parts\author-bio.php" />
             <File name="parts\comments.php" />
@@ -40,5 +40,49 @@
         <File name="author.php" />
         <File name="screenshot.png" />
         <File name="notopad++sys" />
+    </Project>
+    <Project name="2015 by wkwkrnht">
+        <Folder name="img">
+            <File name="C:\Users\xudho\Documents\GitHub\2015-by-wkwkrnht\img\embed.svg" />
+            <File name="C:\Users\xudho\Documents\GitHub\2015-by-wkwkrnht\img\hatebu.svg" />
+            <File name="C:\Users\xudho\Documents\GitHub\2015-by-wkwkrnht\img\line.svg" />
+            <File name="C:\Users\xudho\Documents\GitHub\2015-by-wkwkrnht\img\no-img.png" />
+        </Folder>
+        <Folder name="parts">
+            <File name="C:\Users\xudho\Documents\GitHub\2015-by-wkwkrnht\parts\adminnav.php" />
+            <File name="C:\Users\xudho\Documents\GitHub\2015-by-wkwkrnht\parts\author-bio.php" />
+            <File name="C:\Users\xudho\Documents\GitHub\2015-by-wkwkrnht\parts\bread.php" />
+            <File name="C:\Users\xudho\Documents\GitHub\2015-by-wkwkrnht\parts\comments.php" />
+            <File name="C:\Users\xudho\Documents\GitHub\2015-by-wkwkrnht\parts\editor-style.css" />
+            <File name="C:\Users\xudho\Documents\GitHub\2015-by-wkwkrnht\parts\followbutton.php" />
+            <File name="C:\Users\xudho\Documents\GitHub\2015-by-wkwkrnht\parts\related.php" />
+            <File name="C:\Users\xudho\Documents\GitHub\2015-by-wkwkrnht\parts\sharebutton.php" />
+            <File name="C:\Users\xudho\Documents\GitHub\2015-by-wkwkrnht\parts\snsbutton.php" />
+        </Folder>
+        <File name="C:\Users\xudho\Documents\GitHub\2015-by-wkwkrnht\.gitattributes" />
+        <File name="C:\Users\xudho\Documents\GitHub\2015-by-wkwkrnht\.gitignore" />
+        <File name="C:\Users\xudho\Documents\GitHub\2015-by-wkwkrnht\404.php" />
+        <File name="C:\Users\xudho\Documents\GitHub\2015-by-wkwkrnht\amp.php" />
+        <File name="C:\Users\xudho\Documents\GitHub\2015-by-wkwkrnht\archive.php" />
+        <File name="C:\Users\xudho\Documents\GitHub\2015-by-wkwkrnht\author.php" />
+        <File name="C:\Users\xudho\Documents\GitHub\2015-by-wkwkrnht\content-card.php" />
+        <File name="C:\Users\xudho\Documents\GitHub\2015-by-wkwkrnht\content-link.php" />
+        <File name="C:\Users\xudho\Documents\GitHub\2015-by-wkwkrnht\content-none.php" />
+        <File name="C:\Users\xudho\Documents\GitHub\2015-by-wkwkrnht\content-page.php" />
+        <File name="C:\Users\xudho\Documents\GitHub\2015-by-wkwkrnht\content-search.php" />
+        <File name="C:\Users\xudho\Documents\GitHub\2015-by-wkwkrnht\content.php" />
+        <File name="C:\Users\xudho\Documents\GitHub\2015-by-wkwkrnht\footer.php" />
+        <File name="C:\Users\xudho\Documents\GitHub\2015-by-wkwkrnht\functions.php" />
+        <File name="C:\Users\xudho\Documents\GitHub\2015-by-wkwkrnht\header.php" />
+        <File name="C:\Users\xudho\Documents\GitHub\2015-by-wkwkrnht\index.php" />
+        <File name="C:\Users\xudho\Documents\GitHub\2015-by-wkwkrnht\javascript.js" />
+        <File name="C:\Users\xudho\Documents\GitHub\2015-by-wkwkrnht\notepad++sys" />
+        <File name="C:\Users\xudho\Documents\GitHub\2015-by-wkwkrnht\page.php" />
+        <File name="C:\Users\xudho\Documents\GitHub\2015-by-wkwkrnht\screenshot.png" />
+        <File name="C:\Users\xudho\Documents\GitHub\2015-by-wkwkrnht\search.php" />
+        <File name="C:\Users\xudho\Documents\GitHub\2015-by-wkwkrnht\sidebar-8.php" />
+        <File name="C:\Users\xudho\Documents\GitHub\2015-by-wkwkrnht\sidebar.php" />
+        <File name="C:\Users\xudho\Documents\GitHub\2015-by-wkwkrnht\single.php" />
+        <File name="C:\Users\xudho\Documents\GitHub\2015-by-wkwkrnht\style.css" />
     </Project>
 </NotepadPlus>
