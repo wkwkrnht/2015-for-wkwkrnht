@@ -134,7 +134,7 @@ class PcTextWidgetItem extends WP_Widget{
 add_action('widgets_init',create_function('','return register_widget("PcTextWidgetItem");'));
 class sns_sharebutton extends WP_Widget{
     function __construct(){parent::__construct('sns_sharebutton','SNSシェアボタン',array('description'=>'SNSシェアボタン',));}
-    public function widget($args,$instance){echo $args['before_widget'];get_template_part('parts/snsbutton');echo $args['after_widget'];}
+    public function widget($args,$instance){echo $args['before_widget'];get_template_part('parts/sharebutton');echo $args['after_widget'];}
     public function form($instance){$title=!empty($instance['title']) ? $instance['title']:__( '','text_domain');?>
 		<p>
 		<label for="<?php echo $this->get_field_id('title');?>"><?php _e('タイトル:');?></label> 
@@ -145,7 +145,6 @@ class sns_sharebutton extends WP_Widget{
 	public function update($new_instance,$old_instance){$instance=array();$instance['title']=(!empty($new_instance['title'])) ? strip_tags($new_instance['title']):'';return $instance;}
 }
 add_action('widgets_init',function(){register_widget('sns_sharebutton');});
-
 class related_posts extends WP_Widget{
     function __construct(){parent::__construct('related_posts','関連記事',array('description'=>'関連記事',));}
     public function widget($args,$instance){echo $args['before_widget'];get_template_part('parts/related');echo $args['after_widget'];}
