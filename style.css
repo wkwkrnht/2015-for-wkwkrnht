@@ -45,7 +45,7 @@
 .related .thumb{background-color:#ffcc00;max-height:150px;}
 .related .title{color:#333;font-size:18px;padding-top:20px;max-height:150px;text-align:center;}
 /*ボタン*/
-.tweet::before,.fb-like::before,.fb-save::before,.g1::before,.pocket::before,.tumblr::before,.press-this::before,.linkedin::before,.evernote::before{color:#fff;font-size:40px;font-family:"FontAwesome";position:absolute;top:3%;}
+.tweet::before,.fb-like::before,.fb-save::before,.g1::before,.pocket::before,.tumblr::before,.printerest::before,.linkedin::before{color:#fff;font-size:40px;font-family:"FontAwesome";position:absolute;top:3%;}
 .button{width:60px;height:60px;border-radius:50%;margin:5px;box-shadow:0 1px 6px rgba(0,0,0,.12);float:left;position:relative;}
 .tweet::before{content:"\f099";left:16%;}
 .tweet{background-color:#00b8ff;}
@@ -53,21 +53,19 @@
 .fb-save::before{content:"\f02e";left:16%;}
 .fb{background-color:#0033ff;}
 .g1::before{content:"\f0d5";left:10%;}
-.g1{background-color:#ff0033;}
+.printerest,.g1{background-color:#ff0033;}
 .line{background-color:#2aff00;}
 .hatena{background-color:#3c7dd1;}
 .pocket::before{content:"\f265";left:13%;}
 .pocket{background-color:#ee4056;}
 .tumblr::before{content:"\f173";left:24%;}
 .tumblr{background-color:#2c4762;}
-.press-this::before{content:"\f079";left:14%;}
-.press-this{background-color:#0033ff;}
 .linkedin::before{content:"\f0e1";left:17.5%;}
 .linkedin{background-color:#0077b5;}
 .evernote::before{content:"\f249";left:16%;}
 .evernote{background-color:#2aff00;}
 .embedly{background-color:#1d78af;}
-.hatena-card::before{content:"\f14d";left:16%;}
+.printerest::before{content:"\f231";left:20%;}
 #movetop{color:#fff;background-color:#ffcc00;box-shadow:0 1px 6px rgba(0,0,0,.12);font-size:26px;font-weight:1200;border-radius:50%;line-height:70px;width:70px;height:70px;right:10px;bottom:20px;display:block;cursor:pointer;text-decoration:none;text-align:center;position:fixed;}
 /*admin-nav*/
 #admin-navigation{display:block;margin:0 20% 5%;}
@@ -128,7 +126,7 @@ a #admin-navigation{padding:0 2.5em;}
     .card-title{font-size:27px;}
     .card-meta{font-size:14px;}
     .nav-links{margin-top:10px;}
-    .tweet::before,.fb-like::before,.fb-save::before,.g1::before,.pocket::before,.tumblr::before,.press-thia::before,.linkedin::before,.evernote::before{font-size:28px;top:8%;}
+    .tweet::before,.fb-like::before,.fb-save::before,.g1::before,.pocket::before,.tumblr::before,.printerest::before,.linkedin::before{font-size:28px;top:8%;}
     #page-top,.button{width:50px;height:50px;}
     #page-top{line-height:50px;bottom:25px;}
   }
