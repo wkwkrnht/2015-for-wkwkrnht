@@ -1,7 +1,4 @@
 <?php add_action('wp_enqueue_scripts','theme_enqueue_styles');function theme_enqueue_styles(){wp_enqueue_style('parent-style',get_template_directory_uri().'/style.css');}
-//判別
-function is_active_plugin($path){$active_plugins=get_option('active_plugins');if(is_array($active_plugins)){foreach($active_plugins as $value){if($value==$path)return true;}}return false;}
-$myAmp=false;$string=$post->post_content;$nowurl=$_SERVER["REQUEST_URI"];if(strpos($nowurl,'amp')!==false&&strpos($string,'<script>')===false&&is_single()):$myAmp=true;endif;
 /*外部スクリプト読み込み
 function _script(){wp_enqueue_script('','',array(),false,false);}
 add_action('wp_enqueue_script','_scripts');*/
@@ -20,6 +17,18 @@ remove_action('wp_print_styles','print_emoji_styles');
 remove_action('parse_query','wp_oembed_parse_query');
 remove_action('wp_head','wp_oembed_remove_discovery_links');
 remove_action('wp_head','wp_oembed_remove_host_js');
+//oEmbed(by WPteam)対応
+function nendebcom_embed_analytics(){ ?>
+<script type="text/javascript">
+	function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)}(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+	ga('create',<?php echo get_option('Google_Analytics');?>,'auto');ga('send','pageview');
+</script>
+<?php }
+add_action('embed_head','nendebcom_embed_analytics');
+function oficialoembed_support_scripts(){if(is_singular(array('post','page'))){wp_enqueue_style('wp-embed-template-ie');wp_enqueue_style('oficialoembed_support_template',includes_url('css/wp-embed-template.min.css'));wp_enqueue_script('oficialoembed_support_template',includes_url('js/wp-embed-template.min.js'),array(),'',true);}}
+add_action('wp_enqueue_scripts','oficialoembed_support_scripts');
+add_filter('embed_thumbnail_image_size',function(){return 'thmb150';});
 //メタとサムネ(標準とAMP)
 function twentyfifteen_entry_meta(){if(is_sticky()&&is_home()&&!is_paged()):printf('<span class="sticky-post">%s</span>',__('Featured','twentyfifteen'));endif;//投稿を先頭に固定
   //投稿日&更新日
@@ -136,19 +145,7 @@ class sns_sharebutton extends WP_Widget{
 	public function update($new_instance,$old_instance){$instance=array();$instance['title']=(!empty($new_instance['title'])) ? strip_tags($new_instance['title']):'';return $instance;}
 }
 add_action('widgets_init',function(){register_widget('sns_sharebutton');});
-class author_bio extends WP_Widget{
-    function __construct(){parent::__construct('author_bio','投稿者カード',array('description'=>'投稿者のプロフィールカード',));}
-    public function widget($args,$instance){echo $args['before_widget'];get_template_part('parts/author-bio');echo $args['after_widget'];}
-    public function form($instance){$title=!empty($instance['title']) ? $instance['title']:__( '','text_domain');?>
-		<p>
-		<label for="<?php echo $this->get_field_id('title');?>"><?php _e('タイトル:');?></label> 
-		<input class="widefat" id="<?php echo $this->get_field_id('title');?>" name="<?php echo $this->get_field_name('title');?>" type="text" value="<?php echo esc_attr($title);?>">
-		</p>
-		<?php 
-	}
-	public function update($new_instance,$old_instance){$instance=array();$instance['title']=(!empty($new_instance['title']))?strip_tags($new_instance['title']):'';return $instance;}
-}
-add_action('widgets_init',function(){register_widget('author_bio');});
+
 class related_posts extends WP_Widget{
     function __construct(){parent::__construct('related_posts','関連記事',array('description'=>'関連記事',));}
     public function widget($args,$instance){echo $args['before_widget'];get_template_part('parts/related');echo $args['after_widget'];}

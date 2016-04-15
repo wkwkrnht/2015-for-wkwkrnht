@@ -32,7 +32,6 @@
 .entry-content h3{border-left:10px solid #ffcc00;background-color:#fff;}
 .entry-content h4{border-bottom:8px solid #ffcc00;background-color:#fff;}
 .entry-content h2,.entry-content h3,.entry-content h4{min-height:45px;text-align:center;}
-iframe[src*="cdn.embedly.com"]{background-color:#ebeef7;box-shadow:0 1px 6px rgba(0,0,0,.12);}
 /*ページャー*/
 .prev.page-numbers::before,.prev.page-numbers::before{font-family:"Noto Serif" sans-serif;font-size:16px;}
 .prev.page-numbers::before{content:"＜";}
@@ -46,34 +45,39 @@ iframe[src*="cdn.embedly.com"]{background-color:#ebeef7;box-shadow:0 1px 6px rgb
 .related .thumb{background-color:#ffcc00;max-height:150px;}
 .related .title{color:#333;font-size:18px;padding-top:20px;max-height:150px;text-align:center;}
 /*ボタン*/
-.tweet::before,.fblike::before,.g1::before,.pocket::before,.tumblr::before,.linkedin::before,.pushnotice::before{color:#fff;font-size:40px;font-family:"FontAwesome";position:absolute;top:3%;}
+.tweet::before,.fb-like::before,.fb-save::before,.g1::before,.pocket::before,.tumblr::before,.press-this::before,.linkedin::before,.evernote::before{color:#fff;font-size:40px;font-family:"FontAwesome";position:absolute;top:3%;}
 .button{width:60px;height:60px;border-radius:50%;margin:5px;box-shadow:0 1px 6px rgba(0,0,0,.12);float:left;position:relative;}
 .tweet::before{content:"\f099";left:16%;}
 .tweet{background-color:#00b8ff;}
-.fblike::before{content:"\f164";left:16%;}
-.fblike{background-color:#0033ff;}
+.fb-like::before{content:"\f164";left:16%;}
+.fb-save::before{content:"\f02e";left:16%;}
+.fb{background-color:#0033ff;}
 .g1::before{content:"\f0d5";left:10%;}
 .g1{background-color:#ff0033;}
 .line{background-color:#2aff00;}
-.hatebu{background-color:#3c7dd1;}
+.hatena{background-color:#3c7dd1;}
 .pocket::before{content:"\f265";left:13%;}
 .pocket{background-color:#ee4056;}
 .tumblr::before{content:"\f173";left:23%;}
 .tumblr{background-color:#2c4762;}
+.press-this::before{content:"\f079";left:17%;}
+.press-this{background-color:#0033ff;}
 .linkedin::before{content:"\f0e1";left:17%;}
 .linkedin{background-color:#0077b5;}
+.evernote::before{content:"\f249";left:16%;}
+.evernote{background-color:#2aff00;}
 .embedly{background-color:#1d78af;}
-.pushnotice::before{content:"\f0f3";left:16%;}
-.pushnotice{background-color:#ffc700;}
+.hatena-card::before{content:"\f14d";left:16%;}
 #movetop{color:#fff;background-color:#ffcc00;box-shadow:0 1px 6px rgba(0,0,0,.12);font-size:26px;font-weight:1200;border-radius:50%;line-height:70px;width:70px;height:70px;right:10px;bottom:20px;display:block;cursor:pointer;text-decoration:none;text-align:center;position:fixed;}
 /*admin-nav*/
 #admin-navigation{display:block;margin:0 20% 5%;}
 a #admin-navigation{padding:0 2.5em;}
-.loginbutton::before,.adminmenubutton::before,.postnewbutton::before,.wlwedit::before,.post-edit-link::before{font-family:"FontAwesome";font-size:24px;}
+.loginbutton::before,.adminmenubutton::before,.postnewbutton::before,.wlwedit::before,.post-edit-link::before,.pushnotice::before{font-family:"FontAwesome";font-size:24px;}
 .loginbutton::before{content:"\f090";}
 .adminmenubutton::before{content:"\f013";}
 .postnewbutton::before,.wlwedit::before,.post-edit-link::before{content:"\f040";color:green;}
 .postnewbutton::after{content:"\f067";font-family:"FontAwesome";font-size:16px;position:relative;right:.5em;bottom:0;}
+.pushnotice::before{content:"\f0f3";}
 /*social-nav*/
 .social-navigation a::before{content:"\f07b";font-family:"FontAwesome";font-size:24px;position:absolute;top:0;left:0;}
 .social-navigation a[href*="/feed"]::before,.social-navigation a[href*="/feed/"]::before{content:"\f09e";color:#2aff00;}
@@ -124,14 +128,16 @@ a #admin-navigation{padding:0 2.5em;}
     .card-title{font-size:27px;}
     .card-meta{font-size:14px;}
     .nav-links{margin-top:10px;}
-    .tweet::before,.fblike::before,.g1::before,.pocket::before,.thmblr::before,.linkedin::before{font-size:28px;top:8%;}
+    .tweet::before,.fb-like::before,.fb-save::before,.g1::before,.pocket::before,.tumblr::before,.press-thia::before,.linkedin::before,.evernote::before{font-size:28px;top:8%;}
     #page-top,.button{width:50px;height:50px;}
     #page-top{line-height:50px;bottom:25px;}
   }
   /*for PC*/
   @media screen and (min-width:55em){
-    #sidebar{width:26vw;z-index:2;}
-    body::before{width:26vw;z-index:2;box-shadow:0 1px 6px rgba(0,0,0,.12);}
+    #sidebar{width:27vw;z-index:2;}
+    body::before{width:27vw;z-index:2;box-shadow:0 1px 6px rgba(0,0,0,.12);}
+	.site-header{text-align:center;margin:20% 0;border-bottom:0;background-color:transparent;}
+	.social-navigation{margin:0 10% 20%;}
 	.entry-title{font-size:33px;margin:32px 0;}
     .card-meta{font-size:18px;}
     /*http://wkwkrnht.wp.xdomain.jp/wp-content/themes/2015-for-wkwkrnht*/

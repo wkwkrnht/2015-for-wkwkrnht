@@ -11,7 +11,7 @@
 				if($user_data->FAX){echo"<span>" . $user_data->FAX . "</span>";};
 				if($user_data->user_email){echo"<span>" . $user_data->->user_email . "</span>";};?>
 	</header>
-	<aside>
+	<aside class="account_list">
 		<h2>アカウント一覧</h2>
 			<h3 class="section-name">SNS</h3>
 			<p><?php $user_data=get_userdata($author);
@@ -86,8 +86,8 @@
 				if($user_data->Pxiv){echo $user_data->Pxiv . "<br />";};
 				if($user_data->Slideshare){echo $user_data->Slideshare . "<br />";};?></p>
 	</aside>
-	<section>
-		<h2><?php echo $curauth->nickname;?>の投稿:</h2>
+	<section class="author_article">
+		<h2><?php echo $curauth->nickname;?>の投稿</h2>
 		<ul>
 		<?php if(have_posts()):while(have_posts()):the_post();?>
 			<li>
@@ -95,7 +95,7 @@
 				<?php the_time('Y年n月j日');?>(カテゴリー:<?php the_category('&');?>)
 			</li>
 		<?php endwhile;else:?>
-			<p><?php _e('この作成者の投稿はありません。');?></p>
+			<p><?php _e('この作成者の投稿はまだありません。');?></p>
 		<?php endif;?>
 		</ul>
 	</section>

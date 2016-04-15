@@ -7,6 +7,7 @@
 	</header>
 	<section class="entry-content">
 		<?php the_content(sprintf(__('Continue reading %s','twentyfifteen'),the_title('<span class="screen-reader-text">','</span>',false)));
+			if(function_exists('print_embed_sharing_dialog')){print_embed_sharing_dialog();}
 			wp_link_pages(array(
 				'before'     =>'<div class="page-links"><span class="page-links-title">' . __('Pages:','twentyfifteen') . '</span>',
 				'after'      =>'</div>',

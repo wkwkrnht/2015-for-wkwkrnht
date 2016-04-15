@@ -53,8 +53,8 @@
 				"height": 800,
 				"width": 800
 				},
-			"datePublished": "<?php the_time('Y/m/d')?>",
-			"dateModified": "<?php the_modified_date('Y/m/d')?>",
+			"datePublished": "<?php the_time('Y/m/d');?>",
+			"dateModified": "<?php the_modified_date('Y/m/d');?>",
 			"author": {
 				"@type": "Person",
 				"name": "<?php the_author_meta('display_name');?>"
@@ -64,7 +64,7 @@
 				"name": "<?php bloginfo('name');?>",
 				"logo": {
 					"@type": "ImageObject",
-					"url": "<?php bloginfo('template_url');?>/img/logo.png",
+					"url": "<?php echo esc_url(get_template_directory_uri());?>/img/logo.png",
 					"width": 130,
 					"height": 53
 					}

@@ -10,7 +10,6 @@
             <File name="parts\adminnav.php" />
             <File name="parts\bread.php" />
             <File name="parts\related.php" />
-            <File name="parts\followbutton.php" />
             <File name="parts\sharebutton.php" />
             <File name="parts\author-bio.php" />
             <File name="parts\comments.php" />
