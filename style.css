@@ -39,7 +39,7 @@
 .prev.page-numbers,.next.page-numbers{color:#fff;background-color:#ffcc00;}
 .page-links a{color:#fff;border-color:#ffcc00;background-color:#ffcc00;}
 /*記事下&関連記事*/
-#flex{max-width:100%;overflow:scroll;}
+#flex{max-width:100%;overflow-y:auto;}
 #flex .content{flex-direction:row;-webkit-flex-direction:row;justify-content:flex-start;-webkit-justify-content:flex-start;display:flex;display:-webkit-flex;}
 .related{max-width:150px;max-height:300px;border-radius:8px;margin:15px 8px 10px 0;background-color:#fff;box-shadow:0 1px 6px rgba(0,0,0,.12);}
 .related .thumb{background-color:#ffcc00;max-height:150px;}
