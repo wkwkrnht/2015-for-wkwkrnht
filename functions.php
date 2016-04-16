@@ -26,7 +26,7 @@ function nendebcom_embed_analytics(){ ?>
 </script>
 <?php }
 add_action('embed_head','nendebcom_embed_analytics');
-function oficialoembed_support_scripts(){if(is_singular(array('post','page'))){wp_enqueue_style('wp-embed-template-ie');wp_enqueue_style('oficialoembed_support_template',includes_url('css/wp-embed-template.min.css'));wp_enqueue_script('oficialoembed_support_template',includes_url('js/wp-embed-template.min.js'),array(),'',true);}}
+function oficialoembed_support_scripts(){if(is_singular(array('post','page'))){wp_enqueue_style('wp-embed-template-ie');wp_enqueue_script('oficialoembed_support_template',includes_url('js/wp-embed-template.min.js'),array(),'',true);}}
 add_action('wp_enqueue_scripts','oficialoembed_support_scripts');
 add_filter('embed_thumbnail_image_size',function(){return 'thmb150';});
 //メタとサムネ(標準とAMP)
