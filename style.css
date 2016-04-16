@@ -49,22 +49,22 @@
 .button{width:60px;height:60px;border-radius:50%;margin:5px;box-shadow:0 1px 6px rgba(0,0,0,.12);float:left;position:relative;}
 .tweet::before{content:"\f099";left:17%;}
 .tweet{background-color:#00b8ff;}
-.fb-like::before{content:"\f164";left:17%;}
+.fb-like::before{content:"\f164";left:18%;}
 .fb{background-color:#0033ff;}
 .g1::before{content:"\f0d5";left:10%;}
 .printerest,.g1{background-color:#ff0033;}
 .line{background-color:#2aff00;}
-.hatebu::before{content:"\f02e";left:20%;}
+.hatebu::before{content:"\f02e";left:22%;}
 .hatena{background-color:#3c7dd1;}
-.pocket::before{content:"\f265";left:13%;}
+.pocket::before{content:"\f265";left:14%;}
 .pocket{background-color:#ee4056;}
-.tumblr::before{content:"\f173";left:25%;}
+.tumblr::before{content:"\f173";left:26%;}
 .tumblr{background-color:#2c4762;}
 .linkedin::before{content:"\f0e1";left:18%;}
 .linkedin{background-color:#0077b5;}
-.embedly::before{content:"\f1e0";left:19%;}
+.embedly::before{content:"\f1e0";left:18%;}
 .embedly{background-color:#1d78af;}
-.printerest::before{content:"\f231";left:22%;}
+.printerest::before{content:"\f231";left:24%;}
 #movetop{color:#fff;background-color:#ffcc00;box-shadow:0 1px 6px rgba(0,0,0,.12);font-size:26px;font-weight:1200;border-radius:50%;line-height:70px;width:70px;height:70px;right:10px;bottom:20px;display:block;cursor:pointer;text-decoration:none;text-align:center;position:fixed;}
 /*admin-nav*/
 #admin-navigation{display:block;margin:0 20% 5%;}
@@ -181,14 +181,14 @@ html[dir="rtl"] .wp-embed-share-tab-button+.wp-embed-share-tab-button{margin:0;p
     .card-title{font-size:27px;}
     .card-meta{font-size:14px;}
     .nav-links{margin-top:10px;}
-    .tweet::before,.fb-like::before,.fb-save::before,.g1::before,.pocket::before,.tumblr::before,.printerest::before,.linkedin::before{font-size:30px;top:8%;}
+    .tweet::before,.fb-like::before,.g1::before,.linkedin::before,.pocket::before,.hatebu::before,.tumblr::before,.printerest::before,.embedly::before{font-size:30px;top:8%;}
     #page-top,.button{width:50px;height:50px;}
     #page-top{line-height:50px;bottom:25px;right:15px;}
   }
   /*for PC*/
   @media screen and (min-width:55em){
     #sidebar{width:27vw;z-index:2;}
-    body::before{width:27vw;z-index:2;box-shadow:0 1px 6px rgba(0,0,0,.12);}
+    body::before{width:27vw;z-index:2;box-shadow:0 0 50px 10px rgba(0,0,0,.12);}
 	.site-header{text-align:center;margin:20% 0;border-bottom:0;background-color:transparent;}
 	.social-navigation{margin:0 10% 20%;}
 	.entry-title{font-size:33px;margin:32px 0;}
@@ -196,4 +196,4 @@ html[dir="rtl"] .wp-embed-share-tab-button+.wp-embed-share-tab-button{margin:0;p
     /*http://wkwkrnht.wp.xdomain.jp/wp-content/themes/2015-for-wkwkrnht*/
   }
   /*without phone*/
-  @media screen and (min-width:46.25em){.post,.nav-links{box-shadow:0 6px 3px #999;}}
+  @media screen and (min-width:46.25em){.post,.nav-links{box-shadow:0px 0px 50px 10px #999;}}
