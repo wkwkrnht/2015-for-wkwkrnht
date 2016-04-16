@@ -104,6 +104,8 @@ function url_to_hatena_blog_card($the_content){if(is_singular()){$res=preg_match
   }
   return $the_content;}
 add_filter('the_content','url_to_hatena_blog_card');
+function url_to_embedly($atts){extract(shortcode_atts(array('url'=>'',),$atts));$contnt='<a class="embedly-card" href="''"></a><script async="" charset="UTF-8" src="//cdn.embedly.com/widgets/platform.js"></script>';return $content;}
+add_shortcode('hoge','url_to_embedly');
 add_filter('the_content','twtreplace');
 add_filter('comment_text','twtreplace');
 add_filter('the_title','wps_highlight_results');
@@ -112,7 +114,7 @@ add_action('after_setup_theme','ruby_setup');
 function appthemes_add_quicktags(){
     if(wp_script_is('quicktags')){ ?>
     <script type="text/javascript">
-		QTags.addButton('qt-embedly','embedly','<a class="embedly-card" href="','"></a><script async src="//cdn.embedly.com/widgets/platform.js" charset="UTF-8"></script>');
+		QTags.addButton('qt-embedly','embedly','[url_to_embedly url=',']');
 		QTags.addButton('qt-hatenablogcard','はてなブログカード','<iframe class="hatenablogcard" src="http://hatenablog.com/embed?url=','" frameborder="0" scrolling="no"></iframe>');
 		QTags.addButton('qt-marker','マーカー','<span class="marker">','</span>');
     </script>
@@ -231,8 +233,8 @@ function theme_customize($wp_customize){
     $wp_customize->add_control('Pushnotice_Dsp',array('section'=>'sns_section','settings'=>'Pushnotice_Dsp','label'=>'プッシュ通知の登録URLを指定する','type'=>'checkbox'));
     $wp_customize->add_setting('Pushnotice_URL',array('type'=>'option',));
     $wp_customize->add_control('Pushnotice_URL',array('section'=>'sns_section','settings'=>'Pushnotice_URL','label'=>'プッシュ通知の登録URLを入力する','type'=>'text'));
-	$wp_customize->add_setting('Pushnotice_APIkey',array('type'=>'option',));
-    $wp_customize->add_control('Pushnotice_APIkey',array('section'=>'sns_section','settings'=>'Pushnotice_APIkey','label'=>'プッシュ通知のAPIkeyを入力する','type'=>'text'));
+	$wp_customize->add_setting('Onesignal_APIkey',array('type'=>'option',));
+    $wp_customize->add_control('Onesignal_APIkey',array('section'=>'sns_section','settings'=>'Onesignal_APIkey','label'=>'OnesignalのAPIkeyを入力する','type'=>'text'));
 	$wp_customize->add_setting('Disqus_ID',array('type'=>'option',));
     $wp_customize->add_control('Disqus_ID',array('section'=>'sns_section','settings'=>'Disqus_ID','label'=>'DisqusのIDを入力する','type'=>'text'));
 }
