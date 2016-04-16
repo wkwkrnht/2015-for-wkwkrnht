@@ -189,7 +189,7 @@ html[dir="rtl"] .wp-embed-share-tab-button+.wp-embed-share-tab-button{margin:0;p
   /*for PC*/
   @media screen and (min-width:55em){
     #sidebar{width:27vw;z-index:2;}
-    body::before{width:27vw;z-index:2;box-shadow:0 0 30px 10px rgba(0,0,0,.12);}
+    body::before{width:27vw;z-index:2;box-shadow:0 0 20px 5px rgba(0,0,0,.12);}
 	.site-header{text-align:center;margin:20% 0;border-bottom:0;background-color:transparent;}
 	.social-navigation{margin:0 10% 20%;}
 	.entry-title{font-size:33px;margin:32px 0;}
@@ -197,4 +197,4 @@ html[dir="rtl"] .wp-embed-share-tab-button+.wp-embed-share-tab-button{margin:0;p
     /*http://wkwkrnht.wp.xdomain.jp/wp-content/themes/2015-for-wkwkrnht*/
   }
   /*without phone*/
-  @media screen and (min-width:46.25em){.post,.nav-links{box-shadow:0 0 30px 5px #999;}}
+  @media screen and (min-width:46.25em){.post,.nav-links{box-shadow:0 0 10px 5px #999;}}

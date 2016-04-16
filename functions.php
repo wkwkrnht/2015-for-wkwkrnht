@@ -110,19 +110,15 @@ add_filter('the_title','wps_highlight_results');
 add_filter('the_content','wps_highlight_results');
 add_action('after_setup_theme','ruby_setup');
 if(!function_exists('add_quicktags_to_text_editor')):
-function add_quicktags_to_text_editor(){
-  if(wp_script_is('quicktags')){ ?>
-    <script>
-	  QTags.addButton('qt-a','リンク','<a href="','"></a>');
-      QTags.addButton('qt-hatenablogcard','はてなブログカード','<a class="embedly-card" href="','"></a><script async src="//cdn.embedly.com/widgets/platform.js" charset="UTF-8"></script>');
-	  QTags.addButton('qt-embedly','embed.ly','<iframe class="hatenablogcard" src="http://hatenablog.com/embed?url=','" frameborder="0" scrolling="no"></iframe>');
-      QTags.addButton('qt-marker','マーカー','<span class="marker">','</span>');
+function appthemes_add_quicktags(){
+    if(wp_script_is('quicktags')){ ?>
+    <script type="text/javascript">
+		QTags.addButton('qt-hatenablogcard','はてなブログカード','<a class="embedly-card" href="','"></a><script async src="//cdn.embedly.com/widgets/platform.js" charset="UTF-8"></script>');
+		QTags.addButton('qt-embedly','embed.ly','<iframe class="hatenablogcard" src="http://hatenablog.com/embed?url=','" frameborder="0" scrolling="no"></iframe>');
+		QTags.addButton('qt-marker','マーカー','<span class="marker">','</span>');
     </script>
-  <?php
-  }
-}
-endif;
-add_action('admin_print_footer_scripts','add_quicktags_to_text_editor' );
+<?php }}
+add_action('admin_print_footer_scripts','appthemes_add_quicktags');
 //SNSボタンと関連記事のウィジェット化&PCのみ表示テキストウイジェットの追加&entry-footerにウィジェットエリア追加
 class PcTextWidgetItem extends WP_Widget{
   function PcTextWidgetItem(){parent::WP_Widget(false,$name='Text widget（for PC）');}
