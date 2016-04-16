@@ -114,6 +114,7 @@ a #admin-navigation{padding:0 2.5em;}
 .social-navigation a[href*="path.com"]:before{content:"\f219";}
 */
 /*埋め込み*/
+.hatenablogcard{clear:both;margin:10px 0;height:155px;width:100%;max-width:680px;}
 .screen-reader-text{clip:rect(1px,1px,1px,1px);height:1px;width:1px;overflow:hidden;position:absolute !important;}
 .dashicons{display:inline-block;position:relative;top:5px;width:20px;height:20px;background-size:20px;-webkit-background-size:20px 20px;background-color:transparent;background-repeat:no-repeat;background-position:center;transition:background .1s ease-in;-webkit-transition:background .1s ease-in;}
 .dashicons-no{background-image:url("data:image/svg+xml;charset=utf8,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%2020%2020%27%3E%3Cpath%20d%3D%27M15.55%2013.7l-2.19%202.06-3.42-3.65-3.64%203.43-2.06-2.18%203.64-3.43-3.42-3.64%202.18-2.06%203.43%203.64%203.64-3.42%202.05%202.18-3.64%203.43z%27%20fill%3D%27%23fff%27%2F%3E%3C%2Fsvg%3E");}
@@ -188,7 +189,7 @@ html[dir="rtl"] .wp-embed-share-tab-button+.wp-embed-share-tab-button{margin:0;p
   /*for PC*/
   @media screen and (min-width:55em){
     #sidebar{width:27vw;z-index:2;}
-    body::before{width:27vw;z-index:2;box-shadow:0 0 50px 10px rgba(0,0,0,.12);}
+    body::before{width:27vw;z-index:2;box-shadow:0 0 30px 10px rgba(0,0,0,.12);}
 	.site-header{text-align:center;margin:20% 0;border-bottom:0;background-color:transparent;}
 	.social-navigation{margin:0 10% 20%;}
 	.entry-title{font-size:33px;margin:32px 0;}
@@ -196,4 +197,4 @@ html[dir="rtl"] .wp-embed-share-tab-button+.wp-embed-share-tab-button{margin:0;p
     /*http://wkwkrnht.wp.xdomain.jp/wp-content/themes/2015-for-wkwkrnht*/
   }
   /*without phone*/
-  @media screen and (min-width:46.25em){.post,.nav-links{box-shadow:0px 0px 50px 10px #999;}}
+  @media screen and (min-width:46.25em){.post,.nav-links{box-shadow:0 0 20px 10px #999;}}
