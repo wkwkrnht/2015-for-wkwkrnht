@@ -111,7 +111,7 @@ add_filter('the_content','wps_highlight_results');
 add_action('after_setup_theme','ruby_setup');
 if(!function_exists('add_quicktags_to_text_editor')):
 function add_quicktags_to_text_editor(){
-  if(wp_script_is('quicktags')){?>
+  if(wp_script_is('quicktags')){ ?>
     <script>
 	  QTags.addButton('qt-a','リンク','<a href="','"></a>');
       QTags.addButton('qt-hatenablogcard','はてなブログカード','<a class="embedly-card" href="','"></a><script async src="//cdn.embedly.com/widgets/platform.js" charset="UTF-8"></script>');

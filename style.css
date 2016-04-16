@@ -197,4 +197,4 @@ html[dir="rtl"] .wp-embed-share-tab-button+.wp-embed-share-tab-button{margin:0;p
     /*http://wkwkrnht.wp.xdomain.jp/wp-content/themes/2015-for-wkwkrnht*/
   }
   /*without phone*/
-  @media screen and (min-width:46.25em){.post,.nav-links{box-shadow:0 0 20px 10px #999;}}
+  @media screen and (min-width:46.25em){.post,.nav-links{box-shadow:0 0 30px 5px #999;}}
