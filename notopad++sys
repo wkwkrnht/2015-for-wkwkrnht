@@ -1,10 +1,8 @@
 <NotepadPlus>
     <Project name="2015 for wkwkrnht">
         <Folder name="img">
-            <File name="img\hatebu.svg" />
             <File name="img\line.svg" />
             <File name="img\no-img.png" />
-            <File name="img\embed.svg" />
         </Folder>
         <Folder name="parts">
             <File name="parts\adminnav.php" />
