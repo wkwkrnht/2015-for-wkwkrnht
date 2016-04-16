@@ -244,7 +244,7 @@ function my_new_contactmethods($contactmethods){
   $contactmethods['twitter']='Twitter';
   $contactmethods['facebook']='Facebook';
   $contactmethods['Linkedin']='Linkedin';
-  $contactmethods['Google+']='Google+';
+  $contactmethods['Googleplus']='Google+';
   $contactmethods['Github']='Github';
   $contactmethods['Bitbucket']='Bitbucket';
   $contactmethods['Codepen']='Codepen';
@@ -259,6 +259,7 @@ function my_new_contactmethods($contactmethods){
   $contactmethods['fc2']='fc2';
   $contactmethods['mixi']='mixi';
   $contactmethods['Instagram']='Instagram';
+  $contactmethods['Pinterest']='Pinterest';
   $contactmethods['Flickr']='Flickr';
   $contactmethods['FourSquare']='FourSquare';
   $contactmethods['Swarm']='Swarm';
