@@ -2,7 +2,7 @@
 <html <?php language_attributes();?> class="no-js">
 <head>
 	<?php if(get_post_meta($post->ID,"noindex",true)){echo'<meta name="robots" content="noindex,nofollow" />';};?>
-	<?php if(is_singular):echo?><link rel="amphtml" href="<?php echo get_permalink()?>?amp=1">
+	<?php if(is_singular):echo ?><link rel="amphtml" href="<?php echo get_permalink()?>?amp=1">
 	<link rel="" href="http://plus.google.com/<?php echo the_author_meta('Google+');?>"><?php ;endif;?>
 	<link rel="profile" href="http://gmpg.org/xfn/11">
 	<link rel="pingback" href="<?php bloginfo('pingback_url');?>">
