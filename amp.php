@@ -38,38 +38,15 @@
 	<script async src="https://cdn.ampproject.org/v0.js"></script>
 	<script type="application/ld+json">
 		{
-			"@context": "http://schema.org",
-			"@type": "NewsArticle",
-			"mainEntityOfPage":{
-				"@type":"WebPage",
-				"@id":"<?php the_permalink();?>"
-				},
-			"headline": "<?php the_title();?>",
-			"image": {
-				"@type": "ImageObject",
-				"url": "<?php
-				$image_id=get_post_thumbnail_id();
-				$image_url=wp_get_attachment_image_src($image_id,true);
-				echo $image_url[0];?>",
-				"height": 800,
-				"width": 800
-				},
-			"datePublished": "<?php the_time('Y/m/d');?>",
-			"dateModified": "<?php the_modified_date('Y/m/d');?>",
-			"author": {
-				"@type": "Person",
-				"name": "<?php the_author_meta('display_name');?>"
-				},
-			"publisher": {
-				"@type": "Organization",
-				"name": "<?php bloginfo('name');?>",
-				"logo": {
-					"@type": "ImageObject",
-					"url": "<?php echo esc_url(get_template_directory_uri());?>/img/logo.png",
-					"width": 130,
-					"height": 53
-					}
-				},
+			"@context":"http://schema.org",
+			"@type":"NewsArticle",
+			"mainEntityOfPage":{"@type":"WebPage","@id":"<?php the_permalink();?>"},
+			"headline":"<?php the_title();?>",
+			"image":{"@type":"ImageObject","url":"<?php $image_url=wp_get_attachment_image_src(get_post_thumbnail_id(),true);echo $image_url[0];?>","height":800,"width":800},
+			"datePublished":"<?php the_time('Y/m/d');?>",
+			"dateModified":"<?php the_modified_date('Y/m/d');?>",
+			"author":{"@type":"Person","name":"<?php the_author_meta('display_name');?>"},
+			"publisher":{"@type":"Organization","name":"<?php bloginfo('name');?>","logo":{"@type": "ImageObject","url": "<?php echo esc_url(get_template_directory_uri());?>/img/logo.png","width":130,"height":53}},
 			"description": "<?php echo mb_substr(strip_tags($post->post_content),0,60);?>…"
 		}
 	</script>
@@ -118,7 +95,7 @@
 				'<div class="youtube"><amp-youtube layout="responsive" data-videoid="$1" width="592" height="363"></amp-youtube></div>',
 				'<div class="youtube"><amp-youtube layout="responsive" data-videoid="$1" width="592" height="363"></amp-youtube></div>',
 				'<amp-iframe layout="responsive"','<amp-img layout="responsive"','></amp-img>');
-				echo preg_replace($pattern,$append,the_content());?>
+				echo preg_replace($pattern,$append,get_the_content());?>
 		</section>
 		<footer id="flex">
 			<div class="content">
