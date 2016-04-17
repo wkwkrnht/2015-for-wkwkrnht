@@ -106,22 +106,21 @@
 			<div class="meta"><?php amp_entry_meta();?></div>
 		</header>
 		<section>
-			<?php $content=apply_filters('the_content',get_the_content());$content=str_replace(']]>',']]&gt;',$content);$pattern='/<img/i';preg_match($pattern,$content,$matches);$append=$matches[0];$append='<amp-img layout="responsive"';$result=preg_replace($pattern,$append,$content);echo $result;?>
 			<?php $pattern=array('/<p>https:\/\/twitter.com\/.*\/status\/(.*).*<\/p>/i',
 				'/<blockquote class="twitter-tweet".*>.*<a href="https:\/\/twitter.com\/.*\/status\/(.*).*<\/blockquote>.*<script async src="\/\/platform.twitter.com\/widgets.js" charset="utf-8"><\/script>/i',
 				'/<div class=\'embed-container\'><iframe width=\'100%\' src=\'https:\/\/vine.co\/v\/(.*)\/embed\/simple\'.*<\/div>/i',
 				'/<div class=\'embed-container\'><iframe src=\'\/\/instagram.com\/p\/(.*)\/embed\/\'.*<\/iframe><\/div>/i',
 				'/<div class="youtube">.*https:\/\/youtu.be\/(.*).*<\/div>/i',
 				'/<div class="youtube">.*<iframe width="853" height="480" src="https:\/\/www.youtube.com\/embed\/(.*)" frameborder="0" allowfullscreen><\/iframe>.*<\/div>/i',
-				'/<iframe/i');
+				'/<iframe/i','/<img/i');
 				$append=array('<p><amp-twitter width=592 height=472 layout="responsive" data-tweetid="$1"></amp-twitter></p>',
 				'<p><amp-twitter width=592 height=472 layout="responsive" data-tweetid="$1"></amp-twitter></p>',
 				'<div class=\'embed-container\'><amp-vine data-vineid="$1" width="592" height="592" layout="responsive"></amp-vine></div>',
 				'<div class=\'embed-container\'><amp-instagram layout="responsive" data-shortcode="$1" width="592" height="716" ></amp-instagram></div>',
 				'<div class="youtube"><amp-youtube layout="responsive" data-videoid="$1" width="592" height="363"></amp-youtube></div>',
 				'<div class="youtube"><amp-youtube layout="responsive" data-videoid="$1" width="592" height="363"></amp-youtube></div>',
-				'<amp-iframe layout="responsive"');
-				$content=preg_replace($pattern,$append,$content);?>
+				'<amp-iframe layout="responsive"','<amp-img layout="responsive"');
+				$content=preg_replace($pattern,$append,str_replace(']]>',']]&gt;',apply_filters('the_content',get_the_content())));?>
 		</section>
 		<footer id="slide">
 			<div class="content">
