@@ -52,7 +52,7 @@ function amp_entry_meta(){if(in_array(get_post_type(),array('post','attachment')
 	printf('<span>%1$s<a href="%2$s" rel="bookmark">%3$s</a></span>',_x('Posted on','Used before publish date.','twentyfifteen'),esc_url(get_permalink()),$time_string);
 	echo('<span>（');echo human_time_diff(get_the_time('U'),current_time('timestamp'));echo('前）</span>');}}
 //サムネサイズ追加&Alt属性がないIMGタグにalt=""を追加する&サムネ自動設定
-add_image_size('related',150,150,true);
+add_image_size('related',150px,150px,true);
 add_filter('the_content',function($content){return preg_replace('/<img((?![^>]*alt=)[^>]*)>/i','<img alt=""${1}>',$content);});
 require_once(ABSPATH . '/wp-admin/includes/image.php');
 function fetch_thumbnail_image($matches,$key,$post_content,$post_id){
