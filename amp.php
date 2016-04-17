@@ -120,7 +120,7 @@
 				'<div class="youtube"><amp-youtube layout="responsive" data-videoid="$1" width="592" height="363"></amp-youtube></div>',
 				'<div class="youtube"><amp-youtube layout="responsive" data-videoid="$1" width="592" height="363"></amp-youtube></div>',
 				'<amp-iframe layout="responsive"','<amp-img layout="responsive"');
-				$content=preg_replace($pattern,$append,str_replace(']]>',']]&gt;',apply_filters('the_content',get_the_content())));?>
+				echo preg_replace($pattern,$append,get_the_content());?>
 		</section>
 		<footer id="slide">
 			<div class="content">
