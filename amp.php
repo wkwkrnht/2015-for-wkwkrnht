@@ -93,7 +93,7 @@
 	<h1 class="siteinfo"><a href="<?php bloginfo('URL');?>" class="site-title"><?php bloginfo('name');?></a></h1>
 	<article>
 		<header>
-			<?php echo preg_replace(array('/<img/i','/\/>/'),array('<amp-img layout="responsive"','><amp-img>'),the_post_thumbnail());?>
+			<?php echo preg_replace(array('/<img/i','i/\/>/'),array('<amp-img layout="responsive"','><amp-img>'),the_post_thumbnail());?>
 			<div itemtype="http://data-vocabulary.org/Breadcrumb" itemscope="" class="bread"><?php if(!is_home()&&!is_front_page()):
 				$cat = is_single() ? get_the_category():array(get_category($cat));
 				if($cat&&!is_wp_error($cat)){$par=get_category($cat[0]->parent);
@@ -110,7 +110,7 @@
 				'/<div class=\'embed-container\'><iframe src=\'\/\/instagram.com\/p\/(.*)\/embed\/\'.*<\/iframe><\/div>/i',
 				'/<div class="youtube">.*https:\/\/youtu.be\/(.*).*<\/div>/i',
 				'/<div class="youtube">.*<iframe width="853" height="480" src="https:\/\/www.youtube.com\/embed\/(.*)" frameborder="0" allowfullscreen><\/iframe>.*<\/div>/i',
-				'/<iframe/i','/<img/i','/\/>/');
+				'/<iframe/i','/<img/i','i/\/>/');
 				$append=array('<p><amp-twitter width=592 height=472 layout="responsive" data-tweetid="$1"></amp-twitter></p>',
 				'<p><amp-twitter width=592 height=472 layout="responsive" data-tweetid="$1"></amp-twitter></p>',
 				'<div class=\'embed-container\'><amp-vine data-vineid="$1" width="592" height="592" layout="responsive"></amp-vine></div>',
@@ -125,7 +125,7 @@
 				<?php $args=array('numberposts'=>3,'orderby'=>'rand','post_status'=>'publish','offset'=>1);$rand_posts=get_posts($args);
 				foreach($rand_posts as $post):?>
 					<a href="<?php the_permalink()?>" title="<?php the_title_attribute();?>"><div class="related">
-						<?php if(has_post_thumbnail()):echo preg_replace(array('/<img/i','/\/>/'),array('<amp-img layout="responsive"','><amp-img>'),get_the_post_thumbnail($post->ID,'related',array('class'=>'thumb')));else:echo'<amp-img src="' . esc_url(home_url()) . '/wp-content/themes/2015-for-wkwkrnht/img/no-img.png" class="thumb" alt="no_thumbnail" height="150px" width="150px"></amp-img>';endif;
+						<?php if(has_post_thumbnail()):echo preg_replace(array('/<img/i','i/\/>/'),array('<amp-img layout="responsive"','><amp-img>'),get_the_post_thumbnail($post->ID,'related',array('class'=>'thumb')));else:echo'<amp-img src="' . esc_url(home_url()) . '/wp-content/themes/2015-for-wkwkrnht/img/no-img.png" class="thumb" alt="no_thumbnail" height="150px" width="150px"></amp-img>';endif;
 						the_title('<div class="title">','</div>');?>
 					</div></a>
 				<?php endforeach;?>
