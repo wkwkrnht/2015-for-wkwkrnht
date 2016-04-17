@@ -3,6 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<link rel="canonical" href="<?php echo get_permalink();?>" />
+	<title><?php wp_title();?></title>
 	<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
 	<meta name="google-site-verification" content="<?php echo get_option('Google_Webmaster');?>">
 	<meta name="msvalidate.01" content="<?php echo get_option('Bing_Webmaster');?>" />
@@ -37,37 +38,18 @@
 	<script async src="https://cdn.ampproject.org/v0.js"></script>
 	<script type="application/ld+json">
 		{
-			"@context": "http://schema.org",
-			"@type": "NewsArticle",
-			"mainEntityOfPage":{
-				"@type":"WebPage",
-				"@id":"<?php the_permalink();?>"
-				},
-			"headline": "<?php the_title();?>",
-			"image": {
-				"@type": "ImageObject",
-				"url": "<?php
-				$image_id=get_post_thumbnail_id();
-				$image_url=wp_get_attachment_image_src($image_id,true);
-				echo $image_url[0];?>",
-				"height": 800,
-				"width": 800
-				},
-			"datePublished": "<?php the_time('Y/m/d');?>",
-			"dateModified": "<?php the_modified_date('Y/m/d');?>",
-			"author": {
-				"@type": "Person",
-				"name": "<?php the_author_meta('display_name');?>"
-				},
-			"publisher": {
-				"@type": "Organization",
-				"name": "<?php bloginfo('name');?>",
-				"logo": {
-					"@type": "ImageObject",
-					"url": "<?php echo esc_url(get_template_directory_uri());?>/img/logo.png",
-					"width": 130,
-					"height": 53
-					}
+			"@context":"http://schema.org",
+			"@type":"NewsArticle",
+			"mainEntityOfPage":{"@type":"WebPage","@id":"<?php the_permalink();?>"},
+			"headline":"<?php the_title();?>",
+			"image":{"@type":"ImageObject","url":"<?php $image_url=wp_get_attachment_image_src(get_post_thumbnail_id(),true);echo $image_url[0];?>","height": 800,"width": 800},
+			"datePublished":"<?php the_time('Y/m/d');?>",
+			"dateModified":"<?php the_modified_date('Y/m/d');?>",
+			"author":{"@type": "Person","name": "<?php the_author_meta('display_name');?>"},
+			"publisher":{
+				"@type":"Organization",
+				"name":"<?php bloginfo('name');?>",
+				"logo":{"@type":"ImageObject","url":"<?php echo esc_url(get_template_directory_uri());?>/img/logo.png","width":130,"height":53}
 				},
 			"description": "<?php echo mb_substr(strip_tags($post->post_content),0,60);?>…"
 		}
@@ -83,7 +65,7 @@
 	<style amp-custom>
 		body{font-style:Avenir,"Open Sans","Helvetica Neue",Helvetica,Arial,Verdana,Roboto,"游ゴシック","Yu Gothic","游ゴシック体","YuGothic","ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro","Meiryo UI","メイリオ",Meiryo,"ＭＳ Ｐゴシック","MS PGothic",sans-serif;line-height:1.5;}
 		.siteinfo{width:100vw;height:18vh;background-color:#ffcc00;box-shadow:0 2px 2px 0 #999;text-align:center;z-index:10;position:fixed;top:0;left:0;margin-top:0;}.site-title{font-size:26px;color:white;text-decoration:none;}
-		article{padding:20vh 3vw 5vh 3vw;box-shadow:0 1px 6px rgba(0,0,0,.12);}header{background-color:#ebeef7;text-align:center;margin:5px 0;}.bread{color:#ddd;}.bread .sp{color:#333;margin:0 .5em;}span .meta{padding:2px;}
+		article{padding:20vh 3vw 5vh 3vw;box-shadow:0 1px 6px rgba(0,0,0,.12);}header{background-color:#ebeef7;text-align:center;margin:5px 0;}.bread{color:#ddd;}.bread .sp{color:#333;}span header{padding:0 3px;}
 		table{border-collapse:separate;border-spacing:1px;line-height:1.5;border-top:1px solid #ccc;}th{width:150px;padding:10px;font-weight:bold;vertical-align:top;border-bottom:1px solid #ccc;background:#efefef;text-align:center;}td{width:350px;padding:10px;vertical-align:top;border-bottom:1px solid #ccc;text-align:left;}
 		amp-iframe,amp-img,h2,h3,h4{text-align:center;}h2,h3,h4{min-height:45px;}h3,h4{background-color:#fff;}article>h2{color:#fff;background:#ffcc00;}h3{border-left:10px solid #ffcc00;}h4{border-bottom:8px solid #ffcc00;}
 		#flex{max-width:100%;overflow:hidden;}#flex .content{flex-direction:row;-webkit-flex-direction:row;justify-content:flex-start;-webkit-justify-content:flex-start;display:flex;display:-webkit-flex;}.related{max-width:150px;max-height:300px;border-radius:8px;margin:15px 8px 10px 0;background-color:#fff;box-shadow:0 2px 5px 0 #999;}.related .thumb{background-color:#ffcc00;max-height:150px;}.related .title{color:#333;font-size:18px;padding-top:20px;max-height:150px;text-align:center;}
@@ -94,14 +76,12 @@
 	<article>
 		<header>
 			<?php echo preg_replace(array('/<img/i','/\/>/'),array('<amp-img','></amp-img>'),the_post_thumbnail());?>
-			<div itemtype="http://data-vocabulary.org/Breadcrumb" itemscope="" class="bread"><?php if(!is_home()&&!is_front_page()):
-				$cat = is_single() ? get_the_category():array(get_category($cat));
-				if($cat&&!is_wp_error($cat)){$par=get_category($cat[0]->parent);
+			<div itemtype="http://data-vocabulary.org/Breadcrumb" itemscope="" class="bread"><?php $cat=is_single()?get_the_category():array(get_category($cat));if($cat&&!is_wp_error($cat)){$par=get_category($cat[0]->parent);
 				echo'<a href="'.home_url().'" itemprop="url"><span itemprop="title">Home</span></a><span class="sp">/</span>';
 				while($par&&!is_wp_error($par)&&$par->term_id != 0){$echo='<a href="'.get_category_link($par->term_id).'" itemprop="url"><span itemprop="title">'.$par->name.'</span></a><span class="sp">/</span>'.$echo;$par=get_category($par->parent);}
-				echo $echo.'<a href="'.get_category_link($cat[0]->term_id).'" itemprop="url"><span itemprop="title">'.$cat[0]->name.'</span></a>';}endif;?></div>
+				echo $echo.'<a href="'.get_category_link($cat[0]->term_id).'" itemprop="url"><span itemprop="title">'.$cat[0]->name.'</span></a>';}?></div>
 			<?php the_title(sprintf('<h2 class="entry-title">',esc_url(get_permalink())),'</h2>');?>
-			<div class="meta"><?php amp_entry_meta();?></div>
+			<?php if(get_the_time('Ymd') != get_the_modified_time('Ymd')):?><span itemprop="datePublished" content="<?php the_time();?>" class="published">投稿日：<?php the_time('Y年n月j日');?></span><time itemprop="dateModified" datetime="<?php the_modified_time();?>" class="updated">更新日：<?php the_modified_time('Y年n月j日');?></time><?php else:?><time itemprop="datePublished" datetime="<?php the_time();?>" pubdate="pubdate" class="published updated">公開日：<?php the_time('Y年n月j日');?></time><?php endif;?><span><?php echo human_time_diff(get_the_time('U'),current_time('timestamp'))?>前）</span>
 		</header>
 		<section>
 			<?php $pattern=array('/https:\/\/twitter.com\/.*\/status\/(.*).*/i',
@@ -110,7 +90,7 @@
 				'/<div class=\'embed-container\'><iframe src=\'\/\/instagram.com\/p\/(.*)\/embed\/\'.*<\/iframe><\/div>/i',
 				'/<div class="youtube">.*https:\/\/youtu.be\/(.*).*<\/div>/i',
 				'/<div class="youtube">.*<iframe width="853" height="480" src="https:\/\/www.youtube.com\/embed\/(.*)" frameborder="0" allowfullscreen><\/iframe>.*<\/div>/i',
-				'/<iframe/i','/<img/i','/\/>/','/[embedly url=/','/]/','[hatenaBlogcard url=','/]/');
+				'/<iframe/i','/<img/i','/\/>/','/\[embedly url=/','/\]/','/\[hatenaBlogcard url=/','/\]/');
 				$append=array('<p><amp-twitter width=592 height=472 layout="responsive" data-tweetid="$1"></amp-twitter></p>',
 				'<p><amp-twitter width=592 height=472 layout="responsive" data-tweetid="$1"></amp-twitter></p>',
 				'<div class=\'embed-container\'><amp-vine data-vineid="$1" width="592" height="592" layout="responsive"></amp-vine></div>',
