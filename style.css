@@ -26,11 +26,11 @@
 .entry-footer h2{color:#fff;background-color:#ffcc00;box-shadow:0 1px 6px rgba(0,0,0,.12);height:45px;margin:15px;font-size:30px;text-align:center;}
 .copyright{color:#fff;text-align:center;margin-bottom:15px;}
 /*コンテンツ内*/
-.marker{background-color:yellow;}
+.marker{background-color:rgba(255,255,0,.8);}
 .entry-content a{color:#1122cc;border-bottom:1px solid #1122cc;}
-.entry-content h2{color:#fff;background:#ffcc00;box-shadow:0 1px 6px rgba(0,0,0,.12);}
-.entry-content h3{border-left:10px solid #ffcc00;background-color:#fff;}
-.entry-content h4{border-bottom:8px solid #ffcc00;background-color:#fff;}
+.entry-content h2{color:#fff;background:#ffcc00;box-shadow:0 3px 6px rgba(0,0,0,.1);}
+.entry-content h3{border-bottom:8px solid #ffcc00;background-color:rgba(215,215,215,.4);}
+.entry-content h4{border-left:10px solid #ffcc00;background-color:#fff;}
 .entry-content h2,.entry-content h3,.entry-content h4{min-height:45px;text-align:center;}
 .qrcode{display:inline-block;margin:3px;}
 /*ページャー*/
@@ -191,8 +191,6 @@ html[dir="rtl"] .wp-embed-share-tab-button+.wp-embed-share-tab-button{margin:0;p
   @media screen and (min-width:55em){
     #sidebar{width:27vw;z-index:2;}
     body::before{width:27vw;z-index:2;box-shadow:0 0 20px 1px #999;}
-	.site-header{text-align:center;margin:20% 0;border-bottom:0;background-color:transparent;}
-	.social-navigation{margin:0 10% 20%;}
 	.entry-title{font-size:33px;margin:32px 0;}
     .card-meta{font-size:18px;}
     /*http://wkwkrnht.wp.xdomain.jp/wp-content/themes/2015-for-wkwkrnht*/
