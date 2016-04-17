@@ -90,12 +90,10 @@
 	</style>
 </head>
 <body>
-	<h1 class="siteinfo">
-		<a href="<?php bloginfo('URL');?>" class="site-title"><?php bloginfo('name');?></a>
-	</h1>
+	<h1 class="siteinfo"><a href="<?php bloginfo('URL');?>" class="site-title"><?php bloginfo('name');?></a></h1>
 	<article>
 		<header>
-			<?php amp_post_thumbnail();?>
+			<?php echo preg_replace(array('/<img/i','*/>'),array('<amp-img layout="responsive"','><amp-img>'),the_post_thumbnail());?>
 			<div itemtype="http://data-vocabulary.org/Breadcrumb" itemscope="" class="bread"><?php if(!is_home()&&!is_front_page()):
 				$cat = is_single() ? get_the_category():array(get_category($cat));
 				if($cat&&!is_wp_error($cat)){$par=get_category($cat[0]->parent);
@@ -112,14 +110,14 @@
 				'/<div class=\'embed-container\'><iframe src=\'\/\/instagram.com\/p\/(.*)\/embed\/\'.*<\/iframe><\/div>/i',
 				'/<div class="youtube">.*https:\/\/youtu.be\/(.*).*<\/div>/i',
 				'/<div class="youtube">.*<iframe width="853" height="480" src="https:\/\/www.youtube.com\/embed\/(.*)" frameborder="0" allowfullscreen><\/iframe>.*<\/div>/i',
-				'/<iframe/i','/<img/i');
+				'/<iframe/i'/*,'/<img/i'*/);
 				$append=array('<p><amp-twitter width=592 height=472 layout="responsive" data-tweetid="$1"></amp-twitter></p>',
 				'<p><amp-twitter width=592 height=472 layout="responsive" data-tweetid="$1"></amp-twitter></p>',
 				'<div class=\'embed-container\'><amp-vine data-vineid="$1" width="592" height="592" layout="responsive"></amp-vine></div>',
 				'<div class=\'embed-container\'><amp-instagram layout="responsive" data-shortcode="$1" width="592" height="716" ></amp-instagram></div>',
 				'<div class="youtube"><amp-youtube layout="responsive" data-videoid="$1" width="592" height="363"></amp-youtube></div>',
 				'<div class="youtube"><amp-youtube layout="responsive" data-videoid="$1" width="592" height="363"></amp-youtube></div>',
-				'<amp-iframe layout="responsive"','<amp-img layout="responsive"');
+				'<amp-iframe layout="responsive"'/*,'<amp-img layout="responsive"'*/);
 				echo preg_replace($pattern,$append,get_the_content());?>
 		</section>
 		<footer id="slide">
