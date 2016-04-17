@@ -15,6 +15,7 @@
 				'link_after' =>'</span>',
 				'pagelink'   =>'<span class="screen-reader-text">' . __('Page','twentyfifteen') . ' </span>%',
 				'separator'  =>'<span class="screen-reader-text">,</span>',));?>
+		<script type="text/javascript">jQuery(document).ready(function(){jQuery('code').each(function(i,block){hljs.highlightBlock(block);});});</script>
 	</section>
 	<?php get_sidebar('8');?>
 </article>

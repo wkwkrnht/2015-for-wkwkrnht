@@ -1,1 +1,0 @@
-jQuery(document).ready(function(){jQuery('code').each(function(i,block){hljs.highlightBlock(block);});});
