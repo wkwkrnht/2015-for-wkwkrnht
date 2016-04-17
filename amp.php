@@ -80,7 +80,7 @@
 				echo'<a href="'.home_url().'" itemprop="url"><span itemprop="title">Home</span></a><span class="sp">/</span>';
 				while($par&&!is_wp_error($par)&&$par->term_id != 0){$echo='<a href="'.get_category_link($par->term_id).'" itemprop="url"><span itemprop="title">'.$par->name.'</span></a><span class="sp">/</span>'.$echo;$par=get_category($par->parent);}
 				echo $echo.'<a href="'.get_category_link($cat[0]->term_id).'" itemprop="url"><span itemprop="title">'.$cat[0]->name.'</span></a>';}?></div>
-			<h2 class="entry-title"><?php the_title();?></h2>
+			<?php the_title(sprintf('<h2 class="entry-title">',esc_url(get_permalink())),'</h2>');?>
 			<?php if(get_the_time('Ymd') != get_the_modified_time('Ymd')):?><span itemprop="datePublished" content="<?php the_time();?>" class="published">投稿日：<?php the_time('Y年n月j日');?></span><time itemprop="dateModified" datetime="<?php the_modified_time();?>" class="updated">更新日：<?php the_modified_time('Y年n月j日');?></time><?php else:?><time itemprop="datePublished" datetime="<?php the_time();?>" pubdate="pubdate" class="published updated">公開日：<?php the_time('Y年n月j日');?></time><?php endif;?><span><?php echo human_time_diff(get_the_time('U'),current_time('timestamp'))?>前）</span>
 		</header>
 		<section>
@@ -90,14 +90,15 @@
 				'/<div class=\'embed-container\'><iframe src=\'\/\/instagram.com\/p\/(.*)\/embed\/\'.*<\/iframe><\/div>/i',
 				'/<div class="youtube">.*https:\/\/youtu.be\/(.*).*<\/div>/i',
 				'/<div class="youtube">.*<iframe width="853" height="480" src="https:\/\/www.youtube.com\/embed\/(.*)" frameborder="0" allowfullscreen><\/iframe>.*<\/div>/i',
-				'/<iframe/i','/<img/i','/\/>/','/\[embedly url=/','/\[hatenaBlogcard url=/','/\]/');
+				'/<iframe/i','/<img/i','/\/>/','/\[embedly url=/','/\]/','/\[hatenaBlogcard url=/','/\]/');
 				$append=array('<p><amp-twitter width=592 height=472 layout="responsive" data-tweetid="$1"></amp-twitter></p>',
 				'<p><amp-twitter width=592 height=472 layout="responsive" data-tweetid="$1"></amp-twitter></p>',
 				'<div class=\'embed-container\'><amp-vine data-vineid="$1" width="592" height="592" layout="responsive"></amp-vine></div>',
 				'<div class=\'embed-container\'><amp-instagram layout="responsive" data-shortcode="$1" width="592" height="716" ></amp-instagram></div>',
 				'<div class="youtube"><amp-youtube layout="responsive" data-videoid="$1" width="592" height="363"></amp-youtube></div>',
 				'<div class="youtube"><amp-youtube layout="responsive" data-videoid="$1" width="592" height="363"></amp-youtube></div>',
-				'<amp-iframe layout="responsive"','<amp-img layout="responsive"','></amp-img>','<a href="','<a href="','">リンクはこちら</a>');
+				'<amp-iframe layout="responsive"','<amp-img layout="responsive"','></amp-img>',
+				'<a href="','">リンクはこちら</a>','<a href="','">リンクはこちら</a>');
 				echo preg_replace($pattern,$append,the_content());?>
 		</section>
 		<footer id="flex">
