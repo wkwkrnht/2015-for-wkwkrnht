@@ -56,12 +56,12 @@
 	<script async custom-element="amp-facebook" src="https://cdn.ampproject.org/v0/amp-facebook-0.1.js"></script>
 	<script async custom-element="amp-youtube" src="https://cdn.ampproject.org/v0/amp-youtube-0.1.js"></script>
 	<script async custom-element="amp-vine" src="https://cdn.ampproject.org/v0/amp-vine-0.1.js"></script>
-	<script custom-element="amp-twitter" src="https://cdn.ampproject.org/v0/amp-twitter-0.1.js" async></script>
-	<script custom-element="amp-instagram" src="https://cdn.ampproject.org/v0/amp-instagram-0.1.js" async></script>
+	<script async custom-element="amp-twitter" src="https://cdn.ampproject.org/v0/amp-twitter-0.1.js"></script>
+	<script async custom-element="amp-instagram" src="https://cdn.ampproject.org/v0/amp-instagram-0.1.js"></script>
 	<style amp-custom>
 		body{font-style:Avenir,"Open Sans","Helvetica Neue",Helvetica,Arial,Verdana,Roboto,"游ゴシック","Yu Gothic","游ゴシック体","YuGothic","ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro","Meiryo UI","メイリオ",Meiryo,"ＭＳ Ｐゴシック","MS PGothic",sans-serif;line-height:1.5;}
 		.siteinfo{width:100vw;height:18vh;background-color:#ffcc00;box-shadow:0 2px 2px 0 #999;text-align:center;z-index:10;position:fixed;top:0;left:0;margin-top:0;}.site-title{font-size:26px;color:white;text-decoration:none;}
-		article{padding:20vh 3vw 5vh 3vw;box-shadow:0 1px 6px rgba(0,0,0,.12);}header{background-color:#ebeef7;text-align:center;margin:5px 0;}.bread{color:#ddd;}.bread .sp{color:#333;margin:0 .5em;}span .meta{padding:2px;}section>amp-img{max-width:640px;max-height:360px;}
+		article{padding:20vh 3vw 5vh 3vw;box-shadow:0 1px 6px rgba(0,0,0,.12);}header{background-color:#ebeef7;text-align:center;margin:5px 0;}.bread{color:#ddd;}.bread .sp{color:#333;margin:0 .5em;}span .meta{padding:2px;}section>amp-img{max-width:50%;max-height:50%;}
 		table{border-collapse:separate;border-spacing:1px;line-height:1.5;border-top:1px solid #ccc;}th{width:150px;padding:10px;font-weight:bold;vertical-align:top;border-bottom:1px solid #ccc;background:#efefef;text-align:center;}td{width:350px;padding:10px;vertical-align:top;border-bottom:1px solid #ccc;text-align:left;}
 		amp-iframe,amp-img,h2,h3,h4{text-align:center;}h2,h3,h4{min-height:45px;}h3,h4{background-color:#fff;}article>h2{color:#fff;background:#ffcc00;}h3{border-left:10px solid #ffcc00;}h4{border-bottom:8px solid #ffcc00;}
 		#flex{max-width:100%;overflow:hidden;}#flex .content{flex-direction:row;-webkit-flex-direction:row;justify-content:flex-start;-webkit-justify-content:flex-start;display:flex;display:-webkit-flex;}.related{max-width:150px;max-height:300px;border-radius:8px;margin:15px 8px 10px 0;background-color:#fff;box-shadow:0 2px 5px 0 #999;}.related .thumb{background-color:#ffcc00;max-height:150px;}.related .title{color:#333;font-size:18px;padding-top:20px;max-height:150px;text-align:center;}
@@ -71,7 +71,7 @@
 	<h1 class="siteinfo"><a href="<?php bloginfo('URL');?>" class="site-title"><?php bloginfo('name');?></a></h1>
 	<article>
 		<header>
-			<?php $pattern1=array('/<img/i','/\/>/');$append1=array('<amp-img','></amp-img>');echo preg_replace($pattern1,$append1,the_post_thumbnail());?>
+			<?php $pattern1=array('/<img/i','/\/>/');$append1=array('<amp-img layout="responsive"','></amp-img>');echo preg_replace($pattern1,$append1,the_post_thumbnail());?>
 			<div itemtype="http://data-vocabulary.org/Breadcrumb" itemscope="" class="bread"><?php if(!is_home()&&!is_front_page()):$cat=is_single()?get_the_category():array(get_category($cat));
 				if($cat&&!is_wp_error($cat)){$par=get_category($cat[0]->parent);echo'<a href="'.home_url().'" itemprop="url"><span itemprop="title">Home</span></a><span class="sp">/</span>';
 				while($par&&!is_wp_error($par)&&$par->term_id != 0){$echo='<a href="'.get_category_link($par->term_id).'" itemprop="url"><span itemprop="title">'.$par->name.'</span></a><span class="sp">/</span>'.$echo;$par=get_category($par->parent);}
@@ -88,8 +88,7 @@
 				'/<div class="youtube">.*https:\/\/youtu.be\/(.*).*<\/div>/i',
 				'/<div class="youtube">.*<iframe width="853" height="480" src="https:\/\/www.youtube.com\/embed\/(.*)" frameborder="0" allowfullscreen><\/iframe>.*<\/div>/i',
 				'/<iframe/i','/<img/i','/\/>/','/\[scshot url=(.*?)\]/','/\[myqrcode url=(.*?) size=(.*?)\]/','/\[embedly url=(.*?)\]/','/\[hatenaBlogcard url=(.*?)\]/');
-				$append=array('<amp-twitter width=592 height=472 layout="responsive" data-tweetid="$1"></amp-twitter>',
-				'<amp-twitter width=592 height=472 layout="responsive" data-tweetid="$1"></amp-twitter>',
+				$append=array('<amp-twitter width=592 height=472 layout="responsive" data-tweetid="$1"></amp-twitter>','<amp-twitter width=592 height=472 layout="responsive" data-tweetid="$1"></amp-twitter>',
 				'<div class=\'embed-container\'><amp-vine data-vineid="$1" width="592" height="592" layout="responsive"></amp-vine></div>',
 				'<div class=\'embed-container\'><amp-instagram layout="responsive" data-shortcode="$1" width="592" height="716" ></amp-instagram></div>',
 				'<div class="youtube"><amp-youtube layout="responsive" data-videoid="$1" width="592" height="363"></amp-youtube></div>',
