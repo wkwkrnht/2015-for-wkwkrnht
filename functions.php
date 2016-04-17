@@ -95,17 +95,19 @@ add_action('draft_to_publish','auto_post_thumbnail_image');
 add_action('new_to_publish','auto_post_thumbnail_image');
 add_action('pending_to_publish','auto_post_thumbnail_image');
 add_action('future_to_publish','auto_post_thumbnail_image');
-//URL→ブログカード&@hoge→twitterリンク&キーワードハイライト&ルビサポート&クイックタグ追加
+//@hoge→twitterリンク&キーワードハイライト&ルビサポート&ショートコード(スクショ&QRコード&embedly&はてなブログカード)&クイックタグ追加
 function ruby_setup(){global $allowedposttags;foreach(array('ruby','rp','rt') as $tag )if(!isset($allowedposttags[$tag]))$allowedposttags[$tag]=array();}
 function wps_highlight_results($text){if(is_search()){$sr=get_query_var('s');$keys=explode(" ",$sr);$text=preg_replace('/('.implode('|',$keys) .')/iu','<span class="marker">'.$sr.'</span>',$text);}return $text;}
 function twtreplace($content){$twtreplace=preg_replace('/([^a-zA-Z0-9-_&])@([0-9a-zA-Z_]+)/',"$1<a href=\"http://twitter.com/$2\" target=\"_blank\" rel=\"nofollow\">@$2</a>",$content);return $twtreplace;}
-function url_to_hatena_blog_card($the_content){if(is_singular()){$res=preg_match_all('/^(<p>)?(<a.+?>)?https?:\/\/[-_.!~*\'()a-zA-Z0-9;\/?:\@&=+\$,%#]+(<\/a>)?(<\/p>)?(<br ? \/>)?$/im',$the_content,$m);
-    foreach($m[0] as $match){$url=strip_tags($match);preg_match('/https?:\/\/(.+?)\//i',admin_url(),$r);if(strpos($url,$r[1])){continue;}$tag='<iframe class="hatenablogcard" src="http://hatenablog.com/embed?url='.$url.'" frameborder="0" scrolling="no"></iframe>';$the_content=preg_replace('{'.preg_quote($match).'}',$tag,$the_content,1);}
-  }
-  return $the_content;}
-add_filter('the_content','url_to_hatena_blog_card');
-function url_to_embedly($atts){extract(shortcode_atts(array('url'=>'',),$atts));$contnt='<a class="embedly-card" href="''"></a><script async="" charset="UTF-8" src="//cdn.embedly.com/widgets/platform.js"></script>';return $content;}
-add_shortcode('hoge','url_to_embedly');
+function api_sc_shot($attributes){extract(shortcode_atts(array('url'=>'',),$attributes));$imageUrl=sc_shot($url);if($imageUrl==''){return'';}else{return'<a href="' . $url . '" target="_blank"><img src="' . $imageUrl . '" alt="' . $url . '"/></a>';}}
+function sc_shot($url=''){return'http://s.wordpress.com/mshots/v1/' . urlencode(clean_url($url)) . '?w=500';}
+function add_qrcode_in_this_article($atts){extract(shortcode_atts(array('url'=>'','size'=>'80',),$atts));return'<a href="' . $url . '" target="_blank" class="qrcode"><img src="https://chart.googleapis.com/chart?chs=' . $size . 'x' . $size . '&cht=qr&chl=' . $url . '&choe=UTF-8 " alt="QR Code"/></a>';}
+function url_to_embedly($atts){extract(shortcode_atts(array('url'=>'',),$atts));$content='<a class="embedly-card" href="' . $url . '"></a><script async="" charset="UTF-8" src="//cdn.embedly.com/widgets/platform.js"></script>';return $content;}
+function url_to_hatenaBlogcard($atts){extract(shortcode_atts(array('url'=>'',),$atts));$content='<iframe class="hatenablogcard" src="http://hatenablog.com/embed?url=' . $url . '" frameborder="0" scrolling="no"></iframe>';return $content;}
+add_shortcode('scshot','api_sc_shot');
+add_shortcode('myqrcode','add_qrcode_in_this_article');
+add_shortcode('embedly','url_to_embedly');
+add_shortcode('hatenaBlogcard','url_to_hatenaBlogcard');
 add_filter('the_content','twtreplace');
 add_filter('comment_text','twtreplace');
 add_filter('the_title','wps_highlight_results');
@@ -114,8 +116,10 @@ add_action('after_setup_theme','ruby_setup');
 function appthemes_add_quicktags(){
     if(wp_script_is('quicktags')){ ?>
     <script type="text/javascript">
-		QTags.addButton('qt-embedly','embedly','[url_to_embedly url=',']');
-		QTags.addButton('qt-hatenablogcard','はてなブログカード','<iframe class="hatenablogcard" src="http://hatenablog.com/embed?url=','" frameborder="0" scrolling="no"></iframe>');
+		QTags.addButton('qt-scshot','スクショ','[scshot url=',']');
+		QTags.addButton('qt-myqrcode','QRコード','[myqrcode url=',' size= ]');
+		QTags.addButton('qt-embedly','embedly','[embedly url=',']');
+		QTags.addButton('qt-hatenablogcard','はてなブログカード','[hatenaBlogcard url=',']');
 		QTags.addButton('qt-marker','マーカー','<span class="marker">','</span>');
     </script>
 <?php }}
