@@ -110,14 +110,14 @@
 				'/<div class=\'embed-container\'><iframe src=\'\/\/instagram.com\/p\/(.*)\/embed\/\'.*<\/iframe><\/div>/i',
 				'/<div class="youtube">.*https:\/\/youtu.be\/(.*).*<\/div>/i',
 				'/<div class="youtube">.*<iframe width="853" height="480" src="https:\/\/www.youtube.com\/embed\/(.*)" frameborder="0" allowfullscreen><\/iframe>.*<\/div>/i',
-				'/<iframe/i'/*,'/<img/i'*/);
+				'/<iframe/i','/<img/i','*/>');
 				$append=array('<p><amp-twitter width=592 height=472 layout="responsive" data-tweetid="$1"></amp-twitter></p>',
 				'<p><amp-twitter width=592 height=472 layout="responsive" data-tweetid="$1"></amp-twitter></p>',
 				'<div class=\'embed-container\'><amp-vine data-vineid="$1" width="592" height="592" layout="responsive"></amp-vine></div>',
 				'<div class=\'embed-container\'><amp-instagram layout="responsive" data-shortcode="$1" width="592" height="716" ></amp-instagram></div>',
 				'<div class="youtube"><amp-youtube layout="responsive" data-videoid="$1" width="592" height="363"></amp-youtube></div>',
 				'<div class="youtube"><amp-youtube layout="responsive" data-videoid="$1" width="592" height="363"></amp-youtube></div>',
-				'<amp-iframe layout="responsive"'/*,'<amp-img layout="responsive"'*/);
+				'<amp-iframe layout="responsive"','<amp-img layout="responsive"','><amp-img>');
 				echo preg_replace($pattern,$append,get_the_content());?>
 		</section>
 		<footer id="slide">
@@ -125,7 +125,7 @@
 				<?php $args=array('numberposts'=>3,'orderby'=>'rand','post_status'=>'publish','offset'=>1);$rand_posts=get_posts($args);
 				foreach($rand_posts as $post):?>
 					<a href="<?php the_permalink()?>" title="<?php the_title_attribute();?>"><div class="related">
-						<?php if(has_post_thumbnail()):echo get_the_post_thumbnail($post->ID,'related',array('class'=>'thumb'));else:echo'<amp-img src="http://wkwkrnht.wp.xdomain.jp/wp-content/themes/2015-for-wkwkrnht/img/no-img.png" class="thumb" alt="no_thumbnail" height="150px" width="150px"></amp-img>';endif;
+						<?php if(has_post_thumbnail()):echo preg_replace(array('/<img/i','*/>'),array('<amp-img layout="responsive"','><amp-img>'),get_the_post_thumbnail($post->ID,'related',array('class'=>'thumb')));else:echo'<amp-img src="' . esc_url(home_url()); . '/wp-content/themes/2015-for-wkwkrnht/img/no-img.png" class="thumb" alt="no_thumbnail" height="150px" width="150px"></amp-img>';endif;
 						the_title('<div class="title">','</div>');?>
 					</div></a>
 				<?php endforeach;?>
