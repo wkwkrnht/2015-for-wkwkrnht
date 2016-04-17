@@ -3,6 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<link rel="canonical" href="<?php echo get_permalink();?>" />
+	<title><?php wp_title();?></title>
 	<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
 	<meta name="google-site-verification" content="<?php echo get_option('Google_Webmaster');?>">
 	<meta name="msvalidate.01" content="<?php echo get_option('Bing_Webmaster');?>" />
@@ -94,13 +95,12 @@
 	<article>
 		<header>
 			<?php echo preg_replace(array('/<img/i','/\/>/'),array('<amp-img','></amp-img>'),the_post_thumbnail());?>
-			<div itemtype="http://data-vocabulary.org/Breadcrumb" itemscope="" class="bread"><?php if(!is_home()&&!is_front_page()):
-				$cat = is_single() ? get_the_category():array(get_category($cat));
-				if($cat&&!is_wp_error($cat)){$par=get_category($cat[0]->parent);
-				echo'<a href="'.home_url().'" itemprop="url"><span itemprop="title">Home</span></a><span class="sp">/</span>';
+			<div itemtype="http://data-vocabulary.org/Breadcrumb" itemscope="" class="bread"><?php if(!is_home()&&!is_front_page()):$cat=is_single()?get_the_category():array(get_category($cat));
+				if($cat&&!is_wp_error($cat)){$par=get_category($cat[0]->parent);echo'<a href="'.home_url().'" itemprop="url"><span itemprop="title">Home</span></a><span class="sp">/</span>';
 				while($par&&!is_wp_error($par)&&$par->term_id != 0){$echo='<a href="'.get_category_link($par->term_id).'" itemprop="url"><span itemprop="title">'.$par->name.'</span></a><span class="sp">/</span>'.$echo;$par=get_category($par->parent);}
-				echo $echo.'<a href="'.get_category_link($cat[0]->term_id).'" itemprop="url"><span itemprop="title">'.$cat[0]->name.'</span></a>';}endif;?></div>
-			<?php the_title(sprintf('<h2 class="entry-title">',esc_url(get_permalink())),'</h2>');?>
+				echo $echo.'<a href="'.get_category_link($cat[0]->term_id).'" itemprop="url"><span itemprop="title">'.$cat[0]->name.'</span></a>';}endif;?>
+			</div>
+			<h2 class="entry-title"><?php the_title();?></h2>
 			<div class="meta"><?php amp_entry_meta();?></div>
 		</header>
 		<section>
