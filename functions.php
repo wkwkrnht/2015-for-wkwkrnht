@@ -1,30 +1,25 @@
 <?php add_action('wp_enqueue_scripts','theme_enqueue_styles');function theme_enqueue_styles(){wp_enqueue_style('parent-style',get_template_directory_uri().'/style.css');}
-/*外部スクリプト読み込み
-function _script(){wp_enqueue_script('','',array(),false,false);}
-add_action('wp_enqueue_script','_scripts');*/
-//消去 /?ver=&emoji&error add_action&標準埋め込み&genericons
-function wps_login_error() {remove_action('login_head','wp_shake_js',12);}
-function vc_remove_wp_ver_css_js($src){if(strpos($src,'ver='))$src=remove_query_arg('ver',$src);return $src;}
-function dequeue_genericons(){wp_dequeue_style('genericons');}
-add_action('wp_enqueue_scripts','dequeue_genericons',11);
-add_action('login_head','wps_login_error');
-add_filter('style_loader_src','vc_remove_wp_ver_css_js',9999);
-add_filter('script_loader_src','vc_remove_wp_ver_css_js',9999);
+//消去 /?ver=&emoji&error action&genericons
+function remove_wp_ver_css_js($src){if(strpos($src,'ver='))$src=remove_query_arg('ver',$src);return $src;}
+add_action('wp_enqueue_scripts',function(){wp_dequeue_style('genericons');},11);
+add_action('login_head',function(){remove_action('login_head','wp_shake_js',12);});
+add_filter('style_loader_src','remove_wp_ver_css_js',9999);
+add_filter('script_loader_src','remove_wp_ver_css_js',9999);
 remove_action('wp_head','wp_generator');
 remove_action('wp_head','print_emoji_detection_script',7);
 remove_action('wp_print_styles','print_emoji_styles');
 //oEmbed(by WPteam)対応
-function nendebcom_embed_analytics(){ ?>
+function wkwkrnht_embed_analytics(){ ?>
 <script type="text/javascript">
 	function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
 	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)}(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 	ga('create',<?php echo get_option('Google_Analytics');?>,'auto');ga('send','pageview');
 </script>
 <?php }
-add_action('embed_head','nendebcom_embed_analytics');
+add_action('embed_head','wkwkrnht_embed_analytics');
 function oficialoembed_support_scripts(){if(is_singular(array('post','page'))){wp_enqueue_style('wp-embed-template-ie');wp_enqueue_script('oficialoembed_support_template',includes_url('js/wp-embed-template.min.js'),array(),'',true);}}
 add_action('wp_enqueue_scripts','oficialoembed_support_scripts');
-add_filter('embed_thumbnail_image_size',function(){return 'thmb150';});
+add_filter('embed_thumbnail_image_size',function(){return'thmb150';});
 //メタとサムネ(標準とAMP)
 function twentyfifteen_entry_meta(){if(is_sticky()&&is_home()&&!is_paged()):printf('<span class="sticky-post">%s</span>',__('Featured','twentyfifteen'));endif;//投稿を先頭に固定
   //投稿日&更新日
@@ -100,11 +95,11 @@ function wps_highlight_results($text){if(is_search()){$sr=get_query_var('s');$ke
 function twtreplace($content){$twtreplace=preg_replace('/([^a-zA-Z0-9-_&])@([0-9a-zA-Z_]+)/',"$1<a href=\"http://twitter.com/$2\" target=\"_blank\" rel=\"nofollow\">@$2</a>",$content);return $twtreplace;}
 function api_sc_shot($attributes){extract(shortcode_atts(array('url'=>'',),$attributes));$imageUrl=sc_shot($url);if($imageUrl==''){return'';}else{return'<a href="' . $url . '" target="_blank"><img src="' . $imageUrl . '" alt="' . $url . '"/></a>';}}
 function sc_shot($url=''){return'http://s.wordpress.com/mshots/v1/' . urlencode(clean_url($url)) . '?w=500';}
-function add_qrcode_in_this_article($atts){extract(shortcode_atts(array('url'=>'','size'=>'80',),$atts));return'<a href="' . $url . '" target="_blank" class="qrcode"><img src="https://chart.googleapis.com/chart?chs=' . $size . 'x' . $size . '&cht=qr&chl=' . $url . '&choe=UTF-8 " alt="QR Code"/></a>';}
+function url_to_qrcode($atts){extract(shortcode_atts(array('url'=>'','size'=>'80',),$atts));return'<a href="' . $url . '" target="_blank" class="qrcode"><img src="https://chart.googleapis.com/chart?chs=' . $size . 'x' . $size . '&cht=qr&chl=' . $url . '&choe=UTF-8 " alt="QR Code"/></a>';}
 function url_to_embedly($atts){extract(shortcode_atts(array('url'=>'',),$atts));$content='<a class="embedly-card" href="' . $url . '"></a><script async="" charset="UTF-8" src="//cdn.embedly.com/widgets/platform.js"></script>';return $content;}
 function url_to_hatenaBlogcard($atts){extract(shortcode_atts(array('url'=>'',),$atts));$content='<iframe class="hatenablogcard" src="http://hatenablog.com/embed?url=' . $url . '" frameborder="0" scrolling="no"></iframe>';return $content;}
 add_shortcode('scshot','api_sc_shot');
-add_shortcode('myqrcode','add_qrcode_in_this_article');
+add_shortcode('myqrcode','url_to_qrcode');
 add_shortcode('embedly','url_to_embedly');
 add_shortcode('hatenaBlogcard','url_to_hatenaBlogcard');
 add_filter('the_content','twtreplace');
@@ -205,9 +200,8 @@ function get_meta_description_from_category(){$cate_desc=trim(strip_tags(categor
 function get_meta_keyword_from_category(){return single_cat_title('',false) . ',ブログ,記事一覧';}
 function get_mtime($format){$mtime=get_the_modified_time('Ymd');$ptime=get_the_time('Ymd');if($ptime > $mtime){return get_the_time($format);}elseif($ptime === $mtime){return null;}else{return get_the_modified_time($format);}}
 //カスタマイザー弄り&投稿記事一覧にアイキャッチ画像を表示
-function customize_admin_manage_posts_columns($columns){$columns['thumbnail']=__('Thumbnail');return $columns;}
 function customize_admin_add_column($column_name,$post_id){if('thumbnail'==$column_name){$thum=get_the_post_thumbnail($post_id,array(100,100));}if(isset($thum)&&$thum){echo $thum;}}
-add_filter('manage_posts_columns','customize_admin_manage_posts_columns');
+add_filter('manage_posts_columns',function($columns){$columns['thumbnail']=__('Thumbnail');return $columns;});
 add_action('manage_posts_custom_column','customize_admin_add_column',10,2);
 add_action('customize_register','theme_customize');
 function theme_customize($wp_customize){

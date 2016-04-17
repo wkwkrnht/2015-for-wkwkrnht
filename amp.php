@@ -86,14 +86,14 @@
 		article{padding:20vh 3vw 5vh 3vw;box-shadow:0 1px 6px rgba(0,0,0,.12);}header{background-color:#ebeef7;text-align:center;margin:5px 0;}.bread{color:#ddd;}.bread .sp{color:#333;margin:0 .5em;}span .meta{padding:2px;}
 		table{border-collapse:separate;border-spacing:1px;line-height:1.5;border-top:1px solid #ccc;}th{width:150px;padding:10px;font-weight:bold;vertical-align:top;border-bottom:1px solid #ccc;background:#efefef;text-align:center;}td{width:350px;padding:10px;vertical-align:top;border-bottom:1px solid #ccc;text-align:left;}
 		amp-iframe,amp-img,h2,h3,h4{text-align:center;}h2,h3,h4{min-height:45px;}h3,h4{background-color:#fff;}article>h2{color:#fff;background:#ffcc00;}h3{border-left:10px solid #ffcc00;}h4{border-bottom:8px solid #ffcc00;}
-		#slide{max-width:100%;overflow:hidden;}#slide .content{flex-direction:row;-webkit-flex-direction:row;justify-content:flex-start;-webkit-justify-content:flex-start;display:flex;display:-webkit-flex;}.related{max-width:150px;max-height:300px;border-radius:8px;margin:15px 8px 10px 0;background-color:#fff;box-shadow:0 2px 5px 0 #999;}.related .thumb{background-color:#ffcc00;max-height:150px;}.related .title{color:#333;font-size:18px;padding-top:20px;max-height:150px;text-align:center;}
+		#flex{max-width:100%;overflow:hidden;}#flex .content{flex-direction:row;-webkit-flex-direction:row;justify-content:flex-start;-webkit-justify-content:flex-start;display:flex;display:-webkit-flex;}.related{max-width:150px;max-height:300px;border-radius:8px;margin:15px 8px 10px 0;background-color:#fff;box-shadow:0 2px 5px 0 #999;}.related .thumb{background-color:#ffcc00;max-height:150px;}.related .title{color:#333;font-size:18px;padding-top:20px;max-height:150px;text-align:center;}
 	</style>
 </head>
 <body>
 	<h1 class="siteinfo"><a href="<?php bloginfo('URL');?>" class="site-title"><?php bloginfo('name');?></a></h1>
 	<article>
 		<header>
-			<?php echo preg_replace(array('/<img/i','/\/>/'),array('<amp-img layout="responsive"','></amp-img>'),the_post_thumbnail());?>
+			<?php echo preg_replace(array('/<img/i','/\/>/'),array('<amp-img','></amp-img>'),the_post_thumbnail());?>
 			<div itemtype="http://data-vocabulary.org/Breadcrumb" itemscope="" class="bread"><?php if(!is_home()&&!is_front_page()):
 				$cat = is_single() ? get_the_category():array(get_category($cat));
 				if($cat&&!is_wp_error($cat)){$par=get_category($cat[0]->parent);
@@ -104,23 +104,24 @@
 			<div class="meta"><?php amp_entry_meta();?></div>
 		</header>
 		<section>
-			<?php $pattern=array('/<p>https:\/\/twitter.com\/.*\/status\/(.*).*<\/p>/i',
+			<?php $pattern=array('/https:\/\/twitter.com\/.*\/status\/(.*).*/i',
 				'/<blockquote class="twitter-tweet".*>.*<a href="https:\/\/twitter.com\/.*\/status\/(.*).*<\/blockquote>.*<script async src="\/\/platform.twitter.com\/widgets.js" charset="utf-8"><\/script>/i',
 				'/<div class=\'embed-container\'><iframe width=\'100%\' src=\'https:\/\/vine.co\/v\/(.*)\/embed\/simple\'.*<\/div>/i',
 				'/<div class=\'embed-container\'><iframe src=\'\/\/instagram.com\/p\/(.*)\/embed\/\'.*<\/iframe><\/div>/i',
 				'/<div class="youtube">.*https:\/\/youtu.be\/(.*).*<\/div>/i',
 				'/<div class="youtube">.*<iframe width="853" height="480" src="https:\/\/www.youtube.com\/embed\/(.*)" frameborder="0" allowfullscreen><\/iframe>.*<\/div>/i',
-				'/<iframe/i','/<img/i','/\/>/');
+				'/<iframe/i','/<img/i','/\/>/','/[embedly url=/','/]/','[hatenaBlogcard url=','/]/');
 				$append=array('<p><amp-twitter width=592 height=472 layout="responsive" data-tweetid="$1"></amp-twitter></p>',
 				'<p><amp-twitter width=592 height=472 layout="responsive" data-tweetid="$1"></amp-twitter></p>',
 				'<div class=\'embed-container\'><amp-vine data-vineid="$1" width="592" height="592" layout="responsive"></amp-vine></div>',
 				'<div class=\'embed-container\'><amp-instagram layout="responsive" data-shortcode="$1" width="592" height="716" ></amp-instagram></div>',
 				'<div class="youtube"><amp-youtube layout="responsive" data-videoid="$1" width="592" height="363"></amp-youtube></div>',
 				'<div class="youtube"><amp-youtube layout="responsive" data-videoid="$1" width="592" height="363"></amp-youtube></div>',
-				'<amp-iframe layout="responsive"','<amp-img layout="responsive"','></amp-img>');
-				echo preg_replace($pattern,$append,get_the_content());?>
+				'<amp-iframe layout="responsive"','<amp-img layout="responsive"','></amp-img>',
+				'<a href="','">リンクはこちら</a>','<a href="','">リンクはこちら</a>');
+				echo preg_replace($pattern,$append,the_content());?>
 		</section>
-		<footer id="slide">
+		<footer id="flex">
 			<div class="content">
 				<?php $args=array('numberposts'=>3,'orderby'=>'rand','post_status'=>'publish','offset'=>1);$rand_posts=get_posts($args);
 				foreach($rand_posts as $post):?>
