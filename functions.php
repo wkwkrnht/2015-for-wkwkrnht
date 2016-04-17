@@ -233,16 +233,11 @@ function theme_customize($wp_customize){
     $wp_customize->add_control('facebookr_appid',array('section'=>'sns_section','settings'=>'facebookr_appid','label'=>'facebookのappidを表示する','type'=>'text'));
     $wp_customize->add_setting('facebookr_admins',array('type'=>'option',));
     $wp_customize->add_control('facebookr_admins',array('section'=>'sns_section','settings'=>'facebookr_admins','label'=>'facebookのadminidを指定する','type'=>'text'));
-    $wp_customize->add_setting('Pushnotice_Dsp',array('type'=>'theme_mod',));
-    $wp_customize->add_control('Pushnotice_Dsp',array('section'=>'sns_section','settings'=>'Pushnotice_Dsp','label'=>'プッシュ通知の登録URLを指定する','type'=>'checkbox'));
     $wp_customize->add_setting('Pushnotice_URL',array('type'=>'option',));
     $wp_customize->add_control('Pushnotice_URL',array('section'=>'sns_section','settings'=>'Pushnotice_URL','label'=>'プッシュ通知の登録URLを入力する','type'=>'text'));
-	$wp_customize->add_setting('Onesignal_APIkey',array('type'=>'option',));
-    $wp_customize->add_control('Onesignal_APIkey',array('section'=>'sns_section','settings'=>'Onesignal_APIkey','label'=>'OnesignalのAPIkeyを入力する','type'=>'text'));
 	$wp_customize->add_setting('Disqus_ID',array('type'=>'option',));
     $wp_customize->add_control('Disqus_ID',array('section'=>'sns_section','settings'=>'Disqus_ID','label'=>'DisqusのIDを入力する','type'=>'text'));
 }
-function is_pushnotice_dsp(){return get_theme_mod('Pushnotice_Dsp','false');}
 function is_adminnav_dsp(){return get_theme_mod('Adminnav_Dsp','false');}
 //プロフィール欄追加(the_author_meta('twitter')で表示)
 function my_new_contactmethods($contactmethods){

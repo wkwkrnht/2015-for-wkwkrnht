@@ -1,5 +1,16 @@
 <section id="secondary" class="secondary">
-	<?php if(is_adminnav_dsp()):get_template_part('parts/adminnav');endif;//get_template_part('parts/adminnav');?>
+	<?php if(is_adminnav_dsp()):?>
+		<nav id="admin-navigation" class="admin-navigation" role="navigation">
+			<?php if(!is_user_logged_in()):?>
+				<a href="<?php echo esc_url(home_url());?>/wp-login.php" target="_blank" class="loginbutton"></a>
+			<?php else:?>
+				<a href="<?php echo esc_url(home_url());?>/wp-admin/post-new.php" target="_blank" class="postnewbutton"></a>
+				<?php edit_post_link();?>
+				<a href="wlw://wkwkrnht.gegahost.net/?postid=<?php echo the_ID();?>" class="wlwedit"></a>
+				<a href="<?php echo esc_url(home_url());?>/wp-admin/" target="_blank" class="adminmenubutton"></a>
+			<?php endif;?>
+		</nav>
+	<?php endif;?>
 	<?php if(has_nav_menu('primary')):?>
 		<nav id="site-navigation" class="main-navigation" role="navigation">
 			<?php wp_nav_menu(array('menu_class'=>'nav-menu','theme_location'=>'primary',));?>

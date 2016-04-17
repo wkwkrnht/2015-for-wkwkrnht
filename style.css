@@ -69,13 +69,12 @@
 #movetop{color:#fff;background-color:#ffcc00;box-shadow:0 1px 6px rgba(0,0,0,.12);font-size:26px;font-weight:1200;border-radius:50%;line-height:70px;width:70px;height:70px;right:10px;bottom:20px;display:block;cursor:pointer;text-decoration:none;text-align:center;position:fixed;}
 /*admin-nav*/
 #admin-navigation{display:block;margin:0 20% 5%;}
-a #admin-navigation{padding:0 2.5em;}
-.loginbutton::before,.adminmenubutton::before,.postnewbutton::before,.wlwedit::before,.post-edit-link::before,.pushnotice::before{font-family:"FontAwesome";font-size:24px;}
+#admin-navigation a{padding:0 2.5em;}
+.loginbutton::before,.adminmenubutton::before,.postnewbutton::before,.wlwedit::before,.post-edit-link::before{font-family:"FontAwesome";font-size:24px;}
 .loginbutton::before{content:"\f090";}
 .adminmenubutton::before{content:"\f013";}
 .postnewbutton::before,.wlwedit::before,.post-edit-link::before{content:"\f040";color:green;}
 .postnewbutton::after{content:"\f067";font-family:"FontAwesome";font-size:16px;position:relative;right:.5em;bottom:0;}
-.pushnotice::before{content:"\f0f3";}
 /*social-nav*/
 .social-navigation a::before{content:"\f07b";font-family:"FontAwesome";font-size:24px;position:absolute;top:0;left:0;}
 .social-navigation a[href*="/feed"]::before,.social-navigation a[href*="/feed/"]::before{content:"\f09e";color:#2aff00;}
@@ -111,6 +110,8 @@ a #admin-navigation{padding:0 2.5em;}
 .social-navigation a[href*="goo.gl/forms/"]::before{content:"\f128";}
 .social-navigation a[href*="skype.com"]::before{content:"\f17e";}
 .social-navigation a[href*="wordpress.com"]::before,.social-navigation a[href*="wordpress.org"]::before{content:"\f19a";color:#0033ff;}
+.social-navigation a[href*="push.dog"]::before,.social-navigation a[href*="onesignal.com"]::before{content:"\f0f3";}
+.social-navigation a[href*="push7.jp"]::before{content:"\f0e7";}
 /*
 .social-navigation a[href*="path.com"]:before{content:"\f219";}
 */
