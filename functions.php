@@ -1,5 +1,5 @@
 <?php add_action('wp_enqueue_scripts','theme_enqueue_styles');function theme_enqueue_styles(){wp_enqueue_style('parent-style',get_template_directory_uri().'/style.css');}
-//消去 /?ver=&emoji&error action&genericons
+//消去(/?ver=|emoji|error action|genericons)&oEmbed(by WPteam)対応
 function remove_wp_ver_css_js($src){if(strpos($src,'ver='))$src=remove_query_arg('ver',$src);return $src;}
 add_action('wp_enqueue_scripts',function(){wp_dequeue_style('genericons');},11);
 add_action('login_head',function(){remove_action('login_head','wp_shake_js',12);});
@@ -8,7 +8,6 @@ add_filter('script_loader_src','remove_wp_ver_css_js',9999);
 remove_action('wp_head','wp_generator');
 remove_action('wp_head','print_emoji_detection_script',7);
 remove_action('wp_print_styles','print_emoji_styles');
-//oEmbed(by WPteam)対応
 function wkwkrnht_embed_analytics(){ ?>
 <script type="text/javascript">
 	function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -16,27 +15,25 @@ function wkwkrnht_embed_analytics(){ ?>
 	ga('create',<?php echo get_option('Google_Analytics');?>,'auto');ga('send','pageview');
 </script>
 <?php }
-add_action('embed_head','wkwkrnht_embed_analytics');
 function oficialoembed_support_scripts(){if(is_singular(array('post','page'))){wp_enqueue_style('wp-embed-template-ie');wp_enqueue_script('oficialoembed_support_template',includes_url('js/wp-embed-template.min.js'),array(),'',true);}}
+add_action('embed_head','wkwkrnht_embed_analytics');
 add_action('wp_enqueue_scripts','oficialoembed_support_scripts');
 add_filter('embed_thumbnail_image_size',function(){return'thmb150';});
 //メタとサムネ(標準とAMP)
 function twentyfifteen_entry_meta(){if(is_sticky()&&is_home()&&!is_paged()):printf('<span class="sticky-post">%s</span>',__('Featured','twentyfifteen'));endif;//投稿を先頭に固定
-  //投稿日&更新日
+  //投稿日|更新日|投稿者|カテゴリー|タグ|画像サイズ(横 x 縦)表示|コメントをどうぞ|コメント数(順同)
   if(in_array(get_post_type(),array('post','attachment'))){
     $time_string='<time class="entry-date published updated" datetime="%1$s">%2$s</time>';
     if(get_the_time('U')!==get_the_modified_time('U')){$time_string='<time class="entry-date published" datetime="%1$s">%2$s</time><time class="updated" datetime="%3$s">%4$s</time>';}
       $time_string=sprintf($time_string,esc_attr(get_the_date('c')),get_the_date(),esc_attr(get_the_modified_date('c')),get_the_modified_date());
       printf('<span class="posted-on"><span class="screen-reader-text">%1$s</span><a href="%2$s" rel="bookmark">%3$s</a></span>',_x('Posted on','Used before publish date.','twentyfifteen'),esc_url(get_permalink()),$time_string);
       echo('<span class="humantime">（');echo human_time_diff(get_the_time('U'), current_time('timestamp'));echo('前）</span>');}
-  //投稿者|カテゴリー|タグ(順同)
   if('post'==get_post_type()){
-    if(is_singular()&&is_multi_author()){printf('<span class="byline"><span class="author vcard"><span class="screen-reader-text">%1$s</span><a class="url fn n" href="%2$s">%3$s</a></span></span>',_x('Author','Used before post author name.','twentyfifteen'),esc_url(get_author_posts_url(get_the_author_meta('ID'))),get_the_author());}
+    if(is_singular()&&is_multi_author()){printf('<span class="byline"><span class="author vcard"><span class="screen-reader-text">%1$s</span><a class="url fn n" href="%2$s">%3$s</a></span></span><br />',_x('Author','Used before post author name.','twentyfifteen'),esc_url(get_author_posts_url(get_the_author_meta('ID'))),get_the_author());}
     $categories_list=get_the_category_list(_x(',','Used between list items,there is a space after the comma.','twentyfifteen'));
-    if($categories_list&&twentyfifteen_categorized_blog()){printf('<span class="cat-links"><span class="screen-reader-text">%1$s</span>%2$s</span>',_x('Categories','Used before category names.','twentyfifteen'),$categories_list);}
+    if($categories_list&&twentyfifteen_categorized_blog()){printf('<span class="cat-links"><span class="screen-reader-text">%1$s</span>%2$s</span><br />',_x('Categories','Used before category names.','twentyfifteen'),$categories_list);}
     $tags_list=get_the_tag_list('',_x(',','Used between list items,there is a space after the comma.','twentyfifteen'));
     if($tags_list){printf('<span class="tags-links"><span class="screen-reader-text">%1$s</span>%2$s</span>',_x('Tags','Used before tag names.','twentyfifteen'),$tags_list);}}
-  //画像サイズ(横 x 縦)表示&コメントをどうぞ&コメント数
   if(is_attachment()&&wp_attachment_is_image()){$metadata=wp_get_attachment_metadata();printf('<span class="full-size-link"><span class="screen-reader-text">%1$s</span><a href="%2$s">%3$s &times;%4$s</a></span>',_x('Full size','Used before full size attachment link.','twentyfifteen'),esc_url(wp_get_attachment_url()),$metadata['width'],$metadata['height']);}
   if(!is_single()&&!post_password_required()&&(comments_open()||get_comments_number())){echo'<span class="comments-link">';comments_popup_link(__('Leave a comment','twentyfifteen'),__('1 Comment','twentyfifteen' ),__('% Comments','twentyfifteen'));echo'</span>';}
 }
@@ -89,7 +86,7 @@ add_action('draft_to_publish','auto_post_thumbnail_image');
 add_action('new_to_publish','auto_post_thumbnail_image');
 add_action('pending_to_publish','auto_post_thumbnail_image');
 add_action('future_to_publish','auto_post_thumbnail_image');
-//@hoge→twitterリンク&キーワードハイライト&ルビサポート&ショートコード(スクショ&QRコード&embedly&はてなブログカード)&クイックタグ追加
+//@hoge→twitterリンク&キーワードハイライト&ルビサポート&ショートコード(スクショ&QRコード&embedly&はてなブログカード)
 function ruby_setup(){global $allowedposttags;foreach(array('ruby','rp','rt') as $tag )if(!isset($allowedposttags[$tag]))$allowedposttags[$tag]=array();}
 function wps_highlight_results($text){if(is_search()){$sr=get_query_var('s');$keys=explode(" ",$sr);$text=preg_replace('/('.implode('|',$keys) .')/iu','<span class="marker">'.$sr.'</span>',$text);}return $text;}
 function twtreplace($content){$twtreplace=preg_replace('/([^a-zA-Z0-9-_&])@([0-9a-zA-Z_]+)/',"$1<a href=\"http://twitter.com/$2\" target=\"_blank\" rel=\"nofollow\">@$2</a>",$content);return $twtreplace;}
@@ -97,9 +94,11 @@ function api_sc_shot($attributes){extract(shortcode_atts(array('url'=>'',),$attr
 function sc_shot($url=''){return'http://s.wordpress.com/mshots/v1/' . urlencode(clean_url($url)) . '?w=500';}
 function url_to_qrcode($atts){extract(shortcode_atts(array('url'=>'','size'=>'80',),$atts));return'<a href="' . $url . '" target="_blank" class="qrcode"><img src="https://chart.googleapis.com/chart?chs=' . $size . 'x' . $size . '&cht=qr&chl=' . $url . '&choe=UTF-8 " alt="QR Code"/></a>';}
 function url_to_embedly($atts){extract(shortcode_atts(array('url'=>'',),$atts));$content='<a class="embedly-card" href="' . $url . '"></a><script async="" charset="UTF-8" src="//cdn.embedly.com/widgets/platform.js"></script>';return $content;}
+function url_to_googleplaycard($atts){extract(shortcode_atts(array('url'=>'','title'=>'','author'=>'',),$atts));$content='<a href="' . $url . '"><div class="googleplay-card"><span class="title">' . $title . '</span><span class="author">' . $author . '</span></div></a>';return $content;}
 function url_to_hatenaBlogcard($atts){extract(shortcode_atts(array('url'=>'',),$atts));$content='<iframe class="hatenablogcard" src="http://hatenablog.com/embed?url=' . $url . '" frameborder="0" scrolling="no"></iframe>';return $content;}
 add_shortcode('scshot','api_sc_shot');
 add_shortcode('myqrcode','url_to_qrcode');
+add_shortcode('googleplaycard','url_to_googleplaycard');
 add_shortcode('embedly','url_to_embedly');
 add_shortcode('hatenaBlogcard','url_to_hatenaBlogcard');
 add_filter('the_content','twtreplace');
@@ -107,18 +106,7 @@ add_filter('comment_text','twtreplace');
 add_filter('the_title','wps_highlight_results');
 add_filter('the_content','wps_highlight_results');
 add_action('after_setup_theme','ruby_setup');
-function appthemes_add_quicktags(){
-    if(wp_script_is('quicktags')){ ?>
-    <script type="text/javascript">
-		QTags.addButton('qt-scshot','スクショ','[scshot url=',']');
-		QTags.addButton('qt-myqrcode','QRコード','[myqrcode url=',' size= ]');
-		QTags.addButton('qt-embedly','embedly','[embedly url=',']');
-		QTags.addButton('qt-hatenablogcard','はてなブログカード','[hatenaBlogcard url=',']');
-		QTags.addButton('qt-marker','マーカー','<span class="marker">','</span>');
-    </script>
-<?php }}
-add_action('admin_print_footer_scripts','appthemes_add_quicktags');
-//SNSボタンと関連記事のウィジェット化&PCのみ表示テキストウイジェットの追加&entry-footerにウィジェットエリア追加
+//entry-footerウィジェットエリア化&独自ウィジェットの追加(SNSボタン|Disqus|関連記事|テキストウイジェット(PCのみ表示))&カレンダー短縮
 class PcTextWidgetItem extends WP_Widget{
   function PcTextWidgetItem(){parent::WP_Widget(false,$name='Text widget（for PC）');}
   function widget($args,$instance){extract($args);$title=apply_filters('widget_title_pc_text',$instance['title_pc_text']);$text=apply_filters('widget_text_pc_text',$instance['text_pc_text']);if(!wp_is_mobile()):echo('<div id="pc-text-widget" class="widget pc_text">');if($title){echo '<h4>'.$title.'</h4>';}echo('<div class="text-pc">');echo $text;echo'</div></div>';endif;}
@@ -178,7 +166,7 @@ class disqus_widget extends WP_Widget{
 add_action('widgets_init',function(){register_widget('disqus_widget');});
 function entry_footer_sidebar(){register_sidebar(array('name'=>'エントリーフッター','id'=>'8','before_widget'=>'<div>','after_widget'=>'</div>','before_title'=>'','after_title'=>'',));}
 add_action('widgets_init','entry_footer_sidebar');
-//カレンダー短縮
+//
 function my_archives_link($link_html){
     $currentMonth=date('n');
     $currentYear=date('Y');
@@ -199,6 +187,22 @@ add_filter('get_archives_link','my_archives_link');
 function get_meta_description_from_category(){$cate_desc=trim(strip_tags(category_description()));if($cate_desc){return $cate_desc;}$cate_desc='「' . single_cat_title('',false) . '」の記事一覧です。' . get_bloginfo('description');return $cate_desc;}
 function get_meta_keyword_from_category(){return single_cat_title('',false) . ',ブログ,記事一覧';}
 function get_mtime($format){$mtime=get_the_modified_time('Ymd');$ptime=get_the_time('Ymd');if($ptime > $mtime){return get_the_time($format);}elseif($ptime === $mtime){return null;}else{return get_the_modified_time($format);}}
+//クイックタグ追加
+function appthemes_add_quicktags(){
+    if(wp_script_is('quicktags')){ ?>
+    <script type="text/javascript">
+		QTags.addButton('qt-scshot','スクショ','[scshot url=',']');
+		QTags.addButton('qt-myqrcode','QRコード','[myqrcode url=',' size= ]');
+		QTags.addButton('qt-embedly','embedly','[embedly url=',']');
+		QTags.addButton('qt-hatenablogcard','はてなブログカード','[hatenaBlogcard url=',']');
+		QTags.addButton('qt-p','p','<p>','</p>');
+		QTags.addButton('qt-h2','h2','<h2>','</h2>');
+		QTags.addButton('qt-h3','h3','<h3>','</h3>');
+		QTags.addButton('qt-h4','h4','<h4>','</h4>');
+		QTags.addButton('qt-marker','マーカー','<span class="marker">','</span>');
+    </script>
+<?php }}
+add_action('admin_print_footer_scripts','appthemes_add_quicktags');
 //カスタマイザー弄り&投稿記事一覧にアイキャッチ画像を表示
 function customize_admin_add_column($column_name,$post_id){if('thumbnail'==$column_name){$thum=get_the_post_thumbnail($post_id,array(100,100));}if(isset($thum)&&$thum){echo $thum;}}
 add_filter('manage_posts_columns',function($columns){$columns['thumbnail']=__('Thumbnail');return $columns;});
