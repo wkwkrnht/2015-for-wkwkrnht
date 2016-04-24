@@ -35,8 +35,8 @@
 .entry-content h3{border-bottom:8px solid #ffcc00;background-color:rgba(215,215,215,.4);}
 .entry-content h4{border-left:10px solid #ffcc00;background-color:#fff;}
 .entry-content h2,.entry-content h3,.entry-content h4{min-height:45px;text-align:center;}
-.qrcode{display:inline-block;margin:3px;}
-.hatenablogcard{clear:both;margin:10px 0;height:155px;width:100%;max-width:680px;}
+.qrcode{display:inline-block;margin:3px;max-height:200px;max-width:200px;}
+.hatenablogcard{clear:both;margin:10px 0;height:155px;width:100%;max-width:700px;}
 /*ページャー&関連記事*/
 .prev.page-numbers::before,.prev.page-numbers::before{font-family:"Noto Serif" sans-serif;font-size:16px;}
 .prev.page-numbers::before{content:"＜";}
@@ -48,7 +48,7 @@
 .related .title{color:#333;font-size:18px;padding-top:20px;max-height:150px;text-align:center;}
 /*ボタン*/
 .tweet::before,.fb-like::before,.g1::before,.linkedin::before,.pocket::before,.hatebu::before,.tumblr::before,.printerest::before,.embedly::before{color:#fff;font-size:40px;font-family:"FontAwesome";position:absolute;top:3%;}
-.button{width:60px;height:60px;border-radius:50%;margin:5px;box-shadow:0 1px 6px rgba(0,0,0,.12);float:left;position:relative;}
+.button{width:65px;height:65px;border-radius:50%;margin:7px;box-shadow:0 1px 6px rgba(0,0,0,.12);float:left;position:relative;}
 .tweet::before{content:"\f099";left:18%;}
 .tweet{background-color:#00b8ff;}
 .fb-like::before{content:"\f164";left:18%;}
@@ -70,6 +70,7 @@
 #movetop{color:#fff;background-color:#ffcc00;box-shadow:0 1px 6px rgba(0,0,0,.12);font-size:26px;font-weight:1200;border-radius:50%;line-height:70px;width:70px;height:70px;right:10px;bottom:20px;display:block;cursor:pointer;text-decoration:none;text-align:center;position:fixed;}
 /*admin-nav*/
 #admin-navigation{display:block;margin:0 20% 5%;}
+#admin-navigation a{padding:0 10px;}
 .loginbutton::before,.adminmenubutton::before,.postnewbutton::before,.wlwedit::before,.post-edit-link::before{font-family:"FontAwesome";font-size:24px;}
 .loginbutton::before{content:"\f090";}
 .adminmenubutton::before{content:"\f013";}
@@ -127,12 +128,12 @@
     .card-title{font-size:27px;}
     .card-meta{font-size:14px;}
     .nav-links{margin-top:10px;}
-    .tweet::before,.fb-like::before,.g1::before,.linkedin::before,.pocket::before,.hatebu::before,.tumblr::before,.printerest::before,.embedly::before{font-size:32px;top:8%;}
-	.tweet::before{left:20%;}
-	.fb-like::before{left:19%;}
-	.linkedin::before{left:20%;}
+    .tweet::before,.fb-like::before,.g1::before,.linkedin::before,.pocket::before,.hatebu::before,.tumblr::before,.printerest::before,.embedly::before{font-size:33px;top:6%;}
+	.tweet::before{left:21%;}
+	.fb-like::before{left:20%;}
+	.linkedin::before{left:21%;}
 	.pocket::before{left:18%;}
-	.hatebu::before{left:27%;}
+	.hatebu::before{left:26%;}
 	.tumblr::before{left:28%;}
 	.printerest::before{left:27%;}
 	.embedly::before{left:20%;}
