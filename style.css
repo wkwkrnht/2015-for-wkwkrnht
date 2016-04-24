@@ -146,8 +146,8 @@ p.wp-embed-heading{margin:0 0 15px;font-weight:bold;font-size:22px;line-height:1
 .wp-embed-comments+.wp-embed-share{margin-left:10px;}
 .wp-embed-share-dialog{position:absolute;top:0;left:0;right:0;bottom:0;color:#fff;background-color:#222;background-color:rgba(10,10,10,0.9);opacity:1;transition:opacity .25s ease-in-out;-webkit-transition:opacity .25s ease-in-out;}
 .wp-embed-share-dialog.hidden{opacity:0;visibility:hidden;}
-.wp-embed-share-dialog-open::before{content:"\f1e0";font-size:40px;font-family:"FontAwesome";position:absolute;top:3%;left:20%;}
-.wp-embed-share-dialog-open{background-color:#0033f;float:left;position:relative;cursor:pointer;outline:none;border:none;margin:5px;height:60px;width:60px;border-radius:50%;box-shadow:0 1px 6px rgba(0,0,0,.12);}
+.wp-embed-share-dialog-open::before{content:"\f1e0";font-size:40px;font-family:"FontAwesome";position:absolute;top:5%;left:20%;}
+.wp-embed-share-dialog-open{background-color:#0033ff;float:left;position:relative;margin:5px;height:60px;width:60px;border-radius:50%;box-shadow:0 1px 6px rgba(0,0,0,.12);}
 .wp-embed-share-dialog-open .dashicons{padding:0;top:8px;}
 .wp-embed-share-dialog-open:focus .dashicons{box-shadow:0 0 0 1px #5b9dd9,0 0 2px 1px rgba(30,140,190,.8);-webkit-box-shadow:0 0 0 1px #5b9dd9,0 0 2px 1px rgba(30,140,190,.8);border-radius:100%;-webkit-border-radius:100%;}
 .wp-embed-share-dialog-close{background:transparent;cursor:pointer;outline:none;border:none;padding:0;margin:5px;}
