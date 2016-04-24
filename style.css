@@ -47,8 +47,8 @@
 .related .thumb{background-color:#ffcc00;max-height:150px;}
 .related .title{color:#333;font-size:18px;padding-top:20px;max-height:150px;text-align:center;}
 /*ボタン*/
-.tweet::before,.fb-like::before,.g1::before,.linkedin::before,.pocket::before,.hatebu::before,.tumblr::before,.printerest::before,.embedly::before{color:#fff;font-size:40px;font-family:"FontAwesome";position:absolute;top:3%;}
-.button{width:65px;height:65px;border-radius:50%;margin:10px;box-shadow:0 1px 6px rgba(0,0,0,.12);float:left;position:relative;}
+.tweet::before,.fb-like::before,.g1::before,.linkedin::before,.pocket::before,.hatebu::before,.tumblr::before,.printerest::before,.embedly::before{color:#fff;font-size:40px;font-family:"FontAwesome";position:absolute;top:5%;}
+.button{width:65px;height:65px;border-radius:50%;margin:8px 12px;box-shadow:0 1px 6px rgba(0,0,0,.12);float:left;position:relative;}
 .tweet::before{content:"\f099";left:21%;}
 .tweet{background-color:#00b8ff;}
 .fb-like::before{content:"\f164";left:21%;}
@@ -58,15 +58,15 @@
 .line{background-color:#2aff00;}
 .hatebu::before{content:"\f02e";left:25%;}
 .hatena{background-color:#3c7dd1;}
-.pocket::before{content:"\f265";left:18%;}
+.pocket::before{content:"\f265";left:19%;}
 .pocket{background-color:#ee4056;}
 .tumblr::before{content:"\f173";left:28%;}
 .tumblr{background-color:#2c4762;}
-.linkedin::before{content:"\f0e1";left:20%;}
+.linkedin::before{content:"\f0e1";left:22%;}
 .linkedin{background-color:#0077b5;}
-.embedly::before{content:"\f1e0";left:20%;}
+.embedly::before{content:"\f1e0";left:22%;}
 .embedly{background-color:#1d78af;}
-.printerest::before{content:"\f231";left:25%;}
+.printerest::before{content:"\f231";left:27%;}
 #movetop{color:#fff;background-color:#ffcc00;box-shadow:0 1px 6px rgba(0,0,0,.12);font-size:26px;font-weight:1200;border-radius:50%;line-height:70px;width:70px;height:70px;right:10px;bottom:20px;display:block;cursor:pointer;text-decoration:none;text-align:center;position:fixed;}
 /*admin-nav*/
 #admin-navigation{display:block;margin:0 20% 5%;}
@@ -130,14 +130,14 @@
     .nav-links{margin-top:10px;}
 	.button{margin:5px;}
     .tweet::before,.fb-like::before,.g1::before,.linkedin::before,.pocket::before,.hatebu::before,.tumblr::before,.printerest::before,.embedly::before{font-size:33px;top:6%;}
-	.tweet::before{left:21%;}
+	.tweet::before{left:20%;}
 	.fb-like::before{left:20%;}
 	.linkedin::before{left:21%;}
-	.pocket::before{left:18%;}
-	.hatebu::before{left:26%;}
-	.tumblr::before{left:28%;}
+	.pocket::before{left:17%;}
+	.hatebu::before{left:25%;}
+	.tumblr::before{left:27%;}
 	.printerest::before{left:27%;}
-	.embedly::before{left:20%;}
+	.embedly::before{left:29%;}
     #page-top,.button{width:50px;height:50px;}
     #page-top{line-height:50px;bottom:25px;right:15px;}
   }
