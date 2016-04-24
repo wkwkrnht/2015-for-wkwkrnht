@@ -1,13 +1,6 @@
 <?php add_action('wp_enqueue_scripts','theme_enqueue_styles');function theme_enqueue_styles(){wp_enqueue_style('parent-style',get_template_directory_uri().'/style.css');}
 //消去(/?ver=|emoji|error action|genericons)&oEmbed(by WPteam)対応
-function remove_wp_ver_css_js($src){if(strpos($src,'ver='))$src=remove_query_arg('ver',$src);return $src;}
-add_action('wp_enqueue_scripts',function(){wp_dequeue_style('genericons');},11);
-add_action('login_head',function(){remove_action('login_head','wp_shake_js',12);});
-add_filter('style_loader_src','remove_wp_ver_css_js',9999);
-add_filter('script_loader_src','remove_wp_ver_css_js',9999);
-remove_action('wp_head','wp_generator');
-remove_action('wp_head','print_emoji_detection_script',7);
-remove_action('wp_print_styles','print_emoji_styles');
+function remove_ver_script($src){if(strpos($src,'ver=')):$src=remove_query_arg('ver',$src);return $src;endif;}
 function wkwkrnht_embed_analytics(){ ?>
 <script type="text/javascript">
 	function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -15,9 +8,16 @@ function wkwkrnht_embed_analytics(){ ?>
 	ga('create',<?php echo get_option('Google_Analytics');?>,'auto');ga('send','pageview');
 </script>
 <?php }
-function oficialoembed_support_scripts(){if(is_singular(array('post','page'))){wp_enqueue_style('wp-embed-template-ie');wp_enqueue_script('oficialoembed_support_template',includes_url('js/wp-embed-template.min.js'),array(),'',true);}}
+function oficialoembed_support_scripts(){if(is_singular(array('post','page'))){wp_enqueue_style('wp-embed-template-ie');wp_enqueue_style('nendebcom_wp_embed_template',includes_url('css/wp-embed-template.min.css'));wp_enqueue_script('oficialoembed_support_template',includes_url('js/wp-embed-template.min.js'),array(),'',true);}}
+remove_action('wp_head','wp_generator');
+remove_action('wp_head','print_emoji_detection_script',7);
+remove_action('wp_print_styles','print_emoji_styles');
 add_action('embed_head','wkwkrnht_embed_analytics');
 add_action('wp_enqueue_scripts','oficialoembed_support_scripts');
+add_action('wp_enqueue_scripts',function(){wp_dequeue_style('genericons');},11);
+add_action('login_head',function(){remove_action('login_head','wp_shake_js',12);});
+add_filter('style_loader_src','remove_ver_script',9999);
+add_filter('script_loader_src','remove_ver_script',9999);
 add_filter('embed_thumbnail_image_size',function(){return'thmb150';});
 //メタとサムネ(標準とAMP)
 function twentyfifteen_entry_meta(){if(is_sticky()&&is_home()&&!is_paged()):printf('<span class="sticky-post">%s</span>',__('Featured','twentyfifteen'));endif;//投稿を先頭に固定
