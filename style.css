@@ -8,6 +8,9 @@
  Tags:         light, dark, Orange, two-columns, left-sidebar, responsive-layout, accessibility-ready, SNSButton
  Text Domain:  twenty-fifteen-child
 */
+/*flex*/
+#flex{max-width:100%;overflow-y:auto;}
+#flex .content{flex-direction:row;-webkit-flex-direction:row;justify-content:flex-start;-webkit-justify-content:flex-start;display:flex;display:-webkit-flex;}
 /*header&footer&cardstyle*/
 #bread{color:#ddd;}
 #bread .sp{color:#333;margin:0 .5em;}
@@ -33,16 +36,13 @@
 .entry-content h4{border-left:10px solid #ffcc00;background-color:#fff;}
 .entry-content h2,.entry-content h3,.entry-content h4{min-height:45px;text-align:center;}
 .qrcode{display:inline-block;margin:3px;}
-/*ページャー*/
+/*ページャー&関連記事*/
 .prev.page-numbers::before,.prev.page-numbers::before{font-family:"Noto Serif" sans-serif;font-size:16px;}
 .prev.page-numbers::before{content:"＜";}
 .next.page-numbers::before{content:"＞";}
 .prev.page-numbers,.next.page-numbers{color:#fff;background-color:#ffcc00;}
 .page-links a{color:#fff;border-color:#ffcc00;background-color:#ffcc00;}
-/*記事下&関連記事*/
-#flex{max-width:100%;overflow-y:auto;}
-#flex .content{flex-direction:row;-webkit-flex-direction:row;justify-content:flex-start;-webkit-justify-content:flex-start;display:flex;display:-webkit-flex;}
-.related{max-width:150px;max-height:300px;border-radius:8px;margin:15px 8px 10px 0;background-color:#fff;box-shadow:0 1px 6px rgba(0,0,0,.12);}
+.related{max-width:150px;max-height:300px;border-radius:8px;margin:20px 8px 20px 0;background-color:#fff;box-shadow:0 1px 6px rgba(0,0,0,.12);}
 .related .thumb{background-color:#ffcc00;max-height:150px;}
 .related .title{color:#333;font-size:18px;padding-top:20px;max-height:150px;text-align:center;}
 /*ボタン*/
@@ -55,9 +55,9 @@
 .g1::before{content:"\f0d5";left:10%;}
 .printerest,.g1{background-color:#ff0033;}
 .line{background-color:#2aff00;}
-.hatebu::before{content:"\f02e";left:23%;}
+.hatebu::before{content:"\f02e";left:24%;}
 .hatena{background-color:#3c7dd1;}
-.pocket::before{content:"\f265";left:17%;}
+.pocket::before{content:"\f265";left:16.5%;}
 .pocket{background-color:#ee4056;}
 .tumblr::before{content:"\f173";left:26%;}
 .tumblr{background-color:#2c4762;}

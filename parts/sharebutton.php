@@ -5,6 +5,11 @@
     <a href="http://line.me/R/msg/text/?<?php the_title();?>%0D%0A<?php the_permalink();?>" target="_blank"><img src="<?php echo get_stylesheet_directory_uri();?>/img/line.svg" alt="LINEで送る" class="line button"/></a>
     <a href="https://plus.google.com/share?url=<?php echo get_permalink();?>" target="_blank"><div class="g1 button"></div></a>
     <a href="https://www.linkedin.com/shareArticle?mini=true&url=<?php echo get_permalink();?>&amp;title=<?php echo trim(wp_title('',false));?>" onclick="window.open(this.href,'window','width=550,height=450,personalbar=0,toolbar=0,scrollbars=1,resizable=1');return false;"><div class="linkedin button"></div></a>
+	<div class="wp-embed-share">
+		<button type="button" class="wp-embed-share-dialog-open" aria-label="共有ダイアログを開く">
+			<span class="dashicons dashicons-share"></span>
+		</button>
+	</div>
   </div>
   <div class="content">
     <a href="http://b.hatena.ne.jp/add?mode=confirm&url=<?php echo get_permalink();?>&amp;title=<?php echo trim(wp_title('',false));?>" target="_blank"><div class="hatebu hatena button"></div></a>
