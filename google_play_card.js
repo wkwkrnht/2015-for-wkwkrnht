@@ -1,8 +1,9 @@
-﻿(function (scripts, callback, errorback) {
-	if (typeof errorback != 'function')errorback = function (url) {alert('jsloader load error: ' + url)};
+﻿(function(scripts,callback,errorback){
+	var url=JSON.parse($script.attr('data-url'));
+	if (typeof errorback != 'function')errorback = function(url){alert('jsloader load error: ' + url)};
 	var cssRegexp = /.css$/;
-	var load = function (url) {
-		if (cssRegexp.test(url)) {
+	var load = function (url){
+		if (cssRegexp.test(url)){
 			var link = document.createElement('link');
 			link.href = url;
 			link.type = 'text/css';
@@ -94,3 +95,5 @@
 		}
 	})(jQuery);
 });
+function(s,url,arg){s=document.createElement("script");s.charset="utf-8";
+s.src=url+"?s="+encodeURIComponent(arg);document.body.appendChild(s)});
