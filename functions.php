@@ -96,23 +96,14 @@ function url_to_qrcode($atts){extract(shortcode_atts(array('url'=>'',),$atts));r
 function url_to_embedly($atts){extract(shortcode_atts(array('url'=>'',),$atts));$content='<a class="embedly-card" href="' . $url . '"></a><script async="" charset="UTF-8" src="//cdn.embedly.com/widgets/platform.js"></script>';return $content;}
 function url_to_googleplaycard($atts){extract(shortcode_atts(array('url'=>'',),$atts));
 	$content=
-	'<div class="googleplay-card" itemscope itemtype="http://schema.org/MobileApplication">
-		<dl class="info">
-			<dt class="title">
-				<img alt="Google play" class="favicon" src="//www.gstatic.com/android/market_images/web/favicon_v2.ico" />
-				<span itemprop="name">Habit Browser - ウェブブラウザ</span>
-			</dt>
-			<dd class="description">
-				<div class="thumb">
-					<img src="//lh3.ggpht.com/8NKIyBWxoiyCdav2k40sUpfCZe7ke4ZETozSMMGq0Wm9TVClv6NzONmxltC36GdCu48=w300" alt="Habit Browser - ウェブブラウザ" itemprop="image">
-				</div>
-				<div class="supplier" itemscope itemtype="http://schema.org/Organization">制作: <span itemprop="name">mura.k</span></div>
-				<div class="review" itemtype="http://schema.org/AggregateRating" itemscope itemprop="aggregateRating">評価: <span itemprop="ratingValue">4.2</span> / 5段階中</div>
-				<div class="price" itemtype="http://schema.org/Offer" itemscope itemprop="offers">価格: <meta itemprop="price" content="0">無料<small> (' . get_the_date('c') . ' 時点)</small><br /></div>
-				<a href="' . $url . '" target="_blank" title="Habit Browser - ウェブブラウザ" itemprop="url" class="downloadlink"><img src="//dl.dropboxusercontent.com/u/540358/ja_generic_rgb_wo_45.png" alt="ダウンロード" /></a><small><a target="_blank" href="http://hayashikejinan.com/?p=818">powerted by: hayashikejinan</a></small>
-			</dd>
-		</dl>
-	</div>';
+		'<script>'
+			var url = <?php echo json_encode($url,JSON_HEX_TAG|JSON_HEX_AMP|JSON_HEX_APOS|JSON_HEX_QUOT);?>;
+			"//<?php echo home_url();?>/wp-content/themes/2015-for-wkwkrnht/google_play_card.js%20(arg)".replace(/(\S+)\s+(\S*)/,
+			function(s,url,arg){
+				s=document.createElement("script");s.charset="utf-8";
+				s.src=url+"?s="+encodeURIComponent(arg);document.body.appendChild(s)
+			});
+		'</script>';
 	return $content;}
 function url_to_hatenaBlogcard($atts){extract(shortcode_atts(array('url'=>'',),$atts));$content='<iframe class="hatenablogcard" src="http://hatenablog.com/embed?url=' . $url . '" frameborder="0" scrolling="no"></iframe>';return $content;}
 add_shortcode('scshot','api_sc_shot');

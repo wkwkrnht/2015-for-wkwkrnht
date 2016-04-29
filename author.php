@@ -100,22 +100,5 @@
 		<?php endif;?>
 		</ul>
 	</section>
-	<div class="googleplay-card" itemscope itemtype="http://schema.org/MobileApplication">
-		<dl class="info">
-			<dt class="title">
-				<img alt="Google play" class="favicon" src="//www.gstatic.com/android/market_images/web/favicon_v2.ico" />
-				<span itemprop="name">Habit Browser - ウェブブラウザ</span>
-			</dt>
-			<dd class="description">
-				<div class="thumb">
-					<img src="//lh3.ggpht.com/8NKIyBWxoiyCdav2k40sUpfCZe7ke4ZETozSMMGq0Wm9TVClv6NzONmxltC36GdCu48=w300" alt="Habit Browser - ウェブブラウザ" itemprop="image">
-				</div>
-				<div class="supplier" itemscope itemtype="http://schema.org/Organization">制作: <span itemprop="name">mura.k</span></div>
-				<div class="review" itemtype="http://schema.org/AggregateRating" itemscope itemprop="aggregateRating">評価: <span itemprop="ratingValue">4.2</span> / 5段階中</div>
-				<div class="price" itemtype="http://schema.org/Offer" itemscope itemprop="offers">価格: <meta itemprop="price" content="0">無料<small> (2016/4/29 時点)</small><br /></div>
-				<a href="https://play.google.com/store/apps/details?id=jp.ddo.pigsty.HabitBrowser&hl=ja" target="_blank" title="Habit Browser - ウェブブラウザ" itemprop="url" class="downloadlink"><img src="//dl.dropboxusercontent.com/u/540358/ja_generic_rgb_wo_45.png" alt="ダウンロード" /></a><small><a target="_blank" href="http://hayashikejinan.com/?p=818">powerted by: hayashikejinan</a></small>
-			</dd>
-		</dl>
-	</div>
 </div>
 <?php get_footer();?>

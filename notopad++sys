@@ -5,7 +5,6 @@
             <File name="img\no-img.png" />
         </Folder>
         <Folder name="parts">
-            <File name="parts\adminnav.php" />
             <File name="parts\bread.php" />
             <File name="parts\related.php" />
             <File name="parts\sharebutton.php" />
@@ -16,7 +15,7 @@
         <File name=".gitignore" />
         <File name="functions.php" />
         <File name="style.css" />
-        <File name="javascript.js" />
+        <File name="google_play_card.js" />
         <File name="header.php" />
         <File name="sidebar.php" />
         <File name="sidebar-8.php" />
