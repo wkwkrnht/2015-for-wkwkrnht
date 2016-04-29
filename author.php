@@ -9,7 +9,7 @@
 				if($user_data->Addres){echo'<span>' . $user_data->Addres . '</span>';};
 				if($user_data->TEL){echo'<span>' . $user_data->TEL . '</span>';};
 				if($user_data->FAX){echo'<span>' . $user_data->FAX . '</span>';};
-				if($user_data->user_email){echo'<span>' . $user_data->->user_email . '</span>';};?>
+				if($user_data->user_email){echo'<span>' . $user_data->user_email . '</span>';};?>
 	</header>
 	<aside class="account_list">
 		<h2>アカウント一覧</h2>
