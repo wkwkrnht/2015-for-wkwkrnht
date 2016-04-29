@@ -1,5 +1,4 @@
 ﻿function(scripts,callback,errorback){
-	var element=document.getElementById("googleplay-card");
 	var url = jQuery('#googleplay-card').attr('data-url');
 	if(typeof errorback != 'function')errorback = function(url){alert('jsloader load error: ' + url)};
 	var cssRegexp = /.css$/;
@@ -21,7 +20,7 @@
 				script.onreadystatechange = function(){if(script.readyState=='complete'||script.readyState =='loaded'){current_callback();}}
 			}else{
 				script.onload = current_callback;
-				script.onerror = function () {errorback(url)};
+				script.onerror = function(){errorback(url)};
 			}
 			script.src = url;
 			document.body.appendChild(script);
@@ -54,7 +53,7 @@ function(){
 			// アプリアイコンURL(chrome の場合 webp 形式なので png にする)
 			var image = target.find('img[itemprop=image]').attr('src');
 			if (image.slice(-3) == '-rw') image = image.replace('-rw', '');
-			image = '<img src="' + image + '" alt="' + title + '" itemprop="image" style="height:120px;width:120px;max-width:100%;vertical-align:middle;border:0;margin:0 1em 0 0;">';
+			image = '<img src="'+image+'" alt="'+title+'" itemprop="image" style="height:120px;width:120px;max-width:100%;vertical-align:middle;border:0;margin:0 1em 0 0;">';
 			// 評価
 			var rating = target.find('meta[itemprop=ratingValue]').attr('content');
 			rating = parseFloat(rating).toFixed(1);
@@ -76,8 +75,8 @@ function(){
 			dd += '</dd>';
 			dl += dd;
 			dl += '</dl>';
-			html += dl + '</div>';
-			var element=document.getElementById("googleplay-card");
+			html += dl+'</div>';
+			elem=document.getElementById("googleplay-card");
 			element.innerHTML=html;
 		}
 }
