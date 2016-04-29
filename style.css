@@ -8,9 +8,6 @@
  Tags:         light, dark, Orange, two-columns, left-sidebar, responsive-layout, accessibility-ready, SNSButton
  Text Domain:  twenty-fifteen-child
 */
-/*flex*/
-#flex{max-width:100%;overflow-y:auto;}
-#flex .content{flex-direction:row;-webkit-flex-direction:row;justify-content:flex-start;-webkit-justify-content:flex-start;display:flex;display:-webkit-flex;}
 /*header&footer&cardstyle*/
 #bread{color:#ddd;}
 #bread .sp{color:#333;margin:0 .5em;}
@@ -27,6 +24,8 @@
 .cat-links::before{content:"\f114";}
 .tags-links::before{content:"\f02c";}
 .entry-footer h2{color:#fff;background-color:#ffcc00;box-shadow:0 1px 6px rgba(0,0,0,.12);height:45px;margin:15px;font-size:30px;text-align:center;}
+#flex{max-width:100%;overflow-y:auto;}
+#flex .content{flex-direction:row;-webkit-flex-direction:row;justify-content:flex-start;-webkit-justify-content:flex-start;display:flex;display:-webkit-flex;}
 .copyright{color:#fff;text-align:center;margin-bottom:15px;}
 /*コンテンツ内*/
 .marker{background-color:rgba(255,255,0,.8);}
@@ -37,13 +36,22 @@
 .entry-content h2,.entry-content h3,.entry-content h4{min-height:45px;text-align:center;}
 .qrcode{display:inline-block;margin:3px;max-height:200px;max-width:200px;}
 .hatenablogcard{clear:both;margin:10px 0;height:155px;width:100%;max-width:700px;}
+.googleplay-card{clear:both;min-height:165px;width:100%;max-width:700px;overflow:hidden;padding:12px;border:1px solid;border-color:#eaeaea #ddd #d0d0d0;-moz-box-sizing:border-box;box-sizing:border-box;border-radius:5px;}
+.googleplay-card .info{margin:0;}
+.googleplay-card .title{border-bottom:1px solid;border-color:#eaeaea #ddd #d0d0d0;font-weight:bold;margin:0 0 .5em 0;padding:0 0 .5em 0;}
+.googleplay-card .title img{vertical-align:middle;border:0;}
+.googleplay-card .description{font-size:.9em;margin:0;}
+.googleplay-card .description .thumb{float:left;}
+.googleplay-card .description .thumb img{height:120px;width:120px;max-width:100%;vertical-align:middle;border:0;margin:0 1em 0 0;}
+.googleplay-card .downloadlink{float:right;}
+.googleplay-card .downloadlink img{border:0;display:inline-block;height:auto;vertical-align: middle;}
 /*ページャー&関連記事*/
 .prev.page-numbers::before,.prev.page-numbers::before{font-family:"Noto Serif" sans-serif;font-size:16px;}
 .prev.page-numbers::before{content:"＜";}
 .next.page-numbers::before{content:"＞";}
 .prev.page-numbers,.next.page-numbers{color:#fff;background-color:#ffcc00;}
 .page-links a{color:#fff;border-color:#ffcc00;background-color:#ffcc00;}
-.related{max-width:150px;max-height:300px;border-radius:8px;margin:20px 8px 20px 0;background-color:#fff;box-shadow:0 1px 6px rgba(0,0,0,.12);}
+.related{max-width:150px;max-height:350px;border-radius:8px;margin:20px 8px 20px 0;background-color:#fff;box-shadow:0 1px 6px rgba(0,0,0,.12);}
 .related .thumb{background-color:#ffcc00;max-height:150px;}
 .related .title{color:#333;font-size:18px;padding-top:20px;max-height:150px;text-align:center;}
 /*ボタン*/

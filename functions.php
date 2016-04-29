@@ -92,9 +92,10 @@ function wps_highlight_results($text){if(is_search()){$sr=get_query_var('s');$ke
 function twtreplace($content){$twtreplace=preg_replace('/([^a-zA-Z0-9-_&])@([0-9a-zA-Z_]+)/',"$1<a href=\"http://twitter.com/$2\" target=\"_blank\" rel=\"nofollow\">@$2</a>",$content);return $twtreplace;}
 function api_sc_shot($attributes){extract(shortcode_atts(array('url'=>'',),$attributes));$imageUrl=sc_shot($url);if($imageUrl==''){return'';}else{return'<a href="' . $url . '" target="_blank"><img src="' . $imageUrl . '" alt="' . $url . '"/></a>';}}
 function sc_shot($url=''){return'http://s.wordpress.com/mshots/v1/' . urlencode(clean_url($url)) . '?w=500';}
-function url_to_qrcode($atts){extract(shortcode_atts(array('url'=>'','size'=>'80',),$atts));return'<a href="' . $url . '" target="_blank" class="qrcode"><img src="https://chart.googleapis.com/chart?chs=' . $size . 'x' . $size . '&cht=qr&chl=' . $url . '&choe=UTF-8 " alt="QR Code"/></a>';}
+function url_to_qrcode($atts){extract(shortcode_atts(array('url'=>'',),$atts));return'<a href="' . $url . '" target="_blank" class="qrcode"><img src="https://chart.googleapis.com/chart?chs=100x100&cht=qr&chl=' . $url . '&choe=UTF-8" alt="QR Code"/></a>';}
 function url_to_embedly($atts){extract(shortcode_atts(array('url'=>'',),$atts));$content='<a class="embedly-card" href="' . $url . '"></a><script async="" charset="UTF-8" src="//cdn.embedly.com/widgets/platform.js"></script>';return $content;}
-function url_to_googleplaycard($atts){extract(shortcode_atts(array('url'=>'','title'=>'','author'=>'',),$atts));$content='<a href="' . $url . '"><div class="googleplay-card"><span class="title">' . $title . '</span><span class="author">' . $author . '</span></div></a>';return $content;}
+function url_to_googleplaycard($atts){extract(shortcode_atts(array('url'=>'',),$atts));
+	$content='<div class="googleplay-card">''</div>';return $content;}
 function url_to_hatenaBlogcard($atts){extract(shortcode_atts(array('url'=>'',),$atts));$content='<iframe class="hatenablogcard" src="http://hatenablog.com/embed?url=' . $url . '" frameborder="0" scrolling="no"></iframe>';return $content;}
 add_shortcode('scshot','api_sc_shot');
 add_shortcode('myqrcode','url_to_qrcode');
@@ -107,6 +108,8 @@ add_filter('the_title','wps_highlight_results');
 add_filter('the_content','wps_highlight_results');
 add_action('after_setup_theme','ruby_setup');
 //entry-footerウィジェットエリア化&独自ウィジェットの追加(SNSボタン|Disqus|関連記事|テキストウイジェット(PCのみ表示))&カレンダー短縮
+function entry_footer_sidebar(){register_sidebar(array('name'=>'エントリーフッター','id'=>'8','before_widget'=>'<div>','after_widget'=>'</div>','before_title'=>'','after_title'=>'',));}
+add_action('widgets_init','entry_footer_sidebar');
 class PcTextWidgetItem extends WP_Widget{
   function PcTextWidgetItem(){parent::WP_Widget(false,$name='Text widget（for PC）');}
   function widget($args,$instance){extract($args);$title=apply_filters('widget_title_pc_text',$instance['title_pc_text']);$text=apply_filters('widget_text_pc_text',$instance['text_pc_text']);if(!wp_is_mobile()):echo('<div id="pc-text-widget" class="widget pc_text">');if($title){echo '<h4>'.$title.'</h4>';}echo('<div class="text-pc">');echo $text;echo'</div></div>';endif;}
@@ -125,6 +128,19 @@ class PcTextWidgetItem extends WP_Widget{
   }
 }
 add_action('widgets_init',create_function('','return register_widget("PcTextWidgetItem");'));
+class author_bio extends WP_Widget{
+    function __construct(){parent::__construct('author_bio','著者プロフィール',array('description'=>'著者プロフィール',));}
+    public function widget($args,$instance){echo $args['before_widget'];get_template_part('parts/authorbio');echo $args['after_widget'];}
+    public function form($instance){$title=!empty($instance['title']) ? $instance['title']:__( '','text_domain');?>
+		<p>
+		<label for="<?php echo $this->get_field_id('title');?>"><?php _e('タイトル:');?></label> 
+		<input class="widefat" id="<?php echo $this->get_field_id('title');?>" name="<?php echo $this->get_field_name('title');?>" type="text" value="<?php echo esc_attr($title);?>">
+		</p>
+		<?php 
+	}
+	public function update($new_instance,$old_instance){$instance=array();$instance['title']=(!empty($new_instance['title'])) ? strip_tags($new_instance['title']):'';return $instance;}
+}
+add_action('widgets_init',function(){register_widget('author_bio');});
 class sns_sharebutton extends WP_Widget{
     function __construct(){parent::__construct('sns_sharebutton','SNSシェアボタン',array('description'=>'SNSシェアボタン',));}
     public function widget($args,$instance){echo $args['before_widget'];get_template_part('parts/sharebutton');echo $args['after_widget'];}
@@ -164,9 +180,6 @@ class disqus_widget extends WP_Widget{
 	public function update($new_instance,$old_instance){$instance=array();$instance['title']=(!empty($new_instance['title'])) ? strip_tags($new_instance['title']):'';return $instance;}
 }
 add_action('widgets_init',function(){register_widget('disqus_widget');});
-function entry_footer_sidebar(){register_sidebar(array('name'=>'エントリーフッター','id'=>'8','before_widget'=>'<div>','after_widget'=>'</div>','before_title'=>'','after_title'=>'',));}
-add_action('widgets_init','entry_footer_sidebar');
-//
 function my_archives_link($link_html){
     $currentMonth=date('n');
     $currentYear=date('Y');
@@ -192,7 +205,7 @@ function appthemes_add_quicktags(){
     if(wp_script_is('quicktags')){ ?>
     <script type="text/javascript">
 		QTags.addButton('qt-scshot','スクショ','[scshot url=',']');
-		QTags.addButton('qt-myqrcode','QRコード','[myqrcode url=',' size= ]');
+		QTags.addButton('qt-myqrcode','QRコード','[myqrcode url=',']');
 		QTags.addButton('qt-embedly','embedly','[embedly url=',']');
 		QTags.addButton('qt-hatenablogcard','はてなブログカード','[hatenaBlogcard url=',']');
 		QTags.addButton('qt-p','p','<p>','</p>');
