@@ -95,10 +95,8 @@ function sc_shot($url=''){return'http://s.wordpress.com/mshots/v1/' . urlencode(
 function url_to_qrcode($atts){extract(shortcode_atts(array('url'=>'',),$atts));return'<a href="' . $url . '" target="_blank" class="qrcode"><img src="https://chart.googleapis.com/chart?chs=100x100&cht=qr&chl=' . $url . '&choe=UTF-8" alt="QR Code"/></a>';}
 function url_to_embedly($atts){extract(shortcode_atts(array('url'=>'',),$atts));$content='<a class="embedly-card" href="' . $url . '"></a><script async="" charset="UTF-8" src="//cdn.embedly.com/widgets/platform.js"></script>';return $content;}
 function url_to_hatenaBlogcard($atts){extract(shortcode_atts(array('url'=>'',),$atts));$content='<iframe class="hatenablogcard" src="http://hatenablog.com/embed?url=' . $url . '" frameborder="0" scrolling="no"></iframe>';return $content;}
-function url_to_googleplaycard($atts){extract(shortcode_atts(array('url'=>'',),$atts));$content='<script src="google_play_card.js"></script><div id="googleplay-card" data-url="' . $url . '"></div>';return $content;}
 add_shortcode('scshot','api_sc_shot');
 add_shortcode('myqrcode','url_to_qrcode');
-add_shortcode('googleplaycard','url_to_googleplaycard');
 add_shortcode('embedly','url_to_embedly');
 add_shortcode('hatenaBlogcard','url_to_hatenaBlogcard');
 add_filter('the_content','twtreplace');
