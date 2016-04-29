@@ -1,5 +1,5 @@
 ﻿(function(scripts,callback,errorback){
-	var url=JSON.parse(jQuery('#script').attr('data-url'));
+	var url = jQuery('#script').attr('data-url');
 	if (typeof errorback != 'function')errorback = function(url){alert('jsloader load error: ' + url)};
 	var cssRegexp = /.css$/;
 	var load = function (url){
