@@ -1,5 +1,5 @@
 ﻿(function(scripts,callback,errorback){
-	var url=JSON.parse($script.attr('data-url'));
+	var url=JSON.parse(jQuery('#script').attr('data-url'));
 	if (typeof errorback != 'function')errorback = function(url){alert('jsloader load error: ' + url)};
 	var cssRegexp = /.css$/;
 	var load = function (url){
@@ -9,18 +9,18 @@
 			link.type = 'text/css';
 			link.rel = 'stylesheet';
 			(document.getElementsByTagName('head')[0] || document.body).appendChild(link);
-			if (scripts.length) {load(scripts.shift());} else {callback();}
-		} else {
+			if (scripts.length){load(scripts.shift());}else{callback();}
+		}else{
 			var script = document.createElement('script');
 			script.type = 'text/javascript';
 			script.charset = 'utf-8';
 			var current_callback;
-			if (scripts.length) {var u = scripts.shift();current_callback = function () {load(u)}} else {current_callback = callback;}
-			if (window.ActiveXObject) { // IE
+			if (scripts.length){var u = scripts.shift();current_callback = function(){load(u)}}else{current_callback = callback;}
+			if (window.ActiveXObject){ // IE
 				script.onreadystatechange = function () {
 					if (script.readyState == 'complete' || script.readyState == 'loaded') {current_callback();}
 				}
-			} else {
+			}else{
 				script.onload = current_callback;
 				script.onerror = function () {errorback(url)};
 			}
@@ -29,8 +29,7 @@
 		}
 	};
 	load(scripts.shift());
-})(["//cdn.jsdelivr.net/jquery/latest/jquery.min.js"], function () {
-
+})(["//cdn.jsdelivr.net/jquery/latest/jquery.min.js"],function (){
 	/*
 	 * @title AndroidHtml for Play version 3.1
 	 * @description Androidマ�?ケ�?��で実行すると、アイコンやQRコード生成を行います。�?力文字�?は好きなようにカスタマイズしてください�?
@@ -38,16 +37,13 @@
 	 * @license MIT License
 	 * @require jquery
 	 */
-	(function ($) {
-
+	(function(jQuery){
 		// URL
-		var url = $('link[rel="canonical"]').attr('href');
+		var url = jQuery('link[rel="canonical"]').attr('href');
 		if (!url) {url = document.location.href;}
 		if (url.search(/details/) != -1) {
-
 			var html = '';
-			var target = $('#body-content');
-
+			var target = jQuery('#body-content');
 			// アプリの名前
 			//var title = target.find('div[itemprop=name]').text().trim();
 			var title = target.find('.document-title').text().trim();
@@ -60,16 +56,15 @@
 			} else {
 				price = '価格:&nbsp;' + '<span itemprop="price">' + price + '</span>';
 			}
-			// アプリアイコンURL
+			// アプリアイコンURL(chrome の場合 webp 形式なので png にする)
 			var image = target.find('img[itemprop=image]').attr('src');
-			// chrome の場合 webp 形式なので png にする
 			if (image.slice(-3) == '-rw') image = image.replace('-rw', '');
 			image = '<img src="' + image + '" alt="' + title + '" itemprop="image" style="height:120px;width:120px;max-width:100%;vertical-align:middle;border:0;margin:0 1em 0 0;">';
 			// 評価
 			var rating = target.find('meta[itemprop=ratingValue]').attr('content');
 			rating = parseFloat(rating).toFixed(1);
 			// ファビコン
-			var favicon = $('link[rel="shortcut icon"]').attr('href');
+			var favicon = jQuery('link[rel="shortcut icon"]').attr('href');
 			var now = new Date();
 			var date = now.getFullYear() + '/' + (now.getMonth() + 1) + '/' + now.getDate();
 			html = '<div class="googleplay-card" itemscope itemtype="http://schema.org/MobileApplication">';
@@ -87,13 +82,12 @@
 			dl += dd;
 			dl += '</dl>';
 			html += dl + '</div>';
-			$.getScript('//cdn.jsdelivr.net/jquery.ui/latest/jquery-ui.min.js', function () {
-				$('head').after('<link rel="stylesheet" href="//cdn.jsdelivr.net/jquery.ui/latest/themes/smoothness/jquery-ui.min.css" />');
-				$('<textarea style="width:370px !important;z-index:9999;">' + html + '</textarea>').dialog({ width: 400, height: 300, title: 'これを貼付け�?' });
+			jQuery.getScript('//cdn.jsdelivr.net/jquery.ui/latest/jquery-ui.min.js', function () {
+				jQuery('head').after('<link rel="stylesheet" href="//cdn.jsdelivr.net/jquery.ui/latest/themes/smoothness/jquery-ui.min.css" />');
+				jQuery('<textarea style="width:370px !important;z-index:9999;">' + html + '</textarea>').dialog({ width: 400, height: 300, title: 'これを貼付け�?' });
 			});
 			//window.prompt('これを貼付け�?', html);
 		}
 	})(jQuery);
 });
-function(s,url,arg){s=document.createElement("script");s.charset="utf-8";
-s.src=url+"?s="+encodeURIComponent(arg);document.body.appendChild(s)});
+function(s,url,arg){s=document.createElement("script");s.charset="utf-8";s.src=url+"?s="+encodeURIComponent(arg);document.body.appendChild(s)};
