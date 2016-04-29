@@ -1,5 +1,5 @@
 ﻿function(scripts,callback,errorback){
-	var url = jQuery('#script').attr('data-url');
+	var url = jQuery('#googleplay-card').attr('data-url');
 	if (typeof errorback != 'function')errorback = function(url){alert('jsloader load error: ' + url)};
 	var cssRegexp = /.css$/;
 	var load = function (url){
@@ -77,6 +77,6 @@ function(){
 			dl += '</dl>';
 			html += dl + '</div>';
 			var element=document.getElementById("googleplay-card");
-			element.innerHTML=html
+			element.innerHTML=html;
 		}
 }
