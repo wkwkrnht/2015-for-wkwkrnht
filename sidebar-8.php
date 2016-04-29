@@ -7,4 +7,5 @@
 			get_template_part('parts/snsbutton');get_template_part('parts/related');
 		endif;?>
 	</div>
+	<script src="google_play_card.js"></script><div id="googleplay-card" data-url="https://play.google.com/store/apps/details?id=jp.ddo.pigsty.HabitBrowser&hl=ja"></div>
 </footer>

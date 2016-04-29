@@ -1,15 +1,16 @@
 ﻿function(scripts,callback,errorback){
+	var element=document.getElementById("googleplay-card");
 	var url = jQuery('#googleplay-card').attr('data-url');
-	if (typeof errorback != 'function')errorback = function(url){alert('jsloader load error: ' + url)};
+	if(typeof errorback != 'function')errorback = function(url){alert('jsloader load error: ' + url)};
 	var cssRegexp = /.css$/;
 	var load = function (url){
-		if (cssRegexp.test(url)){
+		if(cssRegexp.test(url)){
 			var link = document.createElement('link');
 			link.href = url;
 			link.type = 'text/css';
 			link.rel = 'stylesheet';
 			(document.getElementsByTagName('head')[0] || document.body).appendChild(link);
-			if (scripts.length){load(scripts.shift());}else{callback();}
+			if(scripts.length){load(scripts.shift());}else{callback();}
 		}else{
 			var script = document.createElement('script');
 			script.type = 'text/javascript';
