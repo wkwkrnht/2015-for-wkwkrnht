@@ -257,7 +257,7 @@ function my_new_contactmethods($contactmethods){
   $contactmethods['Addres']='住所';
   $contactmethods['Graveter']='Graveter';
   $contactmethods['LINE']='LINE';
-  $contactmethods['YO!']='YO!';
+  $contactmethods['YO']='YO!';
   $contactmethods['twitter']='Twitter';
   $contactmethods['facebook']='Facebook';
   $contactmethods['Linkedin']='Linkedin';

@@ -9,7 +9,7 @@
 				</header>
 				<div class="page-content">
 					<h2>カテゴリとタグから検索</h2>
-					<?php wp_tag_cloud('taxonomy'=>"array('post_tag','category')",);?>
+					<?php //wp_tag_cloud('taxonomy'=>array('post_tag','category'),);?>
 				</div>
 			</section>
 		</main>

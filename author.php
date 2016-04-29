@@ -18,6 +18,7 @@
 				if($user_data->LINE){echo $user_data->LINE . "<br />";};
 				if($user_data->twitter){echo'<a href="http://twitter.com/' . $user_data->twitter . '/" target="_blank">@' . $user_data->twitter . '</a><br />';};
 				if($user_data->facebook){echo $user_data->facebook . "<br />";};
+				if($user_data->Googleplus){echo $user_data->Googleplus . "<br />";};
 				if($user_data->Linkedin){echo $user_data->Linkedin . "<br />";};
 				if($user_data->mixi){echo $user_data->mixi . "<br />";};
 				if($user_data->Instagram){echo $user_data->Instagram . "<br />";};
@@ -26,7 +27,7 @@
 				if($user_data->Swarm){echo $user_data->Swarm . "<br />";};
 				if($user_data->Pocket){echo $user_data->Pocket . "<br />";};
 				if($user_data->hatebu){echo $user_data->hatebu . "<br />";};
-				if($user_data->YO!){echo $user_data->YO! . "<br />";};?></p>
+				if($user_data->YO){echo $user_data->YO . "<br />";};?></p>
 			<h3 class="section-name">Blog</h3>
 			<p><?php $user_data=get_userdata($author);
 				if($user_data->user_url){echo'<a href="' . $user_data->user_url . '/" target="_blank">' . $user_data->user_url . '</a><br />';};
