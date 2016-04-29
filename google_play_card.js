@@ -76,11 +76,7 @@ function(){
 			dl += dd;
 			dl += '</dl>';
 			html += dl + '</div>';
-			jQuery.getScript('//cdn.jsdelivr.net/jquery.ui/latest/jquery-ui.min.js',
-			function(){
-				jQuery('head').after('<link rel="stylesheet" href="//cdn.jsdelivr.net/jquery.ui/latest/themes/smoothness/jquery-ui.min.css" />');
-				jQuery('<textarea style="width:370px !important;z-index:9999;">' + html + '</textarea>').dialog({ width: 400, height: 300, title: 'これを貼付け�?' });
-			});
-			document.write(html)
+			var element=document.getElementById("googleplay-card");
+			element.textContent(html)
 		}
 }
