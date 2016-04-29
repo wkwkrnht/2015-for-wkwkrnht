@@ -77,6 +77,6 @@ function(){
 			dl += '</dl>';
 			html += dl + '</div>';
 			var element=document.getElementById("googleplay-card");
-			element.textContent(html)
+			element.innerHTML=html
 		}
 }
