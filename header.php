@@ -2,8 +2,12 @@
 <html <?php language_attributes();?> class="no-js">
 <head>
 	<?php if(get_post_meta($post->ID,"noindex",true)){echo'<meta name="robots" content="noindex,nofollow" />';};?>
-	<?php if(is_singular()):echo'<link rel="amphtml" href=" . get_permalink() . ?amp=1">';
-	echo'<link rel="" href="http://plus.google.com/ . the_author_meta("Googleplus") . ">';endif;?>
+	<?php if(is_singular()):
+	echo'<link rel="amphtml" href=" . get_permalink() . ?amp=1">';
+	echo'<link rel="" href="http://plus.google.com/' . the_author_meta("Googleplus") . '">';
+	echo'<link rel="alternate" type="application/json+oembed" href="' . home_url() . '/wp-json/oembed/1.0/embed?url=' . get_permalink() . '" />';
+	echo'<link rel="alternate" type="text/xml+oembed" href="' . home_url() . '/wp-json/oembed/1.0/embed?url=' . get_permalink() . ';format=xml" />';
+	endif;?>
 	<link rel="profile" href="http://gmpg.org/xfn/11">
 	<link rel="pingback" href="<?php bloginfo('pingback_url');?>">
 	<meta charset="<?php bloginfo('charset');?>">
@@ -11,6 +15,7 @@
 	<meta name="google-site-verification" content="<?php echo get_option('Google_Webmaster');?>">
 	<meta name="msvalidate.01" content="<?php echo get_option('Bing_Webmaster');?>">
 	<meta name="theme-color" content="<?php echo get_option('GoogleChrome_URLbar');?>">
+	
 	<meta property="og:type" content="blog">
 	<?php if(is_single()){if(have_posts()):while(have_posts()):the_post();echo'<meta property="og:description" content="';mb_substr(get_the_excerpt(),0,100);echo'">';echo"\n";endwhile;endif;
 	  echo'<meta property="og:title" content="';the_title();echo'">';echo"\n";
@@ -47,7 +52,7 @@
 	<meta name="twitter:image:width" content="825px">
 	<meta name="twitter:image:height" content="510px">
 	<meta name="twitter:creator" content="@<?php if(is_single()){echo the_author_meta('twitter');}else{echo get_option('Twitter_URL');};?>">
-	<meta name="twitter:site" content="@<?php echo get_option('Twitter_URL');?>">
+	<meta name="twitter:site" content="@<?php echo get_option('Twitter_URL');?>">	
 	<script type="text/javascript">
 		function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
 		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)}(window,document,'script','//www.google-analytics.com/analytics.js','ga');

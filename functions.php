@@ -19,7 +19,7 @@ add_action('login_head',function(){remove_action('login_head','wp_shake_js',12);
 add_filter('style_loader_src','remove_ver_script',9999);
 add_filter('script_loader_src','remove_ver_script',9999);
 add_filter('embed_thumbnail_image_size',function(){return'thmb150';});
-//メタとサムネ(標準とAMP)
+//メタとサムネ(標準とAMP)&コピーライト
 function twentyfifteen_entry_meta(){if(is_sticky()&&is_home()&&!is_paged()):printf('<span class="sticky-post">%s</span>',__('Featured','twentyfifteen'));endif;//投稿を先頭に固定
   //投稿日|更新日|投稿者|カテゴリー|タグ|画像サイズ(横 x 縦)表示|コメントをどうぞ|コメント数(順同)
   if(in_array(get_post_type(),array('post','attachment'))){
@@ -43,6 +43,7 @@ function amp_entry_meta(){if(in_array(get_post_type(),array('post','attachment')
 	$time_string=sprintf($time_string,esc_attr(get_the_date('c')),get_the_date(),esc_attr(get_the_modified_date('c')),get_the_modified_date());
 	printf('<span>%1$s<a href="%2$s" rel="bookmark">%3$s</a></span>',_x('Posted on','Used before publish date.','twentyfifteen'),esc_url(get_permalink()),$time_string);
 	echo('<span>（');echo human_time_diff(get_the_time('U'),current_time('timestamp'));echo('前）</span>');}}
+function get_first_post_year(){$year=null;query_posts('posts_per_page=1&order=ASC');if(have_posts()):while(have_posts()):the_post();$year=intval(get_the_time('Y'));endwhile;endif;wp_reset_query();return $year;}
 //サムネサイズ追加&Alt属性がないIMGタグにalt=""を追加する&サムネ自動設定
 add_image_size('related',150,150,true);
 add_filter('the_content',function($content){return preg_replace('/<img((?![^>]*alt=)[^>]*)>/i','<img alt=""${1}>',$content);});
