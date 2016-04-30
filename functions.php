@@ -1,4 +1,4 @@
-<?php add_action('wp_enqueue_scripts','theme_enqueue_styles');function theme_enqueue_styles(){wp_enqueue_style('parent-style',get_template_directory_uri().'/style.css');}
+<?php add_action('wp_enqueue_scripts',function(){wp_enqueue_style('parent-style',get_template_directory_uri().'/style.css');});
 //消去(/?ver=|emoji|error action|genericons)&oEmbed(by WPteam)対応
 function remove_ver_script($src){if(strpos($src,'ver=')):$src=remove_query_arg('ver',$src);return $src;endif;}
 function wkwkrnht_embed_analytics(){ ?>
@@ -8,7 +8,7 @@ function wkwkrnht_embed_analytics(){ ?>
 	ga('create',<?php echo get_option('Google_Analytics');?>,'auto');ga('send','pageview');
 </script>
 <?php }
-function oficialoembed_support_scripts(){if(is_singular(array('post','page'))){wp_enqueue_style('wp-embed-template-ie');wp_enqueue_style('nendebcom_wp_embed_template',includes_url('css/wp-embed-template.min.css'));wp_enqueue_script('oficialoembed_support_template',includes_url('js/wp-embed-template.min.js'),array(),'',true);}}
+function oficialoembed_support_scripts(){if(is_singular(array('post','page'))):wp_enqueue_style('wp-embed-template-ie');wp_enqueue_style('oficial_wp_embed_style',includes_url('css/wp-embed-template.min.css'));wp_enqueue_script('oficial_oembed_script',includes_url('js/wp-embed-template.min.js'),array(),'',true);endif;}
 remove_action('wp_head','wp_generator');
 remove_action('wp_head','print_emoji_detection_script',7);
 remove_action('wp_print_styles','print_emoji_styles');
@@ -16,9 +16,9 @@ add_action('embed_head','wkwkrnht_embed_analytics');
 add_action('wp_enqueue_scripts','oficialoembed_support_scripts');
 add_action('wp_enqueue_scripts',function(){wp_dequeue_style('genericons');},11);
 add_action('login_head',function(){remove_action('login_head','wp_shake_js',12);});
+add_filter('embed_thumbnail_image_size',function(){return'thmb150';});
 add_filter('style_loader_src','remove_ver_script',9999);
 add_filter('script_loader_src','remove_ver_script',9999);
-add_filter('embed_thumbnail_image_size',function(){return'thmb150';});
 //メタとサムネ(標準とAMP)&コピーライト
 function twentyfifteen_entry_meta(){if(is_sticky()&&is_home()&&!is_paged()):printf('<span class="sticky-post">%s</span>',__('Featured','twentyfifteen'));endif;//投稿を先頭に固定
   //投稿日|更新日|投稿者|カテゴリー|タグ|画像サイズ(横 x 縦)表示|コメントをどうぞ|コメント数(順同)

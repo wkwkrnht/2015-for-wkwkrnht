@@ -8,6 +8,9 @@
  Tags:         light, dark, Orange, two-columns, left-sidebar, responsive-layout, accessibility-ready, SNSButton
  Text Domain:  twenty-fifteen-child
 */
+/*共通クラス*/
+#flex{max-width:100%;overflow-y:scroll;}
+#flex .content{flex-direction:row;-webkit-flex-direction:row;justify-content:flex-start;-webkit-justify-content:flex-start;display:flex;display:-webkit-flex;}
 /*header&footer&cardstyle*/
 #bread{color:#ddd;}
 #bread .sp{color:#333;margin:0 .5em;}
@@ -18,14 +21,13 @@
 .card-info{background-color:#f7f7f7;color:#707070;margin-bottom:5px;}
 .card-thumb{max-width:825px;max-height:510px;}
 .card-title{font-size:40px;text-align:center;}
+.posted-on,.byline,.cat-links,.tags-links,.comments-link,.entry-format,.full-size-link{margin:0 1em;}
 .posted-on::before,.author::before,.cat-links::before,.tags-links::before{font-family:"FontAwesome";vertical-align:baseline;}
 .posted-on::before{content:"\f133";}
 .author::before{content:"\f007";}
 .cat-links::before{content:"\f114";}
 .tags-links::before{content:"\f02c";}
 .entry-footer h2{color:#fff;background-color:#ffcc00;box-shadow:0 1px 6px rgba(0,0,0,.12);height:45px;margin:15px;font-size:30px;text-align:center;}
-#flex{max-width:100%;overflow-y:auto;}
-#flex .content{flex-direction:row;-webkit-flex-direction:row;justify-content:flex-start;-webkit-justify-content:flex-start;display:flex;display:-webkit-flex;}
 .copyright{color:#fff;text-align:center;margin-bottom:15px;}
 /*コンテンツ内*/
 .marker{background-color:rgba(255,255,0,.8);}
@@ -37,6 +39,7 @@
 .entry-content h2,.entry-content h3,.entry-content h4{min-height:45px;text-align:center;}
 .qrcode{display:inline-block;margin:3px;max-height:200px;max-width:200px;}
 .hatenablogcard{clear:both;margin:10px 0;height:155px;width:100%;max-width:700px;}
+#wp-calendar td{line-height:1.8;}
 /*ページャー&関連記事*/
 .prev.page-numbers::before,.prev.page-numbers::before{font-family:"Noto Serif" sans-serif;font-size:16px;}
 .prev.page-numbers::before{content:"＜";}
