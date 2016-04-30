@@ -1,4 +1,3 @@
-<script>(function(){var shareButton=document.getElementsByClassName("sharewindow");for(var i=0;i<shareButton.length;i++){shareButton[i].addEventListener("click",function(e){e.preventDefault();window.open(this.href,"SNS_window","width=600,height=500,menubar=no,toolbar=no,scrollbars=yes");},false);}})()</script>
 <div id="flex" class="snsshare">
 	<div class="content">
 		<a href="https://twitter.com/share?url=<?php echo get_permalink();?>&amp;text=<?php echo trim(wp_title('',false));?>&amp;via=<?php the_author_meta('twitter');?>" class="sharewindow" target="_blank"><div class="tweet button"></div></a>
@@ -15,3 +14,4 @@
 		<a href="http://cdn.embedly.com/widgets/embed?url=<?php the_permalink();?>" class="sharewindow" target="_blank"><div class="embedly button"></div></a>
 	</div>
 </div>
+<script>(function(){var shareButton=document.getElementsByClassName("sharewindow");for(var i=0;i<shareButton.length;i++){shareButton[i].addEventListener("click",function(e){e.preventDefault();window.open(this.href,"SNS_window","width=600,height=500,menubar=no,toolbar=no,scrollbars=yes");},false);}})()</script>
