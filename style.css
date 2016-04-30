@@ -72,7 +72,7 @@
 #admin-navigation{display:block;margin:0 20% 5%;}
 #admin-navigation a{padding:0 5px;}
 .login::before,.logout::before,.adminmenu::before,.addpost::before,.wlwedit::before,.post-edit-link::before{font-family:"FontAwesome";font-size:24px;}
-.login::before{content:"\f090";}
+.logout::before,.login::before{content:"\f090";}
 .adminmenu::before{content:"\f013";}
 .addpost::before,.wlwedit::before,.post-edit-link::before{content:"\f040";color:green;}
 .addpost::after{content:"\f067";font-family:"FontAwesome";font-size:16px;position:relative;right:.5em;bottom:0;}
