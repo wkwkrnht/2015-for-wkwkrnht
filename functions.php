@@ -198,6 +198,14 @@ add_filter('get_archives_link','my_archives_link');
 function get_meta_description_from_category(){$cate_desc=trim(strip_tags(category_description()));if($cate_desc){return $cate_desc;}$cate_desc='「' . single_cat_title('',false) . '」の記事一覧です。' . get_bloginfo('description');return $cate_desc;}
 function get_meta_keyword_from_category(){return single_cat_title('',false) . ',ブログ,記事一覧';}
 function get_mtime($format){$mtime=get_the_modified_time('Ymd');$ptime=get_the_time('Ymd');if($ptime > $mtime){return get_the_time($format);}elseif($ptime === $mtime){return null;}else{return get_the_modified_time($format);}}
+//管理者向けウィジェット
+function appbox_parameters_dashboard_widget(){
+    echo'パラメータは半角スペースの後に入力<br />フォーマット→simple OR compact<br />スクショ→screenshots(-only)<br />旧価格→フォーマット合わせて入力<br />';
+}
+function add_dashboard_widgets(){
+	wp_add_dashboard_widget('appbox_dashboard_widget','appBoxのパラメータ','appbox_parameters_dashboard_widget');
+}
+add_action('wp_dashboard_setup','add_dashboard_widgets');
 //クイックタグ追加
 function appthemes_add_quicktags(){
     if(wp_script_is('quicktags')){ ?>
@@ -211,12 +219,6 @@ function appthemes_add_quicktags(){
 		QTags.addButton('qt-myqrcode','QRコード','[myqrcode url=',']');
 		QTags.addButton('qt-embedly','embedly','[embedly url=',']');
 		QTags.addButton('qt-hatenablogcard','はてなブログカード','[hatenaBlogcard url=',']');
-		QTags.addButton('qt-appcard','アプリ紹介カード','[appbox wordpress googleplay appstore windowsstore amazonapps chrome­webstore firefox­mar­ketplace firefoxaddon opera­addons goodoldgames steam ',']');
-		QTags.addButton('qt-appcard','アプリ紹介カード(コンパクト)','[appbox wordpress googleplay appstore windowsstore amazonapps chrome­webstore firefox­mar­ketplace firefoxaddon opera­addons goodoldgames steam ',' compact]');
-		QTags.addButton('qt-appcard','アプリ紹介カード(シンプル)','[appbox wordpress googleplay appstore windowsstore amazonapps chrome­webstore firefox­mar­ketplace firefoxaddon opera­addons goodoldgames steam ',' simple]');
-		QTags.addButton('qt-appcard','アプリ紹介カード(スクショ入り)','[appbox wordpress googleplay appstore windowsstore amazonapps chrome­webstore firefox­mar­ketplace firefoxaddon opera­addons goodoldgames steam ',' screenshots]');
-		QTags.addButton('qt-appcard','アプリ紹介カード(スクショのみ)','[appbox googleplay appstore windowsstore amazonapps chrome­webstore firefox­mar­ketplace firefoxaddo opera­addons goodoldgames steam ',' screenshots-only]');
-		QTags.addButton('qt-appcard','アプリ紹介カード(旧価格入り)','[appbox wordpress googleplay appstore windowsstore amazonapps chrome­webstore firefox­mar­ketplace firefoxaddon opera­addons goodoldgames steam ',' oldprice="¥300"]');
     </script>
 <?php }}
 add_action('admin_print_footer_scripts','appthemes_add_quicktags');
