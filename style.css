@@ -28,6 +28,7 @@
 .cat-links::before{content:"\f114";}
 .tags-links::before{content:"\f02c";}
 .tags-links a{margin:0 .4em;}
+.tags-links,#wp-calendar td{line-height:1.8;}
 .entry-footer h2{color:#fff;background-color:#ffcc00;box-shadow:0 1px 6px rgba(0,0,0,.12);height:45px;margin:15px;font-size:30px;text-align:center;}
 .copyright{color:#fff;text-align:center;margin-bottom:15px;}
 /*コンテンツ内*/
@@ -40,7 +41,6 @@
 .entry-content h2,.entry-content h3,.entry-content h4{min-height:45px;text-align:center;}
 .qrcode{display:inline-block;margin:3px;max-height:200px;max-width:200px;}
 .hatenablogcard{clear:both;margin:10px 0;height:155px;width:100%;max-width:700px;}
-#wp-calendar td{line-height:1.8;}
 /*ページャー&関連記事*/
 .prev.page-numbers::before,.prev.page-numbers::before{font-family:"Noto Serif" sans-serif;font-size:16px;}
 .prev.page-numbers::before{content:"＜";}

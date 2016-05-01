@@ -37,15 +37,46 @@
         <File name="notopad++sys" />
     </Project>
     <Project name="2015 by wkwkrnht">
+        <Folder name="css">
+            <File name="C:\Users\xudho\Documents\GitHub\2015-by-wkwkrnht\css\editor-style.css" />
+            <File name="C:\Users\xudho\Documents\GitHub\2015-by-wkwkrnht\css\ie.css" />
+            <File name="C:\Users\xudho\Documents\GitHub\2015-by-wkwkrnht\css\ie7.css" />
+        </Folder>
+        <Folder name="genericons">
+            <File name="C:\Users\xudho\Documents\GitHub\2015-by-wkwkrnht\genericons\COPYING.txt" />
+            <File name="C:\Users\xudho\Documents\GitHub\2015-by-wkwkrnht\genericons\genericons.css" />
+            <File name="C:\Users\xudho\Documents\GitHub\2015-by-wkwkrnht\genericons\Genericons.eot" />
+            <File name="C:\Users\xudho\Documents\GitHub\2015-by-wkwkrnht\genericons\Genericons.svg" />
+            <File name="C:\Users\xudho\Documents\GitHub\2015-by-wkwkrnht\genericons\Genericons.ttf" />
+            <File name="C:\Users\xudho\Documents\GitHub\2015-by-wkwkrnht\genericons\Genericons.woff" />
+            <File name="C:\Users\xudho\Documents\GitHub\2015-by-wkwkrnht\genericons\LICENSE.txt" />
+            <File name="C:\Users\xudho\Documents\GitHub\2015-by-wkwkrnht\genericons\README.md" />
+        </Folder>
         <Folder name="img">
-            <File name="C:\Users\xudho\Documents\GitHub\2015-by-wkwkrnht\img\embed.svg" />
-            <File name="C:\Users\xudho\Documents\GitHub\2015-by-wkwkrnht\img\hatebu.svg" />
             <File name="C:\Users\xudho\Documents\GitHub\2015-by-wkwkrnht\img\line.svg" />
             <File name="C:\Users\xudho\Documents\GitHub\2015-by-wkwkrnht\img\no-img.png" />
+        </Folder>
+        <Folder name="inc">
+            <File name="C:\Users\xudho\Documents\GitHub\2015-by-wkwkrnht\inc\back-compat.php" />
+            <File name="C:\Users\xudho\Documents\GitHub\2015-by-wkwkrnht\inc\custom-header.php" />
+            <File name="C:\Users\xudho\Documents\GitHub\2015-by-wkwkrnht\inc\customizer.php" />
+            <File name="C:\Users\xudho\Documents\GitHub\2015-by-wkwkrnht\inc\template-tags.php" />
+        </Folder>
+        <Folder name="js">
+            <File name="C:\Users\xudho\Documents\GitHub\2015-by-wkwkrnht\js\color-scheme-control.js" />
+            <File name="C:\Users\xudho\Documents\GitHub\2015-by-wkwkrnht\js\customize-preview.js" />
+            <File name="C:\Users\xudho\Documents\GitHub\2015-by-wkwkrnht\js\functions.js" />
+            <File name="C:\Users\xudho\Documents\GitHub\2015-by-wkwkrnht\js\html5.js" />
+            <File name="C:\Users\xudho\Documents\GitHub\2015-by-wkwkrnht\js\keyboard-image-navigation.js" />
+            <File name="C:\Users\xudho\Documents\GitHub\2015-by-wkwkrnht\js\skip-link-focus-fix.js" />
+        </Folder>
+        <Folder name="languages">
+            <File name="C:\Users\xudho\Documents\GitHub\2015-by-wkwkrnht\languages\twentyfifteen.pot" />
         </Folder>
         <Folder name="parts">
             <File name="C:\Users\xudho\Documents\GitHub\2015-by-wkwkrnht\parts\adminnav.php" />
             <File name="C:\Users\xudho\Documents\GitHub\2015-by-wkwkrnht\parts\author-bio.php" />
+            <File name="C:\Users\xudho\Documents\GitHub\2015-by-wkwkrnht\parts\authorbio.php" />
             <File name="C:\Users\xudho\Documents\GitHub\2015-by-wkwkrnht\parts\bread.php" />
             <File name="C:\Users\xudho\Documents\GitHub\2015-by-wkwkrnht\parts\comments.php" />
             <File name="C:\Users\xudho\Documents\GitHub\2015-by-wkwkrnht\parts\editor-style.css" />
@@ -60,6 +91,7 @@
         <File name="C:\Users\xudho\Documents\GitHub\2015-by-wkwkrnht\amp.php" />
         <File name="C:\Users\xudho\Documents\GitHub\2015-by-wkwkrnht\archive.php" />
         <File name="C:\Users\xudho\Documents\GitHub\2015-by-wkwkrnht\author.php" />
+        <File name="C:\Users\xudho\Documents\GitHub\2015-by-wkwkrnht\comments.php" />
         <File name="C:\Users\xudho\Documents\GitHub\2015-by-wkwkrnht\content-card.php" />
         <File name="C:\Users\xudho\Documents\GitHub\2015-by-wkwkrnht\content-link.php" />
         <File name="C:\Users\xudho\Documents\GitHub\2015-by-wkwkrnht\content-none.php" />
@@ -72,7 +104,9 @@
         <File name="C:\Users\xudho\Documents\GitHub\2015-by-wkwkrnht\index.php" />
         <File name="C:\Users\xudho\Documents\GitHub\2015-by-wkwkrnht\javascript.js" />
         <File name="C:\Users\xudho\Documents\GitHub\2015-by-wkwkrnht\notepad++sys" />
+        <File name="C:\Users\xudho\Documents\GitHub\2015-by-wkwkrnht\notopad++sys" />
         <File name="C:\Users\xudho\Documents\GitHub\2015-by-wkwkrnht\page.php" />
+        <File name="C:\Users\xudho\Documents\GitHub\2015-by-wkwkrnht\rtl.css" />
         <File name="C:\Users\xudho\Documents\GitHub\2015-by-wkwkrnht\screenshot.png" />
         <File name="C:\Users\xudho\Documents\GitHub\2015-by-wkwkrnht\search.php" />
         <File name="C:\Users\xudho\Documents\GitHub\2015-by-wkwkrnht\sidebar-8.php" />
